@@ -1,0 +1,22 @@
+{
+  "today": "2026-10-29",
+  "claims": [
+    {
+      "claim": "[6] NFC versus compatibility normalization",
+      "class": "normalization-pattern",
+      "pub_date": "2026-08-12",
+      "recheck": "2028-08-12",
+      "stale": false
+    },
+    {
+      "claim": "[7] Structured output semantic validation",
+      "class": "ai-api",
+      "pub_date": "2026-10-21",
+      "recheck": "2027-01-21",
+      "stale": false
+    }
+  ],
+  "stale_count": 0,
+  "earliest_recheck": "2027-01-21",
+  "no_window_classes": []
+}
