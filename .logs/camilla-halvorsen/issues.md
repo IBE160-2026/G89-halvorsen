@@ -1,0 +1,7 @@
+# Åpne punkter
+
+- [ ] 2026-10-29 [AI Study Buddy – Product Brief](999-2026-10-29-12-55-32-ai-study-buddy-product-brief.md) — PRD: definere testtilfeller, utvalg, sammendragsvurdering, quizretting, dokumentgrenser, feil/demo og håndtering/sletting av opplastet materiale.
+- [ ] 2026-10-29 [AI Study Buddy – Product Brief](999-2026-10-29-12-55-32-ai-study-buddy-product-brief.md) — Vurdere ikke-vedtatte forslag om samlet fasit-/referansekontroll, utdragskontroll på oppgitt side og gjenbruk av quizflyt etter sammendrag.
+- [ ] 2026-10-29 [AI Study Buddy – Product Brief](999-2026-10-29-12-55-32-ai-study-buddy-product-brief.md) — Velge konkrete T1–T3-PDF-er, delbart demodokument og manuelle sammenligningsoppgaver; avklare delingsrettigheter og gjennomføre planlagte tester.
+- [ ] 2026-10-29 [AI Study Buddy – Product Brief](999-2026-10-29-12-55-32-ai-study-buddy-product-brief.md) — Architecture/README: velge modell og PDF-bibliotek; planlegge kostnad, nøkkelhåndtering, .env.example, demo og lokal oppstart.
+- [ ] 2026-10-29 [AI Study Buddy – Product Brief](999-2026-10-29-12-55-32-ai-study-buddy-product-brief.md) — Vurdere valgfri fase-2-fremdriftslagring etter testet kjerne og bekrefte eksakt innleveringsdato.
