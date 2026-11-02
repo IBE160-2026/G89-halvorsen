@@ -1,0 +1,42 @@
+[
+  {
+    "claim": "[1] Citation review is distinct from answer plausibility; general principle corroborated by NIST and ALCE.",
+    "class": "patterns",
+    "pub_date": "2024-07"
+  },
+  {
+    "claim": "[3] SummEval separately evaluates consistency, coherence, fluency and relevance in English news summaries.",
+    "class": "patterns",
+    "pub_date": "2021-04"
+  },
+  {
+    "claim": "[4] QAFactEval metric results depend on learned QA components in its benchmark setting.",
+    "class": "patterns",
+    "pub_date": "2022-07"
+  },
+  {
+    "claim": "[5] ALCE measures citation support and relevance separately from answer correctness; exact method single-source.",
+    "class": "patterns",
+    "pub_date": "2023-12"
+  },
+  {
+    "claim": "[6] MT-Bench study reports useful preference agreement and position/verbosity bias in tested judges.",
+    "class": "patterns",
+    "pub_date": "2023"
+  },
+  {
+    "claim": "[7] NBME single-best-answer guidance recommends focused questions, one best key and plausible comparable options; educational-domain transfer remains proposal.",
+    "class": "patterns",
+    "pub_date": "2024-10"
+  },
+  {
+    "claim": "[8] Original prose study reports delayed retrieval-practice benefits; not an AI Study Buddy trial.",
+    "class": "patterns",
+    "pub_date": "2006-03"
+  },
+  {
+    "claim": "[9] Original MCQ feedback abstract reports later recall benefits and reduced distractor intrusions; full methods not inspected.",
+    "class": "patterns",
+    "pub_date": "2008-04"
+  }
+]

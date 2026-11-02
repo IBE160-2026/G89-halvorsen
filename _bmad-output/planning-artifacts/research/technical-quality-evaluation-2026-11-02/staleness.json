@@ -1,0 +1,64 @@
+{
+  "today": "2026-11-02",
+  "claims": [
+    {
+      "claim": "[1] Citation review is distinct from answer plausibility; general principle corroborated by NIST and ALCE.",
+      "class": "patterns",
+      "pub_date": "2024-07",
+      "recheck": "2026-07-01",
+      "stale": true
+    },
+    {
+      "claim": "[3] SummEval separately evaluates consistency, coherence, fluency and relevance in English news summaries.",
+      "class": "patterns",
+      "pub_date": "2021-04",
+      "recheck": "2023-04-01",
+      "stale": true
+    },
+    {
+      "claim": "[4] QAFactEval metric results depend on learned QA components in its benchmark setting.",
+      "class": "patterns",
+      "pub_date": "2022-07",
+      "recheck": "2024-07-01",
+      "stale": true
+    },
+    {
+      "claim": "[5] ALCE measures citation support and relevance separately from answer correctness; exact method single-source.",
+      "class": "patterns",
+      "pub_date": "2023-12",
+      "recheck": "2025-12-01",
+      "stale": true
+    },
+    {
+      "claim": "[6] MT-Bench study reports useful preference agreement and position/verbosity bias in tested judges.",
+      "class": "patterns",
+      "pub_date": "2023",
+      "recheck": "2025-01-01",
+      "stale": true
+    },
+    {
+      "claim": "[7] NBME single-best-answer guidance recommends focused questions, one best key and plausible comparable options; educational-domain transfer remains proposal.",
+      "class": "patterns",
+      "pub_date": "2024-10",
+      "recheck": "2026-10-01",
+      "stale": true
+    },
+    {
+      "claim": "[8] Original prose study reports delayed retrieval-practice benefits; not an AI Study Buddy trial.",
+      "class": "patterns",
+      "pub_date": "2006-03",
+      "recheck": "2008-03-01",
+      "stale": true
+    },
+    {
+      "claim": "[9] Original MCQ feedback abstract reports later recall benefits and reduced distractor intrusions; full methods not inspected.",
+      "class": "patterns",
+      "pub_date": "2008-04",
+      "recheck": "2010-04-01",
+      "stale": true
+    }
+  ],
+  "stale_count": 8,
+  "earliest_recheck": "2008-03-01",
+  "no_window_classes": []
+}
