@@ -1,4 +1,4 @@
-# PDF-kildepålitelighet — research før PRD
+# PDF-kildepålitelighet — research
 
 ## 2026-10-29 kl. 15:27 — Camilla Halvorsen
 
