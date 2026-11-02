@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "[2] Browser localStorage persists across restarts.",
+    "class": "patterns",
+    "pub_date": "2025-02-22"
+  },
+  {
+    "claim": "[5] Personal data includes direct and indirect identifiers; no-account scope does not establish their absence.",
+    "class": "regulatory",
+    "pub_date": "2025-03-31"
+  },
+  {
+    "claim": "[6] Privacy principles include lawful basis, transparency, minimisation and storage limitation.",
+    "class": "regulatory",
+    "pub_date": "2023-07-27"
+  },
+  {
+    "claim": "[7] Where GDPR transfer rules apply, establish applicable transfer basis/conditions for transfers outside the EEA; no exemption for this project established.",
+    "class": "regulatory",
+    "pub_date": "2026-01-29"
+  },
+  {
+    "claim": "[8] Gemini terms distinguish EEA paid-client eligibility from EEA paid data-use protection; paid content not used for product improvement but security/global processing remains.",
+    "class": "provider",
+    "pub_date": "2026-03-23"
+  },
+  {
+    "claim": "[9] Gemini abuse monitoring retains prompt/context/output for 55 days and permits authorised flagged-content review.",
+    "class": "provider",
+    "pub_date": "2026-06-09"
+  },
+  {
+    "claim": "[10] Gemini Files objects expire after 48 hours and support deletion; not an all-copy guarantee.",
+    "class": "provider",
+    "pub_date": "2026-10-26"
+  },
+  {
+    "claim": "[11] Optional Generate Content logs default on for projects created from 2026-10-26; automatic marked-for-deletion period and dataset sharing differ from abuse monitoring.",
+    "class": "provider",
+    "pub_date": "2026-10-26"
+  },
+  {
+    "claim": "[12] Gemini retention documentation distinguishes feature-specific storage and does not establish guaranteed zero retention for this design.",
+    "class": "provider",
+    "pub_date": "2026-09-14"
+  },
+  {
+    "claim": "[13] Kopinor/UHR model agreement has internal-use and recipient limits, bars public internet publication and separately excludes training absent permission/law; institutional adoption unverified.",
+    "class": "contract",
+    "pub_date": "2024-06"
+  }
+]
