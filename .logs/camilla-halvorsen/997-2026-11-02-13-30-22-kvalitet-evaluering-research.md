@@ -1,4 +1,4 @@
-# Kvalitet og evaluering — research tema 2
+# Kvalitet og evaluering – research
 
 ## 2026-11-02 kl. 13:30 — Camilla Halvorsen
 
