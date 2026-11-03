@@ -1,0 +1,59 @@
+# Input reconciliation — Uploaded material handling
+
+## Input and precedence
+
+- Input: [Uploaded material handling research](../../research/technical-uploaded-material-handling-2026-11-02/research.md), completed 2026-11-02.
+- Compared with the current [PRD](prd.md), [addendum](addendum.md) and chronological canonical `.memlog.md` through the decision-coverage audit and start of Finalize.
+- Later user decisions govern. The report labels its design recommendations as proposals; this reconciliation does not adopt them, select a provider, assign legal clearance or invent numerical retention/resource limits.
+- The source report documents primary-source findings with stated confidence/retrieval limits. It reports no application tests or actual uploads. Provider-specific figures and legal/contract interpretations are not revalidated by this source-extraction pass.
+
+## Reconciliation
+
+| Input from the research | Current disposition | Gap or appropriate next stage |
+| --- | --- | --- |
+| Keep v1 small: one active document, no accounts, hosted multi-user uploads, document database or automatic study history. | Confirmed direction, FR-14–18 and UJ-1 define one active PDF, navigation retention, temporary sessions and no public launch. | Product scope covered. No need to add accounts, a database, automatic redaction or antivirus infrastructure. |
+| Distinguish selecting/extracting a PDF from live external-model transfer. | FR-44/45 require a visible notice and active acknowledgement before any extracted content reaches an external AI service, including an AI check. | Product transfer gate covered. Browser versus local-backend extraction and the exact data path remain Architecture decisions; do not describe local processing as a selected implementation. |
+| Tell the student what data goes to whom without implying that local extraction means offline generation or zero retention. | FR-44 states that PDF text goes to an external AI service; FR-46 prohibits unsupported provider storage/training/deletion claims and requires verification before real transfer. | Core principle covered. Architecture must make the eventual notice match the selected recipient and data flow, including relay/hosting recipients if introduced. No provider is selected now. |
+| Preserve page indexes for source checking and source access while study aids remain visible. | FR-2/3 retain the active document across functions; FR-11–12 specify physical page order and original excerpts; FR-35 supports multiple passages. | Covered. Mapping, normalization and matching are explicitly delegated downstream. |
+| Do not silently truncate material while implying complete coverage. | FR-38/40/41 distinguish reliable readable text, incidental omissions with a notice and stopping on central or uncertain coverage loss. | Covered. Observable signals and representative extraction checks are Architecture/implementation work, not claims of perfect detection. |
+| Confirm replacement/Clear, retain old state after rejection, invalidate delayed results, leave the user's original disk file unchanged. | FR-15–18 state these behaviours. Language-generation failure handling is separately specified in FR-21–23. | Covered as visible session behaviour. Full app-owned-copy cleanup is not yet fully specified; see G1. |
+| Do not automatically retain runtime uploads/text/outputs in browser persistent stores or caches. | FR-17 requires no restoration after reload/close and says the session is not saved for recovery. | Partial coverage. Lack of recovery does not establish absence of hidden persistent copies; see G1. |
+| Release PDF bytes, extracted/normalized text, filename mappings and object URLs; clean temporary backend files on success/error/cancellation and provide bounded recovery after crashes. | FR-16 removes the active document and aids from the app session. The addendum requests preservation tests and late-result handling, but not a complete inventory or cleanup policy for these copies. | Product retention/deletion policy needs confirmation; technical mechanism and crash handling belong to Architecture after that decision. No forensic-erasure guarantee or duration is implied. |
+| Keep application/SDK/error logs content-free, excluding PDFs, prompts, responses, excerpts, keys and identifying paths. | NFR-4 protects private credentials; NFR-1–3 address authority separation, inert display and structure validation. | Runtime content-logging policy is not stated; see G2. Protecting credentials alone does not settle whether document content is logged. |
+| Separate provider retention, optional logging/sharing and uploaded-file-object lifetimes. | FR-46 requires provider-specific terms/configuration verification before transfer and prohibits equating Clear with provider deletion. | Product disclosure principle covered. Actual provider/project eligibility, billing/age conditions, logging/sharing settings and optional object features are Architecture-owned checks. Do not carry dated provider figures into the PRD as fixed product facts. |
+| Local cancellation cannot recall content already transferred; report provider-deletion failures honestly if stored file objects are introduced. | FR-18 prevents ended-session results from reappearing; FR-46 forbids unsupported provider-deletion claims. | Covered at the product-claim level. Cancellation, object cleanup and failure recording are conditional Architecture tasks, not a reason to introduce Files API or a new user deletion feature. |
+| Use one separately permissioned demo PDF with matching saved aids; never silently send another selected PDF or mislabel saved output as live. | FR-42 requires a predefined shareable PDF, saved study aids, clear demo labelling and separate live validation. External-processing acceptance examples distinguish saved aids from live generation. | Core covered. Demo controls/variant boundaries and the no-live-call check remain a previously identified final-review/implementation topic; do not imply the app has been verified. |
+| Distinguish rights for private local use, external API transfer, examiner sharing and public repository/report/screenshots. | FR-44 discourages unauthorized external sharing; FR-42 requires a shareable demo; final follow-ups assign permissioned test/demo selection before live tests. | General principle retained, but a concrete file-level usage/permission register is not explicit; include this in G3 as downstream evidence governance. An acknowledgement is not legal permission or a lawful basis for information about others. |
+| Treat saved model outputs, excerpts and screenshots as retained copies alongside the original PDF. | Manual evaluation protocol explicitly retains first complete outputs, failures, omitted items, defects, corrections and retests for permissioned evaluation files, distinguishing this from student history. | Deliberate evaluation retention is confirmed. Owner/access/review-or-deletion conditions are not yet defined; see G3. |
+| Reject sensitive/confidential material as a proportionate boundary rather than add automatic redaction/classification. | FR-44 gives the material restrictions before generation; no redaction/classifier requirement exists. | Covered at the chosen user-notice level. No compliance or anonymity guarantee follows. |
+| If real personal data or wider hosting is introduced, reassess roles, agreements, basis and transfer conditions with institutional support. | Current scope is a limited non-public demonstration; FR-44 excludes sensitive/confidential inputs by notice and FR-46 requires provider verification. | Conditional escalation for a changed scope/data type. It does not require a completed legal assessment or a mandatory DPIA for the current unseen deployment. |
+| Verify network payloads/demo calls, delayed-result isolation, persistent stores/temp/log paths, provider settings and shared artifacts. | SM-5 covers lifecycle/failure and separate demo/live validation; NFRs require later security checks; the addendum calls for representative fixtures. | Network/storage/temp/log inspections are valid later evidence to record after policy decisions; none has been run or proved by this PRD. Mechanisms belong to Architecture/development. |
+
+## Genuine carry-forward gaps
+
+### G1 — App-owned runtime copies and cleanup boundary
+
+The visible session lifecycle is agreed, but its current wording does not fully decide what the app may retain outside the visible session. A fresh load could fail to restore anything while old PDF bytes/text, output or mappings still remain in a persistent store, cache or local-backend temporary file. FR-46's provider-retention caveat does not answer this app-controlled-copy question.
+
+The user should confirm the intended policy for app-owned runtime copies and explicitly distinguish those copies from the user's original file, provider copies and permissioned demo/evaluation artifacts. Architecture can then select stores, release resources, handle success/error/cancellation and bounded crash recovery, inspect SDK defaults and verify the result. Do not silently adopt the report's in-memory recommendation, invent a cleanup duration or promise forensic erasure.
+
+### G2 — Runtime application/SDK/error logging
+
+NFR-4 protects credentials but does not explicitly prohibit saving the student's document content, prompts, responses, source excerpts or identifying paths in operational/debug/error logs. This requires a clear policy decision separate from intentionally retained permissioned evaluation evidence. Mechanisms, useful non-content diagnostics and verification belong downstream. No report-derived logging rule has been adopted merely by writing this reconciliation.
+
+### G3 — Permission and retention governance for deliberately saved evidence
+
+The user has approved retaining evaluation outputs and defects, and the PRD requires permissioned test/demo files. It does not yet explicitly carry the report's small usage/permission register or the owner, access and review/deletion condition for saved PDFs, excerpts, outputs and screenshots. Preserve this as a test-plan/README delivery follow-up before real transfers or sharing, with an actual date chosen only after assessment/institutional needs are known. This is not automatic student study history and does not require private test material to be publicly shareable.
+
+## Architecture-owned or conditional details, not new product gaps
+
+- Browser versus local backend, relay recipients, minimal metadata and exact data flow; make the eventual notice truthful to the selected implementation.
+- PDF-only validation beyond a supplied MIME type, maintained parsing library, safe non-public temporary paths, resource limits and error/cancellation/crash handling.
+- Actual provider/model/project choice, eligibility and cost, current data-use/retention/logging/sharing settings and conditional stored-object deletion handling.
+- Exact matching/normalization, bounded retries, coverage stop criteria and numerical resource limits, all already assigned downstream.
+- Concrete file selection, licences/permissions and institutional conditions, to be recorded before the specific use rather than inferred from LMS access, a licence label or no-training settings.
+- Actual verification runs and evidence collection. The research and PRD are plans, not proof of network behaviour, cleanup, permission or compliance.
+
+## Disposition
+
+Confirmed transfer, password, session, source, provider-claim, security and evaluation decisions are preserved. G1 and G2 remain product-policy questions to resolve or explicitly defer before they become implicit implementation choices; G3 is a concrete downstream governance handoff. No numerical limit, provider retention promise, legal conclusion or new feature is selected by this report.
