@@ -2,36 +2,36 @@
 title: AI Study Buddy — PRD Addendum
 status: final
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-14
 ---
 
 # AI Study Buddy — PRD Addendum
 
-Technical considerations for downstream Architecture and implementation. Product behaviour is defined in [the PRD](prd.md); these notes do not select a library or add features.
+Technical/evidence follow-ups for Architecture and implementation. [The PRD](prd.md) defines product behaviour; these notes select no library or additional features.
 
 ## PDF extraction and coverage
 
-Architecture must define observable signals for unreadable or unreliable extraction and verify them on representative PDFs. The product fallback in FR-41 is to stop when adequate reliable main-text coverage cannot be established. Do not claim that the importance of every omitted passage can be determined automatically. Keep the student's coverage notice distinct from a guarantee that all significant material was captured. Empty pages alone do not establish what meaningful content, if any, was missed; their treatment requires representative fixtures and an explicit rule.
+Architecture must verify observable unreadable/unreliable-extraction signals against local T1–T3. FR-41 stops generation on material loss or uncertain main-text coverage. Neither a nonempty page nor a coverage notice establishes complete extraction; an empty page does not establish lost content. Define representative fixtures and explicit stop rules without promising automatic assessment of every omission's importance.
 
-Text extraction does not guarantee preservation of a PDF's structure or image content. The primary [pypdf extraction documentation](https://pypdf.readthedocs.io/en/stable/user/extract-text.html) describes positioned text, table/reading-order difficulties, image-only text and missing semantic structure. This is evidence of extraction limitations, not a selection of pypdf for the project or a test of AI Study Buddy.
+The limited PDFKit inspection found figure loss, including T2 page 12 and T3 page 30. Use these cases when verifying the chosen parser and coverage policy. The [research input](../../research/technical-pdf-source-reliability-2026-10-29/research.md) explains structural/image limitations; neither it nor the pilot selects the app's library. OCR, advanced figural interpretation and PDF repair remain excluded.
 
 ## Resource and validation boundaries
 
-- Choose and verify byte, page, extracted-text, processing-time and provider-context limits before implementation relies on them. The agreed document-size test bands do not themselves define upload limits.
-- Define a finite source-recovery retry cap and source-excerpt matching/normalization rules against cited physical pages. Excerpt-location checks must remain separate from evaluation of factual support.
-- Verify preservation of prior valid content and practice state when generation or replacement fails, including delayed results after Clear/document replacement and unsuccessful language changes.
-- Use the planned short, medium and long documents alongside language/content coverage and explicit failure fixtures. Actual files, permissions, acceptance evidence and measured limits remain to be selected and collected.
+- Verify byte/page/text/context, processing-time and cost bounds before implementation depends on them. Actual T1–T3 sizes are test inputs, not upload limits; flag bounds excluding them.
+- Define page-local excerpt matching and permitted normalization. Test whitespace, Unicode, wrong-page and hyphen/line-break cases; location matching remains separate from factual-support review.
+- Failed generation or no usable output requires manual Try again, never automatic regeneration/repair. Deliver valid card/quiz subsets without automatic refill. Preserve valid active-session state and reject late results after Clear/New session. Failed file selection/generation cannot restore the ended session.
+- Verify per-upload acknowledgement, provider configuration and working-copy cleanup deadlines before real transfer/use. Resource limits and implementation mechanisms remain open, without invented numeric values.
 
 ## Evaluation and regression evidence
 
-Camilla owns the test protocol before full scoring: choose permitted PDFs, map original-PDF key points, freeze item/reference sampling and counting, and define comparable timing tasks after the T1 pilot. Review original PDF pages separately from parser-produced text. For multi-reference items, record each location/excerpt check and the combined semantic support for the answer; a valid-looking location alone is not a passing support judgment.
+The developer freezes original-PDF points, item/reference sampling/counting and comparable timing tasks/target after the T1 evaluation pilot, before full scoring. Check each multi-reference location and combined support. A controlled extraction stop is a failure-handling result, not a quality pass; disclose blocked cases.
 
-Record model, prompt, extraction/library and relevant configuration versions with the evaluation evidence. Preserve initial failures, omitted items, corrections and retests. Revalidate affected cases when these inputs change. Apply the same quality/source rubric to saved demo aids while keeping demo playback evidence separate from live-integration evidence. The evidence register must state the owner, permitted uses, access permissions and conditions for review or deletion. Keep it separate from ordinary app logs and student history.
+Record model/prompt/parser/configuration versions; preserve first outputs, failures, omissions, fixes and retests. Recheck affected cases after changes. Apply the same rubric to saved demo content, separately from live integration. Record evidence owner, permitted uses, access and review/deletion conditions outside ordinary app logs/history. Local test files do not establish public-demo or external-transfer permission; select a shareable demo separately.
 
 ## Educational delivery follow-ups
 
-The brief describes a solo IBE160 Programming with AI project, with 70% functionality and 30% reflection assessment. Before delivery planning, Camilla must confirm these assessment details against the original assignment and full rubric, and confirm the exact deadline.
+The supporting context describes a solo IBE160 project with 70% functionality and 30% reflection assessment. Verify this against the original assignment/full rubric and confirm the exact deadline before delivery planning.
 
-- Architecture/README: justify stack, model and PDF-library choices; document costs and provider configuration, local startup, the key-free demo and separate live setup. Provide a credential-free `.env.example` when environment variables are used.
-- Development/reflection: retain permitted evidence of AI use, prompt iteration, decisions, code-quality assurance, tests, challenges and solutions for the reflection report. Do not mistake planned checks for completed evidence.
-- UX: sketch the learning navigation, source sidepanel, warnings and wrong-answer flow; check basic keyboard use, readability and understanding of source-location versus factual-support messages. Track findings and changes before final delivery.
+- Architecture/README: justify stack/model/parser; document cost/configuration, local startup, key-free demo and separate live setup, with credential-free `.env.example` where applicable.
+- Development/reflection: retain permitted AI/prompt/decision, code-quality and test evidence, challenges and solutions; distinguish plans from completed checks.
+- UX: sketch startup, navigation, source panel, warnings and wrong-answer flow; check keyboard use, readability and source-location/support wording before delivery.

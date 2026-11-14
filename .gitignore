@@ -38,6 +38,9 @@ coverage.xml
 test-results/
 playwright-report/
 
+# Local study material
+/test-data/pdfs/
+
 # Secrets and local environment; keep example files
 .env
 .env.*
