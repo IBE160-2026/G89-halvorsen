@@ -1,0 +1,155 @@
+{
+  "initial": {
+    "view": "startup",
+    "headingSize": "56px",
+    "headingColor": "rgb(23, 26, 25)",
+    "font": "\"Avenir Next\", Avenir, \"Segoe UI\", system-ui, sans-serif",
+    "uploadHeight": 168.59375,
+    "uploadIcon": 64,
+    "generateDisabled": true,
+    "ack": false
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "visibleMenus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    {
+      "label": "Summary",
+      "visibleMenus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Summary"
+      ],
+      "canvas": "rgb(238, 245, 239)"
+    },
+    {
+      "label": "Flashcards",
+      "visibleMenus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Flashcards"
+      ],
+      "canvas": "rgb(251, 247, 229)"
+    },
+    {
+      "label": "Quiz",
+      "visibleMenus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 244, 252)"
+    }
+  ],
+  "widths": {
+    "320": {
+      "scrollWidth": 288,
+      "clientWidth": 288,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": false
+    },
+    "390": {
+      "scrollWidth": 358,
+      "clientWidth": 358,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": false
+    },
+    "768": {
+      "scrollWidth": 736,
+      "clientWidth": 736,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": false
+    },
+    "900": {
+      "scrollWidth": 868,
+      "clientWidth": 868,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": false
+    },
+    "1024": {
+      "scrollWidth": 992,
+      "clientWidth": 992,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": true
+    },
+    "1280": {
+      "scrollWidth": 1248,
+      "clientWidth": 1248,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": true
+    },
+    "1440": {
+      "scrollWidth": 1408,
+      "clientWidth": 1408,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": true
+    },
+    "1536": {
+      "scrollWidth": 1504,
+      "clientWidth": 1504,
+      "collisions": [],
+      "labelOverlap": [],
+      "overflow": [],
+      "decorationVisible": true
+    }
+  },
+  "interaction": {
+    "quizPreserved": true,
+    "cardPreserved": true,
+    "sourceOpen": true,
+    "sourcePreserved": true,
+    "startup": {
+      "gated": true,
+      "ready": true,
+      "view": "summary",
+      "language": "en"
+    },
+    "focus": {
+      "label": "Summary",
+      "visible": true,
+      "outline": "solid",
+      "width": "3px"
+    }
+  },
+  "exceptions": []
+}

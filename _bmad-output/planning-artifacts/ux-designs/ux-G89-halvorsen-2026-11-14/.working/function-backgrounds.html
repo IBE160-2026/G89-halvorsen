@@ -1,0 +1,337 @@
+<div id="function-backgrounds" lang="nb" aria-label="Funksjonsfarger i AI Study Buddy">
+  <style>
+    #function-backgrounds { min-width: 0; }
+    #function-backgrounds .screen-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 18px; align-items: start; }
+    #function-backgrounds .screen { min-width: 0; }
+    #function-backgrounds .screen.is-wide { grid-column: 1 / -1; }
+    #function-backgrounds .screen-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 960px) { #function-backgrounds .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { #function-backgrounds .screen-grid { grid-template-columns: minmax(0, 1fr); } }
+    #function-backgrounds .app-frame { container: refined-study / inline-size; min-width: 0; }
+    #function-backgrounds .app-shell,
+    #function-backgrounds .app-shell * { box-sizing: border-box; }
+    #function-backgrounds .app-shell {
+      --summary-canvas: #eef5ef;
+      --flashcards-canvas: #fbf7e5;
+      --quiz-canvas: #edf4fc;
+      --study-surface: #ffffff;
+      --study-ink: #243b30;
+      --study-muted: #52685b;
+      --study-line: #c9d6cd;
+      --study-neutral-soft: #e7ede8;
+      --summary-wash: #e4eee6;
+      --summary-ink: #31543e;
+      --summary-strong: #365d45;
+      --summary-on-strong: #ffffff;
+      --flashcards-wash: #f8f0d2;
+      --flashcards-ink: #64521b;
+      --flashcards-strong: #6d591e;
+      --flashcards-on-strong: #ffffff;
+      --quiz-wash: #e6effa;
+      --quiz-ink: #305676;
+      --quiz-strong: #355f85;
+      --quiz-on-strong: #ffffff;
+      --answer-gap: 16px;
+      --active-wash: var(--quiz-wash);
+      --active-ink: var(--quiz-ink);
+      --active-strong: var(--quiz-strong);
+      --active-on-strong: var(--quiz-on-strong);
+      --active-canvas: var(--quiz-canvas);
+      color-scheme: light;
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-height: 800px;
+      width: 100%;
+      background: var(--active-canvas);
+      transition: background-color 200ms ease-out;
+      color: var(--study-ink);
+      border: 1px solid var(--study-line);
+      border-radius: 16px;
+      font: 400 16px/1.6 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+    }
+    #function-backgrounds .app-shell[data-current="summary"] {
+      --active-wash: var(--summary-wash); --active-ink: var(--summary-ink);
+      --active-strong: var(--summary-strong); --active-on-strong: var(--summary-on-strong);
+      --active-canvas: var(--summary-canvas);
+    }
+    #function-backgrounds .app-shell[data-current="flashcards"] {
+      --active-wash: var(--flashcards-wash); --active-ink: var(--flashcards-ink);
+      --active-strong: var(--flashcards-strong); --active-on-strong: var(--flashcards-on-strong);
+      --active-canvas: var(--flashcards-canvas);
+    }
+    #function-backgrounds .app-shell [hidden] { display: none !important; }
+    #function-backgrounds .app-shell button { font-family: inherit; }
+    #function-backgrounds .app-brandbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 25px 112px 22px 32px; }
+    #function-backgrounds .app-brand { font-size: 19px; line-height: 1.4; font-weight: 600; letter-spacing: -0.02em; }
+    #function-backgrounds .sample-label { color: var(--study-muted); font-size: 13px; }
+    #function-backgrounds .app-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; width: calc(100% - 64px); max-width: 620px; margin: 0 auto; padding: 5px; border: 1px solid var(--study-line); border-radius: 13px; background: var(--study-surface); }
+    #function-backgrounds .nav-choice { min-height: 48px; padding: 10px 13px; border: 1px solid transparent; border-radius: 9px; color: var(--study-muted); background: transparent; font-size: 15px; line-height: 1.4; font-weight: 500; white-space: nowrap; }
+    #function-backgrounds .nav-choice[data-view="summary"] { --nav-wash: var(--summary-wash); --nav-ink: var(--summary-ink); --nav-strong: var(--summary-strong); }
+    #function-backgrounds .nav-choice[data-view="flashcards"] { --nav-wash: var(--flashcards-wash); --nav-ink: var(--flashcards-ink); --nav-strong: var(--flashcards-strong); }
+    #function-backgrounds .nav-choice[data-view="quiz"] { --nav-wash: var(--quiz-wash); --nav-ink: var(--quiz-ink); --nav-strong: var(--quiz-strong); }
+    #function-backgrounds .nav-choice:hover { background: var(--nav-wash); color: var(--nav-ink); }
+    #function-backgrounds .nav-choice[aria-pressed="true"] { background: var(--active-strong); color: var(--active-on-strong); border-color: var(--active-strong); font-weight: 600; }
+    #function-backgrounds .app-main { width: 100%; max-width: 800px; margin: 0 auto; padding: 29px 32px 44px; min-width: 0; }
+    #function-backgrounds .doc-context { margin-bottom: 29px; text-align: center; }
+    #function-backgrounds .doc-name { margin: 0; font-size: 23px; line-height: 1.4; font-weight: 600; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+    #function-backgrounds .session-meta { margin: 6px 0 0; color: var(--study-muted); font-size: 13px; }
+    #function-backgrounds .learning-view { display: grid; gap: 22px; align-content: start; min-width: 0; }
+    #function-backgrounds .item-count { color: var(--study-muted); margin: 0; font-size: 13px; font-variant-numeric: tabular-nums; }
+    #function-backgrounds .flashcard { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 25px; width: 100%; min-height: 300px; padding: 36px; color: var(--study-ink); background: var(--study-surface); border: 1px solid var(--study-line); border-radius: 16px; text-align: center; }
+    #function-backgrounds .card-prompt { font-size: 26px; font-weight: 500; line-height: 1.4; }
+    #function-backgrounds .card-answer { font-size: 20px; line-height: 1.7; }
+    #function-backgrounds .flip-hint { color: var(--study-muted); font-size: 13px; }
+    #function-backgrounds .card-actions { display: flex; justify-content: space-between; gap: 16px; }
+    #function-backgrounds .small-action { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; background: var(--study-surface); color: var(--study-ink); border: 1px solid var(--study-line); border-radius: 10px; font-size: 14px; line-height: 1.4; }
+    #function-backgrounds .small-action:hover:not(:disabled) { background: var(--active-wash); }
+    #function-backgrounds .small-action:disabled { color: var(--study-muted); background: var(--study-neutral-soft); }
+    #function-backgrounds .source-link { justify-self: start; min-height: 44px; padding: 7px 0; background: none; border: 0; color: var(--active-ink); text-decoration: underline; text-underline-offset: 4px; font-size: 14px; line-height: 1.5; text-align: left; }
+    #function-backgrounds .primary-action { justify-self: start; min-height: 46px; padding: 12px 22px; border: 1px solid transparent; border-radius: 10px; color: var(--active-on-strong); background: var(--active-strong); font-size: 15px; line-height: 1.4; font-weight: 600; }
+    #function-backgrounds .primary-action:disabled { color: var(--study-muted); background: var(--study-neutral-soft); border-color: var(--study-line); }
+    #function-backgrounds .summary-copy { display: grid; gap: 18px; max-width: 68ch; padding: 28px; background: var(--study-surface); border: 1px solid var(--study-line); border-radius: 16px; font-size: 17px; line-height: 1.8; }
+    #function-backgrounds .summary-copy h4 { font-size: 23px; line-height: 1.4; margin: 7px 0 0; font-weight: 600; }
+    #function-backgrounds .summary-copy h4:first-child { margin-top: 0; }
+    #function-backgrounds .summary-copy p,
+    #function-backgrounds .summary-copy ul { margin: 0; }
+    #function-backgrounds .summary-copy ul { padding-left: 22px; }
+    #function-backgrounds .summary-copy li + li { margin-top: 10px; }
+    #function-backgrounds .summary-sources { display: flex; gap: 20px; flex-wrap: wrap; }
+    #function-backgrounds .quiz-options { padding: 0; margin: 0; border: 0; min-width: 0; display: grid; gap: var(--answer-gap); }
+    #function-backgrounds .quiz-options legend { padding: 0; margin-bottom: 23px; font-size: 24px; line-height: 1.45; font-weight: 500; }
+    #function-backgrounds .quiz-options label { display: flex; gap: 14px; align-items: flex-start; min-height: 65px; padding: 18px 21px; border: 1px solid var(--study-line); border-radius: 14px; background: var(--study-surface); color: var(--study-ink); line-height: 1.6; }
+    #function-backgrounds .quiz-options label:has(input:checked) { border-color: var(--active-strong); outline: 1px solid var(--active-strong); outline-offset: -1px; background: var(--active-wash); }
+    #function-backgrounds .quiz-options input { flex: 0 0 auto; accent-color: var(--active-strong); margin: 5px 0 0; width: 18px; height: 18px; }
+    #function-backgrounds .quiz-options input:disabled { opacity: 1; }
+    #function-backgrounds .quiz-result { margin: 0; font-size: 16px; line-height: 1.75; }
+    #function-backgrounds .source-panel { position: absolute; inset: 0 0 0 auto; z-index: 3; width: min(100%, 370px); padding: 28px; display: grid; align-content: start; gap: 24px; background: var(--study-surface); border-left: 1px solid var(--study-line); color: var(--study-ink); border-radius: 0 16px 16px 0; }
+    #function-backgrounds .source-heading { display: flex; justify-content: space-between; gap: 14px; align-items: center; }
+    #function-backgrounds .source-heading h4 { margin: 0; font-size: 22px; line-height: 1.4; font-weight: 600; }
+    #function-backgrounds .source-file,
+    #function-backgrounds .source-note { margin: 0; font-size: 14px; line-height: 1.8; color: var(--study-muted); }
+    #function-backgrounds .source-panel blockquote { padding: 0; margin: 0; font-size: 18px; line-height: 1.8; }
+    #function-backgrounds .source-panel mark { color: var(--study-ink); background: var(--active-wash); }
+    #function-backgrounds .app-shell ::selection { color: var(--study-ink); background: var(--active-wash); }
+    @media (prefers-reduced-motion: reduce) { #function-backgrounds .app-shell { transition: none; } }
+    @container refined-study (max-width: 540px) {
+      #function-backgrounds .app-shell { min-height: 830px; }
+      #function-backgrounds .app-brandbar { padding: 23px 20px; gap: 10px; }
+      #function-backgrounds .app-brand { font-size: 17px; }
+      #function-backgrounds .app-nav { width: calc(100% - 32px); gap: 3px; }
+      #function-backgrounds .nav-choice { padding: 11px 4px; font-size: 13px; }
+      #function-backgrounds .app-main { padding: 25px 18px 34px; }
+      #function-backgrounds .doc-context { margin-bottom: 25px; }
+      #function-backgrounds .doc-name { font-size: 21px; }
+      #function-backgrounds .session-meta { font-size: 12px; }
+      #function-backgrounds .learning-view { gap: 21px; }
+      #function-backgrounds .quiz-options legend { font-size: 22px; margin-bottom: 21px; }
+      #function-backgrounds .quiz-options label { padding: 17px 16px; gap: 11px; }
+      #function-backgrounds .flashcard { min-height: 315px; padding: 27px 20px; }
+      #function-backgrounds .card-prompt { font-size: 24px; }
+      #function-backgrounds .card-answer { font-size: 19px; }
+      #function-backgrounds .summary-copy { padding: 22px; font-size: 16px; }
+      #function-backgrounds .source-panel { padding: 24px 22px; border-radius: 16px; }
+    }
+  </style>
+  <div class="screen-grid">
+    <section class="screen" aria-label="Summary-skisse">
+      <div class="screen-caption"><h3 class="screen-name">Summary</h3><button class="btn" type="button" data-expand="summary" aria-expanded="false" aria-controls="frame-summary">Se større</button></div>
+      <div class="app-frame" id="frame-summary">
+        <div class="app-shell" data-app="summary" data-start="summary" data-current="summary">
+          <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+          <nav class="app-nav" aria-label="Læringsfunksjoner">
+            <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="true" aria-controls="canvas-summary-summary">Summary</button>
+            <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="false" aria-controls="canvas-summary-flashcards">Flashcards</button>
+            <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="canvas-summary-quiz">Quiz</button>
+          </nav>
+          <main class="app-main">
+            <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+            <div class="view-container">
+              <section class="learning-view" id="canvas-summary-summary" data-panel="summary" aria-label="Eksempelsammendrag">
+                <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+                <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="canvas-summary-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="canvas-summary-source">Kilde · side 3</button></div>
+                <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+              </section>
+              <section class="learning-view" id="canvas-summary-flashcards" data-panel="flashcards" aria-label="Eksempelkort" hidden>
+                <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+                <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret."><span class="card-prompt">Hva betyr aktiv gjenhenting?</span><span class="card-answer" hidden></span><span class="flip-hint">Klikk for å se svaret</span></button>
+                <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="canvas-summary-source" hidden>Vis kilde · side 2</button>
+                <div class="card-actions"><button class="small-action cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+                <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+              </section>
+              <section class="learning-view" id="canvas-summary-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+                <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+                <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+                  <label><input type="radio" name="canvas-summary-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+                  <label><input type="radio" name="canvas-summary-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+                  <label><input type="radio" name="canvas-summary-answer" value="2"><span>Markere alle overskriftene</span></label>
+                  <label><input type="radio" name="canvas-summary-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+                </fieldset>
+                <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+                <p class="quiz-result" data-feedback role="status" hidden></p>
+                <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="canvas-summary-source" hidden>Vis kilde · side 2</button>
+                <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+              </section>
+            </div>
+          </main>
+          <aside class="source-panel" id="canvas-summary-source" aria-label="Illustrert kildeutdrag" hidden>
+            <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+            <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+            <blockquote><mark data-excerpt></mark></blockquote>
+            <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="screen" aria-label="Flashcards-skisse"><div class="screen-caption"><h3 class="screen-name">Flashcards</h3><button class="btn" type="button" data-expand="flashcards" aria-expanded="false" aria-controls="frame-flashcards">Se større</button></div><div class="app-frame" id="frame-flashcards"><div class="app-shell" data-app="flashcards" data-start="flashcards" data-current="flashcards"></div></div></section>
+    <section class="screen" aria-label="Quiz-skisse"><div class="screen-caption"><h3 class="screen-name">Quiz</h3><button class="btn" type="button" data-expand="quiz" aria-expanded="false" aria-controls="frame-quiz">Se større</button></div><div class="app-frame" id="frame-quiz"><div class="app-shell" data-app="quiz" data-start="quiz" data-current="quiz"></div></div></section>
+  </div>
+  <script>
+    (() => {
+      const root = document.getElementById('function-backgrounds');
+      const apps = [...root.querySelectorAll('[data-app]')];
+      const original = apps[0];
+      apps.slice(1).forEach(app => {
+        [...original.children].forEach(child => app.appendChild(child.cloneNode(true)));
+        app.querySelectorAll('[id], [aria-controls], [name]').forEach(element => {
+          ['id', 'aria-controls', 'name'].forEach(attribute => {
+            if (element.hasAttribute(attribute)) element.setAttribute(attribute, element.getAttribute(attribute).replaceAll('canvas-summary', `canvas-${app.dataset.app}`));
+          });
+        });
+      });
+      const cards = [
+        { question: 'Hva betyr aktiv gjenhenting?', answer: 'Å hente frem det du har lært uten å se i notatene først.', page: 2, excerpt: 'Aktiv gjenhenting betyr å hente frem lært stoff uten å se i notatene først.' },
+        { question: 'Hvorfor kontrollere svaret i notatene?', answer: 'For å oppdage det som mangler eller trenger en korrigering.', page: 2, excerpt: 'Sammenlign svaret med notatene for å oppdage det som mangler eller trenger en korrigering.' },
+        { question: 'Hva innebærer repetisjon over flere økter?', answer: 'Å vende tilbake til det samme stoffet i ulike studieøkter.', page: 3, excerpt: 'Repetisjon over flere økter innebærer å vende tilbake til det samme stoffet i ulike studieøkter.' }
+      ];
+      const views = new Set(['summary', 'flashcards', 'quiz']);
+      const states = new Map(apps.map(app => [app, { view: app.dataset.start, card: 0, flipped: false, answer: null, confirmed: false, source: null, expanded: false }]));
+      const names = { summary: 'Summary', flashcards: 'Flashcards', quiz: 'Quiz' };
+      function sourceItem(state) {
+        if (state.source === 'card') return cards[state.card];
+        if (state.source === 'summary-repetition') return cards[2];
+        if (state.source === 'summary') return { page: 2, excerpt: `${cards[0].excerpt} ${cards[1].excerpt}` };
+        return cards[0];
+      }
+      function render() {
+        apps.forEach(app => {
+          const state = states.get(app);
+          app.dataset.current = state.view;
+          const screen = app.closest('.screen');
+          screen.classList.toggle('is-wide', state.expanded);
+          screen.querySelector('.screen-name').textContent = names[state.view];
+          screen.setAttribute('aria-label', `${names[state.view]}-skisse`);
+          const expand = screen.querySelector('[data-expand]');
+          expand.setAttribute('aria-expanded', String(state.expanded));
+          expand.textContent = state.expanded ? 'Vis i oversikten' : 'Se større';
+          app.querySelectorAll('.nav-choice').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === state.view)));
+          app.querySelectorAll('[data-panel]').forEach(panel => panel.hidden = panel.dataset.panel !== state.view);
+          const card = cards[state.card];
+          app.querySelector('[data-card-count]').textContent = `Kort ${state.card + 1} av ${cards.length} · eksempelsett`;
+          app.querySelector('.card-prompt').textContent = card.question;
+          app.querySelector('.card-prompt').hidden = state.flipped;
+          app.querySelector('.card-answer').textContent = card.answer;
+          app.querySelector('.card-answer').hidden = !state.flipped;
+          app.querySelector('.flip-hint').textContent = state.flipped ? 'Klikk for å se spørsmålet' : 'Klikk for å se svaret';
+          app.querySelector('[data-flip]').setAttribute('aria-pressed', String(state.flipped));
+          app.querySelector('[data-flip]').setAttribute('aria-label', state.flipped ? `${card.answer} Klikk for å se spørsmålet.` : `Flashcard: ${card.question} Klikk for å vise svaret.`);
+          const cardSource = app.querySelector('[data-source="card"]');
+          cardSource.hidden = !state.flipped;
+          cardSource.textContent = `Vis kilde · side ${card.page}`;
+          app.querySelector('[data-card-step="-1"]').disabled = state.card === 0;
+          app.querySelector('[data-card-step="1"]').disabled = state.card === cards.length - 1;
+          app.querySelector('[data-card-restart]').hidden = state.card !== cards.length - 1;
+          app.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = Number(input.value) === state.answer; input.disabled = state.confirmed; });
+          const confirm = app.querySelector('[data-confirm]');
+          confirm.disabled = state.answer === null;
+          confirm.hidden = state.confirmed;
+          const feedback = app.querySelector('[data-feedback]');
+          feedback.hidden = !state.confirmed;
+          if (state.confirmed) feedback.textContent = state.answer === 0 ? 'Riktig. Du hentet frem stoffet uten å se i notatene. Resultat: 1 av 1 riktig (100 %).' : 'Ikke riktig. Riktig svar er å forklare uten å se i notatene. Å lese eller kopiere viser teksten fremfor å hente den frem fra hukommelsen. Resultat: 0 av 1 riktig (0 %). Spørsmål å gjennomgå: Hva er aktiv gjenhenting?';
+          app.querySelector('[data-source="quiz"]').hidden = !state.confirmed;
+          app.querySelector('[data-quiz-restart]').hidden = !state.confirmed;
+          const sourceOpen = state.source !== null;
+          app.querySelector('.source-panel').hidden = !sourceOpen;
+          app.querySelectorAll('[data-source]').forEach(button => button.setAttribute('aria-expanded', String(sourceOpen && button.dataset.source === state.source)));
+          app.querySelectorAll('.app-brandbar, .app-nav, .app-main').forEach(element => element.inert = sourceOpen);
+          if (sourceOpen) {
+            const item = sourceItem(state);
+            app.querySelector('[data-source-page]').textContent = item.page;
+            app.querySelector('[data-excerpt]').textContent = item.excerpt;
+          }
+        });
+      }
+      function save() {
+        const screens = {};
+        states.forEach((state, app) => { screens[app.dataset.app] = { ...state }; });
+        const result = window.openai?.setWidgetState?.({ privateContent: { kind: 'function-backgrounds', screens }, modelContent: null });
+        result?.catch?.(() => {});
+      }
+      function restore(value) {
+        if (!value || value.kind !== 'function-backgrounds' || !value.screens) return;
+        apps.forEach(app => {
+          const state = states.get(app), saved = value.screens[app.dataset.app];
+          if (!saved || typeof saved !== 'object') return;
+          state.view = views.has(saved.view) ? saved.view : app.dataset.start;
+          state.card = Number.isInteger(saved.card) ? Math.max(0, Math.min(cards.length - 1, saved.card)) : 0;
+          state.flipped = saved.flipped === true;
+          state.answer = Number.isInteger(saved.answer) && saved.answer >= 0 && saved.answer <= 3 ? saved.answer : null;
+          state.confirmed = state.answer !== null && saved.confirmed === true;
+          state.expanded = saved.expanded === true;
+          const validSource = (saved.source === 'card' && state.view === 'flashcards' && state.flipped)
+            || (saved.source === 'quiz' && state.view === 'quiz' && state.confirmed)
+            || (['summary', 'summary-repetition'].includes(saved.source) && state.view === 'summary');
+          state.source = validSource ? saved.source : null;
+        });
+        render();
+      }
+      function closeSource(app, returnFocus) {
+        const state = states.get(app);
+        const source = state.source;
+        state.source = null;
+        render();
+        if (returnFocus && source) app.querySelector(`[data-source="${source}"]`)?.focus();
+      }
+      root.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button || !root.contains(button)) return;
+        if (button.dataset.expand) {
+          const expandedApp = apps.find(app => app.dataset.app === button.dataset.expand);
+          const expandedState = states.get(expandedApp);
+          expandedState.expanded = !expandedState.expanded;
+          render(); save(); return;
+        }
+        const app = button?.closest('[data-app]');
+        if (!app || !root.contains(app) || button.disabled) return;
+        const state = states.get(app);
+        if (button.dataset.view) {
+          if (!views.has(button.dataset.view)) return;
+          if (button.dataset.view !== state.view && button.dataset.view === 'flashcards') state.flipped = false;
+          state.view = button.dataset.view;
+          state.source = null;
+        } else if (button.hasAttribute('data-flip')) { state.flipped = !state.flipped; state.source = null; }
+        else if (button.hasAttribute('data-card-step')) { state.card = Math.max(0, Math.min(cards.length - 1, state.card + Number(button.dataset.cardStep))); state.flipped = false; state.source = null; }
+        else if (button.hasAttribute('data-card-restart')) { state.card = 0; state.flipped = false; state.source = null; }
+        else if (button.dataset.source) { state.source = button.dataset.source; render(); app.querySelector('[data-close-source]').focus(); save(); return; }
+        else if (button.hasAttribute('data-close-source')) { closeSource(app, true); save(); return; }
+        else if (button.hasAttribute('data-confirm')) { if (state.answer === null || state.confirmed) return; state.confirmed = true; }
+        else if (button.hasAttribute('data-quiz-restart')) { state.answer = null; state.confirmed = false; state.source = null; }
+        else return;
+        render(); save();
+      });
+      root.addEventListener('change', event => {
+        if (!event.target.matches('input[type="radio"]')) return;
+        const app = event.target.closest('[data-app]');
+        if (!app) return;
+        const state = states.get(app);
+        if (state.confirmed) return;
+        state.answer = Number(event.target.value);
+        render(); save();
+      });
+      root.addEventListener('keydown', event => { if (event.key === 'Escape') { const app = event.target.closest('[data-app]'); if (app && states.get(app).source) { closeSource(app, true); save(); } } });
+      render();
+      restore(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+    })();
+  </script>
+</div>

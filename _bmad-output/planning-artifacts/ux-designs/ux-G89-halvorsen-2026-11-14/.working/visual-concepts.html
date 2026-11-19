@@ -1,0 +1,1263 @@
+<div id="study-concepts" lang="nb" aria-label="Fem visuelle konsepter for AI Study Buddy">
+  <style>
+    #study-concepts { color-scheme: light dark; min-width: 0; }
+    #study-concepts .comparison-controls { margin-bottom: 20px; }
+    #study-concepts .concept-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 22px; align-items: start; }
+    #study-concepts .concept { min-width: 0; }
+    #study-concepts .concept.is-wide { grid-column: 1 / -1; }
+    #study-concepts .concept-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    #study-concepts .concept-description { margin-top: 5px; margin-bottom: 12px; }
+    #study-concepts .app-frame { container: studyapp / inline-size; min-width: 0; }
+    #study-concepts .app-shell, #study-concepts .app-shell * { box-sizing: border-box; }
+    #study-concepts .app-shell {
+      --app-bg: light-dark(#f2f5f8, #17212c); --app-surface: light-dark(#fff, #202e3a);
+      --app-ink: light-dark(#213244, #eaf0f5); --app-muted: light-dark(#536778, #b3c3d1);
+      --app-accent: light-dark(#294b70, #a8caed); --app-line: light-dark(#cbd7e1, #3f5364); --app-soft: light-dark(#e1eaf2, #304c63);
+      position: relative; min-height: 532px; display: grid; grid-template-rows: auto auto 1fr;
+      border: 1px solid var(--app-line); border-radius: 12px; background: var(--app-bg); color: var(--app-ink);
+      font: 400 14px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #study-concepts .app-shell [hidden] { display: none !important; }
+    #study-concepts .app-brandbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 17px 20px; min-width: 0; }
+    #study-concepts .app-brand { font-size: 16px; font-weight: 600; letter-spacing: -.02em; }
+    #study-concepts .sample-label { color: var(--app-muted); font-size: 11px; }
+    #study-concepts .app-nav { display: flex; gap: 4px; padding: 8px 16px; }
+    #study-concepts .app-shell button { font-family: inherit; }
+    #study-concepts .nav-choice { color: var(--app-muted); background: transparent; border: 0; padding: 10px 8px; min-height: 44px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+    #study-concepts .nav-choice[aria-pressed="true"] { color: var(--app-accent); background: var(--app-soft); font-weight: 600; }
+    #study-concepts .nav-choice:hover { background: var(--app-soft); }
+    #study-concepts .app-main { padding: 22px; min-width: 0; }
+    #study-concepts .doc-context { margin-bottom: 20px; }
+    #study-concepts .doc-name { margin: 0; font-size: 17px; line-height: 1.4; font-weight: 600; overflow-wrap: anywhere; }
+    #study-concepts .session-meta { margin: 4px 0 0; color: var(--app-muted); font-size: 11px; }
+    #study-concepts .learning-view { display: grid; gap: 14px; align-content: start; }
+    #study-concepts .item-count { color: var(--app-muted); margin: 0; font-size: 12px; font-variant-numeric: tabular-nums; }
+    #study-concepts .flashcard { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px; width: 100%; min-height: 200px; padding: 25px 20px; text-align: center; color: var(--app-ink); background: var(--app-surface); border: 1px solid var(--app-line); border-radius: 14px; }
+    #study-concepts .card-prompt { font-size: 22px; line-height: 1.4; font-weight: 500; }
+    #study-concepts .card-answer { font-size: 17px; line-height: 1.6; }
+    #study-concepts .flip-hint { font-size: 11px; color: var(--app-muted); }
+    #study-concepts .card-actions { display: flex; justify-content: space-between; gap: 12px; }
+    #study-concepts .small-action { display: inline-flex; justify-content: center; align-items: center; min-height: 44px; padding: 9px 14px; font-size: 12px; color: var(--app-ink); background: var(--app-surface); border: 1px solid var(--app-line); border-radius: 6px; }
+    #study-concepts .small-action:hover:not(:disabled) { background: var(--app-soft); }
+    #study-concepts .app-shell button:disabled { opacity: .45; }
+    #study-concepts .source-link { justify-self: start; min-height: 44px; padding: 6px 0; background: none; border: 0; color: var(--app-accent); text-decoration: underline; text-underline-offset: 3px; font-size: 12px; text-align: left; }
+    #study-concepts .primary-action { justify-self: start; min-height: 44px; padding: 10px 16px; border: 0; border-radius: 6px; color: var(--app-surface); background: var(--app-accent); font-size: 13px; font-weight: 600; }
+    #study-concepts .summary-copy { display: grid; gap: 14px; max-width: 68ch; font-size: 15px; line-height: 1.7; }
+    #study-concepts .summary-copy h4 { font-size: 20px; line-height: 1.3; margin: 0; font-weight: 600; }
+    #study-concepts .summary-copy p, #study-concepts .summary-copy ul { margin: 0; }
+    #study-concepts .summary-copy ul { padding-left: 20px; }
+    #study-concepts .summary-copy li + li { margin-top: 7px; }
+    #study-concepts .summary-sources { display: flex; gap: 18px; flex-wrap: wrap; }
+    #study-concepts .quiz-options { padding: 0; margin: 0; border: 0; min-width: 0; }
+    #study-concepts .quiz-options legend { padding: 0; margin-bottom: 16px; font-size: 18px; line-height: 1.4; font-weight: 500; }
+    #study-concepts .quiz-options label { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 10px 0; }
+    #study-concepts .quiz-options input { flex: 0 0 auto; accent-color: var(--app-accent); margin: 5px 0 0; width: 16px; height: 16px; }
+    #study-concepts .quiz-result { margin: 0; font-size: 14px; line-height: 1.6; }
+    #study-concepts .source-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(100%, 290px); z-index: 2; padding: 22px; display: grid; align-content: start; gap: 20px; background: var(--app-surface); border-left: 1px solid var(--app-line); color: var(--app-ink); border-radius: 0 12px 12px 0; }
+    #study-concepts .source-heading { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    #study-concepts .source-heading h4 { margin: 0; font-size: 18px; }
+    #study-concepts .source-file, #study-concepts .source-note { margin: 0; font-size: 12px; line-height: 1.7; color: var(--app-muted); }
+    #study-concepts .source-panel blockquote { padding: 0; margin: 0; font-size: 16px; line-height: 1.7; }
+    #study-concepts .source-panel mark { color: var(--app-ink); background: var(--app-soft); }
+    #study-concepts .app-shell ::selection { color: var(--app-ink); background: var(--app-soft); }
+    @media (max-width: 760px) { #study-concepts .concept-grid { grid-template-columns: minmax(0, 1fr); } }
+    @container studyapp (max-width: 370px) {
+      #study-concepts .app-brandbar { padding: 16px; }
+      #study-concepts .app-main { padding: 18px 16px; }
+      #study-concepts .app-nav { justify-content: space-between; }
+      #study-concepts .nav-choice { flex: 1; padding-inline: 5px; }
+      #study-concepts .flashcard { min-height: 208px; padding: 22px 16px; }
+      #study-concepts .card-prompt { font-size: 21px; }
+    }
+    /* Exploratory concepts only: no palette, typography or layout is adopted. */
+#study-concepts .theme-seminar {
+  --app-bg: light-dark(#edf2f6, #17212c);
+  --app-surface: light-dark(#ffffff, #202c38);
+  --app-ink: light-dark(#203044, #edf3f9);
+  --app-muted: light-dark(#516273, #bac9d7);
+  --app-accent: light-dark(#315e82, #a2c6e5);
+  --app-line: light-dark(#c8d5df, #425568);
+  --app-soft: light-dark(#e2eaf1, #2b3c4c);
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "brand brand" "nav main";
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+  border-radius: 9px;
+}
+#study-concepts .theme-seminar .app-brandbar { grid-area: brand; border-bottom: 1px solid var(--app-line); background: var(--app-surface); }
+#study-concepts .theme-seminar .app-nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 22px 8px;
+  border-right: 1px solid var(--app-line);
+  background: var(--app-soft);
+}
+#study-concepts .theme-seminar .nav-choice { width: 100%; padding: 11px 5px; border-radius: 5px; font-size: 12px; text-align: left; }
+#study-concepts .theme-seminar .nav-choice[aria-pressed="true"] { background: var(--app-accent); color: var(--app-surface); }
+#study-concepts .theme-seminar .app-main { grid-area: main; min-width: 0; padding: 25px 22px; }
+#study-concepts .theme-seminar .doc-context { padding-bottom: 19px; margin-bottom: 22px; border-bottom: 1px solid var(--app-line); }
+#study-concepts .theme-seminar .doc-name { font-weight: 650; letter-spacing: -0.015em; }
+#study-concepts .theme-seminar .session-meta { color: var(--app-muted); }
+#study-concepts .theme-seminar .flashcard { background: var(--app-surface); border: 1px solid var(--app-line); border-radius: 7px; min-height: 230px; }
+#study-concepts .theme-seminar .card-prompt { font-weight: 600; line-height: 1.45; }
+#study-concepts .theme-seminar .card-answer { line-height: 1.65; }
+#study-concepts .theme-seminar .small-action { border-radius: 5px; }
+#study-concepts .theme-seminar .summary-copy { max-width: 67ch; line-height: 1.75; }
+#study-concepts .theme-seminar .summary-copy h4 { font-weight: 650; }
+#study-concepts .theme-seminar .source-link { color: var(--app-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#study-concepts .theme-seminar .quiz-options label { border-radius: 5px; }
+#study-concepts .theme-seminar .primary-action { background: var(--app-accent); color: var(--app-surface); border-radius: 5px; }
+
+#study-concepts .theme-leserom {
+  --app-bg: light-dark(#efeeeb, #211e21);
+  --app-surface: light-dark(#faf9f6, #2d282d);
+  --app-ink: light-dark(#353034, #f5eef4);
+  --app-muted: light-dark(#665e65, #c7b9c5);
+  --app-accent: light-dark(#72556f, #d1b1cd);
+  --app-line: light-dark(#d7ced4, #564a53);
+  --app-soft: light-dark(#e9e2e8, #3c323b);
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  border-radius: 5px;
+}
+#study-concepts .theme-leserom .app-brandbar { background: var(--app-surface); padding-bottom: 17px; }
+#study-concepts .theme-leserom .app-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--app-line);
+  background: var(--app-surface);
+}
+#study-concepts .theme-leserom .nav-choice { padding: 13px 3px; border-radius: 0; border: 0; border-bottom: 2px solid transparent; background: transparent; }
+#study-concepts .theme-leserom .nav-choice[aria-pressed="true"] { border-bottom-color: var(--app-accent); color: var(--app-accent); background: transparent; }
+#study-concepts .theme-leserom .app-main { width: 100%; max-width: 790px; margin-inline: auto; padding: 28px 32px; }
+#study-concepts .theme-leserom .doc-context { margin-bottom: 26px; }
+#study-concepts .theme-leserom .doc-name { font-family: Georgia, "Times New Roman", serif; font-size: 23px; font-weight: 400; line-height: 1.3; }
+#study-concepts .theme-leserom .session-meta { margin-top: 8px; color: var(--app-muted); }
+#study-concepts .theme-leserom .learning-view { font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.7; }
+#study-concepts .theme-leserom .item-count { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--app-muted); }
+#study-concepts .theme-leserom .flashcard { min-height: 230px; background: var(--app-surface); border: 1px solid var(--app-line); border-radius: 4px; }
+#study-concepts .theme-leserom .card-prompt { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; line-height: 1.45; }
+#study-concepts .theme-leserom .card-answer { font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.7; }
+#study-concepts .theme-leserom .flip-hint,
+#study-concepts .theme-leserom .small-action,
+#study-concepts .theme-leserom .source-link,
+#study-concepts .theme-leserom .primary-action,
+#study-concepts .theme-leserom .quiz-options label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+#study-concepts .theme-leserom .small-action { border-radius: 4px; }
+#study-concepts .theme-leserom .source-link { color: var(--app-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#study-concepts .theme-leserom .summary-copy { max-width: 66ch; line-height: 1.85; }
+#study-concepts .theme-leserom .summary-copy h4 { font-size: 22px; font-weight: 400; line-height: 1.4; }
+#study-concepts .theme-leserom .quiz-options label { font-size: 15px; line-height: 1.6; border-radius: 4px; }
+#study-concepts .theme-leserom .primary-action { background: var(--app-accent); color: var(--app-surface); border-radius: 4px; }
+
+#study-concepts .theme-notatkort {
+  --app-bg: light-dark(#eef3ef, #17231c);
+  --app-surface: light-dark(#ffffff, #222f27);
+  --app-ink: light-dark(#233c32, #edf5ef);
+  --app-muted: light-dark(#51675d, #b6ccbe);
+  --app-accent: light-dark(#38634d, #a8d3b6);
+  --app-line: light-dark(#c9d8ce, #435d4c);
+  --app-soft: light-dark(#e0ebe3, #2d4234);
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  border-radius: 16px;
+}
+#study-concepts .theme-notatkort .app-brandbar { border-bottom: 0; padding-bottom: 21px; }
+#study-concepts .theme-notatkort .app-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  width: calc(100% - 44px);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 5px;
+  background: var(--app-soft);
+  border-radius: 10px;
+}
+#study-concepts .theme-notatkort .nav-choice { padding: 11px 5px; border-radius: 7px; border: 1px solid transparent; background: transparent; }
+#study-concepts .theme-notatkort .nav-choice[aria-pressed="true"] { color: var(--app-ink); background: var(--app-surface); border-color: var(--app-line); }
+#study-concepts .theme-notatkort .app-main { width: 100%; max-width: 780px; margin-inline: auto; padding: 25px 26px; }
+#study-concepts .theme-notatkort .doc-context { text-align: center; margin-bottom: 24px; }
+#study-concepts .theme-notatkort .doc-name { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+#study-concepts .theme-notatkort .session-meta { color: var(--app-muted); }
+#study-concepts .theme-notatkort .item-count { color: var(--app-muted); text-align: center; }
+#study-concepts .theme-notatkort .flashcard { min-height: 240px; padding: 29px; border: 1px solid var(--app-line); background: var(--app-surface); border-radius: 15px; }
+#study-concepts .theme-notatkort .card-prompt { font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 23px; font-weight: 500; line-height: 1.5; }
+#study-concepts .theme-notatkort .card-answer { font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; line-height: 1.7; }
+#study-concepts .theme-notatkort .small-action { border-radius: 8px; }
+#study-concepts .theme-notatkort .summary-copy { padding: 22px; border: 1px solid var(--app-line); border-radius: 14px; background: var(--app-surface); line-height: 1.75; }
+#study-concepts .theme-notatkort .summary-copy h4 { font-size: 20px; font-weight: 600; }
+#study-concepts .theme-notatkort .source-link { color: var(--app-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#study-concepts .theme-notatkort .quiz-options label { background: var(--app-surface); border-radius: 9px; }
+#study-concepts .theme-notatkort .primary-action { background: var(--app-accent); color: var(--app-surface); border-radius: 8px; }
+
+@container studyapp (max-width: 370px) {
+  #study-concepts .theme-seminar {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "brand" "nav" "main";
+  }
+  #study-concepts .theme-seminar .app-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-direction: row;
+    gap: 3px;
+    padding: 9px 10px;
+    border-right: 0;
+    border-bottom: 1px solid var(--app-line);
+  }
+  #study-concepts .theme-seminar .nav-choice { padding: 11px 3px; text-align: center; }
+  #study-concepts .theme-seminar .app-main { width: 100%; padding: 22px 17px; }
+  #study-concepts .theme-leserom .app-nav { gap: 5px; padding-inline: 16px; }
+  #study-concepts .theme-leserom .nav-choice { padding: 12px 2px; }
+  #study-concepts .theme-leserom .app-main { width: 100%; padding: 23px 19px; }
+  #study-concepts .theme-leserom .doc-name { font-size: 22px; }
+  #study-concepts .theme-leserom .card-prompt { font-size: 22px; }
+  #study-concepts .theme-notatkort .app-nav { width: calc(100% - 28px); gap: 2px; }
+  #study-concepts .theme-notatkort .nav-choice { padding: 10px 2px; }
+  #study-concepts .theme-notatkort .app-main { width: 100%; padding: 23px 17px; }
+  #study-concepts .theme-notatkort .flashcard { padding: 24px 19px; }
+  #study-concepts .theme-notatkort .card-prompt { font-size: 22px; }
+  #study-concepts .theme-notatkort .summary-copy { padding: 19px; }
+}
+
+/* Atlas and Linje: provisional concept palettes, following the host appearance. */
+
+#study-concepts .theme-atlas {
+  --app-bg: light-dark(#edf1f8, #121925);
+  --app-surface: light-dark(#ffffff, #1b2534);
+  --app-ink: light-dark(#18263d, #edf1fb);
+  --app-muted: light-dark(#57667c, #b5c0d3);
+  --app-accent: light-dark(#334caa, #acbaff);
+  --app-line: light-dark(#cad3e2, #405069);
+  --app-soft: light-dark(#e8edfc, #2b385c);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--app-line);
+  border-radius: 5px;
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: Verdana, Geneva, sans-serif;
+  line-height: 1.55;
+}
+
+#study-concepts .theme-atlas .app-brandbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  padding: 1.15rem 1.4rem;
+  background: var(--app-surface);
+  border-bottom: 1px solid var(--app-line);
+}
+
+#study-concepts .theme-atlas .app-brandbar > :first-child {
+  font-size: 0.95rem;
+  font-weight: 760;
+  letter-spacing: -0.025em;
+}
+
+#study-concepts .theme-atlas .sample-label {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--app-line);
+  border-radius: 3px;
+  color: var(--app-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.045em;
+}
+
+#study-concepts .theme-atlas .app-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--app-line);
+  background: var(--app-surface);
+}
+
+#study-concepts .theme-atlas .nav-choice {
+  min-width: 0;
+  min-height: 47px;
+  padding: 0.7rem 0.4rem;
+  border: 0;
+  border-inline-end: 1px solid var(--app-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--app-muted);
+  font-size: 13px;
+  font-weight: 650;
+  text-align: center;
+  white-space: normal;
+}
+
+#study-concepts .theme-atlas .nav-choice:last-child {
+  border-inline-end: 0;
+}
+
+#study-concepts .theme-atlas .nav-choice[aria-pressed="true"] {
+  background: var(--app-soft);
+  color: var(--app-accent);
+  box-shadow: inset 0 -3px 0 var(--app-accent);
+}
+
+#study-concepts .theme-atlas .nav-choice:hover {
+  background: var(--app-soft);
+  color: var(--app-accent);
+}
+
+#study-concepts .theme-atlas .app-main {
+  min-width: 0;
+  width: 100%;
+  max-width: 990px;
+  margin-inline: auto;
+  padding: clamp(1.35rem, 4cqi, 3.4rem);
+}
+
+#study-concepts .theme-atlas .doc-context {
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--app-line);
+}
+
+#study-concepts .theme-atlas .doc-name {
+  margin: 0 0 0.4rem;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 720;
+  letter-spacing: -0.035em;
+}
+
+#study-concepts .theme-atlas .session-meta {
+  margin: 0;
+  color: var(--app-muted);
+  font-size: 12px;
+}
+
+#study-concepts .theme-atlas .item-count {
+  margin: 0 0 0.8rem;
+  color: var(--app-muted);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+#study-concepts .theme-atlas .flashcard {
+  display: grid;
+  align-content: center;
+  gap: 1.15rem;
+  width: 100%;
+  min-height: clamp(190px, 35cqi, 310px);
+  padding: clamp(1.4rem, 4cqi, 3.2rem);
+  border: 1px solid var(--app-line);
+  border-radius: 4px;
+  background: var(--app-surface);
+  color: var(--app-ink);
+  text-align: left;
+  box-shadow: none;
+}
+
+#study-concepts .theme-atlas .card-prompt {
+  max-width: 29ch;
+  font-size: 23px;
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+#study-concepts .theme-atlas .card-answer {
+  max-width: 58ch;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+#study-concepts .theme-atlas .flip-hint {
+  color: var(--app-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#study-concepts .theme-atlas .card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+#study-concepts .theme-atlas .small-action {
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--app-line);
+  border-radius: 3px;
+  background: var(--app-surface);
+  color: var(--app-ink);
+  font-size: 12px;
+  font-weight: 620;
+}
+
+#study-concepts .theme-atlas .small-action:hover {
+  border-color: var(--app-accent);
+  color: var(--app-accent);
+}
+
+#study-concepts .theme-atlas .source-link {
+  margin-top: 0.9rem;
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--app-accent);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+#study-concepts .theme-atlas .summary-copy {
+  padding: clamp(1.2rem, 3.5cqi, 2.8rem);
+  border: 1px solid var(--app-line);
+  border-radius: 4px;
+  background: var(--app-surface);
+}
+
+#study-concepts .theme-atlas .summary-copy h4 {
+  margin: 0 0 0.65rem;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+#study-concepts .theme-atlas .summary-copy p {
+  max-width: 68ch;
+  color: var(--app-muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+#study-concepts .theme-atlas .quiz-options {
+  display: grid;
+  gap: 0.65rem;
+}
+
+#study-concepts .theme-atlas .quiz-options label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--app-line);
+  border-radius: 3px;
+  background: var(--app-surface);
+  color: var(--app-ink);
+  font-size: 0.86rem;
+}
+
+#study-concepts .theme-atlas .quiz-options label:has(input:checked) {
+  border-color: var(--app-accent);
+  background: var(--app-soft);
+}
+
+#study-concepts .theme-atlas .quiz-options input {
+  flex-shrink: 0;
+  accent-color: var(--app-accent);
+}
+
+#study-concepts .theme-atlas .primary-action {
+  min-height: 44px;
+  margin-top: 1.2rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--app-accent);
+  border-radius: 3px;
+  background: var(--app-accent);
+  color: var(--app-surface);
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+#study-concepts .theme-linje {
+  --app-bg: light-dark(#f8fbfa, #101e1f);
+  --app-surface: light-dark(#ffffff, #17292a);
+  --app-ink: light-dark(#183635, #e4f2ef);
+  --app-muted: light-dark(#516c69, #adcbc6);
+  --app-accent: light-dark(#006b64, #85d9c7);
+  --app-line: light-dark(#c5d9d3, #3a5b55);
+  --app-soft: light-dark(#e9f4ee, #203f39);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--app-line);
+  border-radius: 1px;
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+#study-concepts .theme-linje .app-brandbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  min-width: 0;
+  padding: 1.35rem 1.8rem;
+  border: 0;
+  border-bottom: 1px solid var(--app-line);
+  background: transparent;
+}
+
+#study-concepts .theme-linje .app-brandbar > :first-child {
+  font-size: 0.91rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+#study-concepts .theme-linje .sample-label {
+  color: var(--app-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+#study-concepts .theme-linje .app-nav {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  padding: 0 1.8rem 0 0.5rem;
+  border-bottom: 1px solid var(--app-line);
+  background: transparent;
+}
+
+#study-concepts .theme-linje .nav-choice {
+  min-width: 0;
+  min-height: 47px;
+  padding: 0.8rem 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--app-muted);
+  font-size: 13px;
+  font-weight: 550;
+  text-align: center;
+  white-space: normal;
+}
+
+#study-concepts .theme-linje .nav-choice[aria-pressed="true"] {
+  border-bottom-color: var(--app-accent);
+  color: var(--app-accent);
+  font-weight: 750;
+}
+
+#study-concepts .theme-linje .nav-choice:hover {
+  color: var(--app-accent);
+  border-bottom-color: var(--app-accent);
+}
+
+#study-concepts .theme-linje .app-main {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  max-width: 960px;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5cqi, 4.2rem);
+}
+
+#study-concepts .theme-linje .doc-context {
+  margin-bottom: clamp(1.8rem, 4.5cqi, 3.2rem);
+}
+
+#study-concepts .theme-linje .doc-name {
+  max-width: 26ch;
+  margin: 0 0 0.6rem;
+  font-size: 28px;
+  font-weight: 620;
+  letter-spacing: -0.03em;
+  line-height: 1.13;
+}
+
+#study-concepts .theme-linje .session-meta {
+  margin: 0;
+  color: var(--app-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+#study-concepts .theme-linje .item-count {
+  margin: 0 0 0.65rem;
+  color: var(--app-accent);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+#study-concepts .theme-linje .flashcard {
+  display: grid;
+  align-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  min-height: clamp(195px, 34cqi, 320px);
+  padding: 1.7rem 0;
+  border: 0;
+  border-top: 1px solid var(--app-line);
+  border-bottom: 1px solid var(--app-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--app-ink);
+  text-align: left;
+  box-shadow: none;
+}
+
+#study-concepts .theme-linje .card-prompt {
+  max-width: 28ch;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.22;
+}
+
+#study-concepts .theme-linje .card-answer {
+  max-width: 57ch;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+#study-concepts .theme-linje .flip-hint {
+  color: var(--app-muted);
+  font-size: 12px;
+  font-weight: 450;
+}
+
+#study-concepts .theme-linje .card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+#study-concepts .theme-linje .small-action {
+  min-height: 44px;
+  padding: 0.5rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--app-accent);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3em;
+}
+
+#study-concepts .theme-linje .small-action:hover {
+  text-decoration-color: currentColor;
+}
+
+#study-concepts .theme-linje .source-link {
+  margin-top: 1rem;
+  padding: 0.3rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--app-accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+#study-concepts .theme-linje .summary-copy {
+  padding: 1.6rem 0;
+  border: 0;
+  border-top: 1px solid var(--app-line);
+  border-radius: 0;
+  background: transparent;
+}
+
+#study-concepts .theme-linje .summary-copy h4 {
+  max-width: 30ch;
+  margin: 0 0 0.85rem;
+  font-size: 24px;
+  font-weight: 550;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+#study-concepts .theme-linje .summary-copy p {
+  max-width: 63ch;
+  margin-block: 0.8rem 1.4rem;
+  color: var(--app-muted);
+  font-size: 0.94rem;
+  line-height: 1.85;
+}
+
+#study-concepts .theme-linje .quiz-options {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--app-line);
+}
+
+#study-concepts .theme-linje .quiz-options label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 1rem 0.2rem;
+  border: 0;
+  border-bottom: 1px solid var(--app-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--app-ink);
+  font-size: 0.9rem;
+}
+
+#study-concepts .theme-linje .quiz-options label:has(input:checked) {
+  background: var(--app-soft);
+  color: var(--app-accent);
+}
+
+#study-concepts .theme-linje .quiz-options input {
+  flex-shrink: 0;
+  accent-color: var(--app-accent);
+}
+
+#study-concepts .theme-linje .primary-action {
+  min-height: 44px;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--app-accent);
+  border-radius: 2px;
+  background: var(--app-accent);
+  color: var(--app-surface);
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+@container studyapp (max-width: 520px) {
+  #study-concepts .theme-linje {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+  }
+
+  #study-concepts .theme-linje .app-brandbar {
+    padding: 1.1rem 1.3rem 0.8rem;
+    border-bottom: 0;
+  }
+
+  #study-concepts .theme-linje .app-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    padding: 0 1.3rem;
+  }
+}
+
+@container studyapp (max-width: 370px) {
+  #study-concepts .theme-atlas,
+  #study-concepts .theme-linje {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+  }
+
+  #study-concepts .theme-atlas .app-brandbar,
+  #study-concepts .theme-linje .app-brandbar {
+    grid-column: 1 / -1;
+    padding-inline: 1rem;
+  }
+
+  #study-concepts .theme-atlas .app-nav,
+  #study-concepts .theme-linje .app-nav {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    visibility: visible;
+    width: 100%;
+  }
+
+  #study-concepts .theme-linje .app-nav {
+    gap: 0.55rem;
+    padding-inline: 1rem;
+  }
+
+  #study-concepts .theme-atlas .nav-choice,
+  #study-concepts .theme-linje .nav-choice {
+    display: block;
+    min-width: 0;
+    min-height: 45px;
+    padding-inline: 0.2rem;
+    font-size: 12px;
+  }
+
+  #study-concepts .theme-atlas .app-main,
+  #study-concepts .theme-linje .app-main {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 1.25rem 1rem 1.5rem;
+  }
+
+  #study-concepts .theme-atlas .flashcard {
+    padding: 1.15rem;
+  }
+
+  #study-concepts .theme-linje .doc-name {
+    font-size: 1.7rem;
+  }
+}
+
+  </style>
+  <div class="viz-row comparison-controls" role="group" aria-label="Velg samme visning i alle konsepter">
+    <span>Vis i alle:</span>
+    <button class="btn btn-ghost" type="button" data-show-all="summary" aria-pressed="false">Summary</button>
+    <button class="btn btn-ghost" type="button" data-show-all="flashcards" aria-pressed="true">Flashcards</button>
+    <button class="btn btn-ghost" type="button" data-show-all="quiz" aria-pressed="false">Quiz</button>
+  </div>
+  <div class="concept-grid"><section class="concept" id="concept-seminar" data-concept="seminar" aria-labelledby="concept-seminar-name">
+  <div class="concept-caption">
+    <h2 id="concept-seminar-name">Seminar</h2>
+    <button class="btn btn-ghost" type="button" data-expand aria-expanded="false" aria-controls="frame-seminar">Se større</button>
+  </div>
+  <p class="text-small text-muted concept-description">Blågrå · humanistisk sans · venstremeny</p>
+  <div class="app-frame" id="frame-seminar">
+    <div class="app-shell theme-seminar" data-app="seminar">
+      <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+      <nav class="app-nav" aria-label="Læringsfunksjoner i Seminar">
+        <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="false" aria-controls="seminar-summary">Summary</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="true" aria-controls="seminar-flashcards">Flashcards</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="seminar-quiz">Quiz</button>
+      </nav>
+      <main class="app-main">
+        <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+        <div class="view-container">
+          <section class="learning-view" id="seminar-summary" data-panel="summary" aria-label="Eksempelsammendrag" hidden>
+            <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+            <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="seminar-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="seminar-source">Kilde · side 3</button></div>
+            <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+          </section>
+          <section class="learning-view" id="seminar-flashcards" data-panel="flashcards" aria-label="Eksempelkort">
+            <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret.">
+              <span class="card-prompt">Hva betyr aktiv gjenhenting?</span>
+              <span class="card-answer" hidden></span>
+              <span class="flip-hint">Klikk for å se svaret</span>
+            </button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="seminar-source" hidden>Vis kilde · side 2</button>
+            <div class="card-actions"><button class="small-action prev cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action next cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+          </section>
+          <section class="learning-view" id="seminar-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+            <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+            <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+              <label><input type="radio" name="seminar-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+              <label><input type="radio" name="seminar-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+              <label><input type="radio" name="seminar-answer" value="2"><span>Markere alle overskriftene</span></label>
+              <label><input type="radio" name="seminar-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+            </fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+            <p class="quiz-result" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="seminar-source" hidden>Vis kilde · side 2</button>
+            <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+          </section>
+        </div>
+      </main>
+      <aside class="source-panel" id="seminar-source" aria-label="Kildeutdrag i Seminar" hidden>
+        <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+        <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+        <blockquote><mark data-excerpt></mark></blockquote>
+        <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="concept" id="concept-leserom" data-concept="leserom" aria-labelledby="concept-leserom-name">
+  <div class="concept-caption">
+    <h2 id="concept-leserom-name">Leserom</h2>
+    <button class="btn btn-ghost" type="button" data-expand aria-expanded="false" aria-controls="frame-leserom">Se større</button>
+  </div>
+  <p class="text-small text-muted concept-description">Varmgrå og plomme · serif · leseorienterte faner</p>
+  <div class="app-frame" id="frame-leserom">
+    <div class="app-shell theme-leserom" data-app="leserom">
+      <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+      <nav class="app-nav" aria-label="Læringsfunksjoner i Leserom">
+        <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="false" aria-controls="leserom-summary">Summary</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="true" aria-controls="leserom-flashcards">Flashcards</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="leserom-quiz">Quiz</button>
+      </nav>
+      <main class="app-main">
+        <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+        <div class="view-container">
+          <section class="learning-view" id="leserom-summary" data-panel="summary" aria-label="Eksempelsammendrag" hidden>
+            <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+            <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="leserom-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="leserom-source">Kilde · side 3</button></div>
+            <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+          </section>
+          <section class="learning-view" id="leserom-flashcards" data-panel="flashcards" aria-label="Eksempelkort">
+            <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret.">
+              <span class="card-prompt">Hva betyr aktiv gjenhenting?</span>
+              <span class="card-answer" hidden></span>
+              <span class="flip-hint">Klikk for å se svaret</span>
+            </button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="leserom-source" hidden>Vis kilde · side 2</button>
+            <div class="card-actions"><button class="small-action prev cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action next cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+          </section>
+          <section class="learning-view" id="leserom-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+            <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+            <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+              <label><input type="radio" name="leserom-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+              <label><input type="radio" name="leserom-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+              <label><input type="radio" name="leserom-answer" value="2"><span>Markere alle overskriftene</span></label>
+              <label><input type="radio" name="leserom-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+            </fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+            <p class="quiz-result" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="leserom-source" hidden>Vis kilde · side 2</button>
+            <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+          </section>
+        </div>
+      </main>
+      <aside class="source-panel" id="leserom-source" aria-label="Kildeutdrag i Leserom" hidden>
+        <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+        <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+        <blockquote><mark data-excerpt></mark></blockquote>
+        <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="concept" id="concept-notatkort" data-concept="notatkort" aria-labelledby="concept-notatkort-name">
+  <div class="concept-caption">
+    <h2 id="concept-notatkort-name">Notatkort</h2>
+    <button class="btn btn-ghost" type="button" data-expand aria-expanded="false" aria-controls="frame-notatkort">Se større</button>
+  </div>
+  <p class="text-small text-muted concept-description">Salvie · myk sans · segmentert funksjonsvelger</p>
+  <div class="app-frame" id="frame-notatkort">
+    <div class="app-shell theme-notatkort" data-app="notatkort">
+      <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+      <nav class="app-nav" aria-label="Læringsfunksjoner i Notatkort">
+        <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="false" aria-controls="notatkort-summary">Summary</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="true" aria-controls="notatkort-flashcards">Flashcards</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="notatkort-quiz">Quiz</button>
+      </nav>
+      <main class="app-main">
+        <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+        <div class="view-container">
+          <section class="learning-view" id="notatkort-summary" data-panel="summary" aria-label="Eksempelsammendrag" hidden>
+            <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+            <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="notatkort-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="notatkort-source">Kilde · side 3</button></div>
+            <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+          </section>
+          <section class="learning-view" id="notatkort-flashcards" data-panel="flashcards" aria-label="Eksempelkort">
+            <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret.">
+              <span class="card-prompt">Hva betyr aktiv gjenhenting?</span>
+              <span class="card-answer" hidden></span>
+              <span class="flip-hint">Klikk for å se svaret</span>
+            </button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="notatkort-source" hidden>Vis kilde · side 2</button>
+            <div class="card-actions"><button class="small-action prev cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action next cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+          </section>
+          <section class="learning-view" id="notatkort-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+            <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+            <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+              <label><input type="radio" name="notatkort-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+              <label><input type="radio" name="notatkort-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+              <label><input type="radio" name="notatkort-answer" value="2"><span>Markere alle overskriftene</span></label>
+              <label><input type="radio" name="notatkort-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+            </fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+            <p class="quiz-result" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="notatkort-source" hidden>Vis kilde · side 2</button>
+            <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+          </section>
+        </div>
+      </main>
+      <aside class="source-panel" id="notatkort-source" aria-label="Kildeutdrag i Notatkort" hidden>
+        <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+        <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+        <blockquote><mark data-excerpt></mark></blockquote>
+        <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="concept" id="concept-atlas" data-concept="atlas" aria-labelledby="concept-atlas-name">
+  <div class="concept-caption">
+    <h2 id="concept-atlas-name">Atlas</h2>
+    <button class="btn btn-ghost" type="button" data-expand aria-expanded="false" aria-controls="frame-atlas">Se større</button>
+  </div>
+  <p class="text-small text-muted concept-description">Indigo · tydelig sans · brede funksjonsfaner</p>
+  <div class="app-frame" id="frame-atlas">
+    <div class="app-shell theme-atlas" data-app="atlas">
+      <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+      <nav class="app-nav" aria-label="Læringsfunksjoner i Atlas">
+        <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="false" aria-controls="atlas-summary">Summary</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="true" aria-controls="atlas-flashcards">Flashcards</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="atlas-quiz">Quiz</button>
+      </nav>
+      <main class="app-main">
+        <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+        <div class="view-container">
+          <section class="learning-view" id="atlas-summary" data-panel="summary" aria-label="Eksempelsammendrag" hidden>
+            <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+            <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="atlas-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="atlas-source">Kilde · side 3</button></div>
+            <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+          </section>
+          <section class="learning-view" id="atlas-flashcards" data-panel="flashcards" aria-label="Eksempelkort">
+            <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret.">
+              <span class="card-prompt">Hva betyr aktiv gjenhenting?</span>
+              <span class="card-answer" hidden></span>
+              <span class="flip-hint">Klikk for å se svaret</span>
+            </button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="atlas-source" hidden>Vis kilde · side 2</button>
+            <div class="card-actions"><button class="small-action prev cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action next cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+          </section>
+          <section class="learning-view" id="atlas-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+            <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+            <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+              <label><input type="radio" name="atlas-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+              <label><input type="radio" name="atlas-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+              <label><input type="radio" name="atlas-answer" value="2"><span>Markere alle overskriftene</span></label>
+              <label><input type="radio" name="atlas-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+            </fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+            <p class="quiz-result" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="atlas-source" hidden>Vis kilde · side 2</button>
+            <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+          </section>
+        </div>
+      </main>
+      <aside class="source-panel" id="atlas-source" aria-label="Kildeutdrag i Atlas" hidden>
+        <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+        <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+        <blockquote><mark data-excerpt></mark></blockquote>
+        <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="concept" id="concept-linje" data-concept="linje" aria-labelledby="concept-linje-name">
+  <div class="concept-caption">
+    <h2 id="concept-linje-name">Linje</h2>
+    <button class="btn btn-ghost" type="button" data-expand aria-expanded="false" aria-controls="frame-linje">Se større</button>
+  </div>
+  <p class="text-small text-muted concept-description">Petrol · luftig typografi · tekstnavigasjon</p>
+  <div class="app-frame" id="frame-linje">
+    <div class="app-shell theme-linje" data-app="linje">
+      <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+      <nav class="app-nav" aria-label="Læringsfunksjoner i Linje">
+        <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="false" aria-controls="linje-summary">Summary</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="true" aria-controls="linje-flashcards">Flashcards</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="linje-quiz">Quiz</button>
+      </nav>
+      <main class="app-main">
+        <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+        <div class="view-container">
+          <section class="learning-view" id="linje-summary" data-panel="summary" aria-label="Eksempelsammendrag" hidden>
+            <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+            <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="linje-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="linje-source">Kilde · side 3</button></div>
+            <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+          </section>
+          <section class="learning-view" id="linje-flashcards" data-panel="flashcards" aria-label="Eksempelkort">
+            <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret.">
+              <span class="card-prompt">Hva betyr aktiv gjenhenting?</span>
+              <span class="card-answer" hidden></span>
+              <span class="flip-hint">Klikk for å se svaret</span>
+            </button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="linje-source" hidden>Vis kilde · side 2</button>
+            <div class="card-actions"><button class="small-action prev cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action next cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+          </section>
+          <section class="learning-view" id="linje-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+            <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+            <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+              <label><input type="radio" name="linje-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+              <label><input type="radio" name="linje-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+              <label><input type="radio" name="linje-answer" value="2"><span>Markere alle overskriftene</span></label>
+              <label><input type="radio" name="linje-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+            </fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+            <p class="quiz-result" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="linje-source" hidden>Vis kilde · side 2</button>
+            <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+          </section>
+        </div>
+      </main>
+      <aside class="source-panel" id="linje-source" aria-label="Kildeutdrag i Linje" hidden>
+        <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+        <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+        <blockquote><mark data-excerpt></mark></blockquote>
+        <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+</div>
+  <script>
+    (() => {
+      const root = document.getElementById('study-concepts');
+      const cards = [
+        { question: 'Hva betyr aktiv gjenhenting?', answer: 'Å hente frem det du har lært uten å se i notatene først.', page: 2, excerpt: 'Aktiv gjenhenting betyr å hente frem lært stoff uten å se i notatene først.' },
+        { question: 'Hvorfor kontrollere svaret i notatene?', answer: 'For å oppdage det som mangler eller trenger en korrigering.', page: 2, excerpt: 'Sammenlign svaret med notatene for å oppdage det som mangler eller trenger en korrigering.' },
+        { question: 'Hva innebærer repetisjon over flere økter?', answer: 'Å vende tilbake til det samme stoffet i ulike studieøkter.', page: 3, excerpt: 'Repetisjon over flere økter innebærer å vende tilbake til det samme stoffet i ulike studieøkter.' }
+      ];
+      const states = new Map();
+      const validViews = new Set(['summary', 'flashcards', 'quiz']);
+      root.querySelectorAll('[data-app]').forEach(app => states.set(app, { view: 'flashcards', card: 0, flipped: false, confirmed: false, sourceTrigger: null }));
+      function savePreview() {
+        const concepts = {};
+        states.forEach((state, app) => { concepts[app.dataset.app] = { view: state.view, card: state.card, flipped: state.flipped, expanded: app.closest('.concept').classList.contains('is-wide') }; });
+        const result = window.openai?.setWidgetState?.({ privateContent: { kind: 'study-concepts', concepts }, modelContent: null });
+        result?.catch?.(() => {});
+      }
+      function restorePreview(saved) {
+        if (!saved || saved.kind !== 'study-concepts' || !saved.concepts) return;
+        states.forEach((state, app) => {
+          const value = saved.concepts[app.dataset.app];
+          if (!value || typeof value !== 'object') return;
+          if (validViews.has(value.view)) setView(app, value.view);
+          if (Number.isInteger(value.card)) state.card = Math.max(0, Math.min(cards.length - 1, value.card));
+          state.flipped = value.flipped === true;
+          renderCard(app);
+          const expanded = value.expanded === true, concept = app.closest('.concept'), button = concept.querySelector('[data-expand]');
+          concept.classList.toggle('is-wide', expanded);
+          button.setAttribute('aria-expanded', String(expanded));
+          button.textContent = expanded ? 'Vis i sammenligning' : 'Se større';
+        });
+      }
+      function closeSource(app, returnFocus = false) {
+        app.querySelector('.source-panel').hidden = true;
+        app.querySelectorAll('[data-source]').forEach(button => button.setAttribute('aria-expanded', 'false'));
+        const trigger = states.get(app).sourceTrigger;
+        if (returnFocus && trigger && !trigger.hidden) trigger.focus();
+      }
+      function renderCard(app) {
+        const state = states.get(app), card = cards[state.card];
+        app.querySelector('[data-card-count]').textContent = `Kort ${state.card + 1} av ${cards.length} · eksempelsett`;
+        app.querySelector('.card-prompt').textContent = card.question;
+        app.querySelector('.card-prompt').hidden = state.flipped;
+        app.querySelector('.card-answer').textContent = card.answer;
+        app.querySelector('.card-answer').hidden = !state.flipped;
+        app.querySelector('.flip-hint').textContent = state.flipped ? 'Klikk for å se spørsmålet' : 'Klikk for å se svaret';
+        const flip = app.querySelector('[data-flip]');
+        flip.setAttribute('aria-pressed', String(state.flipped));
+        flip.setAttribute('aria-label', state.flipped ? `${card.answer} Klikk for å se spørsmålet.` : `Flashcard: ${card.question} Klikk for å vise svaret.`);
+        const source = app.querySelector('[data-source="card"]');
+        source.hidden = !state.flipped;
+        source.textContent = `Vis kilde · side ${card.page}`;
+        app.querySelector('[data-card-step="-1"]').disabled = state.card === 0;
+        app.querySelector('[data-card-step="1"]').disabled = state.card === cards.length - 1;
+        app.querySelector('[data-card-restart]').hidden = state.card !== cards.length - 1;
+      }
+      function syncGlobalNav() {
+        root.querySelectorAll('[data-show-all]').forEach(button => button.setAttribute('aria-pressed', String([...states.values()].every(state => state.view === button.dataset.showAll))));
+      }
+      function setView(app, view) {
+        if (!validViews.has(view)) return;
+        const state = states.get(app);
+        if (state.view !== view && view === 'flashcards') { state.flipped = false; renderCard(app); }
+        state.view = view;
+        closeSource(app);
+        app.querySelectorAll('.nav-choice').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === view)));
+        app.querySelectorAll('[data-panel]').forEach(panel => panel.hidden = panel.dataset.panel !== view);
+        syncGlobalNav();
+      }
+      function openSource(app, button) {
+        const state = states.get(app);
+        const card = button.dataset.source === 'card' ? cards[state.card] : button.dataset.source === 'summary-repetition' ? cards[2] : button.dataset.source === 'summary' ? { page: 2, excerpt: `${cards[0].excerpt} ${cards[1].excerpt}` } : cards[0];
+        state.sourceTrigger = button;
+        app.querySelector('[data-excerpt]').textContent = card.excerpt;
+        app.querySelector('[data-source-page]').textContent = card.page;
+        app.querySelector('.source-panel').hidden = false;
+        button.setAttribute('aria-expanded', 'true');
+        app.querySelector('[data-close-source]').focus();
+      }
+      function resetQuiz(app) {
+        const state = states.get(app);
+        state.confirmed = false;
+        app.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; input.disabled = false; });
+        const confirm = app.querySelector('[data-confirm]');
+        confirm.hidden = false; confirm.disabled = true;
+        app.querySelector('[data-feedback]').hidden = true;
+        app.querySelector('[data-source="quiz"]').hidden = true;
+        app.querySelector('[data-quiz-restart]').hidden = true;
+        closeSource(app);
+      }
+      root.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button || !root.contains(button)) return;
+        if (button.dataset.showAll) { states.forEach((_, app) => setView(app, button.dataset.showAll)); return; }
+        if (button.hasAttribute('data-expand')) {
+          const concept = button.closest('.concept'), expanded = !concept.classList.contains('is-wide');
+          concept.classList.toggle('is-wide', expanded);
+          button.setAttribute('aria-expanded', String(expanded));
+          button.textContent = expanded ? 'Vis i sammenligning' : 'Se større';
+          return;
+        }
+        const app = button.closest('[data-app]');
+        if (!app) return;
+        const state = states.get(app);
+        if (button.dataset.view) setView(app, button.dataset.view);
+        else if (button.hasAttribute('data-flip')) { state.flipped = !state.flipped; closeSource(app); renderCard(app); }
+        else if (button.hasAttribute('data-card-step')) { state.card = Math.min(cards.length - 1, Math.max(0, state.card + Number(button.dataset.cardStep))); state.flipped = false; closeSource(app); renderCard(app); }
+        else if (button.hasAttribute('data-card-restart')) { state.card = 0; state.flipped = false; closeSource(app); renderCard(app); }
+        else if (button.dataset.source) openSource(app, button);
+        else if (button.hasAttribute('data-close-source')) closeSource(app, true);
+        else if (button.hasAttribute('data-quiz-restart')) resetQuiz(app);
+        else if (button.hasAttribute('data-confirm')) {
+          const answer = app.querySelector('input[type="radio"]:checked');
+          if (!answer || state.confirmed) return;
+          state.confirmed = true;
+          app.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+          button.hidden = true;
+          const correct = answer.value === '0';
+          const feedback = app.querySelector('[data-feedback]');
+          feedback.textContent = correct ? 'Riktig. Du hentet frem stoffet uten å se i notatene. Resultat: 1 av 1 riktig (100 %).' : 'Ikke riktig. Riktig svar er å forklare uten å se i notatene. Å lese eller kopiere viser teksten fremfor å hente den frem fra hukommelsen. Resultat: 0 av 1 riktig (0 %). Spørsmål å gjennomgå: Hva er aktiv gjenhenting?';
+          feedback.hidden = false;
+          app.querySelector('[data-source="quiz"]').hidden = false;
+          app.querySelector('[data-quiz-restart]').hidden = false;
+        }
+      });
+      root.addEventListener('change', event => {
+        if (!event.target.matches('input[type="radio"]')) return;
+        const app = event.target.closest('[data-app]');
+        if (app && !states.get(app).confirmed) app.querySelector('[data-confirm]').disabled = false;
+        savePreview();
+      });
+      root.addEventListener('keydown', event => { if (event.key === 'Escape') { const app = event.target.closest('[data-app]'); if (app) closeSource(app, true); } });
+      root.addEventListener('click', event => { if (event.target.closest('button')) savePreview(); });
+      states.forEach((_, app) => renderCard(app));
+      restorePreview(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restorePreview(event.detail?.globals?.widgetState?.privateContent));
+    })();
+  </script>
+</div>

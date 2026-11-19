@@ -1,0 +1,164 @@
+/* Exploratory concepts only: no palette, typography or layout is adopted. */
+#study-concepts .theme-seminar {
+  --app-bg: light-dark(#edf2f6, #17212c);
+  --app-surface: light-dark(#ffffff, #202c38);
+  --app-ink: light-dark(#203044, #edf3f9);
+  --app-muted: light-dark(#516273, #bac9d7);
+  --app-accent: light-dark(#315e82, #a2c6e5);
+  --app-line: light-dark(#c8d5df, #425568);
+  --app-soft: light-dark(#e2eaf1, #2b3c4c);
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "brand brand" "nav main";
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+  border-radius: 9px;
+}
+#study-concepts .theme-seminar .app-brandbar { grid-area: brand; border-bottom: 1px solid var(--app-line); background: var(--app-surface); }
+#study-concepts .theme-seminar .app-nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 22px 8px;
+  border-right: 1px solid var(--app-line);
+  background: var(--app-soft);
+}
+#study-concepts .theme-seminar .nav-choice { width: 100%; padding: 11px 5px; border-radius: 5px; font-size: 12px; text-align: left; }
+#study-concepts .theme-seminar .nav-choice[aria-pressed="true"] { background: var(--app-accent); color: var(--app-surface); }
+#study-concepts .theme-seminar .app-main { grid-area: main; min-width: 0; padding: 25px 22px; }
+#study-concepts .theme-seminar .doc-context { padding-bottom: 19px; margin-bottom: 22px; border-bottom: 1px solid var(--app-line); }
+#study-concepts .theme-seminar .doc-name { font-weight: 650; letter-spacing: -0.015em; }
+#study-concepts .theme-seminar .session-meta { color: var(--app-muted); }
+#study-concepts .theme-seminar .flashcard { background: var(--app-surface); border: 1px solid var(--app-line); border-radius: 7px; min-height: 230px; }
+#study-concepts .theme-seminar .card-prompt { font-weight: 600; line-height: 1.45; }
+#study-concepts .theme-seminar .card-answer { line-height: 1.65; }
+#study-concepts .theme-seminar .small-action { border-radius: 5px; }
+#study-concepts .theme-seminar .summary-copy { max-width: 67ch; line-height: 1.75; }
+#study-concepts .theme-seminar .summary-copy h4 { font-weight: 650; }
+#study-concepts .theme-seminar .source-link { color: var(--app-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#study-concepts .theme-seminar .quiz-options label { border-radius: 5px; }
+#study-concepts .theme-seminar .primary-action { background: var(--app-accent); color: var(--app-surface); border-radius: 5px; }
+
+#study-concepts .theme-leserom {
+  --app-bg: light-dark(#efeeeb, #211e21);
+  --app-surface: light-dark(#faf9f6, #2d282d);
+  --app-ink: light-dark(#353034, #f5eef4);
+  --app-muted: light-dark(#665e65, #c7b9c5);
+  --app-accent: light-dark(#72556f, #d1b1cd);
+  --app-line: light-dark(#d7ced4, #564a53);
+  --app-soft: light-dark(#e9e2e8, #3c323b);
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  border-radius: 5px;
+}
+#study-concepts .theme-leserom .app-brandbar { background: var(--app-surface); padding-bottom: 17px; }
+#study-concepts .theme-leserom .app-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--app-line);
+  background: var(--app-surface);
+}
+#study-concepts .theme-leserom .nav-choice { padding: 13px 3px; border-radius: 0; border: 0; border-bottom: 2px solid transparent; background: transparent; }
+#study-concepts .theme-leserom .nav-choice[aria-pressed="true"] { border-bottom-color: var(--app-accent); color: var(--app-accent); background: transparent; }
+#study-concepts .theme-leserom .app-main { width: 100%; max-width: 790px; margin-inline: auto; padding: 28px 32px; }
+#study-concepts .theme-leserom .doc-context { margin-bottom: 26px; }
+#study-concepts .theme-leserom .doc-name { font-family: Georgia, "Times New Roman", serif; font-size: 23px; font-weight: 400; line-height: 1.3; }
+#study-concepts .theme-leserom .session-meta { margin-top: 8px; color: var(--app-muted); }
+#study-concepts .theme-leserom .learning-view { font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.7; }
+#study-concepts .theme-leserom .item-count { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--app-muted); }
+#study-concepts .theme-leserom .flashcard { min-height: 230px; background: var(--app-surface); border: 1px solid var(--app-line); border-radius: 4px; }
+#study-concepts .theme-leserom .card-prompt { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; line-height: 1.45; }
+#study-concepts .theme-leserom .card-answer { font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.7; }
+#study-concepts .theme-leserom .flip-hint,
+#study-concepts .theme-leserom .small-action,
+#study-concepts .theme-leserom .source-link,
+#study-concepts .theme-leserom .primary-action,
+#study-concepts .theme-leserom .quiz-options label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+#study-concepts .theme-leserom .small-action { border-radius: 4px; }
+#study-concepts .theme-leserom .source-link { color: var(--app-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#study-concepts .theme-leserom .summary-copy { max-width: 66ch; line-height: 1.85; }
+#study-concepts .theme-leserom .summary-copy h4 { font-size: 22px; font-weight: 400; line-height: 1.4; }
+#study-concepts .theme-leserom .quiz-options label { font-size: 15px; line-height: 1.6; border-radius: 4px; }
+#study-concepts .theme-leserom .primary-action { background: var(--app-accent); color: var(--app-surface); border-radius: 4px; }
+
+#study-concepts .theme-notatkort {
+  --app-bg: light-dark(#eef3ef, #17231c);
+  --app-surface: light-dark(#ffffff, #222f27);
+  --app-ink: light-dark(#233c32, #edf5ef);
+  --app-muted: light-dark(#51675d, #b6ccbe);
+  --app-accent: light-dark(#38634d, #a8d3b6);
+  --app-line: light-dark(#c9d8ce, #435d4c);
+  --app-soft: light-dark(#e0ebe3, #2d4234);
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+  color: var(--app-ink);
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  border-radius: 16px;
+}
+#study-concepts .theme-notatkort .app-brandbar { border-bottom: 0; padding-bottom: 21px; }
+#study-concepts .theme-notatkort .app-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  width: calc(100% - 44px);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 5px;
+  background: var(--app-soft);
+  border-radius: 10px;
+}
+#study-concepts .theme-notatkort .nav-choice { padding: 11px 5px; border-radius: 7px; border: 1px solid transparent; background: transparent; }
+#study-concepts .theme-notatkort .nav-choice[aria-pressed="true"] { color: var(--app-ink); background: var(--app-surface); border-color: var(--app-line); }
+#study-concepts .theme-notatkort .app-main { width: 100%; max-width: 780px; margin-inline: auto; padding: 25px 26px; }
+#study-concepts .theme-notatkort .doc-context { text-align: center; margin-bottom: 24px; }
+#study-concepts .theme-notatkort .doc-name { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+#study-concepts .theme-notatkort .session-meta { color: var(--app-muted); }
+#study-concepts .theme-notatkort .item-count { color: var(--app-muted); text-align: center; }
+#study-concepts .theme-notatkort .flashcard { min-height: 240px; padding: 29px; border: 1px solid var(--app-line); background: var(--app-surface); border-radius: 15px; }
+#study-concepts .theme-notatkort .card-prompt { font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 23px; font-weight: 500; line-height: 1.5; }
+#study-concepts .theme-notatkort .card-answer { font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; line-height: 1.7; }
+#study-concepts .theme-notatkort .small-action { border-radius: 8px; }
+#study-concepts .theme-notatkort .summary-copy { padding: 22px; border: 1px solid var(--app-line); border-radius: 14px; background: var(--app-surface); line-height: 1.75; }
+#study-concepts .theme-notatkort .summary-copy h4 { font-size: 20px; font-weight: 600; }
+#study-concepts .theme-notatkort .source-link { color: var(--app-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+#study-concepts .theme-notatkort .quiz-options label { background: var(--app-surface); border-radius: 9px; }
+#study-concepts .theme-notatkort .primary-action { background: var(--app-accent); color: var(--app-surface); border-radius: 8px; }
+
+@container studyapp (max-width: 370px) {
+  #study-concepts .theme-seminar {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "brand" "nav" "main";
+  }
+  #study-concepts .theme-seminar .app-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-direction: row;
+    gap: 3px;
+    padding: 9px 10px;
+    border-right: 0;
+    border-bottom: 1px solid var(--app-line);
+  }
+  #study-concepts .theme-seminar .nav-choice { padding: 11px 3px; text-align: center; }
+  #study-concepts .theme-seminar .app-main { width: 100%; padding: 22px 17px; }
+  #study-concepts .theme-leserom .app-nav { gap: 5px; padding-inline: 16px; }
+  #study-concepts .theme-leserom .nav-choice { padding: 12px 2px; }
+  #study-concepts .theme-leserom .app-main { width: 100%; padding: 23px 19px; }
+  #study-concepts .theme-leserom .doc-name { font-size: 22px; }
+  #study-concepts .theme-leserom .card-prompt { font-size: 22px; }
+  #study-concepts .theme-notatkort .app-nav { width: calc(100% - 28px); gap: 2px; }
+  #study-concepts .theme-notatkort .nav-choice { padding: 10px 2px; }
+  #study-concepts .theme-notatkort .app-main { width: 100%; padding: 23px 17px; }
+  #study-concepts .theme-notatkort .flashcard { padding: 24px 19px; }
+  #study-concepts .theme-notatkort .card-prompt { font-size: 22px; }
+  #study-concepts .theme-notatkort .summary-copy { padding: 19px; }
+}

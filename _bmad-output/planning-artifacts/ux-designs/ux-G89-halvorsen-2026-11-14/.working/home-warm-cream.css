@@ -1,0 +1,44 @@
+#study-preview .app-shell[data-mode="startup"] {
+  --canvas: #f7f3eb;
+  --upload-accent: #9b9188;
+  --brand-summary: #d7e9da;
+  --brand-flashcards: #f9e8b3;
+  --brand-quiz: #dceff8;
+}
+#study-preview .app-shell[data-mode="startup"] .app-brandbar {
+  background: #fbf8f2;
+}
+#study-preview .app-shell[data-mode="startup"] .app-navigation .app-nav-item[data-preview="startup"][aria-current="page"] {
+  color: var(--brand-ink);
+  background: #e9e2d8;
+  border-color: #83776c;
+}
+#study-preview .app-shell[data-mode="startup"] .app-navigation .app-nav-item[data-preview="startup"]:hover {
+  background: #e4dbcf;
+}
+#study-preview .app-shell[data-mode="startup"] .app-navigation .app-nav-item[data-preview="startup"]:focus-visible {
+  outline-color: #71685e;
+}
+#study-preview .app-shell[data-mode="startup"] .brand-mark {
+  stroke-width: 2.6;
+  filter: drop-shadow(0 0.8px 0.8px rgba(52, 58, 64, 0.12));
+}
+#study-preview .app-shell[data-mode="startup"] .startup-form {
+  box-shadow: 0 22px 42px rgba(72, 58, 40, 0.12);
+}
+#study-preview .app-shell[data-mode="startup"] .upload-area {
+  border-color: #b7aea3;
+  background: #ffffff;
+}
+#study-preview .app-shell[data-mode="startup"] .upload-area:hover {
+  background: #f5f0e7;
+}
+#study-preview .app-shell[data-mode="startup"] .blob-sage {
+  background: #d7e9da;
+}
+#study-preview .app-shell[data-mode="startup"] .blob-yellow {
+  background: #f9e8b3;
+}
+#study-preview .app-shell[data-mode="startup"] .blob-blue {
+  background: #dceff8;
+}

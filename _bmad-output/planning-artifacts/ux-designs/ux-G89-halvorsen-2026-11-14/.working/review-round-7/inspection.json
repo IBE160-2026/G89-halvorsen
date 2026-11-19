@@ -1,0 +1,96 @@
+{
+  "home": {
+    "view": "startup",
+    "canvas": "rgb(237, 238, 242)",
+    "home": {
+      "background": "rgb(225, 229, 233)",
+      "text": "rgb(52, 58, 64)",
+      "border": "rgb(115, 126, 139)"
+    },
+    "brand": "rgb(52, 58, 64)",
+    "title": "rgb(52, 58, 64)",
+    "cloud": "rgb(120, 140, 167)",
+    "arrow": "rgb(120, 140, 167)",
+    "logo": [
+      {
+        "stroke": "rgb(108, 138, 118)",
+        "y": 1.9996428489685059,
+        "height": 10.000713348388672
+      },
+      {
+        "stroke": "rgb(142, 120, 62)",
+        "y": 12,
+        "height": 4.998085021972656
+      },
+      {
+        "stroke": "rgb(98, 128, 156)",
+        "y": 17,
+        "height": 4.998085021972656
+      }
+    ]
+  },
+  "desktop": {
+    "x": 0,
+    "y": 0,
+    "width": 1504,
+    "height": 1044.40625,
+    "frameHeight": 1076
+  },
+  "learning": [
+    {
+      "view": "summary",
+      "canvas": "rgb(238, 245, 239)",
+      "brand": "rgb(52, 58, 64)",
+      "logo": [
+        "rgb(108, 138, 118)",
+        "rgb(142, 120, 62)",
+        "rgb(98, 128, 156)"
+      ]
+    },
+    {
+      "view": "flashcards",
+      "canvas": "rgb(251, 247, 229)",
+      "brand": "rgb(52, 58, 64)",
+      "logo": [
+        "rgb(108, 138, 118)",
+        "rgb(142, 120, 62)",
+        "rgb(98, 128, 156)"
+      ]
+    },
+    {
+      "view": "quiz",
+      "canvas": "rgb(237, 244, 252)",
+      "brand": "rgb(52, 58, 64)",
+      "logo": [
+        "rgb(108, 138, 118)",
+        "rgb(142, 120, 62)",
+        "rgb(98, 128, 156)"
+      ]
+    }
+  ],
+  "mobile": {
+    "x": 0,
+    "y": 0,
+    "width": 358,
+    "height": 1265.359375,
+    "frameHeight": 1315
+  },
+  "focus": {
+    "label": "Home",
+    "visible": true,
+    "colour": "rgb(82, 97, 115)",
+    "width": "3px"
+  },
+  "contrast": {
+    "homeText": 9.09,
+    "homeBorder": 3.26,
+    "brandText": 10.57,
+    "uploadTitle": 10.83,
+    "uploadIcon": 3.24,
+    "logoGreen": 3.49,
+    "logoYellow": 3.93,
+    "logoBlue": 3.79,
+    "homeFocus": 5
+  },
+  "exceptions": []
+}

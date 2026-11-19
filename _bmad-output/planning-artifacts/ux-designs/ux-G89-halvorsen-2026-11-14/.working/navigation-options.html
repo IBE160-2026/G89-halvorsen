@@ -1,0 +1,284 @@
+<div id="study-navigation-exploration" lang="nb" aria-label="Navigasjonsvalg for AI Study Buddy">
+  <style>
+    #study-navigation-exploration {
+      --study-canvas: light-dark(#f3f4f5, #1d1f22);
+      --study-surface: light-dark(#ffffff, #24272b);
+      --study-subtle: light-dark(#f7f8f9, #292d32);
+      --study-ink: light-dark(#22262b, #f0f2f4);
+      --study-secondary: light-dark(#565e68, #b8c0c9);
+      --study-line: light-dark(#d8dde2, #454b53);
+      --study-selected: light-dark(#e6e9ed, #3a4149);
+      --study-gap: 28px;
+      color-scheme: light dark;
+      container-type: inline-size;
+      min-width: 0;
+    }
+    #study-navigation-exploration .study-window,
+    #study-navigation-exploration .study-window * { box-sizing: border-box; }
+    #study-navigation-exploration .study-window {
+      min-height: 660px;
+      width: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: var(--study-surface);
+      color: var(--study-ink);
+      border: 1px solid var(--study-line);
+      border-radius: 14px;
+      font: 400 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #study-navigation-exploration .study-header {
+      padding: 23px 112px 20px 28px;
+      border-bottom: 1px solid var(--study-line);
+      min-width: 0;
+    }
+    #study-navigation-exploration .study-brand { font-size: 18px; font-weight: 600; line-height: 1.4; }
+    #study-navigation-exploration .study-example {
+      margin: 5px 0 0;
+      color: var(--study-secondary);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    #study-navigation-exploration .study-body { min-width: 0; display: grid; align-items: stretch; }
+    #study-navigation-exploration .study-top .study-body { grid-template-rows: auto 1fr; }
+    #study-navigation-exploration .study-rail .study-body { grid-template-columns: 164px minmax(0, 1fr); }
+    #study-navigation-exploration .study-nav { display: flex; gap: 6px; min-width: 0; background: var(--study-subtle); }
+    #study-navigation-exploration .study-top .study-nav { padding: 12px 28px; border-bottom: 1px solid var(--study-line); }
+    #study-navigation-exploration .study-rail .study-nav {
+      padding: 24px 12px;
+      flex-direction: column;
+      align-items: stretch;
+      border-right: 1px solid var(--study-line);
+    }
+    #study-navigation-exploration .study-nav-button {
+      appearance: none;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--study-secondary);
+      font: 500 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 11px 15px;
+      min-height: 44px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    #study-navigation-exploration .study-nav-button:hover { background: var(--study-selected); color: var(--study-ink); }
+    #study-navigation-exploration .study-nav-button[aria-pressed="true"] {
+      color: var(--study-ink);
+      background: var(--study-selected);
+      border-color: var(--study-line);
+      font-weight: 600;
+    }
+    #study-navigation-exploration .study-content { padding: var(--study-gap); min-width: 0; }
+    #study-navigation-exploration .study-document { margin: 0 0 22px; color: var(--study-secondary); font-size: 13px; }
+    #study-navigation-exploration .study-panel { max-width: 68ch; display: grid; gap: 17px; align-content: start; }
+    #study-navigation-exploration .study-panel[hidden] { display: none; }
+    #study-navigation-exploration .study-panel h3 { margin: 0; font-size: 25px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 600; }
+    #study-navigation-exploration .study-panel h4 { margin: 4px 0 0; font-size: 17px; line-height: 1.4; font-weight: 600; }
+    #study-navigation-exploration .study-panel p { margin: 0; }
+    #study-navigation-exploration .study-panel ul { margin: 0; padding-left: 22px; }
+    #study-navigation-exploration .study-panel li + li { margin-top: 9px; }
+    #study-navigation-exploration .study-learning-card {
+      padding: 24px;
+      border: 1px solid var(--study-line);
+      border-radius: 12px;
+      background: var(--study-surface);
+      display: grid;
+      gap: 19px;
+      min-width: 0;
+    }
+    #study-navigation-exploration .study-question { font-size: 20px; line-height: 1.4; }
+    #study-navigation-exploration .study-reveal {
+      justify-self: start;
+      padding: 10px 17px;
+      min-height: 44px;
+      border: 1px solid var(--study-line);
+      border-radius: 7px;
+      background: var(--study-subtle);
+      color: var(--study-ink);
+      font: 500 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #study-navigation-exploration .study-reveal:hover { background: var(--study-selected); }
+    #study-navigation-exploration .study-answer { border-top: 1px solid var(--study-line); padding-top: 17px; }
+    #study-navigation-exploration .study-quiz { margin: 0; padding: 0; border: 0; min-width: 0; }
+    #study-navigation-exploration .study-quiz legend { padding: 0; margin-bottom: 18px; font-size: 20px; line-height: 1.4; }
+    #study-navigation-exploration .study-option { display: flex; gap: 11px; align-items: flex-start; min-height: 44px; padding: 9px 0; }
+    #study-navigation-exploration .study-option input { margin: 5px 0 0; width: 17px; height: 17px; flex: 0 0 auto; accent-color: var(--study-ink); }
+    @container (max-width: 620px) {
+      #study-navigation-exploration .study-window { min-height: 760px; border-radius: 10px; }
+      #study-navigation-exploration .study-header { padding: 20px 18px; padding-right: 98px; }
+      #study-navigation-exploration .study-brand { font-size: 16px; }
+      #study-navigation-exploration .study-example { font-size: 12px; }
+      #study-navigation-exploration .study-rail .study-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+      #study-navigation-exploration .study-top .study-nav,
+      #study-navigation-exploration .study-rail .study-nav {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2px;
+        padding: 10px 8px;
+        border-right: 0;
+        border-bottom: 1px solid var(--study-line);
+      }
+      #study-navigation-exploration .study-nav-button { text-align: center; font-size: 13px; padding: 11px 3px; }
+      #study-navigation-exploration .study-content { padding: 23px 18px; }
+      #study-navigation-exploration .study-panel { gap: 16px; }
+      #study-navigation-exploration .study-panel h3 { font-size: 23px; }
+      #study-navigation-exploration .study-learning-card { padding: 19px; }
+    }
+  </style>
+  <div class="viz-carousel" aria-label="Navigasjonsalternativer" data-previous-label="Forrige" data-next-label="Neste">
+    <section data-variant="Toppfaner" aria-label="Toppfaner">
+      <div class="study-window study-top" data-study-variant="top">
+        <header class="study-header">
+          <div class="study-brand">AI Study Buddy</div>
+          <p class="study-example">Eksempelinnhold for navigasjonsskisse</p>
+        </header>
+        <div class="study-body">
+          <nav class="study-nav" aria-label="Læringsfunksjon">
+            <button class="study-nav-button" type="button" data-view="summary" aria-pressed="true" aria-controls="study-top-summary">Summary</button>
+            <button class="study-nav-button" type="button" data-view="flashcards" aria-pressed="false" aria-controls="study-top-flashcards">Flashcards</button>
+            <button class="study-nav-button" type="button" data-view="quiz" aria-pressed="false" aria-controls="study-top-quiz">Quiz</button>
+          </nav>
+          <main class="study-content">
+            <p class="study-document">Studieteknikk.pdf</p>
+            <section class="study-panel" id="study-top-summary" data-panel="summary" aria-labelledby="study-top-summary-title">
+              <h3 id="study-top-summary-title">Aktiv læring</h3>
+              <p>Aktiv gjenhenting betyr å forsøke å hente frem det du har lært fra hukommelsen, før du ser på svaret.</p>
+              <h4>Tre sentrale begreper</h4>
+              <ul>
+                <li><strong>Gjenhenting:</strong> Forklar et begrep med egne ord uten å se i notatene.</li>
+                <li><strong>Tilbakemelding:</strong> Sammenlign svaret ditt med materialet og undersøk det som mangler.</li>
+                <li><strong>Repetisjon:</strong> Gå tilbake til stoffet i flere studieøkter.</li>
+              </ul>
+            </section>
+            <section class="study-panel" id="study-top-flashcards" data-panel="flashcards" aria-labelledby="study-top-flashcards-title" hidden>
+              <h3 id="study-top-flashcards-title">Flashcards</h3>
+              <div class="study-learning-card">
+                <p class="study-question">Hva betyr aktiv gjenhenting?</p>
+                <button class="study-reveal" type="button" data-reveal aria-expanded="false" aria-controls="study-top-answer">Vis eksempelsvar</button>
+                <p class="study-answer" id="study-top-answer" hidden>Å forsøke å hente frem det du har lært fra hukommelsen, før du ser på svaret.</p>
+              </div>
+            </section>
+            <section class="study-panel" id="study-top-quiz" data-panel="quiz" aria-labelledby="study-top-quiz-title" hidden>
+              <h3 id="study-top-quiz-title">Quiz</h3>
+              <fieldset class="study-quiz">
+                <legend>Hva er et eksempel på aktiv gjenhenting?</legend>
+                <label class="study-option"><input type="radio" name="study-top-quiz-example"><span>Forklare et begrep uten å se i notatene</span></label>
+                <label class="study-option"><input type="radio" name="study-top-quiz-example"><span>Lese samme avsnitt en gang til</span></label>
+                <label class="study-option"><input type="radio" name="study-top-quiz-example"><span>Markere alle overskriftene</span></label>
+                <label class="study-option"><input type="radio" name="study-top-quiz-example"><span>Kopiere teksten ord for ord</span></label>
+              </fieldset>
+            </section>
+          </main>
+        </div>
+      </div>
+    </section>
+    <section data-variant="Venstremeny" aria-label="Venstremeny" hidden>
+      <div class="study-window study-rail" data-study-variant="rail">
+        <header class="study-header">
+          <div class="study-brand">AI Study Buddy</div>
+          <p class="study-example">Eksempelinnhold for navigasjonsskisse</p>
+        </header>
+        <div class="study-body">
+          <nav class="study-nav" aria-label="Læringsfunksjon">
+            <button class="study-nav-button" type="button" data-view="summary" aria-pressed="true" aria-controls="study-rail-summary">Summary</button>
+            <button class="study-nav-button" type="button" data-view="flashcards" aria-pressed="false" aria-controls="study-rail-flashcards">Flashcards</button>
+            <button class="study-nav-button" type="button" data-view="quiz" aria-pressed="false" aria-controls="study-rail-quiz">Quiz</button>
+          </nav>
+          <main class="study-content">
+            <p class="study-document">Studieteknikk.pdf</p>
+            <section class="study-panel" id="study-rail-summary" data-panel="summary" aria-labelledby="study-rail-summary-title">
+              <h3 id="study-rail-summary-title">Aktiv læring</h3>
+              <p>Aktiv gjenhenting betyr å forsøke å hente frem det du har lært fra hukommelsen, før du ser på svaret.</p>
+              <h4>Tre sentrale begreper</h4>
+              <ul>
+                <li><strong>Gjenhenting:</strong> Forklar et begrep med egne ord uten å se i notatene.</li>
+                <li><strong>Tilbakemelding:</strong> Sammenlign svaret ditt med materialet og undersøk det som mangler.</li>
+                <li><strong>Repetisjon:</strong> Gå tilbake til stoffet i flere studieøkter.</li>
+              </ul>
+            </section>
+            <section class="study-panel" id="study-rail-flashcards" data-panel="flashcards" aria-labelledby="study-rail-flashcards-title" hidden>
+              <h3 id="study-rail-flashcards-title">Flashcards</h3>
+              <div class="study-learning-card">
+                <p class="study-question">Hva betyr aktiv gjenhenting?</p>
+                <button class="study-reveal" type="button" data-reveal aria-expanded="false" aria-controls="study-rail-answer">Vis eksempelsvar</button>
+                <p class="study-answer" id="study-rail-answer" hidden>Å forsøke å hente frem det du har lært fra hukommelsen, før du ser på svaret.</p>
+              </div>
+            </section>
+            <section class="study-panel" id="study-rail-quiz" data-panel="quiz" aria-labelledby="study-rail-quiz-title" hidden>
+              <h3 id="study-rail-quiz-title">Quiz</h3>
+              <fieldset class="study-quiz">
+                <legend>Hva er et eksempel på aktiv gjenhenting?</legend>
+                <label class="study-option"><input type="radio" name="study-rail-quiz-example"><span>Forklare et begrep uten å se i notatene</span></label>
+                <label class="study-option"><input type="radio" name="study-rail-quiz-example"><span>Lese samme avsnitt en gang til</span></label>
+                <label class="study-option"><input type="radio" name="study-rail-quiz-example"><span>Markere alle overskriftene</span></label>
+                <label class="study-option"><input type="radio" name="study-rail-quiz-example"><span>Kopiere teksten ord for ord</span></label>
+              </fieldset>
+            </section>
+          </main>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const root = document.getElementById('study-navigation-exploration');
+      const state = { spacing: 28 };
+      const saved = window.openai?.widgetState?.privateContent;
+      const validViews = new Set(['summary', 'flashcards', 'quiz']);
+
+      function setView(shell, view) {
+        if (!validViews.has(view)) return;
+        shell.querySelectorAll('[data-view]').forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.view === view));
+        });
+        shell.querySelectorAll('[data-panel]').forEach(panel => {
+          panel.hidden = panel.dataset.panel !== view;
+        });
+      }
+
+      function restore(savedState) {
+        if (!savedState || savedState.kind !== 'study-navigation-exploration') return;
+        root.querySelectorAll('[data-study-variant]').forEach(shell => {
+          const shellState = savedState.views?.[shell.dataset.studyVariant];
+          if (shellState) setView(shell, shellState);
+        });
+      }
+
+      function saveState() {
+        const views = {};
+        root.querySelectorAll('[data-study-variant]').forEach(shell => {
+          views[shell.dataset.studyVariant] = shell.querySelector('[data-view][aria-pressed="true"]').dataset.view;
+        });
+        window.openai?.setWidgetState?.({
+          privateContent: { kind: 'study-navigation-exploration', views },
+          modelContent: null
+        }).catch(() => {});
+      }
+
+      root.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button || !root.contains(button)) return;
+        const shell = button.closest('[data-study-variant]');
+        if (!shell) return;
+        if (button.dataset.view) {
+          setView(shell, button.dataset.view);
+          saveState();
+        } else if (button.hasAttribute('data-reveal')) {
+          const answer = document.getElementById(button.getAttribute('aria-controls'));
+          answer.hidden = !answer.hidden;
+          button.setAttribute('aria-expanded', String(!answer.hidden));
+          button.textContent = answer.hidden ? 'Vis eksempelsvar' : 'Skjul eksempelsvar';
+        }
+      });
+
+      restore(saved);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+      const applySpacing = () => root.style.setProperty('--study-gap', `${state.spacing}px`);
+      applySpacing();
+      if (globalThis.Tweak) {
+        const tweak = new Tweak({ container: root, onChange: applySpacing });
+        tweak.addSlider(state, 'spacing', { label: 'Luft i læreflaten', min: 20, max: 36, step: 4, unit: 'px' });
+      }
+    })();
+  </script>
+</div>

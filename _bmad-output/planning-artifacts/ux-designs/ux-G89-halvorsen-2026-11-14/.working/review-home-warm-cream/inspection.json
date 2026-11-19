@@ -1,0 +1,157 @@
+{
+  "home": {
+    "view": "startup",
+    "canvas": "rgb(247, 243, 235)",
+    "header": "rgb(251, 248, 242)",
+    "form": "rgb(255, 255, 255)",
+    "upload": "rgb(255, 255, 255)",
+    "cloud": "rgb(155, 145, 136)",
+    "arrow": "rgb(155, 145, 136)",
+    "brand": "rgb(52, 58, 64)",
+    "home": "rgb(233, 226, 216)",
+    "logo": [
+      {
+        "stroke": "rgb(215, 233, 218)",
+        "width": "2.6px",
+        "y": 1.9996428489685059
+      },
+      {
+        "stroke": "rgb(249, 232, 179)",
+        "width": "2.6px",
+        "y": 12
+      },
+      {
+        "stroke": "rgb(220, 239, 248)",
+        "width": "2.6px",
+        "y": 17
+      }
+    ],
+    "bubbles": [
+      "rgb(215, 233, 218)",
+      "rgb(249, 232, 179)",
+      "rgb(220, 239, 248)"
+    ],
+    "menu": [
+      "Home",
+      "Summary",
+      "Flashcards",
+      "Quiz"
+    ]
+  },
+  "desktop": {
+    "x": 0,
+    "y": 0,
+    "width": 1504,
+    "height": 1044.40625,
+    "frameHeight": 1076
+  },
+  "learning": [
+    {
+      "view": "summary",
+      "canvas": "rgb(238, 245, 239)",
+      "header": "rgb(245, 245, 248)",
+      "logo": [
+        {
+          "stroke": "rgb(108, 138, 118)",
+          "width": "1.7px",
+          "y": 1.9996428489685059
+        },
+        {
+          "stroke": "rgb(142, 120, 62)",
+          "width": "1.7px",
+          "y": 12
+        },
+        {
+          "stroke": "rgb(98, 128, 156)",
+          "width": "1.7px",
+          "y": 17
+        }
+      ]
+    },
+    {
+      "view": "flashcards",
+      "canvas": "rgb(251, 247, 229)",
+      "header": "rgb(245, 245, 248)",
+      "logo": [
+        {
+          "stroke": "rgb(108, 138, 118)",
+          "width": "1.7px",
+          "y": 1.9996428489685059
+        },
+        {
+          "stroke": "rgb(142, 120, 62)",
+          "width": "1.7px",
+          "y": 12
+        },
+        {
+          "stroke": "rgb(98, 128, 156)",
+          "width": "1.7px",
+          "y": 17
+        }
+      ]
+    },
+    {
+      "view": "quiz",
+      "canvas": "rgb(237, 244, 252)",
+      "header": "rgb(245, 245, 248)",
+      "logo": [
+        {
+          "stroke": "rgb(108, 138, 118)",
+          "width": "1.7px",
+          "y": 1.9996428489685059
+        },
+        {
+          "stroke": "rgb(142, 120, 62)",
+          "width": "1.7px",
+          "y": 12
+        },
+        {
+          "stroke": "rgb(98, 128, 156)",
+          "width": "1.7px",
+          "y": 17
+        }
+      ]
+    }
+  ],
+  "widths": {
+    "320": {
+      "scrollWidth": 288,
+      "clientWidth": 288,
+      "form": "rgb(255, 255, 255)",
+      "artworkVisible": false,
+      "controlsOutside": []
+    },
+    "390": {
+      "scrollWidth": 358,
+      "clientWidth": 358,
+      "form": "rgb(255, 255, 255)",
+      "artworkVisible": false,
+      "controlsOutside": []
+    },
+    "1024": {
+      "scrollWidth": 992,
+      "clientWidth": 992,
+      "form": "rgb(255, 255, 255)",
+      "artworkVisible": true,
+      "controlsOutside": []
+    }
+  },
+  "mobile": {
+    "x": 0,
+    "y": 0,
+    "width": 358,
+    "height": 1265.359375,
+    "frameHeight": 1315
+  },
+  "contrast": {
+    "heading": 15.84,
+    "subtitle": 5.72,
+    "brand": 10.85,
+    "homeText": 8.95,
+    "homeBorder": 3.39,
+    "cloud": 3.09,
+    "homeFocus": 4.25
+  },
+  "decorativeLogoNote": "Exact illustration-card colours; logo is aria-hidden and accompanied by the high-contrast visible product name. Soft shadow separates edges without changing the colour contrast ratio.",
+  "exceptions": []
+}

@@ -1,0 +1,565 @@
+<div id="study-preview" lang="en" aria-label="Exploratory concept preview for AI Study Buddy">
+  <style>
+    #study-preview { min-width: 0; }
+    #study-preview .app-frame { container: study-preview-app / inline-size; min-width: 0; }
+    #study-preview .app-shell, #study-preview .app-shell * { box-sizing: border-box; }
+    #study-preview .app-shell {
+      --surface: #ffffff;
+      --ink: #29372f;
+      --muted-ink: #56615b;
+      --frame-line: #ccd5cf;
+      --disabled-surface: #ffffff;
+      --disabled-ink: #686e69;
+      --disabled-line: #d4d8d5;
+      --canvas: #f4f7f4;
+      --action-surface: #dceadf;
+      --action-ink: #244b34;
+      --mode-border: #6c8a76;
+      --mode-hover: #cbded0;
+      --mode-soft: #e7f0e9;
+      --mode-focus: #315d3f;
+      color-scheme: light;
+      color: var(--ink);
+      background: var(--canvas);
+      border: 1px solid var(--frame-line);
+      border-radius: 16px;
+      font: 400 16px/1.6 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+      position: relative;
+      min-height: 720px;
+      transition: background-color 200ms ease-out;
+      width: 100%;
+    }
+    #study-preview .app-shell[data-mode="summary"] { --canvas: #eef5ef; }
+    #study-preview .app-shell[data-mode="startup"] {
+      --canvas: #edeef2;
+      --frame-line: #d7dce2;
+      --action-surface: #bddbc3;
+      --action-ink: #0c3a2f;
+      --mode-border: #789681;
+      --mode-hover: #aacfb3;
+      --mode-soft: #e2eee4;
+      --mode-focus: #245c45;
+    }
+    #study-preview .app-shell[data-mode="startup"] .app-main { max-width: 850px; padding: 18px 24px 32px; }
+    #study-preview .app-shell[data-mode="flashcards"] {
+      --canvas: #fbf7e5;
+      --frame-line: #ddd5bc;
+      --action-surface: #f2dfa0;
+      --action-ink: #514319;
+      --mode-border: #8e783e;
+      --mode-hover: #ead38b;
+      --mode-soft: #faf0d0;
+      --mode-focus: #766023;
+    }
+    #study-preview .app-shell[data-mode="quiz"] {
+      --canvas: #edf4fc;
+      --frame-line: #c6d5e2;
+      --action-surface: #d3e5f6;
+      --action-ink: #284b6b;
+      --mode-border: #62809c;
+      --mode-hover: #bfd9ef;
+      --mode-soft: #e2eef9;
+      --mode-focus: #315e88;
+    }
+    #study-preview .app-shell [hidden] { display: none !important; }
+    #study-preview .app-shell button,
+    #study-preview .app-shell input,
+    #study-preview .app-shell select { font: inherit; }
+    #study-preview .app-shell button:focus-visible,
+    #study-preview .app-shell input:focus-visible,
+    #study-preview .app-shell select:focus-visible { outline: 3px solid var(--mode-focus); outline-offset: 3px; }
+    #study-preview .app-shell ::selection { background: var(--mode-soft); color: var(--ink); }
+    #study-preview .app-brandbar { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; padding: 15px 4.5%; background: #f5f5f8; border-radius: 15px 15px 0 0; }
+    #study-preview .app-brand { display: inline-flex; align-items: center; gap: 11px; color: #0b382d; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+    #study-preview .app-navigation { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; max-width: 100%; }
+    #study-preview .app-navigation .app-nav-item { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 20px; border: 1px solid transparent; border-radius: 26px; color: var(--muted-ink); background: transparent; font-size: 17px; font-weight: 500; line-height: 1.4; white-space: nowrap; }
+    #study-preview .app-navigation .app-nav-item:hover { color: var(--action-ink); background: var(--mode-soft); }
+    #study-preview .app-navigation .app-nav-item[aria-current="page"] { color: var(--action-ink); background: var(--action-surface); border-color: var(--mode-border); font-weight: 600; }
+    #study-preview .preview-note { margin: 13px 0 0; }
+    #study-preview .app-main { width: 100%; max-width: 850px; margin: 0 auto; padding: 31px 34px 46px; min-width: 0; }
+    #study-preview .doc-context { text-align: center; margin-bottom: 28px; }
+    #study-preview .doc-name { margin: 0; font-size: 24px; line-height: 1.4; font-weight: 600; overflow-wrap: anywhere; letter-spacing: -0.02em; }
+    #study-preview .session-meta { margin: 6px 0 0; color: var(--muted-ink); font-size: 13px; }
+    #study-preview .sample-note { max-width: 68ch; margin: 18px auto 0; color: var(--muted-ink); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+    #study-preview .learning-view { display: grid; gap: 22px; align-content: start; min-width: 0; }
+    #study-preview .primary-action,
+    #study-preview .secondary-action { display: inline-flex; align-items: center; justify-content: center; justify-self: start; min-height: 46px; padding: 12px 21px; border: 1px solid var(--mode-border); border-radius: 10px; font-size: 15px; line-height: 1.4; font-weight: 500; }
+    #study-preview .primary-action { background: var(--action-surface); color: var(--action-ink); }
+    #study-preview .secondary-action { background: var(--surface); color: var(--action-ink); }
+    #study-preview .primary-action:hover:not(:disabled),
+    #study-preview .secondary-action:hover:not(:disabled) { background: var(--mode-hover); }
+    #study-preview .primary-action:disabled,
+    #study-preview .secondary-action:disabled { background: var(--disabled-surface); color: var(--disabled-ink); border-color: var(--disabled-line); }
+    #study-preview .source-link { min-height: 44px; padding: 7px 0; justify-self: start; border: 0; background: transparent; color: var(--action-ink); text-align: left; font-size: 14px; line-height: 1.5; text-decoration: underline; text-underline-offset: 4px; }
+    #study-preview .source-link:hover { background: var(--mode-soft); }
+    #study-preview .startup-intro { max-width: 760px; margin: 0 auto 22px; }
+    #study-preview .startup-intro h1 { margin: 0 0 14px; font-size: 31px; line-height: 1.3; letter-spacing: -0.025em; font-weight: 600; text-wrap: balance; }
+    #study-preview .startup-intro p { margin: 0; line-height: 1.75; }
+    #study-preview .startup-form { display: grid; gap: 23px; width: 100%; max-width: 760px; margin: 0 auto; padding: 28px; background: var(--surface); border: 1px solid var(--frame-line); border-radius: 16px; }
+    #study-preview .field-group { display: grid; gap: 9px; min-width: 0; }
+    #study-preview .field-label { font-weight: 600; }
+    #study-preview .field-help { margin: 0; color: var(--muted-ink); font-size: 14px; line-height: 1.7; }
+    #study-preview .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    #study-preview .startup-form select { min-height: 48px; width: 100%; padding: 10px 12px; border: 1px solid var(--mode-border); border-radius: 9px; background: var(--surface); color: var(--ink); font-size: 16px; }
+    #study-preview .upload-area { display: grid; justify-items: center; align-content: center; gap: 10px; width: 100%; min-height: 166px; padding: 25px; border: 2px dashed var(--mode-border); border-radius: 14px; background: var(--mode-soft); color: var(--ink); text-align: center; }
+    #study-preview .upload-area:hover { background: var(--mode-hover); }
+    #study-preview .upload-icon { width: 29px; height: 29px; color: var(--mode-focus); }
+    #study-preview .upload-title { font-size: 18px; font-weight: 600; }
+    #study-preview .upload-caption { font-size: 14px; color: var(--muted-ink); }
+    #study-preview .selected-file { margin: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.7; }
+    #study-preview .consent-area { display: grid; gap: 16px; padding-top: 23px; border-top: 1px solid var(--frame-line); }
+    #study-preview .consent-copy { margin: 0; font-size: 15px; line-height: 1.8; }
+    #study-preview .check-label { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.75; }
+    #study-preview .check-label input { flex: 0 0 auto; margin: 5px 0 0; width: 19px; height: 19px; accent-color: var(--mode-focus); }
+    #study-preview .form-footer { display: grid; gap: 12px; }
+    #study-preview .form-message { margin: 0; font-size: 14px; line-height: 1.75; color: var(--muted-ink); overflow-wrap: anywhere; }
+    #study-preview .summary-copy { max-width: 68ch; width: 100%; padding: 31px; background: var(--surface); border: 1px solid var(--frame-line); border-radius: 16px; font-size: 17px; line-height: 1.8; }
+    #study-preview .summary-copy h2 { margin: 0 0 22px; font-size: 28px; font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; text-wrap: balance; }
+    #study-preview .summary-copy h3 { margin: 34px 0 16px; font-size: 21px; font-weight: 600; line-height: 1.45; text-wrap: balance; }
+    #study-preview .summary-copy p { margin: 0 0 20px; text-wrap: pretty; }
+    #study-preview .summary-copy p:last-child { margin-bottom: 0; }
+    #study-preview .summary-copy ul { margin: 0; padding-left: 23px; }
+    #study-preview .summary-copy li + li { margin-top: 12px; }
+    #study-preview .summary-sources { display: flex; gap: 20px; flex-wrap: wrap; }
+    #study-preview .item-count { margin: 0; color: var(--muted-ink); font-size: 14px; font-variant-numeric: tabular-nums; }
+    #study-preview .flashcard { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 26px; width: 100%; min-height: 310px; padding: 35px; border: 1px solid var(--mode-border); border-radius: 16px; background: var(--surface); color: var(--ink); text-align: center; }
+    #study-preview .flashcard:hover { background: var(--mode-soft); }
+    #study-preview .card-prompt { font-size: 26px; font-weight: 500; line-height: 1.45; }
+    #study-preview .card-answer { font-size: 20px; line-height: 1.75; }
+    #study-preview .flip-hint { color: var(--muted-ink); font-size: 14px; }
+    #study-preview .card-actions { display: flex; justify-content: space-between; gap: 16px; }
+    #study-preview .quiz-options { min-width: 0; border: 0; padding: 0; margin: 0; display: grid; gap: 16px; }
+    #study-preview .quiz-options legend { margin-bottom: 24px; padding: 0; font-size: 24px; line-height: 1.45; font-weight: 500; }
+    #study-preview .quiz-options label { display: flex; align-items: flex-start; gap: 14px; min-height: 66px; padding: 18px 22px; border: 1px solid var(--mode-border); border-radius: 14px; background: var(--surface); color: var(--ink); }
+    #study-preview .quiz-options label:hover:not(:has(input:disabled)) { background: var(--mode-soft); }
+    #study-preview .quiz-options label:has(input:checked) { border-color: var(--mode-focus); outline: 1px solid var(--mode-focus); outline-offset: -1px; background: var(--mode-soft); }
+    #study-preview .quiz-options input { flex: 0 0 auto; width: 19px; height: 19px; margin: 4px 0 0; accent-color: var(--mode-focus); }
+    #study-preview .quiz-options input:disabled { opacity: 1; }
+    #study-preview .quiz-feedback { margin: 0; font-size: 16px; line-height: 1.8; }
+    #study-preview .feedback-line { display: block; margin-top: 9px; }
+    #study-preview .empty-learning { display: grid; gap: 18px; padding: 28px; background: var(--surface); border: 1px solid var(--frame-line); border-radius: 16px; }
+    #study-preview .empty-learning h2 { margin: 0; font-size: 24px; line-height: 1.4; font-weight: 600; }
+    #study-preview .empty-learning p { margin: 0; }
+    #study-preview .source-panel { position: absolute; top: var(--source-offset, 0px); right: 0; width: min(100%, 380px); min-height: 420px; z-index: 3; display: grid; align-content: start; gap: 25px; padding: 29px; background: var(--surface); color: var(--ink); border: 1px solid var(--mode-border); border-radius: 16px; }
+    #study-preview .source-heading { display: flex; justify-content: space-between; align-items: center; gap: 13px; }
+    #study-preview .source-heading h2 { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.4; }
+    #study-preview .source-file, #study-preview .source-note { margin: 0; color: var(--muted-ink); font-size: 14px; line-height: 1.8; }
+    #study-preview .source-panel blockquote { margin: 0; padding: 0; font-size: 18px; line-height: 1.8; }
+    #study-preview .source-panel mark { background: var(--mode-soft); color: var(--ink); }
+    @media (prefers-reduced-motion: reduce) { #study-preview .app-shell { transition: none; } }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .app-main { padding: 26px 17px 35px; }
+      #study-preview .doc-name { font-size: 21px; }
+      #study-preview .startup-intro h1 { font-size: 27px; }
+      #study-preview .startup-form { padding: 22px 19px; gap: 24px; }
+      #study-preview .app-shell[data-mode="startup"] .app-main { padding: 20px 16px 28px; }
+      #study-preview .upload-area { min-height: 150px; padding: 22px 17px; }
+      #study-preview .choice-grid { grid-template-columns: minmax(0, 1fr); }
+      #study-preview .summary-copy { padding: 25px 20px; }
+      #study-preview .summary-copy h2 { font-size: 25px; }
+      #study-preview .summary-copy h3 { font-size: 21px; }
+      #study-preview .flashcard { padding: 28px 21px; }
+      #study-preview .card-prompt { font-size: 24px; }
+      #study-preview .card-answer { font-size: 19px; }
+      #study-preview .quiz-options legend { font-size: 22px; }
+      #study-preview .quiz-options label { padding: 17px 16px; gap: 11px; }
+      #study-preview .source-panel { padding: 25px 21px; border-radius: 16px; }
+    }
+    #study-preview .brand-mark { width: 34px; height: 34px; color: #125643; flex: 0 0 auto; stroke-width: 1.7; }
+    #study-preview .app-shell[data-mode="startup"] { border-color: transparent; }
+    #study-preview .app-shell[data-mode="startup"] .app-main { max-width: none; padding: 84px 24px 52px; }
+    #study-preview .startup-scene { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(150px, 1fr) minmax(0, 760px) minmax(170px, 1fr); column-gap: 20px; }
+    #study-preview .app-shell[data-mode="startup"] .startup-intro { grid-column: 1 / -1; grid-row: 1; position: relative; z-index: 1; max-width: 920px; margin: 0 auto 46px; text-align: center; }
+    #study-preview .app-shell[data-mode="startup"] .startup-intro h1 { margin-bottom: 18px; color: #171a19; font-size: 56px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
+    #study-preview .app-shell[data-mode="startup"] .startup-intro p { max-width: 680px; margin: 0 auto; color: #526173; font-size: 25px; line-height: 1.5; text-wrap: balance; }
+    #study-preview .app-shell[data-mode="startup"] .startup-form { grid-column: 2; grid-row: 2; position: relative; z-index: 1; width: 100%; padding: 36px; gap: 25px; border: 0; border-radius: 34px; box-shadow: 0 22px 42px rgba(43, 52, 68, 0.14); }
+    #study-preview .app-shell[data-mode="startup"] .upload-area { min-height: 166px; gap: 8px; padding: 12px 22px; border-color: #aeb6c6; border-radius: 22px; background: #f7f8fb; }
+    #study-preview .app-shell[data-mode="startup"] .upload-area:hover { background: #f0f3f5; }
+    #study-preview .app-shell[data-mode="startup"] .upload-icon { width: 64px; height: 64px; color: #105843; stroke-width: 1.9; }
+    #study-preview .app-shell[data-mode="startup"] .upload-title { color: #07392e; font-size: 27px; font-weight: 650; }
+    #study-preview .app-shell[data-mode="startup"] .upload-caption { color: #526173; font-size: 17px; }
+    #study-preview .app-shell[data-mode="startup"] .field-label { color: #0c3a2e; font-size: 17px; }
+    #study-preview .app-shell[data-mode="startup"] .startup-form select { border-color: #cfd5df; background: #fcfcfe; border-radius: 15px; }
+    #study-preview .privacy-row { display: grid; grid-template-columns: 27px minmax(0, 1fr); gap: 14px; align-items: start; }
+    #study-preview .privacy-icon { width: 27px; height: 27px; margin-top: 4px; color: #145442; }
+    #study-preview .app-shell[data-mode="startup"] .consent-area { border-top: 0; padding-top: 0; }
+    #study-preview .app-shell[data-mode="startup"] #generate-summary { width: 100%; justify-self: stretch; min-height: 56px; gap: 12px; font-size: 19px; font-weight: 650; border-radius: 15px; }
+    #study-preview .generate-icon { width: 22px; height: 22px; }
+    #study-preview .startup-artwork { position: absolute; inset: -84px -24px -52px; overflow: hidden; z-index: 0; pointer-events: none; }
+    #study-preview .corner-blob { position: absolute; }
+    #study-preview .blob-sage { left: -85px; top: -95px; width: 310px; height: 290px; border-radius: 0 0 78% 0; background: #dce9df; }
+    #study-preview .blob-yellow { left: -85px; bottom: -95px; width: 380px; height: 280px; border-radius: 46% 69% 0 0; background: #f1e7cb; transform: rotate(18deg); }
+    #study-preview .blob-blue { right: -90px; bottom: -100px; width: 390px; height: 430px; border-radius: 74% 0 0 20%; background: #d8e8f1; transform: rotate(15deg); }
+    #study-preview .pdf-decoration { position: relative; grid-column: 1; grid-row: 2; justify-self: center; align-self: start; z-index: 0; margin-top: 64px; width: 190px; height: 290px; }
+    #study-preview .paper-sheet { position: relative; display: grid; align-content: start; gap: 15px; width: 182px; height: 218px; padding: 40px 24px 24px; border-radius: 23px; background: #fafaff; box-shadow: 0 17px 30px rgba(47, 55, 72, 0.15); transform: rotate(-12deg); }
+    #study-preview .paper-sheet::before { content: ""; position: absolute; right: 0; top: 0; width: 43px; height: 43px; border-radius: 0 22px 0 11px; background: #eef0f8; }
+    #study-preview .paper-line { height: 8px; width: 100%; border-radius: 8px; background: #e1e4ef; }
+    #study-preview .paper-line:first-child { width: 72%; }
+    #study-preview .paper-line:nth-child(4) { width: 77%; }
+    #study-preview .pdf-badge { justify-self: start; padding: 5px 12px; margin-top: 4px; border-radius: 10px; background: #ec9297; color: #ffffff; font-size: 25px; line-height: 1.25; font-weight: 700; }
+    #study-preview .paper-arrow { position: absolute; width: 112px; height: 78px; right: -4px; bottom: 0; color: #339d78; stroke-width: 1.2; transform: rotate(16deg); }
+    #study-preview .tools-decoration { position: relative; grid-column: 3; grid-row: 2; justify-self: center; align-self: start; z-index: 0; margin-top: 18px; width: 238px; height: 500px; }
+    #study-preview .mini-tool { position: absolute; width: 222px; height: 164px; padding: 18px 22px; border-radius: 23px; color: #0e3e31; box-shadow: 0 15px 26px rgba(42, 59, 60, 0.09); }
+    #study-preview .mini-tool strong { display: block; margin-bottom: 14px; font-size: 21px; line-height: 1.3; font-weight: 700; }
+    #study-preview .mini-summary { left: 0; top: 0; background: #d7e9da; transform: rotate(-11deg); }
+    #study-preview .mini-flashcards { left: 20px; top: 147px; background: #f9e8b3; transform: rotate(9deg); }
+    #study-preview .mini-quiz { left: 3px; top: 302px; background: #dceff8; transform: rotate(-10deg); }
+    #study-preview .mini-summary-sheet { display: grid; gap: 10px; padding: 14px; border-radius: 12px; background: #f5fbf5; }
+    #study-preview .mini-row { display: flex; align-items: center; gap: 10px; }
+    #study-preview .mini-row b { flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: #add0b9; }
+    #study-preview .mini-row em { display: block; width: 100%; height: 7px; border-radius: 7px; background: #c9dfce; }
+    #study-preview .mini-row:nth-child(2) em { width: 78%; }
+    #study-preview .mini-row:nth-child(3) em { width: 56%; }
+    #study-preview .mini-card-back { position: absolute; left: 29px; right: 23px; top: 61px; height: 81px; border-radius: 13px; background: #fffaf0; transform: rotate(-5deg); }
+    #study-preview .mini-card-front { position: relative; display: grid; gap: 10px; margin-left: 11px; padding: 18px 15px; border-radius: 12px; background: #fffdfa; transform: rotate(-4deg); box-shadow: 0 5px 12px rgba(119, 96, 43, 0.08); }
+    #study-preview .mini-card-front span { display: block; height: 7px; border-radius: 7px; background: #e9dfca; }
+    #study-preview .mini-card-front span:last-child { width: 66%; }
+    #study-preview .mini-quiz-row { display: flex; gap: 10px; align-items: center; margin-top: 14px; }
+    #study-preview .mini-quiz-row b { width: 18px; height: 18px; flex: 0 0 auto; border: 2px solid #a0c5d7; border-radius: 50%; background: #f6fbfd; }
+    #study-preview .mini-quiz-row span { width: 77px; height: 8px; border-radius: 8px; background: #aecfdf; }
+    #study-preview .mini-check { position: absolute; right: 23px; bottom: 28px; display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #86bcd4; color: #ffffff; }
+    #study-preview .mini-check i { width: 19px; height: 19px; }
+    @container study-preview-app (max-width: 1320px) {
+      #study-preview .pdf-decoration { justify-self: start; transform: scale(0.72); transform-origin: left top; }
+      #study-preview .tools-decoration { justify-self: end; transform: scale(0.70); transform-origin: right top; }
+      #study-preview .app-brandbar { gap: 24px; }
+      #study-preview .app-brand { font-size: 22px; }
+      #study-preview .app-navigation .app-nav-item { padding-inline: 17px; font-size: 16px; }
+    }
+    @container study-preview-app (max-width: 900px) {
+      #study-preview .startup-artwork { display: none; }
+      #study-preview .pdf-decoration, #study-preview .tools-decoration { display: none; }
+      #study-preview .startup-scene { display: block; }
+      #study-preview .app-shell[data-mode="startup"] .app-main { padding: 56px 24px 40px; }
+      #study-preview .app-shell[data-mode="startup"] .startup-form { width: min(760px, 100%); }
+      #study-preview .app-shell[data-mode="startup"] .startup-intro h1 { font-size: 48px; }
+      #study-preview .app-shell[data-mode="startup"] .startup-intro p { font-size: 22px; }
+    }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .app-shell[data-mode="startup"] .app-main { padding: 40px 16px 30px; }
+      #study-preview .brand-mark { width: 30px; height: 30px; }
+      #study-preview .app-shell[data-mode="startup"] .startup-intro { margin-bottom: 28px; }
+      #study-preview .app-shell[data-mode="startup"] .startup-intro h1 { font-size: 35px; line-height: 1.15; }
+      #study-preview .app-shell[data-mode="startup"] .startup-intro p { font-size: 18px; line-height: 1.65; }
+      #study-preview .desktop-break { display: none; }
+      #study-preview .app-shell[data-mode="startup"] .startup-form { padding: 24px 19px; border-radius: 24px; gap: 23px; }
+      #study-preview .app-shell[data-mode="startup"] .upload-area { min-height: 145px; padding: 10px 12px; gap: 7px; }
+      #study-preview .app-shell[data-mode="startup"] .upload-icon { width: 56px; height: 56px; }
+      #study-preview .app-shell[data-mode="startup"] .upload-title { font-size: 24px; }
+      #study-preview .app-shell[data-mode="startup"] .upload-caption { font-size: 15px; }
+      #study-preview .privacy-row { grid-template-columns: 24px minmax(0, 1fr); gap: 10px; }
+      #study-preview .privacy-icon { width: 24px; height: 24px; }
+      #study-preview .app-shell[data-mode="startup"] #generate-summary { font-size: 17px; padding-inline: 12px; }
+      #study-preview .app-brandbar { padding: 18px; gap: 14px; }
+      #study-preview .app-brand { font-size: 20px; }
+      #study-preview .app-navigation { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; gap: 4px; }
+      #study-preview .app-navigation .app-nav-item { width: 100%; min-height: 44px; padding: 10px 2px; font-size: 12px; }
+    }
+    #study-preview .app-shell h1,
+    #study-preview .app-shell h2,
+    #study-preview .app-shell h3,
+    #study-preview .app-shell p,
+    #study-preview .app-shell li { font-family: inherit !important; }
+    #study-preview .app-shell .upload-icon { width: 64px !important; height: 64px !important; stroke-width: 1.9 !important; }
+    #study-preview .app-shell .brand-mark { width: 34px !important; height: 34px !important; }
+    #study-preview .app-shell .privacy-icon { width: 27px !important; height: 27px !important; }
+    #study-preview .app-shell .paper-arrow { width: 112px !important; height: 78px !important; }
+    #study-preview .app-shell .generate-icon { width: 22px !important; height: 22px !important; }
+    #study-preview .app-shell .mini-check svg { width: 19px !important; height: 19px !important; }
+    #study-preview .app-shell[data-mode="startup"] .brand-mark { width: 36px !important; height: 36px !important; }
+    #study-preview .app-shell[data-mode="startup"] .startup-form { gap: 20px; }
+    #study-preview .app-shell[data-mode="startup"] .upload-area { padding-top: 12px; padding-bottom: 12px; }
+    #study-preview .app-shell[data-mode="startup"] .upload-title { line-height: 1.3; }
+    #study-preview .app-shell[data-mode="startup"] .upload-caption { line-height: 1.5; }
+    #study-preview .field-group { align-content: start; }
+    #study-preview .accessible-copy { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .app-shell .upload-icon { width: 56px !important; height: 56px !important; }
+      #study-preview .app-shell[data-mode="startup"] .upload-area { padding-top: 9px; padding-bottom: 9px; }
+      #study-preview .app-shell .brand-mark,
+      #study-preview .app-shell[data-mode="startup"] .brand-mark { width: 30px !important; height: 30px !important; }
+      #study-preview .app-shell .privacy-icon { width: 24px !important; height: 24px !important; }
+    }
+  </style>
+  <div class="app-frame">
+    <div class="app-shell" data-mode="startup">
+      <header class="app-brandbar">
+        <span class="app-brand"><i class="brand-mark" data-lucide="layers" aria-hidden="true"></i><span>AI Study Buddy</span></span>
+        <nav class="app-navigation" aria-label="Primary preview navigation">
+          <button class="app-nav-item cursor-interaction" type="button" data-preview="startup" aria-current="page" aria-controls="preview-startup">Home</button>
+          <button class="app-nav-item cursor-interaction" type="button" data-preview="summary" aria-controls="preview-summary">Summary</button>
+          <button class="app-nav-item cursor-interaction" type="button" data-preview="flashcards" aria-controls="preview-flashcards">Flashcards</button>
+          <button class="app-nav-item cursor-interaction" type="button" data-preview="quiz" aria-controls="preview-quiz">Quiz</button>
+        </nav>
+      </header>
+      <main class="app-main">
+        <section class="startup-scene" id="preview-startup" data-panel="startup" aria-labelledby="startup-title">
+          <div class="startup-artwork" aria-hidden="true">
+            <span class="corner-blob blob-sage"></span><span class="corner-blob blob-yellow"></span><span class="corner-blob blob-blue"></span>
+          </div>
+            <div class="pdf-decoration" aria-hidden="true"><div class="paper-sheet"><span class="paper-line"></span><span class="paper-line"></span><span class="paper-line"></span><span class="paper-line"></span><span class="pdf-badge">PDF</span></div><i class="paper-arrow" data-lucide="corner-down-right" aria-hidden="true"></i></div>
+            <div class="tools-decoration" aria-hidden="true">
+              <div class="mini-tool mini-summary"><strong>Summary</strong><div class="mini-summary-sheet"><span class="mini-row"><b></b><em></em></span><span class="mini-row"><b></b><em></em></span><span class="mini-row"><b></b><em></em></span></div></div>
+              <div class="mini-tool mini-flashcards"><strong>Flashcards</strong><div class="mini-card-back"></div><div class="mini-card-front"><span></span><span></span><span></span></div></div>
+              <div class="mini-tool mini-quiz"><strong>Quiz</strong><div class="mini-quiz-row"><b></b><span></span></div><div class="mini-quiz-row"><b></b><span></span></div><span class="mini-check"><i data-lucide="check" aria-hidden="true"></i></span></div>
+            </div>
+          <div class="startup-intro"><h1 id="startup-title" data-headline-provisional>Make studying easier</h1><p>Upload your PDF and create summaries, flashcards<br class="desktop-break"> and quizzes in your preferred language.</p></div>
+          <form class="startup-form" id="study-startup-form">
+            <div class="field-group">
+              <label class="field-label" for="study-pdf" hidden>Study document</label>
+              <input id="study-pdf" type="file" accept=".pdf,application/pdf" aria-label="Choose a text-based PDF" aria-describedby="file-help selected-file" required hidden>
+              <button class="upload-area cursor-interaction" type="button" data-choose-pdf aria-label="Choose PDF" aria-controls="study-pdf" aria-describedby="file-help selected-file"><i class="upload-icon" data-lucide="cloud-upload" aria-hidden="true"></i><span class="upload-title">Upload your PDF</span><span class="upload-caption">Click to choose a text-based PDF</span></button>
+              <p class="field-help accessible-copy" id="file-help">Use a PDF with readable text. Images of text cannot be read automatically.</p>
+              <p class="selected-file" id="selected-file" role="status" hidden>No file selected.</p>
+            </div>
+            <div class="choice-grid">
+              <div class="field-group"><label class="field-label" for="study-language">Study material language</label><select id="study-language" aria-describedby="language-help" required><option value="">Choose language</option><option value="nb">Norwegian Bokmål</option><option value="en">English</option></select><p class="field-help" id="language-help">For Summary, Flashcards and Quiz. The interface stays in English.</p></div>
+              <div class="field-group"><label class="field-label" for="study-level">Summary detail</label><select id="study-level" required><option value="">Choose detail</option><option value="brief">Brief</option><option value="detailed">Detailed</option></select><p class="field-help">Applies to Summary only.</p></div>
+            </div>
+            <div class="consent-area">
+              <div class="privacy-row"><i class="privacy-icon" data-lucide="shield-check" aria-hidden="true"></i><p class="consent-copy">Extracted PDF text is sent to an external AI service. Do not upload sensitive, confidential or externally unshareable material.</p></div>
+              <label class="check-label" for="study-ack"><input id="study-ack" type="checkbox" required><span>I understand and confirm that this document can be shared with an external AI service.</span></label>
+            </div>
+            <div class="form-footer">
+              <button class="primary-action cursor-interaction" type="button" id="generate-summary" data-start disabled><i class="generate-icon" data-lucide="sparkles" aria-hidden="true"></i><span>Generate Summary</span></button>
+              <p class="form-message accessible-copy" id="startup-status" role="status">Complete the options to preview saved example content.</p>
+              <p class="field-help">Reloading or closing ends this temporary session.</p>
+            </div>
+          </form>
+        </section>
+        <div class="doc-context" hidden><h1 class="doc-name">Studieteknikk.pdf</h1><p class="session-meta">Norwegian Bokmål · Detailed · sample content</p><p class="sample-note"></p></div>
+        <section class="learning-view" id="preview-summary" data-panel="summary" aria-label="Example summary" hidden>
+          <article class="summary-copy" id="preview-summary-copy"></article>
+          <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-controls="study-source-panel" aria-expanded="false">Source · page 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-controls="study-source-panel" aria-expanded="false">Source · page 3</button></div>
+          <button class="primary-action cursor-interaction" type="button" data-view="quiz">Go to Quiz</button>
+        </section>
+        <section class="learning-view" id="preview-flashcards" data-panel="flashcards" aria-label="Example flashcards" hidden>
+          <div class="empty-learning" data-empty="flashcards" hidden><h2>Flashcards for this session</h2><p>Create a set when you are ready to practise.</p><button class="primary-action cursor-interaction" type="button" data-generate="flashcards">Generate Flashcards</button></div>
+          <div class="learning-view" data-ready="flashcards">
+            <p class="item-count" data-card-count aria-live="polite">Card 1 of 3 · example set</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Show card answer" aria-describedby="preview-card-prompt"><span class="card-prompt" id="preview-card-prompt" lang="nb">Hva betyr aktiv gjenhenting?</span><span class="card-answer" id="preview-card-answer" lang="nb" hidden></span><span class="flip-hint">Show answer</span></button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-controls="study-source-panel" aria-expanded="false" hidden>View source · page 2</button>
+            <div class="card-actions"><button class="secondary-action cursor-interaction" type="button" data-card-step="-1" disabled>Previous</button><button class="secondary-action cursor-interaction" type="button" data-card-step="1">Next</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Restart the same cards</button>
+          </div>
+        </section>
+        <section class="learning-view" id="preview-quiz" data-panel="quiz" aria-label="Example quiz" hidden>
+          <div class="empty-learning" data-empty="quiz" hidden><h2>Quiz for this session</h2><p>Create questions when you are ready to test your understanding.</p><button class="primary-action cursor-interaction" type="button" data-generate="quiz">Generate Quiz</button></div>
+          <div class="learning-view" data-ready="quiz">
+            <p class="item-count">Question 1 of 1 · example set</p>
+            <fieldset class="quiz-options" lang="nb"><legend data-quiz-question>Hva er aktiv gjenhenting?</legend><label><input type="radio" name="preview-quiz-answer" value="0"><span data-quiz-option="0">Forklare uten å se i notatene</span></label><label><input type="radio" name="preview-quiz-answer" value="1"><span data-quiz-option="1">Lese avsnittet en gang til</span></label><label><input type="radio" name="preview-quiz-answer" value="2"><span data-quiz-option="2">Markere alle overskriftene</span></label><label><input type="radio" name="preview-quiz-answer" value="3"><span data-quiz-option="3">Kopiere teksten ord for ord</span></label></fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Confirm answer</button>
+            <p class="quiz-feedback" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-controls="study-source-panel" aria-expanded="false" hidden>View source · page 2</button>
+            <button class="secondary-action cursor-interaction" type="button" data-quiz-restart hidden>Retry the same question</button>
+          </div>
+        </section>
+      </main>
+      <aside class="source-panel" id="study-source-panel" aria-label="Illustrative original excerpt" hidden><div class="source-heading"><h2>Source excerpt</h2><button class="secondary-action cursor-interaction" type="button" data-close-source>Close</button></div><p class="source-file">Studieteknikk.pdf · physical page <span data-source-page>2</span></p><blockquote><mark data-excerpt lang="nb"></mark></blockquote><p class="source-note">Illustrative original text in Norwegian Bokmål. A location reference does not establish that an AI answer is correct.</p></aside>
+    </div>
+  </div>
+  <p class="text-small text-muted preview-note">Concept preview · sample content · no PDF processing or AI calls</p>
+  <script>
+    (() => {
+      const root = document.getElementById('study-preview');
+      const app = root.querySelector('.app-shell');
+      const form = root.querySelector('#study-startup-form');
+      const fileInput = root.querySelector('#study-pdf');
+      const languageInput = root.querySelector('#study-language');
+      const levelInput = root.querySelector('#study-level');
+      const acknowledgement = root.querySelector('#study-ack');
+      const screens = new Set(['startup', 'summary', 'flashcards', 'quiz']);
+      const state = { view: 'startup', language: 'nb', level: 'detailed', file: null, active: false, selectedName: '', card: 0, flipped: false, answer: null, confirmed: false, source: null, ready: { summary: true, flashcards: true, quiz: true } };
+      const presentationOrigin = `study-preview-${Math.random().toString(36).slice(2)}`;
+      let lastPresentationScreen = 'startup';
+      let sourceReturn = null;
+      const originals = [
+        { page: 2, text: 'Aktiv gjenhenting betyr å hente frem lært stoff uten å se i notatene først.' },
+        { page: 2, text: 'Sammenlign svaret med notatene for å oppdage det som mangler eller trenger en korrigering.' },
+        { page: 3, text: 'Repetisjon over flere økter innebærer å vende tilbake til det samme stoffet i ulike studieøkter.' }
+      ];
+      const content = {
+        nb: {
+          title: 'Aktiv læring og en gjennomtenkt studieøkt',
+          introduction: 'Når du arbeider med et fag, er det forskjell på å kjenne igjen en forklaring og å kunne forklare den selv. Et avsnitt kan virke kjent mens du leser, selv om det er vanskelig å hente frem hovedpoengene etterpå. En aktiv studieøkt gir plass til begge deler: å forstå materialet og å prøve det du husker.',
+          sections: [
+            ['Hent frem før du ser etter', 'Aktiv gjenhenting innebærer å forsøke å svare fra hukommelsen før du åpner notatene. Du kan begynne med et begrep, et kort spørsmål eller en sammenheng fra teksten. Formuler et svar med egne ord, også når det første forsøket er ufullstendig.', 'Hensikten er å gjøre det tydelig hva du faktisk kan forklare. Hvis du ikke finner ordene, har du et konkret utgangspunkt for neste gjennomlesning. Du trenger ikke gjengi teksten ordrett for å vise at du har forstått innholdet.'],
+            ['Bruk kilden til å undersøke svaret', 'Sammenlign forsøket ditt med det opprinnelige materialet. Se etter hovedpoenger som mangler, begreper som er blandet sammen, og formuleringer som gjør forklaringen upresis. Noter hva du vil korrigere, fremfor å anta at et svar er godt bare fordi det høres kjent ut.', 'Et kildeutdrag hjelper deg å finne stedet du skal kontrollere. At et utdrag finnes på en side, avgjør ikke alene om en forklaring er riktig eller tilstrekkelig. Les sammenhengen rundt utsagnet og vurder om det faktisk støtter svaret.'],
+            ['Knytt begrepene sammen', 'En definisjon er ofte starten på forståelsen. Prøv også å beskrive hvordan begrepet henger sammen med andre deler av faget. Hva forklarer det, og når kan du bruke det? Et enkelt eksempel kan gjøre en ellers generell formulering mer konkret.', 'Bruk eksempler som passer til materialet du studerer. Hvis teksten ikke gir grunnlag for en bestemt sammenheng, bør du markere usikkerheten og undersøke videre. Målet er en forklaring du kan begrunne, ikke å fylle alle tomrom med antakelser.'],
+            ['Vend tilbake i flere økter', 'Repetisjon over flere økter betyr at du kommer tilbake til det samme stoffet ved flere anledninger. Begynn gjerne med å undersøke hva du husker før du leser alt på nytt. Da får den nye gjennomgangen et tydelig formål.', 'Et praktisk avslutningspunkt er å velge ett eller to begreper du vil møte igjen. Oppgaven i neste økt kan være å forklare dem, sammenligne dem eller bruke dem i et eksempel. Dette er en arbeidsmåte, ikke et krav om en bestemt kalender eller et avansert system.'],
+            ['Avslutt med en tydelig oppsummering', 'Bruk slutten av økten til å samle de viktigste poengene. Skill mellom det du kan forklare selv, det du har rettet etter kildekontroll, og det du fremdeles trenger å undersøke. En kort oppsummering gjør det lettere å velge hvor du skal begynne neste gang.', 'Sammendrag, flashcards og quiz gir ulike innganger til det samme materialet. Sammendraget gir oversikt, kortene inviterer til gjenhenting, og quizen lar deg vurdere konkrete svaralternativer. Behold forbindelsen til originalteksten gjennom hele arbeidet.']
+          ],
+          brief: 'Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.',
+          bullets: ['Forklar begrepene med egne ord.', 'Kontroller det du er usikker på i kilden.', 'Vend tilbake til stoffet i flere økter.'],
+          cards: [['Hva betyr aktiv gjenhenting?', 'Å hente frem det du har lært uten å se i notatene først.'], ['Hvorfor kontrollere svaret i notatene?', 'For å oppdage det som mangler eller trenger en korrigering.'], ['Hva innebærer repetisjon over flere økter?', 'Å vende tilbake til det samme stoffet i ulike studieøkter.']],
+          question: 'Hva er aktiv gjenhenting?', options: ['Forklare uten å se i notatene', 'Lese avsnittet en gang til', 'Markere alle overskriftene', 'Kopiere teksten ord for ord'],
+          correctExplanation: 'Du hentet frem stoffet uten å se i notatene.',
+          incorrectExplanation: 'Å forklare uten å se i notatene er aktiv gjenhenting. Å lese eller kopiere viser teksten fremfor å hente den frem fra hukommelsen.'
+        },
+        en: {
+          title: 'Active learning and a purposeful study session',
+          introduction: 'Recognising an explanation is different from being able to explain it yourself. A paragraph may feel familiar while you read, even when recalling its main points later is difficult. An active study session makes room for both understanding the material and trying to recall it.',
+          sections: [
+            ['Recall before looking', 'Active retrieval means attempting an answer from memory before opening your notes. Start with a concept, a short question or a relationship from the text. Put the answer into your own words, even when the first attempt is incomplete.', 'The purpose is to make clear what you can actually explain. If the words do not come, you have a concrete starting point for the next reading. Understanding does not require repeating the original text word for word.'],
+            ['Use the source to examine the answer', 'Compare your attempt with the original material. Look for missing main points, confused concepts and wording that makes the explanation imprecise. Identify what you need to correct instead of treating a familiar-sounding answer as sufficient.', 'A source excerpt helps you locate the passage to inspect. Its presence on a page does not by itself establish that an explanation is correct or complete. Read the surrounding context and consider whether it actually supports the answer.'],
+            ['Connect the concepts', 'A definition is often the beginning of understanding. Try explaining how the concept connects to other parts of the subject. What does it explain, and when could you use it? A simple example can make a general statement more concrete.', 'Choose examples that fit your study material. If the text does not support a particular connection, acknowledge the uncertainty and investigate further. The goal is an explanation you can justify, rather than filling every gap with assumptions.'],
+            ['Return across several sessions', 'Repetition across sessions means revisiting the same material on different occasions. Begin by checking what you remember before rereading everything. This gives the next reading a clear purpose.', 'A practical ending is to choose one or two concepts to revisit. In the next session, explain them, compare them or use them in an example. This is a way of working, not a requirement for a particular calendar or an elaborate tracking system.'],
+            ['Finish with a clear overview', 'Use the end of the session to gather the main points. Distinguish what you can explain yourself, what you corrected after checking the source, and what you still need to investigate. A short overview makes it easier to choose a starting point next time.', 'Summaries, flashcards and quizzes provide different approaches to the same material. A summary gives an overview, cards invite recall, and a quiz asks you to assess concrete answer options. Keep the connection to the original text throughout your work.']
+          ],
+          brief: 'Try recalling what you learned before looking at your notes. Compare your answer with the material to identify what needs more practice.',
+          bullets: ['Explain the concepts in your own words.', 'Check uncertain points in the source.', 'Return to the material across several sessions.'],
+          cards: [['What does active retrieval mean?', 'Recalling what you learned without looking at your notes first.'], ['Why check your answer against the notes?', 'To identify missing points or statements that need correction.'], ['What does repetition across sessions involve?', 'Returning to the same material in different study sessions.']],
+          question: 'What is active retrieval?', options: ['Explaining without looking at the notes', 'Reading the paragraph once more', 'Highlighting all the headings', 'Copying the text word for word'],
+          correctExplanation: 'You recalled the material without looking at your notes.',
+          incorrectExplanation: 'Explaining without looking at the notes is active retrieval. Reading or copying displays the text rather than retrieving it from memory.'
+        }
+      };
+      function appendText(parent, tag, text) { const element = document.createElement(tag); element.textContent = text; parent.appendChild(element); return element; }
+      let summaryKey = '';
+      function renderSummary() {
+        const key = `${state.language}:${state.level}`;
+        if (key === summaryKey) return;
+        summaryKey = key;
+        const copy = root.querySelector('#preview-summary-copy'), text = content[state.language];
+        copy.replaceChildren(); copy.lang = state.language;
+        appendText(copy, 'h2', text.title);
+        if (state.level === 'detailed') {
+          appendText(copy, 'p', text.introduction);
+          text.sections.forEach(([heading, ...paragraphs]) => { appendText(copy, 'h3', heading); paragraphs.forEach(paragraph => appendText(copy, 'p', paragraph)); });
+        } else {
+          appendText(copy, 'p', text.brief);
+          const list = document.createElement('ul'); text.bullets.forEach(item => appendText(list, 'li', item)); copy.appendChild(list);
+        }
+      }
+      function readyToStart() { return Boolean(state.file?.pdf && languageInput.value && levelInput.value && acknowledgement.checked); }
+      function renderForm() {
+        root.querySelector('#generate-summary').disabled = !readyToStart();
+        root.querySelector('#selected-file').hidden = !state.file;
+        root.querySelector('#selected-file').textContent = state.file ? (state.file.pdf ? `Selected: ${state.file.name}` : `Choose a PDF file instead of “${state.file.name}”.`) : 'No file selected.';
+        root.querySelector('#startup-status').textContent = readyToStart() ? 'Ready to preview. Your PDF will not be processed.' : 'Complete the options to preview saved example content.';
+      }
+      function sourceItem() {
+        if (state.source === 'card') return originals[state.card];
+        if (state.source === 'summary-repetition') return originals[2];
+        if (state.source === 'summary') return { page: 2, text: `${originals[0].text} ${originals[1].text}` };
+        return originals[0];
+      }
+      function render() {
+        const startup = state.view === 'startup', text = content[state.language];
+        app.dataset.mode = state.view;
+        root.querySelector('.doc-context').hidden = startup;
+        root.querySelectorAll('[data-panel]').forEach(panel => panel.hidden = panel.dataset.panel !== state.view);
+        root.querySelectorAll('[data-preview]').forEach(button => {
+          if (button.dataset.preview === state.view) button.setAttribute('aria-current', 'page');
+          else button.removeAttribute('aria-current');
+        });
+        root.querySelector('.session-meta').textContent = `${state.language === 'en' ? 'English' : 'Norwegian Bokmål'} · ${state.level === 'detailed' ? 'Detailed' : 'Brief'} · sample content`;
+        root.querySelector('.sample-note').textContent = state.active ? `Saved example from Studieteknikk.pdf. Your selected file “${state.selectedName}” has not been read or sent.` : 'Saved example content from Studieteknikk.pdf.';
+        renderSummary();
+        ['flashcards', 'quiz'].forEach(view => { root.querySelector(`[data-empty="${view}"]`).hidden = state.ready[view]; root.querySelector(`[data-ready="${view}"]`).hidden = !state.ready[view]; });
+        const card = text.cards[state.card];
+        root.querySelector('[data-card-count]').textContent = `Card ${state.card + 1} of ${text.cards.length} · example set`;
+        root.querySelector('.card-prompt').textContent = card[0]; root.querySelector('.card-prompt').hidden = state.flipped;
+        root.querySelector('.card-answer').textContent = card[1]; root.querySelector('.card-answer').hidden = !state.flipped;
+        root.querySelector('.card-prompt').lang = state.language; root.querySelector('.card-answer').lang = state.language;
+        root.querySelector('.flip-hint').textContent = state.flipped ? 'Show question' : 'Show answer';
+        root.querySelector('[data-flip]').setAttribute('aria-pressed', String(state.flipped));
+        root.querySelector('[data-flip]').setAttribute('aria-label', state.flipped ? 'Show card question' : 'Show card answer');
+        root.querySelector('[data-flip]').setAttribute('aria-describedby', state.flipped ? 'preview-card-answer' : 'preview-card-prompt');
+        const cardSource = root.querySelector('[data-source="card"]'); cardSource.hidden = !state.flipped; cardSource.textContent = `View source · page ${originals[state.card].page}`;
+        root.querySelector('[data-card-step="-1"]').disabled = state.card === 0;
+        root.querySelector('[data-card-step="1"]').disabled = state.card === text.cards.length - 1;
+        root.querySelector('[data-card-restart]').hidden = state.card !== text.cards.length - 1;
+        root.querySelector('[data-quiz-question]').textContent = text.question; root.querySelector('.quiz-options').lang = state.language;
+        root.querySelectorAll('[data-quiz-option]').forEach(option => option.textContent = text.options[Number(option.dataset.quizOption)]);
+        root.querySelectorAll('input[name="preview-quiz-answer"]').forEach(input => { input.checked = Number(input.value) === state.answer; input.disabled = state.confirmed; });
+        root.querySelector('[data-confirm]').disabled = state.answer === null; root.querySelector('[data-confirm]').hidden = state.confirmed;
+        const feedback = root.querySelector('[data-feedback]'); feedback.hidden = !state.confirmed; feedback.lang = 'en';
+        if (state.confirmed) {
+          const correct = state.answer === 0;
+          feedback.replaceChildren();
+          appendText(feedback, 'strong', correct ? 'Correct. ' : 'Incorrect. ');
+          const explanation = appendText(feedback, 'span', correct ? text.correctExplanation : text.incorrectExplanation); explanation.lang = state.language;
+          const result = appendText(feedback, 'span', `Result: ${correct ? 1 : 0} of 1 correct (${correct ? 100 : 0}%).`); result.className = 'feedback-line';
+          if (!correct) { const review = appendText(feedback, 'span', 'Question to review: '); review.className = 'feedback-line'; const question = appendText(review, 'span', text.question); question.lang = state.language; }
+        }
+        root.querySelector('[data-source="quiz"]').hidden = !state.confirmed; root.querySelector('[data-quiz-restart]').hidden = !state.confirmed;
+        const open = state.source !== null;
+        root.querySelector('.source-panel').hidden = !open;
+        root.querySelectorAll('[data-source]').forEach(button => button.setAttribute('aria-expanded', String(open && button.dataset.source === state.source)));
+        root.querySelectorAll('.app-brandbar, .app-main').forEach(element => element.inert = open);
+        if (open) { const item = sourceItem(); root.querySelector('[data-source-page]').textContent = item.page; root.querySelector('[data-excerpt]').textContent = item.text; }
+        renderForm();
+      }
+      function setView(view, direct = false) {
+        if (!screens.has(view)) return;
+        if (view === 'flashcards' && state.view !== view) state.flipped = false;
+        if (direct && !state.active) { state.language = 'nb'; state.level = 'detailed'; state.ready = { summary: true, flashcards: true, quiz: true }; }
+        if (direct && view !== 'startup') state.ready[view] = true;
+        state.view = view; state.source = null; sourceReturn = null; render();
+      }
+      function savePresentation() {
+        lastPresentationScreen = state.view;
+        const result = window.openai?.setWidgetState?.({ privateContent: { kind: 'study-preview-presentation', screen: state.view, origin: presentationOrigin }, modelContent: null });
+        result?.catch?.(() => {});
+      }
+      function restorePresentation(value) {
+        if (value?.kind !== 'study-preview-presentation' || !screens.has(value.screen)) return;
+        if (value.origin === presentationOrigin || value.screen === lastPresentationScreen) return;
+        lastPresentationScreen = value.screen;
+        setView(value.screen, true);
+      }
+      function positionSource(trigger) {
+        const panel = root.querySelector('.source-panel');
+        const triggerTop = trigger.getBoundingClientRect().top - app.getBoundingClientRect().top;
+        const offset = Math.max(0, Math.min(triggerTop - 72, app.offsetHeight - panel.offsetHeight - 12));
+        app.style.setProperty('--source-offset', `${offset}px`);
+      }
+      function closeSource(returnFocus) {
+        const previous = sourceReturn;
+        state.source = null; render(); sourceReturn = null;
+        if (returnFocus && previous) { previous.trigger.focus({ preventScroll: true }); window.scrollTo(previous.x, previous.y); }
+      }
+      fileInput.addEventListener('change', () => {
+        const selected = fileInput.files?.[0];
+        state.file = selected ? { name: selected.name, type: selected.type, size: selected.size, pdf: selected.type === 'application/pdf' || /\.pdf$/i.test(selected.name) } : null;
+        acknowledgement.checked = false; renderForm();
+      });
+      form.addEventListener('change', renderForm);
+      function startExample() {
+        if (!readyToStart()) return;
+        state.active = true; state.selectedName = state.file.name; state.language = languageInput.value; state.level = levelInput.value;
+        state.card = 0; state.flipped = false; state.answer = null; state.confirmed = false; state.ready = { summary: true, flashcards: false, quiz: false };
+        setView('summary'); root.querySelector('.doc-name').scrollIntoView({ block: 'nearest' });
+      }
+      form.addEventListener('submit', event => { event.preventDefault(); startExample(); });
+      root.addEventListener('click', event => {
+        const button = event.target.closest('button'); if (!button || !root.contains(button) || button.disabled) return;
+        if (button.hasAttribute('data-choose-pdf')) { fileInput.click(); return; }
+        if (button.hasAttribute('data-start')) { startExample(); return; }
+        if (button.dataset.preview) { setView(button.dataset.preview, true); savePresentation(); return; }
+        if (button.dataset.view) { setView(button.dataset.view); return; }
+        if (button.dataset.generate) { state.ready[button.dataset.generate] = true; render(); return; }
+        if (button.hasAttribute('data-flip')) { state.flipped = !state.flipped; state.source = null; }
+        else if (button.hasAttribute('data-card-step')) { state.card = Math.max(0, Math.min(2, state.card + Number(button.dataset.cardStep))); state.flipped = false; state.source = null; }
+        else if (button.hasAttribute('data-card-restart')) { state.card = 0; state.flipped = false; state.source = null; }
+        else if (button.dataset.source) {
+          sourceReturn = { trigger: button, x: window.scrollX, y: window.scrollY };
+          state.source = button.dataset.source; render(); positionSource(button);
+          root.querySelector('[data-close-source]').focus({ preventScroll: true }); return;
+        }
+        else if (button.hasAttribute('data-close-source')) { closeSource(true); return; }
+        else if (button.hasAttribute('data-confirm')) { if (state.answer === null || state.confirmed) return; state.confirmed = true; }
+        else if (button.hasAttribute('data-quiz-restart')) { state.answer = null; state.confirmed = false; }
+        else return;
+        render();
+      });
+      root.addEventListener('change', event => { if (event.target.matches('input[name="preview-quiz-answer"]') && !state.confirmed) { state.answer = Number(event.target.value); render(); } });
+      root.addEventListener('keydown', event => { if (event.key === 'Escape' && state.source) closeSource(true); });
+      render();
+      restorePresentation(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restorePresentation(event.detail?.globals?.widgetState?.privateContent));
+      if (globalThis.lucide?.createIcons) globalThis.lucide.createIcons();
+    })();
+  </script>
+</div>

@@ -1,0 +1,57 @@
+<section class="concept" id="concept-@@SLUG@@" data-concept="@@SLUG@@" aria-labelledby="concept-@@SLUG@@-name">
+  <div class="concept-caption">
+    <h2 id="concept-@@SLUG@@-name">@@NAME@@</h2>
+    <button class="btn btn-ghost" type="button" data-expand aria-expanded="false" aria-controls="frame-@@SLUG@@">Se større</button>
+  </div>
+  <p class="text-small text-muted concept-description">@@DESCRIPTION@@</p>
+  <div class="app-frame" id="frame-@@SLUG@@">
+    <div class="app-shell theme-@@SLUG@@" data-app="@@SLUG@@">
+      <header class="app-brandbar"><span class="app-brand">AI Study Buddy</span><span class="sample-label">Eksempel</span></header>
+      <nav class="app-nav" aria-label="Læringsfunksjoner i @@NAME@@">
+        <button class="nav-choice cursor-interaction" type="button" data-view="summary" aria-pressed="false" aria-controls="@@SLUG@@-summary">Summary</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="flashcards" aria-pressed="true" aria-controls="@@SLUG@@-flashcards">Flashcards</button>
+        <button class="nav-choice cursor-interaction" type="button" data-view="quiz" aria-pressed="false" aria-controls="@@SLUG@@-quiz">Quiz</button>
+      </nav>
+      <main class="app-main">
+        <div class="doc-context"><h3 class="doc-name">Studieteknikk.pdf</h3><p class="session-meta">Bokmål · Brief · eksempelinnhold</p></div>
+        <div class="view-container">
+          <section class="learning-view" id="@@SLUG@@-summary" data-panel="summary" aria-label="Eksempelsammendrag" hidden>
+            <div class="summary-copy"><h4>Aktiv læring</h4><p>Prøv å hente frem det du har lært før du ser i notatene. Sammenlign svaret med materialet for å finne det du trenger å øve mer på.</p><h4>Tre hovedpunkter</h4><ul><li>Forklar begrepene med egne ord.</li><li>Kontroller det du er usikker på i kilden.</li><li>Vend tilbake til stoffet i flere økter.</li></ul></div>
+            <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-expanded="false" aria-controls="@@SLUG@@-source">Kilde · side 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-expanded="false" aria-controls="@@SLUG@@-source">Kilde · side 3</button></div>
+            <button class="primary-action cursor-interaction" type="button" data-view="quiz">Gå til Quiz</button>
+          </section>
+          <section class="learning-view" id="@@SLUG@@-flashcards" data-panel="flashcards" aria-label="Eksempelkort">
+            <p class="item-count" data-card-count aria-live="polite">Kort 1 av 3 · eksempelsett</p>
+            <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Flashcard: Hva betyr aktiv gjenhenting? Klikk for å vise svaret.">
+              <span class="card-prompt">Hva betyr aktiv gjenhenting?</span>
+              <span class="card-answer" hidden></span>
+              <span class="flip-hint">Klikk for å se svaret</span>
+            </button>
+            <button class="source-link cursor-interaction" type="button" data-source="card" aria-expanded="false" aria-controls="@@SLUG@@-source" hidden>Vis kilde · side 2</button>
+            <div class="card-actions"><button class="small-action prev cursor-interaction" type="button" data-card-step="-1" disabled>Forrige</button><button class="small-action next cursor-interaction" type="button" data-card-step="1">Neste</button></div>
+            <button class="source-link cursor-interaction" type="button" data-card-restart hidden>Start de samme kortene på nytt</button>
+          </section>
+          <section class="learning-view" id="@@SLUG@@-quiz" data-panel="quiz" aria-label="Eksempelquiz" hidden>
+            <p class="item-count">Spørsmål 1 av 1 · eksempelsett</p>
+            <fieldset class="quiz-options"><legend>Hva er aktiv gjenhenting?</legend>
+              <label><input type="radio" name="@@SLUG@@-answer" value="0"><span>Forklare uten å se i notatene</span></label>
+              <label><input type="radio" name="@@SLUG@@-answer" value="1"><span>Lese avsnittet en gang til</span></label>
+              <label><input type="radio" name="@@SLUG@@-answer" value="2"><span>Markere alle overskriftene</span></label>
+              <label><input type="radio" name="@@SLUG@@-answer" value="3"><span>Kopiere teksten ord for ord</span></label>
+            </fieldset>
+            <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Bekreft svar</button>
+            <p class="quiz-result" data-feedback role="status" hidden></p>
+            <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-expanded="false" aria-controls="@@SLUG@@-source" hidden>Vis kilde · side 2</button>
+            <button class="small-action cursor-interaction" type="button" data-quiz-restart hidden>Prøv det samme spørsmålet igjen</button>
+          </section>
+        </div>
+      </main>
+      <aside class="source-panel" id="@@SLUG@@-source" aria-label="Kildeutdrag i @@NAME@@" hidden>
+        <div class="source-heading"><h4>Kildeutdrag</h4><button class="small-action cursor-interaction" type="button" data-close-source>Lukk</button></div>
+        <p class="source-file">Studieteknikk.pdf · fysisk side <span data-source-page>2</span></p>
+        <blockquote><mark data-excerpt></mark></blockquote>
+        <p class="source-note">Illustrert originalutdrag. Henvisningen viser hvor teksten står.</p>
+      </aside>
+    </div>
+  </div>
+</section>

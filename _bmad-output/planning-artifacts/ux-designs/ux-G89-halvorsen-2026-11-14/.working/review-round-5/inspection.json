@@ -1,0 +1,53 @@
+{
+  "320": {
+    "scrollWidth": 288,
+    "clientWidth": 288,
+    "formWidth": 254,
+    "overflowControls": []
+  },
+  "390": {
+    "scrollWidth": 358,
+    "clientWidth": 358,
+    "formWidth": 324,
+    "overflowControls": []
+  },
+  "1024": {
+    "scrollWidth": 992,
+    "clientWidth": 992,
+    "formWidth": 582,
+    "overflowControls": []
+  },
+  "1280": {
+    "scrollWidth": 1248,
+    "clientWidth": 1248,
+    "formWidth": 760,
+    "overflowControls": []
+  },
+  "desktop": {
+    "x": 0,
+    "y": 84,
+    "width": 1504,
+    "height": 1072.609375,
+    "scrollWidth": 1504,
+    "clientWidth": 1504,
+    "frameHeight": 1157
+  },
+  "initial": {
+    "headline": "Make studying easier",
+    "disabled": true,
+    "ack": false,
+    "icons": 6,
+    "canvas": "rgb(237, 238, 242)",
+    "headingFont": "\"Avenir Next\", Avenir, \"Segoe UI\", system-ui, sans-serif"
+  },
+  "interaction": {
+    "gated": true,
+    "ready": true,
+    "summary": "summary",
+    "cardsEmpty": true,
+    "flipped": "true",
+    "quizEmpty": true,
+    "confirmed": true
+  },
+  "errors": []
+}
