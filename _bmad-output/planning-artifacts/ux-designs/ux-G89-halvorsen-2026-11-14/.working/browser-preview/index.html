@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://persistent.oaistatic.com/plugins/visualize/; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://persistent.oaistatic.com/plugins/visualize/charts/; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>AI Study Buddy – Selected UX concept</title>
+<title>Study Preview</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 
 </head>
 <body>
-<iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="AI Study Buddy – Selected UX concept" data-srcdoc="&lt;!doctype html&gt;
+<iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="Study Preview" data-srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://persistent.oaistatic.com/plugins/visualize/; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://persistent.oaistatic.com/plugins/visualize/charts/; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;AI Study Buddy – Selected UX concept&lt;/title&gt;
+&lt;title&gt;Study Preview&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -102,7 +102,7 @@
   --red: light-dark(rgb(224 46 42), rgb(255 103 100));
   --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
   --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
-  --viz-series-1: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --viz-series-1: var(--primary);
   --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
   --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
   --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
@@ -1677,66 +1677,20 @@ html&gt;body{padding:0}&lt;/style&gt;
       postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
     });
   };
-  const bindingElement = document.getElementById(&quot;codex-visualization-bindings&quot;);
   const mockElement = document.getElementById(&quot;codex-connector-mocks&quot;);
-  const fileElement = document.getElementById(&quot;codex-preview-files&quot;);
   const connectorGlobals = {};
-  if (bindingElement != null || mockElement != null || fileElement != null) {
-    const bindings = parse(bindingElement?.textContent ?? &quot;{}&quot;);
-    bindingElement?.remove();
-    const values = new Map();
-    for (const [name, binding] of Object.entries(bindings)) {
-      if (binding.type === &quot;json&quot;) values.set(name, structuredClone(binding.value));
-    }
-    const pending = [bindings];
-    while (pending.length) {
-      const object = pending.pop();
-      Object.freeze(object);
-      for (const child of Object.values(object)) {
-        if (child !== null &amp;&amp; typeof child === &quot;object&quot;) pending.push(child);
-      }
-    }
-    const updates = [];
-    if (mockElement != null) {
-      const mocks = Object.entries(parse(mockElement.textContent));
-      mockElement.remove();
-      for (const [name, value] of mocks) {
-        values.set(name, value);
-        updates.push({ name, revision: 1, state: &quot;ready&quot;, value: { type: &quot;json&quot;, value } });
-      }
-    }
-    if (fileElement != null) {
-      const files = parse(fileElement.textContent);
-      fileElement.remove();
-      const blobs = new Map();
-      const urls = [];
-      for (const [name, binding] of Object.entries(bindings)) {
-        if (binding.type !== &quot;file&quot; || !hasOwn(files, binding.path)) continue;
-        const file = files[binding.path];
-        let blob = blobs.get(binding.path);
-        if (blob == null) {
-          const bytes = Uint8Array.fromBase64?.(file.base64) ??
-            Uint8Array.from(atob(file.base64), (char) =&gt; char.charCodeAt(0));
-          blob = new Blob([bytes], { type: file.mimeType });
-          blobs.set(binding.path, blob);
-        }
-        const url = URL.createObjectURL(blob);
-        urls.push(url);
-        values.set(name, { name: file.name, blob, url });
-        updates.push({ name, revision: 1, state: &quot;ready&quot;, value: { type: &quot;file&quot;, ...file } });
-      }
-      globalThis.addEventListener(&quot;pagehide&quot;, (event) =&gt; {
-        // A persisted pagehide can restore this same document and its subscriptions.
-        if (event.persisted) return;
-        for (const url of urls) URL.revokeObjectURL(url);
-        urls.length = 0;
-      });
-    }
-    if (mockElement != null || fileElement != null) connectorGlobals.visualizationData = { updates };
+  if (mockElement != null) {
+    const values = new Map(Object.entries(parse(mockElement.textContent)));
+    mockElement.remove();
+    connectorGlobals.visualizationData = {
+      updates: Array.from(values, ([name, value]) =&gt; ({
+        name,
+        revision: 1,
+        state: &quot;ready&quot;,
+        value: { type: &quot;json&quot;, value },
+      })),
+    };
     connectorGlobals.visualization = {
-      get bindings() {
-        return bindings;
-      },
       /** @param {string} name @param {(value: unknown) =&gt; void} callback */
       onData(name, callback) {
         if (typeof callback !== &quot;function&quot;) {
@@ -1748,7 +1702,7 @@ html&gt;body{padding:0}&lt;/style&gt;
           // oxlint-disable-next-line no-console -- Keep authored callback failures local.
           console.error(&quot;Live visualization data callback failed&quot;, error);
         }
-        // A static preview delivers the current value once per subscription.
+        // A static preview delivers the current fixture once per subscription.
         return () =&gt; {};
       },
     };
@@ -2182,6 +2136,189 @@ html&gt;body{padding:0}&lt;/style&gt;
       #study-preview .app-shell[data-mode=&quot;startup&quot;] .brand-mark { width: 30px !important; height: 30px !important; }
       #study-preview .app-shell .privacy-icon { width: 24px !important; height: 24px !important; }
     }
+    #study-preview .session-document-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 22px; text-align: left; }
+    #study-preview .session-document-copy { flex: 1 1 230px; min-width: 0; }
+    #study-preview .session-tools { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-left: auto; flex: 0 0 auto; }
+    #study-preview .session-toggle,
+    #study-preview .session-action { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 10px 16px; border: 1px solid var(--mode-border); border-radius: 10px; color: var(--brand-ink); background: var(--surface); font-size: 15px; line-height: 1.4; font-weight: 500; }
+    #study-preview .session-toggle:hover,
+    #study-preview .session-action:hover { background: var(--mode-soft); border-color: var(--mode-border); }
+    #study-preview .session-toggle svg { width: 17px !important; height: 17px !important; }
+    #study-preview .session-popup { position: absolute; top: calc(100% + 9px); right: 0; z-index: 4; display: grid; gap: 4px; width: 252px; padding: 7px; border-radius: 14px; background: #ffffff; box-shadow: 0 12px 28px rgba(43, 52, 48, 0.18); text-align: left; }
+    #study-preview .session-option { display: grid; gap: 3px; width: 100%; padding: 12px; min-height: 64px; border: 0; border-radius: 9px; text-align: left; color: #29372f; background: #ffffff; font-size: 15px; line-height: 1.4; }
+    #study-preview .session-option small { color: #56615b; font-size: 12px; line-height: 1.5; }
+    #study-preview .session-option:hover { background: var(--mode-soft); }
+    #study-preview .session-modal-layer { position: absolute; inset: 0; z-index: 8; border-radius: inherit; background: rgba(31, 42, 36, 0.24); }
+    #study-preview .session-confirmation { position: absolute; top: var(--session-dialog-offset, 130px); left: 50%; transform: translateX(-50%); width: min(480px, calc(100% - 32px)); padding: 28px; border-radius: 16px; background: #ffffff; color: #29372f; box-shadow: 0 22px 44px rgba(29, 39, 34, 0.23); }
+    #study-preview .session-confirmation h2 { margin: 0 0 18px; font-size: 25px; font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; }
+    #study-preview .session-confirmation p { margin: 0 0 14px; font-size: 16px; line-height: 1.7; }
+    #study-preview .session-confirmation .session-confirmation-note { margin: 0; font-size: 14px; color: #56615b; }
+    #study-preview .session-confirmation-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; margin-top: 25px; }
+    #study-preview .app-navigation .app-nav-item:disabled { color: #686e69; background: transparent; border-color: transparent; opacity: 0.75; }
+    #study-preview .upload-area:disabled { opacity: 0.78; }
+    #study-preview .startup-form select:disabled { color: #56615b; opacity: 1; }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .session-document-row { gap: 14px; }
+      #study-preview .session-document-copy { flex-basis: 100%; }
+      #study-preview .session-tools { justify-content: flex-start; margin-left: 0; }
+      #study-preview .session-popup { left: 0; right: auto; width: min(252px, calc(100cqw - 38px)); }
+      #study-preview .session-confirmation { padding: 23px 20px; }
+      #study-preview .session-confirmation h2 { font-size: 23px; }
+      #study-preview .session-confirmation-actions { display: grid; grid-template-columns: 1fr; }
+      #study-preview .session-confirmation-actions button { width: 100%; justify-self: stretch; }
+    }
+    #study-preview .active-session-card { grid-column: 2; grid-row: 2; position: relative; z-index: 1; display: grid; gap: 28px; width: 100%; min-width: 0; padding: 36px; border-radius: 34px; background: var(--surface); box-shadow: 0 22px 42px rgba(43, 52, 68, 0.14); }
+    #study-preview .active-session-document { display: flex; align-items: center; gap: 18px; min-width: 0; }
+    #study-preview .active-document-icon { width: 42px; height: 42px; flex: 0 0 auto; color: var(--brand-ink); stroke-width: 1.5; }
+    #study-preview .active-document-copy { min-width: 0; }
+    #study-preview .active-document-copy h2 { margin: 0; color: var(--brand-ink); font-size: 26px; font-weight: 650; line-height: 1.4; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+    #study-preview .active-session-example { margin: 3px 0 0; color: var(--muted-ink); font-size: 14px; line-height: 1.6; }
+    #study-preview .active-session-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 0; padding-top: 25px; border-top: 1px solid #e1e5e9; }
+    #study-preview .active-session-choices dt { color: var(--muted-ink); font-size: 15px; line-height: 1.6; }
+    #study-preview .active-session-choices dd { margin: 5px 0 0; color: var(--brand-ink); font-size: 19px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+    #study-preview .active-session-lock { display: flex; align-items: flex-start; gap: 11px; margin: 0; color: var(--muted-ink); font-size: 15px; line-height: 1.65; }
+    #study-preview .active-session-lock svg, #study-preview .active-session-lock i { width: 19px; height: 19px; flex: 0 0 auto; margin-top: 3px; }
+    #study-preview .active-session-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 14px; }
+    #study-preview .active-session-actions &gt; button { display: inline-flex; align-items: center; justify-content: center; justify-self: stretch; width: 100%; min-width: 0; height: 56px; min-height: 56px; padding: 14px 18px; border-radius: 15px; font-size: 16px; line-height: 1.4; font-weight: 500; gap: 14px; }
+    #study-preview .active-session-continue svg, #study-preview .active-session-continue i { width: 21px; height: 21px; flex: 0 0 auto; }
+    #study-preview .active-session-actions .session-action { border-color: #a9b2bd; background: #f2f3f5; }
+    #study-preview .active-session-actions .session-action:hover { background: #e7eaee; }
+    #study-preview .active-session-notes { display: grid; gap: 5px; color: var(--muted-ink); font-size: 14px; line-height: 1.6; }
+    #study-preview .active-session-notes p { margin: 0; }
+    @container study-preview-app (max-width: 900px) {
+      #study-preview .active-session-card { width: min(760px, 100%); margin-inline: auto; }
+    }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .active-session-card { padding: 26px 21px; gap: 24px; border-radius: 24px; }
+      #study-preview .active-session-document { gap: 13px; }
+      #study-preview .active-document-icon { width: 34px; height: 34px; }
+      #study-preview .active-document-copy h2 { font-size: 22px; }
+      #study-preview .active-session-choices { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-top: 22px; }
+      #study-preview .active-session-choices dd { margin-top: 2px; font-size: 18px; }
+      #study-preview .active-session-actions { grid-template-columns: minmax(0, 1fr); }
+    }
+    #study-preview .status-preview-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin: 18px 0; color: #343a40; font: 400 14px/1.6 &quot;Avenir Next&quot;, Avenir, &quot;Segoe UI&quot;, system-ui, sans-serif; }
+    #study-preview .status-preview-controls label { font-weight: 600; }
+    #study-preview .status-preview-controls select { min-height: 44px; max-width: 100%; padding: 9px 12px; border: 1px solid #789681; border-radius: 9px; background: #ffffff; color: #29372f; font: inherit; font-size: 16px; }
+    #study-preview .status-preview-controls select:focus-visible { outline: 3px solid #315d3f; outline-offset: 3px; }
+    #study-preview .status-preview-controls p { flex-basis: 100%; margin: 0; color: #56615b; }
+    #study-preview .status-card { gap: 20px; min-height: 256px; padding: 34px; }
+    #study-preview .status-heading-row { display: flex; align-items: flex-start; gap: 14px; }
+    #study-preview .status-card h2 { margin: 0; font-size: 26px; line-height: 1.4; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+    #study-preview .status-pending, #study-preview .status-error-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 30px; height: 36px; color: var(--action-ink); }
+    #study-preview .status-pending svg, #study-preview .status-pending i, #study-preview .status-error-icon svg, #study-preview .status-error-icon i { width: 27px; height: 27px; stroke-width: 1.8; }
+    #study-preview .status-pending svg, #study-preview .status-pending i { animation: status-pending-turn 1.2s linear infinite; }
+    #study-preview .status-body { max-width: 62ch; font-size: 17px; line-height: 1.8; }
+    #study-preview .status-support { max-width: 65ch; color: var(--muted-ink); font-size: 14px; line-height: 1.8; }
+    #study-preview .status-recovery { display: flex; flex-wrap: wrap; gap: 14px; }
+    #study-preview .app-shell[data-status=&quot;pdf-problem&quot;] .app-main { max-width: 850px; padding: 31px 34px 46px; }
+    #study-preview .app-shell[data-status=&quot;pdf-problem&quot;] .status-error-icon { color: #526173; }
+    #study-preview .status-card [hidden] { display: none !important; }
+    @keyframes status-pending-turn { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      #study-preview .status-pending svg, #study-preview .status-pending i { animation: none; }
+    }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .status-card { min-height: 0; padding: 25px 20px; gap: 19px; }
+      #study-preview .status-card h2 { font-size: 23px; }
+      #study-preview .status-heading-row { gap: 11px; }
+      #study-preview .status-body { font-size: 16px; }
+      #study-preview .app-shell[data-status=&quot;pdf-problem&quot;] .app-main { padding: 26px 17px 35px; }
+      #study-preview .status-preview-controls { align-items: stretch; }
+      #study-preview .status-preview-controls label { width: 100%; }
+      #study-preview .status-preview-controls select { width: 100%; }
+    }
+    /* Shared mobile study alignment. Append before each preview&#x27;s ID rewrite. */
+    @container study-preview-app (max-width: 540px) {
+      #study-preview :is([data-panel=&quot;flashcards&quot;], [data-panel=&quot;quiz&quot;]),
+      #study-preview .status-card {
+        text-align: center;
+      }
+
+      #study-preview :is(.card-prompt, .card-answer, .flip-hint),
+      #study-preview .quiz-options legend,
+      #study-preview .quiz-feedback,
+      #study-preview .learning-end,
+      #study-preview .app-shell:is([data-mode=&quot;flashcards&quot;], [data-mode=&quot;quiz&quot;]) .reliability-notice {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .quiz-options legend {
+        width: 100%;
+        min-width: 0;
+      }
+
+      /* Balance the native radio with an equal empty track at the logical end. */
+      #study-preview .quiz-options label {
+        display: grid;
+        grid-template-columns: 19px minmax(0, 1fr) 19px;
+      }
+
+      #study-preview .quiz-options input {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      #study-preview .quiz-options [data-quiz-option] {
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
+        width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .quiz-options .option-state {
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+        padding-inline: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview :is([data-panel=&quot;flashcards&quot;], [data-panel=&quot;quiz&quot;]) :is(.primary-action, .secondary-action, .source-link),
+      #study-preview .status-recovery &gt; button {
+        justify-self: center;
+        max-width: 100%;
+        min-width: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview :is(.card-actions, .learning-actions, .status-recovery) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Retain full-width question navigation and its existing mobile hit areas. */
+      #study-preview .learning-actions.quiz-navigation button {
+        justify-self: stretch;
+      }
+
+      #study-preview .wrong-review ol {
+        padding-inline: 24px;
+      }
+
+      #study-preview .quiz-review-link {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .status-heading-row {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #study-preview :is(.status-heading-row, .status-body, .status-support) {
+        min-width: 0;
+        max-width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+    }
   &lt;/style&gt;
   &lt;div class=&quot;app-frame&quot;&gt;
     &lt;div class=&quot;app-shell&quot; data-mode=&quot;startup&quot;&gt;
@@ -2228,8 +2365,56 @@ html&gt;body{padding:0}&lt;/style&gt;
               &lt;p class=&quot;field-help&quot;&gt;Reloading or closing ends this temporary session.&lt;/p&gt;
             &lt;/div&gt;
           &lt;/form&gt;
+          &lt;section class=&quot;active-session-card&quot; data-active-home aria-labelledby=&quot;active-home-document&quot; hidden&gt;
+            &lt;div class=&quot;active-session-document&quot;&gt;
+              &lt;i class=&quot;active-document-icon&quot; data-lucide=&quot;file-text&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+              &lt;div class=&quot;active-document-copy&quot;&gt;
+                &lt;h2 id=&quot;active-home-document&quot; data-home-document&gt;Studieteknikk.pdf&lt;/h2&gt;
+                &lt;p class=&quot;active-session-example&quot;&gt;Saved example content&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;dl class=&quot;active-session-choices&quot;&gt;
+              &lt;div&gt;&lt;dt&gt;Study material language&lt;/dt&gt;&lt;dd data-home-language&gt;Norwegian Bokmål&lt;/dd&gt;&lt;/div&gt;
+              &lt;div&gt;&lt;dt&gt;Summary detail&lt;/dt&gt;&lt;dd data-home-level&gt;Detailed&lt;/dd&gt;&lt;/div&gt;
+            &lt;/dl&gt;
+            &lt;p class=&quot;active-session-lock&quot;&gt;&lt;i data-lucide=&quot;lock-keyhole&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;These choices stay fixed for this session. Start a new session to change them.&lt;/span&gt;&lt;/p&gt;
+            &lt;div class=&quot;active-session-actions&quot;&gt;
+              &lt;button class=&quot;primary-action active-session-continue cursor-interaction&quot; type=&quot;button&quot; data-home-continue aria-describedby=&quot;home-continue-destination&quot;&gt;&lt;span&gt;Continue studying&lt;/span&gt;&lt;i data-lucide=&quot;arrow-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+              &lt;button class=&quot;session-action cursor-interaction&quot; type=&quot;button&quot; data-session-action=&quot;new&quot; data-home-new-session&gt;New session&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;active-session-notes&quot;&gt;
+              &lt;p id=&quot;home-continue-destination&quot; data-home-destination&gt;Return to Summary&lt;/p&gt;
+              &lt;p&gt;Reloading or closing ends this temporary session.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/section&gt;
         &lt;/section&gt;
-        &lt;div class=&quot;doc-context&quot; hidden&gt;&lt;h1 class=&quot;doc-name&quot;&gt;Studieteknikk.pdf&lt;/h1&gt;&lt;p class=&quot;session-meta&quot;&gt;Norwegian Bokmål · Detailed · sample content&lt;/p&gt;&lt;p class=&quot;sample-note&quot;&gt;&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;doc-context&quot; hidden&gt;
+          &lt;div class=&quot;session-document-row&quot;&gt;
+            &lt;div class=&quot;session-document-copy&quot;&gt;&lt;h1 class=&quot;doc-name&quot;&gt;Studieteknikk.pdf&lt;/h1&gt;&lt;p class=&quot;session-meta&quot;&gt;Norwegian Bokmål · Detailed · sample content&lt;/p&gt;&lt;/div&gt;
+            &lt;div class=&quot;session-tools session-visible-actions&quot; data-session-tools&gt;
+              &lt;button class=&quot;session-action cursor-interaction&quot; type=&quot;button&quot; data-session-action=&quot;new&quot;&gt;New session&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p class=&quot;sample-note&quot;&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;section class=&quot;learning-view status-view&quot; data-status-view aria-label=&quot;Session status&quot; hidden&gt;
+          &lt;div class=&quot;empty-learning status-card&quot; data-status-card&gt;
+            &lt;div class=&quot;status-heading-row&quot;&gt;
+              &lt;span class=&quot;status-pending&quot; data-status-pending role=&quot;status&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;&gt;
+                &lt;i data-lucide=&quot;loader-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                &lt;span class=&quot;accessible-copy&quot; data-status-announcement&gt;Generating summary&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;span class=&quot;status-error-icon&quot; data-status-error hidden&gt;&lt;i data-lucide=&quot;file-warning&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+              &lt;h2 id=&quot;status-title&quot; data-status-heading&gt;Generating summary&lt;/h2&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;status-body&quot; data-status-body&gt;Your summary is being prepared from the PDF text.&lt;/p&gt;
+            &lt;div class=&quot;status-recovery&quot; data-status-recovery hidden&gt;
+              &lt;button class=&quot;primary-action cursor-interaction&quot; type=&quot;button&quot; data-retry&gt;Try again&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;status-support&quot; data-status-support&gt;Keep this session open while the summary is being prepared.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
         &lt;section class=&quot;learning-view&quot; id=&quot;preview-summary&quot; data-panel=&quot;summary&quot; aria-label=&quot;Example summary&quot; hidden&gt;
           &lt;article class=&quot;summary-copy&quot; id=&quot;preview-summary-copy&quot;&gt;&lt;/article&gt;
           &lt;div class=&quot;summary-sources&quot;&gt;&lt;button class=&quot;source-link cursor-interaction&quot; type=&quot;button&quot; data-source=&quot;summary&quot; aria-controls=&quot;study-source-panel&quot; aria-expanded=&quot;false&quot;&gt;Source · page 2&lt;/button&gt;&lt;button class=&quot;source-link cursor-interaction&quot; type=&quot;button&quot; data-source=&quot;summary-repetition&quot; aria-controls=&quot;study-source-panel&quot; aria-expanded=&quot;false&quot;&gt;Source · page 3&lt;/button&gt;&lt;/div&gt;
@@ -2258,6 +2443,19 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;/section&gt;
       &lt;/main&gt;
       &lt;aside class=&quot;source-panel&quot; id=&quot;study-source-panel&quot; aria-label=&quot;Illustrative original excerpt&quot; hidden&gt;&lt;div class=&quot;source-heading&quot;&gt;&lt;h2&gt;Source excerpt&lt;/h2&gt;&lt;button class=&quot;secondary-action cursor-interaction&quot; type=&quot;button&quot; data-close-source&gt;Close&lt;/button&gt;&lt;/div&gt;&lt;p class=&quot;source-file&quot;&gt;Studieteknikk.pdf · physical page &lt;span data-source-page&gt;2&lt;/span&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;mark data-excerpt lang=&quot;nb&quot;&gt;&lt;/mark&gt;&lt;/blockquote&gt;&lt;p class=&quot;source-note&quot;&gt;Illustrative original text in Norwegian Bokmål. A location reference does not establish that an AI answer is correct.&lt;/p&gt;&lt;/aside&gt;
+      &lt;div class=&quot;session-modal-layer&quot; data-session-overlay hidden&gt;
+        &lt;section class=&quot;session-confirmation&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;session-dialog-title&quot; aria-describedby=&quot;session-dialog-message session-dialog-next session-dialog-note&quot; data-session-dialog&gt;
+          &lt;h2 id=&quot;session-dialog-title&quot;&gt;Start a new session?&lt;/h2&gt;
+          &lt;p id=&quot;session-dialog-message&quot;&gt;The current PDF, study material and progress will be removed from this session.&lt;/p&gt;
+          &lt;p id=&quot;session-dialog-next&quot;&gt;You will return to an empty Home screen. Choose a PDF and settings when you are ready to study again.&lt;/p&gt;
+          &lt;p class=&quot;session-confirmation-note&quot; id=&quot;session-dialog-note&quot;&gt;The original PDF on your device will not be changed.&lt;/p&gt;
+          &lt;div class=&quot;session-confirmation-actions&quot;&gt;
+            &lt;button class=&quot;secondary-action cursor-interaction&quot; type=&quot;button&quot; data-session-cancel&gt;Cancel&lt;/button&gt;
+            &lt;button class=&quot;primary-action cursor-interaction&quot; type=&quot;button&quot; data-session-confirm&gt;Start new session&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;
+
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;p class=&quot;text-small text-muted preview-note&quot;&gt;Concept preview · sample content · no PDF processing or AI calls&lt;/p&gt;
@@ -2458,6 +2656,369 @@ html&gt;body{padding:0}&lt;/style&gt;
       });
       root.addEventListener(&#x27;change&#x27;, event =&gt; { if (event.target.matches(&#x27;input[name=&quot;preview-quiz-answer&quot;]&#x27;) &amp;&amp; !state.confirmed) { state.answer = Number(event.target.value); render(); } });
       root.addEventListener(&#x27;keydown&#x27;, event =&gt; { if (event.key === &#x27;Escape&#x27; &amp;&amp; state.source) closeSource(true); });
+      let exampleEnded = false;
+      const sessionToggle = root.querySelector(&#x27;[data-session-toggle]&#x27;);
+      const sessionPopup = root.querySelector(&#x27;[data-session-popup]&#x27;);
+      const sessionOverlay = root.querySelector(&#x27;[data-session-overlay]&#x27;);
+      const sessionDialog = root.querySelector(&#x27;[data-session-dialog]&#x27;);
+      const sessionCancel = root.querySelector(&#x27;[data-session-cancel]&#x27;);
+      const sessionConfirm = root.querySelector(&#x27;[data-session-confirm]&#x27;);
+      let sessionDialogOpen = false;
+      let sessionReturn = null;
+      let inertSnapshot = [];
+
+      function closeSessionPopup(returnFocus = false) {
+        if (!sessionPopup) return;
+        sessionPopup.hidden = true;
+        sessionToggle.setAttribute(&#x27;aria-expanded&#x27;, &#x27;false&#x27;);
+        if (returnFocus) sessionToggle.focus({ preventScroll: true });
+      }
+      function guardSessionFocus(event) {
+        if (sessionDialogOpen &amp;&amp; !sessionDialog.contains(event.target)) sessionCancel.focus({ preventScroll: true });
+      }
+      function guardSessionPointer(event) {
+        if (sessionDialogOpen &amp;&amp; !sessionDialog.contains(event.target)) {
+          event.preventDefault(); event.stopImmediatePropagation();
+        }
+      }
+      function guardSessionKeys(event) {
+        if (!sessionDialogOpen) return;
+        if (event.key === &#x27;Escape&#x27;) { event.preventDefault(); event.stopImmediatePropagation(); closeSessionDialog(true); return; }
+        if (event.key === &#x27;Tab&#x27;) {
+          const first = sessionCancel, last = sessionConfirm;
+          if (event.shiftKey &amp;&amp; (document.activeElement === first || !sessionDialog.contains(document.activeElement))) { event.preventDefault(); last.focus(); }
+          else if (!event.shiftKey &amp;&amp; (document.activeElement === last || !sessionDialog.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+        }
+      }
+      function openSessionDialog(trigger) {
+        if (!state.active || sessionDialogOpen) return;
+        sessionReturn = sessionToggle || trigger;
+        sessionDialogOpen = true;
+        closeSessionPopup();
+        const otherConcepts = [...document.querySelectorAll(&#x27;[data-concept]&#x27;)].filter(element =&gt; element !== root);
+        inertSnapshot = [...root.querySelectorAll(&#x27;.app-brandbar, .app-main, .source-panel&#x27;), ...otherConcepts].map(element =&gt; [element, element.inert]);
+        inertSnapshot.forEach(([element]) =&gt; element.inert = true);
+        sessionOverlay.hidden = false;
+        const area = app.getBoundingClientRect(), source = sessionReturn.getBoundingClientRect(), height = sessionDialog.getBoundingClientRect().height;
+        const top = Math.max(16, Math.min(source.bottom - area.top + 18, area.height - height - 20));
+        app.style.setProperty(&#x27;--session-dialog-offset&#x27;, `${top}px`);
+        document.addEventListener(&#x27;keydown&#x27;, guardSessionKeys, true);
+        document.addEventListener(&#x27;focusin&#x27;, guardSessionFocus, true);
+        document.addEventListener(&#x27;pointerdown&#x27;, guardSessionPointer, true);
+        sessionCancel.focus({ preventScroll: true });
+      }
+      function closeSessionDialog(restoreFocus) {
+        const trigger = sessionReturn;
+        sessionDialogOpen = false;
+        sessionOverlay.hidden = true;
+        inertSnapshot.forEach(([element, previous]) =&gt; element.inert = previous);
+        inertSnapshot = [];
+        document.removeEventListener(&#x27;keydown&#x27;, guardSessionKeys, true);
+        document.removeEventListener(&#x27;focusin&#x27;, guardSessionFocus, true);
+        document.removeEventListener(&#x27;pointerdown&#x27;, guardSessionPointer, true);
+        sessionReturn = null;
+        if (restoreFocus &amp;&amp; trigger) trigger.focus({ preventScroll: true });
+      }
+      function confirmSessionEnd() {
+        if (!sessionDialogOpen) return;
+        closeSessionDialog(false);
+        exampleEnded = true;
+        state.active = false;
+        state.file = null;
+        state.selectedName = &#x27;&#x27;;
+        state.language = &#x27;nb&#x27;;
+        state.level = &#x27;brief&#x27;;
+        state.card = 0;
+        state.flipped = false;
+        state.answer = null;
+        state.confirmed = false;
+        state.source = null;
+        state.ready = { summary: false, flashcards: false, quiz: false };
+        state.view = &#x27;startup&#x27;;
+        sourceReturn = null;
+        summaryKey = &#x27;&#x27;;
+        form.reset();
+        fileInput.value = &#x27;&#x27;;
+        languageInput.value = &#x27;&#x27;;
+        levelInput.value = &#x27;&#x27;;
+        acknowledgement.checked = false;
+        render();
+        savePresentation();
+        root.querySelector(&#x27;[data-choose-pdf]&#x27;).focus({ preventScroll: true });
+      }
+      const sessionBaseRender = render;
+      const sessionBaseSetView = setView;
+      readyToStart = () =&gt; !state.active &amp;&amp; Boolean(state.file?.pdf &amp;&amp; languageInput.value &amp;&amp; levelInput.value &amp;&amp; acknowledgement.checked);
+      renderForm = () =&gt; {
+        root.querySelector(&#x27;#generate-summary&#x27;).disabled = !readyToStart();
+        fileInput.disabled = state.active;
+        languageInput.disabled = state.active;
+        levelInput.disabled = state.active;
+        acknowledgement.disabled = state.active;
+        root.querySelector(&#x27;[data-choose-pdf]&#x27;).disabled = state.active;
+        root.querySelector(&#x27;#selected-file&#x27;).hidden = !state.file;
+        root.querySelector(&#x27;#selected-file&#x27;).textContent = state.file ? (state.file.pdf ? `${state.file.example ? &#x27;Example document&#x27; : &#x27;Selected&#x27;}: ${state.file.name}` : `Choose a PDF file instead of “${state.file.name}”.`) : &#x27;No file selected.&#x27;;
+        root.querySelector(&#x27;#startup-status&#x27;).textContent = state.active
+          ? &#x27;Session settings are locked. Open a learning tab and choose New session to change them.&#x27;
+          : readyToStart() ? &#x27;Ready to preview. Your PDF will not be processed.&#x27; : &#x27;Complete the options to preview saved example content.&#x27;;
+      };
+      render = () =&gt; {
+        sessionBaseRender();
+        if (state.source) closeSessionPopup();
+        root.querySelectorAll(&#x27;[data-preview]&#x27;).forEach(button =&gt; button.disabled = button.dataset.preview !== &#x27;startup&#x27; &amp;&amp; exampleEnded &amp;&amp; !state.active);
+        root.querySelector(&#x27;[data-session-tools]&#x27;).hidden = !state.active;
+        root.querySelector(&#x27;.sample-note&#x27;).textContent = &#x27;Saved example content · no PDF processing or AI calls.&#x27;;
+        if (!state.active) {
+          root.querySelector(&#x27;#preview-summary-copy&#x27;).replaceChildren();
+          summaryKey = &#x27;&#x27;;
+          root.querySelector(&#x27;.card-prompt&#x27;).textContent = &#x27;&#x27;;
+          root.querySelector(&#x27;.card-answer&#x27;).textContent = &#x27;&#x27;;
+          root.querySelector(&#x27;[data-card-count]&#x27;).textContent = &#x27;&#x27;;
+          root.querySelector(&#x27;[data-quiz-question]&#x27;).textContent = &#x27;&#x27;;
+          root.querySelectorAll(&#x27;[data-quiz-option]&#x27;).forEach(option =&gt; option.textContent = &#x27;&#x27;);
+          root.querySelector(&#x27;[data-feedback]&#x27;).replaceChildren();
+          root.querySelector(&#x27;[data-excerpt]&#x27;).textContent = &#x27;&#x27;;
+        }
+      };
+      setView = (view, direct = false) =&gt; {
+        if (!screens.has(view)) return;
+        if (!state.active &amp;&amp; view !== &#x27;startup&#x27;) {
+          if (exampleEnded || !direct) return;
+          state.active = true;
+          state.file = { name: &#x27;Studieteknikk.pdf&#x27;, pdf: true, example: true };
+          state.selectedName = &#x27;Studieteknikk.pdf&#x27;;
+          state.language = &#x27;nb&#x27;;
+          state.level = &#x27;detailed&#x27;;
+          state.ready = { summary: true, flashcards: true, quiz: true };
+          languageInput.value = &#x27;nb&#x27;;
+          levelInput.value = &#x27;detailed&#x27;;
+          acknowledgement.checked = true;
+        }
+        closeSessionPopup();
+        sessionBaseSetView(view, false);
+      };
+      root.addEventListener(&#x27;click&#x27;, event =&gt; {
+        const button = event.target.closest(&#x27;button&#x27;);
+        if (!button || button.disabled || !root.contains(button)) return;
+        if (button.hasAttribute(&#x27;data-session-toggle&#x27;)) {
+          const open = sessionPopup.hidden;
+          sessionPopup.hidden = !open;
+          sessionToggle.setAttribute(&#x27;aria-expanded&#x27;, String(open));
+        } else if (button.dataset.sessionAction === &#x27;new&#x27;) openSessionDialog(button);
+        else if (button.hasAttribute(&#x27;data-session-cancel&#x27;)) closeSessionDialog(true);
+        else if (button.hasAttribute(&#x27;data-session-confirm&#x27;)) confirmSessionEnd();
+      });
+      document.addEventListener(&#x27;pointerdown&#x27;, event =&gt; {
+        if (sessionPopup &amp;&amp; !sessionPopup.hidden &amp;&amp; !event.target.closest(&#x27;.session-tools&#x27;)) closeSessionPopup();
+      });
+      root.addEventListener(&#x27;keydown&#x27;, event =&gt; {
+        if (event.key === &#x27;Escape&#x27; &amp;&amp; sessionPopup &amp;&amp; !sessionPopup.hidden &amp;&amp; !sessionDialogOpen) {
+          event.preventDefault(); closeSessionPopup(true);
+        }
+      });
+      fileInput.addEventListener(&#x27;change&#x27;, event =&gt; {
+        if (state.active) { event.stopImmediatePropagation(); return; }
+      }, true);
+
+      // Selected Home state; session choices and practice remain in memory only.
+      const activeHomeCard = root.querySelector(&#x27;[data-active-home]&#x27;);
+      const startupHeading = root.querySelector(&#x27;#startup-title&#x27;);
+      const startupDescription = root.querySelector(&#x27;.startup-intro p&#x27;);
+      const emptyHomeHeading = startupHeading.textContent;
+      const emptyHomeDescription = [...startupDescription.childNodes].map(node =&gt; node.cloneNode(true));
+      const activeHomeBaseRender = render;
+      const activeHomeBaseSetView = setView;
+      const learningNames = { summary: &#x27;Summary&#x27;, flashcards: &#x27;Flashcards&#x27;, quiz: &#x27;Quiz&#x27; };
+      let lastStudyView = &#x27;summary&#x27;;
+      render = () =&gt; {
+        activeHomeBaseRender();
+        const activeHome = state.active &amp;&amp; state.view === &#x27;startup&#x27;;
+        form.hidden = state.active;
+        activeHomeCard.hidden = !activeHome;
+        if (activeHome) {
+          startupHeading.textContent = &#x27;Continue your study session&#x27;;
+          startupDescription.textContent = &#x27;Your study material is ready when you are.&#x27;;
+          root.querySelector(&#x27;[data-home-document]&#x27;).textContent = state.file?.name || state.selectedName;
+          root.querySelector(&#x27;[data-home-language]&#x27;).textContent = state.language === &#x27;en&#x27; ? &#x27;English&#x27; : &#x27;Norwegian Bokmål&#x27;;
+          root.querySelector(&#x27;[data-home-level]&#x27;).textContent = state.level === &#x27;brief&#x27; ? &#x27;Brief&#x27; : &#x27;Detailed&#x27;;
+          root.querySelector(&#x27;[data-home-destination]&#x27;).textContent = `Return to ${learningNames[lastStudyView]}`;
+          root.querySelector(&#x27;.active-session-example&#x27;).textContent = &#x27;Saved example content · no PDF processing&#x27;;
+        } else {
+          startupHeading.textContent = emptyHomeHeading;
+          startupDescription.replaceChildren(...emptyHomeDescription.map(node =&gt; node.cloneNode(true)));
+        }
+      };
+      setView = (view, direct = false) =&gt; {
+        activeHomeBaseSetView(view, direct);
+        if (state.active &amp;&amp; state.view !== &#x27;startup&#x27;) lastStudyView = state.view;
+      };
+      root.addEventListener(&#x27;click&#x27;, event =&gt; {
+        const button = event.target.closest(&#x27;button[data-home-continue]&#x27;);
+        if (!button || button.disabled || !root.contains(button) || !state.active) return;
+        setView(lastStudyView);
+        root.querySelector(`[data-preview=&quot;${state.view}&quot;]`).focus({ preventScroll: true });
+      });
+
+      // Isolated presentation fixtures. No PDF read, API call, persistence or timer.
+      let statusConcept = null;
+      const statusRegion = root.querySelector(&#x27;[data-status-view]&#x27;);
+      const statusHeading = root.querySelector(&#x27;[data-status-heading]&#x27;);
+      const statusBody = root.querySelector(&#x27;[data-status-body]&#x27;);
+      const statusPending = root.querySelector(&#x27;[data-status-pending]&#x27;);
+      const statusError = root.querySelector(&#x27;[data-status-error]&#x27;);
+      const statusSupport = root.querySelector(&#x27;[data-status-support]&#x27;);
+      const statusRecovery = root.querySelector(&#x27;[data-status-recovery]&#x27;);
+      const statusOperations = {
+        checking: { label: &#x27;Checking PDF&#x27;, view: &#x27;summary&#x27;, body: &#x27;Checking whether this PDF can be used for your study session.&#x27; },
+        extracting: { label: &#x27;Extracting text&#x27;, view: &#x27;summary&#x27;, body: &#x27;Reading the PDF text before preparing your study material.&#x27; },
+        summary: { label: &#x27;Generating summary&#x27;, view: &#x27;summary&#x27;, body: &#x27;Your summary is being prepared from the PDF text.&#x27; },
+        flashcards: { label: &#x27;Generating flashcards&#x27;, view: &#x27;flashcards&#x27;, body: &#x27;Your flashcards are being prepared from the PDF text.&#x27; },
+        quiz: { label: &#x27;Generating quiz&#x27;, view: &#x27;quiz&#x27;, body: &#x27;Your quiz is being prepared from the PDF text.&#x27; }
+      };
+      let statusOperation = &#x27;summary&#x27;;
+      let retryOperation = null;
+      let statusFixtureEnded = false;
+      const statusBaseRender = render;
+      const statusBaseSetView = setView;
+
+      function showStatusMessage(heading, body, support, pending, retry) {
+        statusHeading.textContent = heading;
+        statusBody.textContent = body;
+        statusSupport.textContent = support;
+        statusPending.hidden = !pending;
+        statusError.hidden = pending;
+        statusRecovery.hidden = !retry;
+        root.querySelector(&#x27;[data-status-announcement]&#x27;).textContent = pending ? heading : &#x27;&#x27;;
+        statusRegion.setAttribute(&#x27;aria-busy&#x27;, String(pending));
+        if (pending) statusRegion.removeAttribute(&#x27;role&#x27;);
+        else statusRegion.setAttribute(&#x27;role&#x27;, &#x27;alert&#x27;);
+      }
+
+      render = () =&gt; {
+        statusBaseRender();
+        if (exampleEnded &amp;&amp; !state.active) {
+          statusFixtureEnded = true;
+          root.dispatchEvent(new Event(&#x27;study-preview:ended&#x27;));
+        }
+        const fixtureActive = statusConcept !== null &amp;&amp; state.active &amp;&amp; !statusFixtureEnded;
+        statusRegion.hidden = true;
+        delete app.dataset.status;
+        if (!fixtureActive) return;
+        app.dataset.status = statusConcept;
+        root.querySelector(&#x27;.doc-name&#x27;).textContent = state.file.name;
+        root.querySelector(&#x27;.session-meta&#x27;).textContent = `${state.language === &#x27;en&#x27; ? &#x27;English&#x27; : &#x27;Norwegian Bokmål&#x27;} · ${state.level === &#x27;brief&#x27; ? &#x27;Brief&#x27; : &#x27;Detailed&#x27;} · fixed for this session`;
+        root.querySelector(&#x27;.sample-note&#x27;).textContent = &#x27;Synthetic state sketch · no PDF processing or AI calls.&#x27;;
+        if (!state.ready.summary) {
+          // Never expose a new Summary before its complete response is accepted.
+          root.querySelector(&#x27;#preview-summary-copy&#x27;).replaceChildren();
+          summaryKey = &#x27;&#x27;;
+        }
+
+        if (statusConcept === &#x27;loading&#x27;) {
+          const operation = statusOperations[statusOperation];
+          const visible = state.view === operation.view;
+          statusRegion.hidden = !visible;
+          if (visible) root.querySelectorAll(&#x27;[data-panel]&#x27;).forEach(panel =&gt; panel.hidden = true);
+          showStatusMessage(operation.label, operation.body, &#x27;Keep this session open while processing continues.&#x27;, true, false);
+          root.querySelectorAll(&#x27;[data-preview]&#x27;).forEach(button =&gt; {
+            button.disabled = button.dataset.preview !== &#x27;startup&#x27; &amp;&amp; button.dataset.preview !== operation.view;
+          });
+          if (state.view === &#x27;startup&#x27;) {
+            startupHeading.textContent = &#x27;Your study session is in progress&#x27;;
+            startupDescription.textContent = `${operation.label}. Continue to see the current status.`;
+            root.querySelector(&#x27;.active-session-example&#x27;).textContent = &#x27;Synthetic state sketch · processing in progress&#x27;;
+          }
+        } else if (statusConcept === &#x27;pdf-problem&#x27;) {
+          statusRegion.hidden = false;
+          root.querySelectorAll(&#x27;[data-panel]&#x27;).forEach(panel =&gt; panel.hidden = true);
+          activeHomeCard.hidden = true;
+          root.querySelector(&#x27;.doc-context&#x27;).hidden = false;
+          root.querySelectorAll(&#x27;[data-preview]&#x27;).forEach(button =&gt; button.disabled = button.dataset.preview !== &#x27;startup&#x27;);
+          showStatusMessage(
+            &#x27;This PDF needs a password&#x27;,
+            &#x27;We cannot read a password-protected PDF. No study material has been created.&#x27;,
+            &#x27;Choose New session to return to Home, then select a PDF that does not need a password.&#x27;,
+            false, false
+          );
+        } else if (statusConcept === &#x27;ai-error&#x27;) {
+          const pendingHere = retryOperation === state.view;
+          const visible = state.view === &#x27;flashcards&#x27; || pendingHere;
+          statusRegion.hidden = !visible;
+          if (visible) root.querySelectorAll(&#x27;[data-panel]&#x27;).forEach(panel =&gt; panel.hidden = true);
+          if (pendingHere) {
+            const operation = statusOperations[retryOperation];
+            showStatusMessage(operation.label, operation.body, &#x27;Your existing study material and progress are kept. You can open other ready tabs while you wait.&#x27;, true, false);
+          } else {
+            showStatusMessage(
+              &#x27;Flashcards could not be created&#x27;,
+              &#x27;We could not create a usable set. Please try again.&#x27;,
+              &#x27;Your existing study material and progress are kept. You can open another ready tab or try again.&#x27;,
+              false, true
+            );
+          }
+          root.querySelectorAll(&#x27;[data-generate]&#x27;).forEach(button =&gt; button.disabled = retryOperation !== null);
+          root.querySelector(&#x27;[data-retry]&#x27;).disabled = retryOperation !== null;
+          if (state.view === &#x27;startup&#x27;) {
+            startupDescription.textContent = &#x27;Your existing study material and progress are kept. Flashcards could not be created.&#x27;;
+            root.querySelector(&#x27;.active-session-example&#x27;).textContent = &#x27;Synthetic state sketch · saved example Summary&#x27;;
+          }
+        }
+      };
+
+      setView = (view, direct = false) =&gt; {
+        if (statusConcept === null) { statusBaseSetView(view, direct); return; }
+        if (state.active &amp;&amp; !statusFixtureEnded) {
+          if (statusConcept === &#x27;pdf-problem&#x27; &amp;&amp; view !== &#x27;startup&#x27;) return;
+          if (statusConcept === &#x27;loading&#x27; &amp;&amp; view !== &#x27;startup&#x27; &amp;&amp; view !== statusOperations[statusOperation].view) return;
+          // Never mark an ungenerated function ready just by opening its tab.
+          statusBaseSetView(view, false);
+          return;
+        }
+        statusBaseSetView(view, direct);
+      };
+
+      root.addEventListener(&#x27;click&#x27;, event =&gt; {
+        if (statusConcept === null || !state.active || statusFixtureEnded) return;
+        const button = event.target.closest(&#x27;button&#x27;);
+        if (!button || button.disabled || !root.contains(button)) return;
+        if (button.hasAttribute(&#x27;data-retry&#x27;) || button.hasAttribute(&#x27;data-generate&#x27;)) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          if (statusConcept !== &#x27;ai-error&#x27; || retryOperation !== null) return;
+          retryOperation = button.hasAttribute(&#x27;data-retry&#x27;) ? &#x27;flashcards&#x27; : button.dataset.generate;
+          // A rejected replacement or manual retry never removes accepted content.
+          state.view = retryOperation;
+          state.source = null;
+          render();
+          statusHeading.setAttribute(&#x27;tabindex&#x27;, &#x27;-1&#x27;);
+          statusHeading.focus({ preventScroll: true });
+        }
+      }, true);
+
+      // Review-only event. The normal main preview keeps its saved-example flow.
+      root.addEventListener(&#x27;study-preview:status&#x27;, event =&gt; {
+        const kind = event.detail?.kind;
+        if (![&#x27;loading&#x27;, &#x27;pdf-problem&#x27;, &#x27;ai-error&#x27;].includes(kind) || exampleEnded) return;
+        const preserveSession = state.active &amp;&amp; kind === &#x27;ai-error&#x27; &amp;&amp; !event.detail?.replaceFixture;
+        if (!state.active) statusBaseSetView(&#x27;summary&#x27;, true);
+        statusConcept = kind;
+        statusFixtureEnded = false;
+        statusOperation = statusOperations[event.detail?.operation] ? event.detail.operation : &#x27;summary&#x27;;
+        retryOperation = null;
+        if (!preserveSession) {
+        state.file = { name: kind === &#x27;pdf-problem&#x27; ? &#x27;Forelesningsnotater.pdf&#x27; : &#x27;Studieteknikk.pdf&#x27;, pdf: true, example: true };
+        state.selectedName = state.file.name;
+        state.ready = { summary: kind === &#x27;ai-error&#x27;, flashcards: false, quiz: false };
+        state.card = 0; state.flipped = false; state.answer = null; state.confirmed = false;
+        }
+        state.view = kind === &#x27;pdf-problem&#x27; ? &#x27;startup&#x27; : kind === &#x27;ai-error&#x27; ? &#x27;flashcards&#x27; : statusOperations[statusOperation].view;
+        state.source = null;
+        sourceReturn = null;
+        summaryKey = &#x27;&#x27;;
+        lastStudyView = state.view === &#x27;startup&#x27; ? &#x27;summary&#x27; : state.view;
+        render();
+      });
+
       render();
       restorePresentation(window.openai?.widgetState?.privateContent);
       window.addEventListener(&#x27;openai:set_globals&#x27;, event =&gt; restorePresentation(event.detail?.globals?.widgetState?.privateContent));
@@ -2466,42 +3027,15 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;/script&gt;
 &lt;/div&gt;
 
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
 (() =&gt; {
-  let positioningReady = window.FloatingUIDOM
-    ? Promise.resolve(window.FloatingUIDOM)
-    : null;
-  const loadScript = (src) =&gt; new Promise((resolve, reject) =&gt; {
-    const script = document.createElement(&quot;script&quot;);
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = () =&gt; {
-      script.remove();
-      reject(new Error(&quot;Could not load tooltip positioning&quot;));
-    };
-    document.head.appendChild(script);
-  });
-  const loadPositioning = async () =&gt; {
-    const domUrl = &quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;;
-    const preload = document.createElement(&quot;link&quot;);
-    preload.rel = &quot;preload&quot;;
-    preload.as = &quot;script&quot;;
-    preload.href = domUrl;
-    document.head.appendChild(preload);
-    try {
-      if (window.FloatingUICore == null) {
-        await loadScript(&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;);
-      }
-      await loadScript(domUrl);
-      return window.FloatingUIDOM;
-    } finally {
-      preload.remove();
-    }
-  };
-  const getPositioning = () =&gt; positioningReady ??= loadPositioning().catch((error) =&gt; {
-    positioningReady = null;
-    throw error;
-  });
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
   const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
   const tooltipId = `codex-visualization-tooltip-${
     window.crypto?.randomUUID?.() ?? Date.now().toString(36)
@@ -2585,7 +3119,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       skipDelayUntil = Date.now() + skipDelay;
     }
   };
-  const updatePosition = (trigger, floating, { computePosition, flip, offset, shift, size }) =&gt; {
+  const updatePosition = (trigger, floating) =&gt; {
     const request = ++positionRequest;
     void computePosition(trigger, floating, {
       middleware: [
@@ -2640,14 +3174,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     document.body.appendChild(floating);
     activeTrigger = trigger;
     setDescribedBy(trigger, true);
-    const request = positionRequest;
-    void getPositioning().then((positioning) =&gt; {
-      if (request !== positionRequest || !trigger.isConnected) return;
-      autoUpdateCleanup = positioning.autoUpdate(trigger, floating, () =&gt; {
-        updatePosition(trigger, floating, positioning);
-      });
-    }).catch(() =&gt; {
-      if (request === positionRequest) closeTooltip(false);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
     });
   };
   const requestOpen = (trigger, immediate = false) =&gt; {

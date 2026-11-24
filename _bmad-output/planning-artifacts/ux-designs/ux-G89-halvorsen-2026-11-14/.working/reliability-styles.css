@@ -1,0 +1,30 @@
+    #study-preview .reliability-review-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 0 0 20px; color: #343a40; font: 400 14px/1.6 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif; }
+    #study-preview .reliability-review-controls label { font-weight: 600; }
+    #study-preview .reliability-review-controls select { min-height: 44px; max-width: 100%; padding: 9px 12px; border: 1px solid #789681; border-radius: 9px; background: #ffffff; color: #29372f; font: inherit; font-size: 16px; }
+    #study-preview .reliability-review-controls select:focus-visible { outline: 3px solid #315d3f; outline-offset: 3px; }
+    #study-preview .reliability-review-controls select:disabled { color: #686e69; border-color: #d4d8d5; }
+    #study-preview .reliability-review-controls p { flex-basis: 100%; max-width: 85ch; margin: 0; color: #56615b; }
+    #study-preview .reliability-width-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+    #study-preview .reliability-width-controls button { min-height: 44px; padding: 9px 15px; border: 1px solid #a1aba5; border-radius: 9px; background: #ffffff; color: #343a40; font: inherit; font-size: 14px; }
+    #study-preview .reliability-width-controls button[aria-pressed="true"] { background: #e2eee4; border-color: #789681; }
+    #study-preview .reliability-width-controls button:hover { background: #edf3ee; }
+    #study-preview .reliability-width-controls button:focus-visible { outline: 3px solid #315d3f; outline-offset: 3px; }
+    #study-preview[data-reliability-width="mobile"] > .app-frame { width: min(100%, 390px); margin-inline: auto; }
+    #study-preview .reliability-review-controls ::selection { background: #e2eee4; color: #29372f; }
+    #study-preview .reliability-notice { padding: 17px 20px; border: 1px solid var(--mode-border); border-radius: 14px; background: var(--mode-soft); color: var(--ink); font-size: 14px; line-height: 1.8; }
+    #study-preview .reliability-notice strong { font-size: 16px; font-weight: 600; }
+    #study-preview .reliability-notice p { margin: 7px 0 0; max-width: 70ch; }
+    #study-preview .reliability-demo-notice { margin-bottom: 22px; }
+    #study-preview .app-shell[data-reliability-neutral="true"] { --canvas: #edeef2; --frame-line: #d7dce2; }
+    #study-preview .app-shell[data-reliability-neutral="true"] .app-main { max-width: 850px; padding: 31px 34px 46px; }
+    #study-preview .app-shell[data-reliability-neutral="true"] .status-error-icon { color: #526173; }
+    #study-preview .app-navigation button:disabled { color: #686e69; cursor: default; }
+    #study-preview .app-navigation button:disabled:hover { background: transparent; color: #686e69; }
+    #study-preview .status-view [data-status-heading]:focus { outline: none; }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .reliability-review-controls { align-items: stretch; }
+      #study-preview .reliability-review-controls label { width: 100%; }
+      #study-preview .reliability-review-controls select { width: 100%; }
+      #study-preview .reliability-notice { padding: 16px 18px; }
+      #study-preview .app-shell[data-reliability-neutral="true"] .app-main { padding: 26px 17px 35px; }
+    }

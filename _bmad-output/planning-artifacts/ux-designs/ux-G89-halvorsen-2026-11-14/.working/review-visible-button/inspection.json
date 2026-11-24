@@ -1,0 +1,194 @@
+{
+  "singleAction": [
+    {
+      "id": "study-preview",
+      "actions": [
+        {
+          "action": "new",
+          "label": "New session"
+        }
+      ]
+    }
+  ],
+  "navigation": [
+    {
+      "id": "study-preview",
+      "label": "Home",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    {
+      "id": "study-preview",
+      "label": "Summary",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Summary"
+      ],
+      "canvas": "rgb(238, 245, 239)"
+    },
+    {
+      "id": "study-preview",
+      "label": "Flashcards",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Flashcards"
+      ],
+      "canvas": "rgb(251, 247, 229)"
+    },
+    {
+      "id": "study-preview",
+      "label": "Quiz",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 244, 252)"
+    }
+  ],
+  "layouts": [
+    {
+      "requestedWidth": 1536,
+      "width": 1504,
+      "scroll": 1504,
+      "bad": []
+    },
+    {
+      "requestedWidth": 1280,
+      "width": 1248,
+      "scroll": 1248,
+      "bad": []
+    },
+    {
+      "requestedWidth": 1024,
+      "width": 992,
+      "scroll": 992,
+      "bad": []
+    },
+    {
+      "requestedWidth": 768,
+      "width": 736,
+      "scroll": 736,
+      "bad": []
+    },
+    {
+      "requestedWidth": 390,
+      "width": 358,
+      "scroll": 358,
+      "bad": []
+    },
+    {
+      "requestedWidth": 320,
+      "width": 288,
+      "scroll": 288,
+      "bad": []
+    }
+  ],
+  "flows": [
+    {
+      "id": "study-preview",
+      "width": 1536,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 512,
+        "right": 992
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "hostRestoreBlocked": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "secondCancelPreserves": true,
+      "secondEndResets": true
+    },
+    {
+      "id": "study-preview",
+      "width": 390,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 17,
+        "right": 341
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "hostRestoreBlocked": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "secondCancelPreserves": true,
+      "secondEndResets": true
+    }
+  ],
+  "exceptions": [],
+  "initial": {
+    "view": "startup",
+    "language": "",
+    "level": "",
+    "ack": false,
+    "generate": true,
+    "learningEnabled": true
+  },
+  "static": {
+    "IDs": 24,
+    "ARIAReferences": 24,
+    "originalHomeMarkupAndCSS": "preserved",
+    "preActionSource": "study-preview-round-11.html",
+    "authoringBuilds": "reproducible and comparisons unchanged",
+    "scope": "Selected Visible button in UX prototype; not production or actual usability evidence."
+  }
+}

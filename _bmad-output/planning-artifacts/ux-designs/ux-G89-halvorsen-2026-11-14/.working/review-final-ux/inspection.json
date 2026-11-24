@@ -1,0 +1,120 @@
+{
+  "layouts": [
+    {
+      "phase": "Summary nb/detailed",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Flashcards",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Quiz result",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Summary en/brief",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Flashcards",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Quiz result",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Summary nb/brief",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Flashcards",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "Quiz result",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    }
+  ],
+  "checks": {
+    "completeFlowWidths": [
+      1280,
+      390,
+      320
+    ],
+    "materialLanguages": [
+      "Norwegian Bokm\u00e5l",
+      "English"
+    ],
+    "levels": [
+      "Brief",
+      "Detailed"
+    ],
+    "uploadAcknowledgement": true,
+    "fixedChoices": true,
+    "summaryCardsQuizNewSession": true,
+    "multipleOriginalSources": true,
+    "cardAnswerOnSourceReturn": true,
+    "confirmBeforeFeedback": true,
+    "lockedReview": true,
+    "actualScore": "7/8=87.5%",
+    "activeHomeResume": true,
+    "cancelPreserves": true,
+    "resetEmptyAndFreshAck": true
+  },
+  "exceptions": [],
+  "checked_date": "2026-11-24",
+  "scope": "Automated synthetic prototype walkthrough, not real PDF extraction, AI validation or observed user study.",
+  "unchanged_existing_sources": 366,
+  "reused_reliability_evidence": {
+    "report": "../review-v1-error-simplification/inspection.json",
+    "sources_match": true
+  },
+  "promoted_copies": {
+    "selected-shell.html": "00a9415053aefce709d6cc05f29c2f4c2caaba4991d4150ec869af5ba08e21d9",
+    "complete-learning-flow.html": "7400f3a6a3e2fe898b4240692dc5480070dfcb1b4712c0caf12511ba1032de41",
+    "reliability-states.html": "706429d5953152dce45d46012447f0d2d833f6ebc73f8367a03b622493ddc2d0",
+    "processing-states.html": "05522ad0e73ba903aac3c1310e91dc0f184fbfe9391f0bf83abd865716734009",
+    "ux-overview.html": "ab30a8c2b3b10af910e5ee5c1bac5f73632f5bd8ec32f76b035efada77974541"
+  },
+  "final_static": {
+    "contracts": "final; planning_status complete",
+    "tokenReferencesResolved": 28,
+    "localLinks": "pass",
+    "unchangedExistingSources": 366,
+    "exactPromotedCopies": 5,
+    "trackedOrStagedPDFs": 0,
+    "privatePDFsIgnored": 3,
+    "stagedFiles": 0,
+    "head": "4eb156b",
+    "architectureStarted": false
+  }
+}

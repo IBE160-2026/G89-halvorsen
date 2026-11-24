@@ -1,0 +1,41 @@
+<div id="active-home-review" data-device="desktop" lang="en" aria-label="Active-session Home concept for AI Study Buddy">
+  <style>
+    #active-home-review { min-width: 0; }
+    #active-home-review .home-review-toolbar { margin-bottom: 24px; }
+    #active-home-review .home-review-stage { width: 100%; min-width: 0; margin: 0 auto; }
+    #active-home-review[data-device="mobile"] .home-review-stage { max-width: 390px; }
+  </style>
+  <div class="viz-controls home-review-toolbar" role="group" aria-label="Preview width">
+    <span class="text-small">Preview</span>
+    <button class="btn btn-primary" type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+    <button class="btn" type="button" data-device="mobile" aria-pressed="false">Mobile</button>
+  </div>
+  <div class="home-review-stage"><!-- ACTIVE_HOME_CONCEPT --></div>
+  <script>
+    (() => {
+      const review = document.getElementById('active-home-review');
+      function setDevice(device) {
+        if (device !== 'desktop' && device !== 'mobile') return;
+        review.dataset.device = device;
+        review.querySelectorAll('button[data-device]').forEach(button => {
+          const active = button.dataset.device === device;
+          button.setAttribute('aria-pressed', String(active));
+          button.classList.toggle('btn-primary', active);
+        });
+      }
+      function restore(value) {
+        if (value?.kind === 'active-home-review-r16') setDevice(value.device);
+      }
+      review.querySelectorAll('button[data-device]').forEach(button => {
+        button.addEventListener('click', () => {
+          setDevice(button.dataset.device);
+          window.openai?.setWidgetState?.({ modelContent: null,
+            privateContent: { kind: 'active-home-review-r16', device: button.dataset.device }
+          })?.catch(() => {});
+        });
+      });
+      restore(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+    })();
+  </script>
+</div>

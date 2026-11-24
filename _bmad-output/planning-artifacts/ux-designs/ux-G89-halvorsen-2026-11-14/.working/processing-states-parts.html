@@ -1,0 +1,33 @@
+<!-- BEGIN LOADING_CONTROLS -->
+  <div class="viz-controls status-preview-controls" data-status-preview-controls>
+    <label for="status-operation">Preview operation</label>
+    <select id="status-operation" data-operation-select aria-describedby="status-preview-help">
+      <option value="checking">Checking PDF</option>
+      <option value="extracting">Extracting text</option>
+      <option value="summary" selected>Generating summary</option>
+      <option value="flashcards">Generating flashcards</option>
+      <option value="quiz">Generating quiz</option>
+    </select>
+    <p class="text-small" id="status-preview-help">Sketch control · switches the displayed operation. Nothing runs or finishes automatically.</p>
+  </div>
+<!-- END LOADING_CONTROLS -->
+
+<!-- BEGIN STATUS_CARD -->
+        <section class="learning-view status-view" data-status-view aria-label="Session status" hidden>
+          <div class="empty-learning status-card" data-status-card>
+            <div class="status-heading-row">
+              <span class="status-pending" data-status-pending role="status" aria-live="polite" aria-atomic="true">
+                <i data-lucide="loader-circle" aria-hidden="true"></i>
+                <span class="accessible-copy" data-status-announcement>Generating summary</span>
+              </span>
+              <span class="status-error-icon" data-status-error hidden><i data-lucide="file-warning" aria-hidden="true"></i></span>
+              <h2 id="status-title" data-status-heading>Generating summary</h2>
+            </div>
+            <p class="status-body" data-status-body>Your summary is being prepared from the PDF text.</p>
+            <div class="status-recovery" data-status-recovery hidden>
+              <button class="primary-action cursor-interaction" type="button" data-retry>Try again</button>
+            </div>
+            <p class="status-support" data-status-support>Keep this session open while the summary is being prepared.</p>
+          </div>
+        </section>
+<!-- END STATUS_CARD -->

@@ -1,0 +1,41 @@
+<div id="remaining-ux-review" lang="en">
+  <style>
+    #remaining-ux-review { min-width: 0; }
+    #remaining-ux-review .remaining-review-controls { margin-bottom: 24px; }
+    #remaining-ux-review [data-review-panel] { min-width: 0; }
+    #remaining-ux-review > [hidden] { display: none !important; }
+  </style>
+  <div class="viz-controls remaining-review-controls">
+    <label class="form-label">Review focus
+      <select class="form-select" data-review-focus>
+        <option value="reliability">Coverage and errors</option>
+        <option value="learning">Quiz, Flashcards and sources</option>
+        <option value="selected">Approved processing states</option>
+      </select>
+    </label>
+  </div>
+  <section data-review-panel="reliability" aria-label="Coverage and error concepts"><!-- RELIABILITY_REVIEW --></section>
+  <section data-review-panel="learning" aria-label="Learning flow concepts" hidden><!-- LEARNING_FLOWS_REVIEW --></section>
+  <section data-review-panel="selected" aria-label="Approved processing states" hidden><!-- SELECTED_STATUS_REVIEW --></section>
+  <script>
+    (() => {
+      const review = document.getElementById('remaining-ux-review');
+      const focus = review.querySelector('[data-review-focus]');
+      function show(value) {
+        if (!['reliability', 'learning', 'selected'].includes(value)) return;
+        focus.value = value;
+        review.querySelectorAll('[data-review-panel]').forEach(panel => { panel.hidden = panel.dataset.reviewPanel !== value; });
+      }
+      const scenario = review.querySelector('[data-reliability-scenario]');
+      scenario.value = 'incidental-omission';
+      scenario.dispatchEvent(new Event('change', { bubbles: true }));
+      focus.addEventListener('change', () => {
+        show(focus.value);
+        window.openai?.setWidgetState?.({ modelContent: null, privateContent: { kind: 'remaining-ux-review-r20', focus: focus.value } })?.catch(() => {});
+      });
+      function restore(value) { if (value?.kind === 'remaining-ux-review-r20') show(value.focus); }
+      restore(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+    })();
+  </script>
+</div>

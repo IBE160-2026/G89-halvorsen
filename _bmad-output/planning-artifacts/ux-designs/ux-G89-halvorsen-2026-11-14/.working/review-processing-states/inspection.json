@@ -1,0 +1,244 @@
+{
+  "initial": [
+    {
+      "id": "status-loading-preview",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "canvas": "rgb(238, 245, 239)",
+      "heading": "Generating summary",
+      "passwordInputs": 0
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 238, 242)",
+      "heading": "This PDF needs a password",
+      "passwordInputs": 0
+    },
+    {
+      "id": "status-ai-error-preview",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "canvas": "rgb(251, 247, 229)",
+      "heading": "Flashcards could not be created",
+      "passwordInputs": 0
+    }
+  ],
+  "widths": [
+    {
+      "id": "status-loading-preview",
+      "width": 1536,
+      "appWidth": 1504,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "width": 1536,
+      "appWidth": 1504,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-ai-error-preview",
+      "width": 1536,
+      "appWidth": 1504,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-loading-preview",
+      "width": 1280,
+      "appWidth": 1248,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "width": 1280,
+      "appWidth": 1248,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-ai-error-preview",
+      "width": 1280,
+      "appWidth": 1248,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-loading-preview",
+      "width": 1024,
+      "appWidth": 992,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "width": 1024,
+      "appWidth": 992,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-ai-error-preview",
+      "width": 1024,
+      "appWidth": 992,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-loading-preview",
+      "width": 768,
+      "appWidth": 736,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "width": 768,
+      "appWidth": 736,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-ai-error-preview",
+      "width": 768,
+      "appWidth": 736,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-loading-preview",
+      "width": 390,
+      "appWidth": 358,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "width": 390,
+      "appWidth": 358,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-ai-error-preview",
+      "width": 390,
+      "appWidth": 358,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-loading-preview",
+      "width": 320,
+      "appWidth": 288,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "width": 320,
+      "appWidth": 288,
+      "outside": [],
+      "pageOverflow": false
+    },
+    {
+      "id": "status-ai-error-preview",
+      "width": 320,
+      "appWidth": 288,
+      "outside": [],
+      "pageOverflow": false
+    }
+  ],
+  "operations": [
+    "Checking PDF",
+    "Extracting text",
+    "Generating summary",
+    "Generating flashcards",
+    "Generating quiz"
+  ],
+  "retry": {
+    "manualPending": true,
+    "summaryPreserved": true,
+    "navigationPreservesPending": true
+  },
+  "lifecycle": [
+    {
+      "id": "status-loading-preview",
+      "cancelPreserves": true,
+      "confirmedEmptyHome": true
+    },
+    {
+      "id": "status-pdf-problem-preview",
+      "cancelPreserves": true,
+      "confirmedEmptyHome": true
+    },
+    {
+      "id": "status-ai-error-preview",
+      "cancelPreserves": true,
+      "confirmedEmptyHome": true
+    }
+  ],
+  "exceptions": [],
+  "mobileComparisonWidths": [
+    390,
+    390,
+    390
+  ],
+  "static": {
+    "fragments": {
+      "processing-states-comparison.html": {
+        "uniqueIds": 87,
+        "ariaLabelReferences": 83,
+        "syntax": "pass",
+        "exportExact": true,
+        "noApiTimersOrStudyDataStorage": true
+      },
+      "status-loading.html": {
+        "uniqueIds": 29,
+        "ariaLabelReferences": 28,
+        "syntax": "pass",
+        "exportExact": true,
+        "noApiTimersOrStudyDataStorage": true
+      },
+      "status-pdf-problem.html": {
+        "uniqueIds": 27,
+        "ariaLabelReferences": 26,
+        "syntax": "pass",
+        "exportExact": true,
+        "noApiTimersOrStudyDataStorage": true
+      },
+      "status-ai-error.html": {
+        "uniqueIds": 27,
+        "ariaLabelReferences": 26,
+        "syntax": "pass",
+        "exportExact": true,
+        "noApiTimersOrStudyDataStorage": true
+      }
+    },
+    "protectedFilesUnchanged": 18,
+    "reproducible": true,
+    "draftStatus": true,
+    "localLinks": true
+  },
+  "finalCopy": "Preview operation help clarified to switches the displayed operation; updated mobile comparison capture. Product UI/logic unchanged.",
+  "independentReview": "All eight captures valid; mobile readable; no material visual or PRD findings."
+}

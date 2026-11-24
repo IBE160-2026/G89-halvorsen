@@ -1,0 +1,6 @@
+| Pass | Original Text | Revised Text | Changes |
+| --- | --- | --- | --- |
+| prose | EXPERIENCE.md §Component Patterns, Flashcards: “Previous/Next preserves position and shows the new card front.” | “Previous/Next changes the card and shows its front.” | Removes the apparent contradiction between changing cards and preserving the current position. The following function-return sentence retains the separate position-preservation rule. |
+| prose | EXPERIENCE.md §Component Patterns, Quiz: “Four alternatives and one answer.” | “Four alternatives with one correct answer.” | Clarifies that the question has one correct option, rather than merely allowing one selection. |
+| prose | EXPERIENCE.md §Component Patterns, Quiz result/review: “Use actual C/N and 100×C/N, with wrong questions listed.” | “Use C/N and 100×C/N, where C is the number of correct answers and N is the accepted question count; list wrong questions.” | Defines the formula's symbols and makes the actual accepted-set denominator explicit. Keeps the result calculation and empty-quiz rejection unchanged. |
+| prose | DESIGN.md §Layout & Spacing: “Keep `{spacing.learning-gap}` learning groups.” | “Use `{spacing.learning-gap}` between learning groups.” | Supplies the missing spacing relationship without changing the token or layout. |

@@ -1,0 +1,389 @@
+{
+  "layouts": [
+    {
+      "phase": "unsupported",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "unsupported",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "unsupported",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "damaged",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "damaged",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "damaged",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "no-text",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "no-text",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "no-text",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "material-loss",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "material-loss",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "material-loss",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "uncertain-extraction",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "uncertain-extraction",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "uncertain-extraction",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "zero-flashcards",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "zero-flashcards",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "zero-flashcards",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "zero-quiz",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "zero-quiz",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "zero-quiz",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-flashcards",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-flashcards",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-flashcards",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-quiz",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-quiz",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-quiz",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-summary",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-summary",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "invalid-summary",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "missing-setup",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "missing-setup",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "missing-setup",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "service-unavailable",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "service-unavailable",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "service-unavailable",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "timeout",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "timeout",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "timeout",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "incidental-omission",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "incidental-omission",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "incidental-omission",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "reduced-flashcards",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "reduced-flashcards",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "reduced-flashcards",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "reduced-quiz",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "reduced-quiz",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "reduced-quiz",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "saved-demo",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "saved-demo",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "saved-demo",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    }
+  ],
+  "checks": {
+    "taxonomy": [
+      {
+        "label": "Errors",
+        "count": 13
+      },
+      {
+        "label": "Warnings \u2014 content remains usable",
+        "count": 3
+      },
+      {
+        "label": "Demo",
+        "count": 1
+      }
+    ],
+    "scenarios": 17,
+    "retries": 9,
+    "technicalCausesInternal": true,
+    "noInvalidSummaryPublished": true,
+    "confirmedQuizPreservedAcross4Failures": true,
+    "cardPositionAndFrontPreservedAcross3Failures": true,
+    "summaryPreserved": true,
+    "setupGuard": true,
+    "reducedActualScore": true,
+    "cancelAndReset": true,
+    "mobileStatusAlignment": true
+  },
+  "exceptions": []
+}

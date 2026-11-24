@@ -1,0 +1,91 @@
+    /* Shared mobile study alignment. Append before each preview's ID rewrite. */
+    @container study-preview-app (max-width: 540px) {
+      #study-preview :is([data-panel="flashcards"], [data-panel="quiz"]),
+      #study-preview .status-card {
+        text-align: center;
+      }
+
+      #study-preview :is(.card-prompt, .card-answer, .flip-hint),
+      #study-preview .quiz-options legend,
+      #study-preview .quiz-feedback,
+      #study-preview .learning-end,
+      #study-preview .app-shell:is([data-mode="flashcards"], [data-mode="quiz"]) .reliability-notice {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .quiz-options legend {
+        width: 100%;
+        min-width: 0;
+      }
+
+      /* Balance the native radio with an equal empty track at the logical end. */
+      #study-preview .quiz-options label {
+        display: grid;
+        grid-template-columns: 19px minmax(0, 1fr) 19px;
+      }
+
+      #study-preview .quiz-options input {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      #study-preview .quiz-options [data-quiz-option] {
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
+        width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .quiz-options .option-state {
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+        padding-inline: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview :is([data-panel="flashcards"], [data-panel="quiz"]) :is(.primary-action, .secondary-action, .source-link),
+      #study-preview .status-recovery > button {
+        justify-self: center;
+        max-width: 100%;
+        min-width: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview :is(.card-actions, .learning-actions, .status-recovery) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Retain full-width question navigation and its existing mobile hit areas. */
+      #study-preview .learning-actions.quiz-navigation button {
+        justify-self: stretch;
+      }
+
+      #study-preview .wrong-review ol {
+        padding-inline: 24px;
+      }
+
+      #study-preview .quiz-review-link {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .status-heading-row {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #study-preview :is(.status-heading-row, .status-body, .status-support) {
+        min-width: 0;
+        max-width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+    }

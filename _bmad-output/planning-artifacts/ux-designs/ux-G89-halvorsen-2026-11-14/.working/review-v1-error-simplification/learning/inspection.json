@@ -1,0 +1,111 @@
+{
+  "layouts": [
+    {
+      "phase": "quiz-feedback",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-feedback",
+      "viewport": 1024,
+      "width": 992,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-feedback",
+      "viewport": 768,
+      "width": 736,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-feedback",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-feedback",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-result",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-result",
+      "viewport": 1024,
+      "width": 992,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-result",
+      "viewport": 768,
+      "width": 736,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-result",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "quiz-result",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "card-complete",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "card-complete",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "card-complete",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    }
+  ],
+  "checks": {
+    "languages": 2,
+    "freshAck": true,
+    "explicitConfirmation": true,
+    "lockedAnswers": true,
+    "draftsAndResume": true,
+    "score": "6/8 = 75%",
+    "wrongReview": true,
+    "restartSameQuiz": true,
+    "multipleOriginalSources": true,
+    "sourceFocusAndReturn": true,
+    "cardPositionAndFront": true,
+    "cardCompletionRestart": true,
+    "cancelAndReset": true
+  },
+  "exceptions": []
+}

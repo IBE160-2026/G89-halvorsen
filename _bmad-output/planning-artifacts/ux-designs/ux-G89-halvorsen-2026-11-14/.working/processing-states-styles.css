@@ -1,0 +1,31 @@
+    #study-preview .status-preview-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin: 18px 0; color: #343a40; font: 400 14px/1.6 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif; }
+    #study-preview .status-preview-controls label { font-weight: 600; }
+    #study-preview .status-preview-controls select { min-height: 44px; max-width: 100%; padding: 9px 12px; border: 1px solid #789681; border-radius: 9px; background: #ffffff; color: #29372f; font: inherit; font-size: 16px; }
+    #study-preview .status-preview-controls select:focus-visible { outline: 3px solid #315d3f; outline-offset: 3px; }
+    #study-preview .status-preview-controls p { flex-basis: 100%; margin: 0; color: #56615b; }
+    #study-preview .status-card { gap: 20px; min-height: 256px; padding: 34px; }
+    #study-preview .status-heading-row { display: flex; align-items: flex-start; gap: 14px; }
+    #study-preview .status-card h2 { margin: 0; font-size: 26px; line-height: 1.4; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+    #study-preview .status-pending, #study-preview .status-error-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 30px; height: 36px; color: var(--action-ink); }
+    #study-preview .status-pending svg, #study-preview .status-pending i, #study-preview .status-error-icon svg, #study-preview .status-error-icon i { width: 27px; height: 27px; stroke-width: 1.8; }
+    #study-preview .status-pending svg, #study-preview .status-pending i { animation: status-pending-turn 1.2s linear infinite; }
+    #study-preview .status-body { max-width: 62ch; font-size: 17px; line-height: 1.8; }
+    #study-preview .status-support { max-width: 65ch; color: var(--muted-ink); font-size: 14px; line-height: 1.8; }
+    #study-preview .status-recovery { display: flex; flex-wrap: wrap; gap: 14px; }
+    #study-preview .app-shell[data-status="pdf-problem"] .app-main { max-width: 850px; padding: 31px 34px 46px; }
+    #study-preview .app-shell[data-status="pdf-problem"] .status-error-icon { color: #526173; }
+    #study-preview .status-card [hidden] { display: none !important; }
+    @keyframes status-pending-turn { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      #study-preview .status-pending svg, #study-preview .status-pending i { animation: none; }
+    }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .status-card { min-height: 0; padding: 25px 20px; gap: 19px; }
+      #study-preview .status-card h2 { font-size: 23px; }
+      #study-preview .status-heading-row { gap: 11px; }
+      #study-preview .status-body { font-size: 16px; }
+      #study-preview .app-shell[data-status="pdf-problem"] .app-main { padding: 26px 17px 35px; }
+      #study-preview .status-preview-controls { align-items: stretch; }
+      #study-preview .status-preview-controls label { width: 100%; }
+      #study-preview .status-preview-controls select { width: 100%; }
+    }

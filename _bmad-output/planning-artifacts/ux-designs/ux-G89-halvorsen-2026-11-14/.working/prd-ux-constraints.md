@@ -1,6 +1,6 @@
 # AI Study Buddy — PRD constraints for UX concept exploration
 
-Sources: [final PRD, updated 2026-11-14](../../../prds/prd-G89-halvorsen-2026-11-03/prd.md) and [final addendum](../../../prds/prd-G89-halvorsen-2026-11-03/addendum.md).
+Sources: [final PRD, updated 2026-11-19](../../../prds/prd-G89-halvorsen-2026-11-03/prd.md) and [final addendum](../../../prds/prd-G89-halvorsen-2026-11-03/addendum.md).
 This is an extraction for this existing UX run, not a new specification or adopted visual direction. The PRD governs product behaviour; earlier research and retired requirements do not override it.
 
 ## Session and startup — required behaviour
@@ -11,7 +11,7 @@ This is an extraction for this existing UX run, not a new specification or adopt
 - **FR-44, FR-45:** Before external processing, visibly explain that extracted PDF text goes to an external AI service; exclude sensitive, confidential or externally unshareable material. Active acknowledgement is required for each accepted upload before any external transfer, including checks. Same-session navigation/retries reuse it.
 - **FR-46:** No unsupported promises about provider storage, training or deletion. App cleanup does not imply provider deletion.
 - **FR-17:** Explain that reload/closing ends the session and restores no PDF, content or progress. A guaranteed browser-leave warning is not required.
-- **FR-15, FR-16, FR-21:** New session and Clear require confirmation explaining loss of the PDF, generated content and progress. Changing PDF, language or level uses New session and ordinary startup with fresh PDF/settings selection, even for the same file.
+- **FR-15, FR-21:** New session is the sole explicit session-ending action and requires confirmation explaining loss of the PDF, generated content and progress. Confirmation gives empty ordinary Home; the student may stop there. Changing PDF, language or level requires starting again with fresh PDF/settings selection and acknowledgement, even for the same file. FR-16, the duplicate separate Clear action, is retired.
 - **Shared acceptance rules:** Cancelling confirmation preserves the entire active session. Confirming empties it; cancelled/rejected subsequent file selection leaves startup empty, without restoring the ended session. The original device file is unaffected.
 - **FR-18:** Late results from an ended session cannot repopulate it or enter another session.
 
@@ -55,7 +55,7 @@ This is an extraction for this existing UX run, not a new specification or adopt
 - **FR-42:** Demo supports core learning/source flows without private keys or paid accounts. Own PDFs/fresh generation need live mode; explain unsupported demo actions. Saved playback must not pretend to be live AI generation.
 - **NFR-1, NFR-2:** PDF/model content is study data, never app authority. Render text/excerpts/filenames inertly, with no script execution or automatic remote-image/external requests. Safe headings, emphasis and lists are allowed.
 - **NFR-3, NFR-4:** Validate structures before publication and protect credentials from browser code, content, errors and exposed payloads. Apply the same boundaries to demo content.
-- **NFR-5:** No permanent ordinary-PDF/content history. Clear/New session removes app-owned working state; other cleanup deadlines are Architecture work. Keep study material out of ordinary logs. Provider retention is separate.
+- **NFR-5:** No permanent ordinary-PDF/content history. Confirmed New session removes app-owned working state; other cleanup deadlines are Architecture work. Keep study material out of ordinary logs. Provider retention is separate.
 
 ## Fixed boundaries and open choices
 
@@ -63,5 +63,5 @@ This is an extraction for this existing UX run, not a new specification or adopt
 - **Retired FR-20, FR-22, FR-23:** Do not reintroduce coexisting summary levels, in-session language replacement or its old recovery flows. FR-4/FR-5/FR-21 and shared rules replace them.
 - **Addendum / Handoff conditions:** Stack, model/parser, provider configuration, resource/time/cost/upload bounds, cleanup deadline and extraction/matching algorithms are unresolved. T1–T3 are local test inputs, not public demo assets or numeric upload limits. Do not invent such limits in concepts.
 - **Addendum UX follow-up:** Cover startup, navigation, source panel, warnings and wrong-answer flow; check keyboard use, readability and source-location/support wording. This extraction does not claim those checks passed.
-- **Appearance is a UX decision:** The PRD does not select palette, fonts, radii, density, visual hierarchy, navigation topology, component library, imagery, animation or theme support. The user has now selected the latest Home/Summary/Flashcards/Quiz concept in [decisions.md](../decisions.md); minor refinements and outstanding UX work remain possible without changing the required behaviours or exclusions.
+- **Appearance is a UX decision:** The PRD does not select palette, fonts, radii, density, visual hierarchy, navigation topology, component library, imagery, animation or theme support. The user has now selected the latest Home/Summary/Flashcards/Quiz concept in [decisions.md](../decisions.md); UX planning is complete under the final peer contracts and Round 22, with minor implementation refinements possible without changing the required behaviours or exclusions.
 - **Concept fidelity:** Concept content and simulated transitions are illustrations, not implementation, live-generation, source-quality or usability-test evidence. Existing UX decisions remain in this run's memlog; no concept is adopted merely by rendering it.

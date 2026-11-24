@@ -2,7 +2,7 @@
 title: AI Study Buddy — PRD Addendum
 status: final
 created: 2026-11-03
-updated: 2026-11-14
+updated: 2026-11-19
 ---
 
 # AI Study Buddy — PRD Addendum
@@ -19,7 +19,7 @@ The limited PDFKit inspection found figure loss, including T2 page 12 and T3 pag
 
 - Verify byte/page/text/context, processing-time and cost bounds before implementation depends on them. Actual T1–T3 sizes are test inputs, not upload limits; flag bounds excluding them.
 - Define page-local excerpt matching and permitted normalization. Test whitespace, Unicode, wrong-page and hyphen/line-break cases; location matching remains separate from factual-support review.
-- Failed generation or no usable output requires manual Try again, never automatic regeneration/repair. Deliver valid card/quiz subsets without automatic refill. Preserve valid active-session state and reject late results after Clear/New session. Failed file selection/generation cannot restore the ended session.
+- Failed generation or no usable output requires manual Try again, never automatic regeneration/repair. Deliver valid card/quiz subsets without automatic refill. Preserve valid active-session state and reject late results after confirmed New session. Failed file selection/generation cannot restore the ended session. Ending a session returns to empty startup without requiring another upload.
 - Verify per-upload acknowledgement, provider configuration and working-copy cleanup deadlines before real transfer/use. Resource limits and implementation mechanisms remain open, without invented numeric values.
 
 ## Evaluation and regression evidence

@@ -2,7 +2,7 @@
 title: Product Brief — AI Study Buddy
 status: draft
 created: 2026-09-26
-updated: 2026-11-14
+updated: 2026-11-19
 ---
 
 # Product Brief: AI Study Buddy
@@ -27,13 +27,13 @@ Students choose a PDF, Norwegian Bokmål or English independently of source lang
 
 **Brief** covers main points and key concepts; **Detailed** adds fuller explanations and relevant source-grounded examples. The chosen level applies only to summaries, not cards, quizzes, or incorrect-answer explanations.
 
-Changing document, language, or level requires a confirmed **New session**. Confirmation removes the old PDF, aids, progress, and external-processing acknowledgement. Ordinary startup then requires a new file selection, even for the same PDF, new choices, and acknowledgement. Cancelling the confirmation preserves the current session; cancelled file selection or a rejected file after confirmation leaves startup empty. **Clear** also requires confirmation; reload or closing ends the session without recovery.
+**New session** is the single explicit action for ending the current session, whether the student is finished or wants to change document, language, or level. Changing any of those choices requires this confirmed flow. Confirmation removes the old PDF, aids, progress, and external-processing acknowledgement, leaving ordinary empty startup; the original device file is unaffected. The student can stop there. Starting again requires a new file selection, even for the same PDF, new choices, and acknowledgement. Cancelling the confirmation preserves the current session; cancelled file selection or a rejected file after confirmation leaves startup empty. Reload or closing ends the session without recovery.
 
 From a summary, students can enter the existing quiz. Wrong answers show the correct alternative, a short explanation, and source access. **View source** opens a simple sidepanel showing filename, physical PDF page counted from 1, and an original-language excerpt. A page-and-excerpt match establishes location, not factual correctness or semantic support.
 
 Invalid references withhold the whole new summary. In otherwise structurally valid card/quiz sets, omit each item with any invalid reference and deliver the valid subset with its actual count and a notice; zero usable items means an error. Malformed replies are rejected as a whole. There is no automatic AI regeneration or repair: **Try again** is manual, and failure preserves valid content and progress in the active session.
 
-Before any extracted text goes to external AI, show a short material-handling notice and require active acknowledgement for the current upload. Discourage sensitive, confidential, or externally restricted material. Keep credentials private, render untrusted content inertly, validate model replies, and make only verified provider-retention claims. Clearing the app does not imply provider deletion.
+Before any extracted text goes to external AI, show a short material-handling notice and require active acknowledgement for the current upload. Discourage sensitive, confidential, or externally restricted material. Keep credentials private, render untrusted content inertly, validate model replies, and make only verified provider-retention claims. App cleanup does not imply provider deletion.
 
 A labelled demo uses one shareable PDF, still to be selected, with saved Brief/Detailed summaries and card/quiz sets in both languages. Only the selected language/level combination is active per session; changed choices use New session. It runs without private keys or paid accounts. Live integration is validated separately.
 
@@ -69,7 +69,7 @@ All aids must follow the selected language. Review ten items per card/quiz case;
 - **Quizzes:** at least 9 of 10 checked questions have a correct, unambiguous answer key in each document-and-output-language test case.
 - **References:** at least 9/10 reviewed references per case support the associated content; all must pass if fewer than ten. Every displayed location and excerpt is verifiable. On the same sampled card/quiz items, at least 9/10 jointly pass answer correctness and source support, or all if fewer. Semantic support is reviewed manually against the original PDF.
 - **Study feedback:** every tested incorrect quiz answer displays the correct answer, an understandable explanation, and a source reference.
-- **Error handling:** test non-PDF, damaged, password-protected, no-usable-text, source, service, and coverage failures; explain the problem and next step. Test cancelled/confirmed New session and Clear, active-session preservation on generation failure, and rejection after confirmed restart.
+- **Error handling:** test non-PDF, damaged, password-protected, no-usable-text, source, service, and coverage failures; explain the problem and next step. Test cancelled/confirmed New session, empty startup without a new upload, active-session preservation on generation failure, and rejection after confirmed restart.
 - **Demo access:** following the README, the examiner can complete the demo workflow described above, including quiz feedback and source inspection, without a private API key or paid account. Live API generation will be tested separately.
 - **Practical value:** compare like-for-like preparation time, including review, corrections, and failed attempts; record usefulness. Freeze tasks before evaluation. Time savings remain a goal.
 - **Project learning and quality:** documentation explains how AI was used, how the code and application were checked, and what challenges and solutions arose during development.

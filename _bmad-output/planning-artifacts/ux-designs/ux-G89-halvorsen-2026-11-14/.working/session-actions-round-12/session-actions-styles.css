@@ -1,0 +1,31 @@
+    #study-preview .session-document-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 22px; text-align: left; }
+    #study-preview .session-document-copy { flex: 1 1 230px; min-width: 0; }
+    #study-preview .session-tools { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-left: auto; flex: 0 0 auto; }
+    #study-preview .session-toggle,
+    #study-preview .session-action { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 10px 16px; border: 1px solid var(--mode-border); border-radius: 10px; color: var(--brand-ink); background: var(--surface); font-size: 15px; line-height: 1.4; font-weight: 500; }
+    #study-preview .session-toggle:hover,
+    #study-preview .session-action:hover { background: var(--mode-soft); border-color: var(--mode-border); }
+    #study-preview .session-toggle svg { width: 17px !important; height: 17px !important; }
+    #study-preview .session-popup { position: absolute; top: calc(100% + 9px); right: 0; z-index: 4; display: grid; gap: 4px; width: 252px; padding: 7px; border-radius: 14px; background: #ffffff; box-shadow: 0 12px 28px rgba(43, 52, 48, 0.18); text-align: left; }
+    #study-preview .session-option { display: grid; gap: 3px; width: 100%; padding: 12px; min-height: 64px; border: 0; border-radius: 9px; text-align: left; color: #29372f; background: #ffffff; font-size: 15px; line-height: 1.4; }
+    #study-preview .session-option small { color: #56615b; font-size: 12px; line-height: 1.5; }
+    #study-preview .session-option:hover { background: var(--mode-soft); }
+    #study-preview .session-modal-layer { position: absolute; inset: 0; z-index: 8; border-radius: inherit; background: rgba(31, 42, 36, 0.24); }
+    #study-preview .session-confirmation { position: absolute; top: var(--session-dialog-offset, 130px); left: 50%; transform: translateX(-50%); width: min(480px, calc(100% - 32px)); padding: 28px; border-radius: 16px; background: #ffffff; color: #29372f; box-shadow: 0 22px 44px rgba(29, 39, 34, 0.23); }
+    #study-preview .session-confirmation h2 { margin: 0 0 18px; font-size: 25px; font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; }
+    #study-preview .session-confirmation p { margin: 0 0 14px; font-size: 16px; line-height: 1.7; }
+    #study-preview .session-confirmation .session-confirmation-note { margin: 0; font-size: 14px; color: #56615b; }
+    #study-preview .session-confirmation-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; margin-top: 25px; }
+    #study-preview .app-navigation .app-nav-item:disabled { color: #686e69; background: transparent; border-color: transparent; opacity: 0.75; }
+    #study-preview .upload-area:disabled { opacity: 0.78; }
+    #study-preview .startup-form select:disabled { color: #56615b; opacity: 1; }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .session-document-row { gap: 14px; }
+      #study-preview .session-document-copy { flex-basis: 100%; }
+      #study-preview .session-tools { justify-content: flex-start; margin-left: 0; }
+      #study-preview .session-popup { left: 0; right: auto; width: min(252px, calc(100cqw - 38px)); }
+      #study-preview .session-confirmation { padding: 23px 20px; }
+      #study-preview .session-confirmation h2 { font-size: 23px; }
+      #study-preview .session-confirmation-actions { display: grid; grid-template-columns: 1fr; }
+      #study-preview .session-confirmation-actions button { width: 100%; justify-self: stretch; }
+    }

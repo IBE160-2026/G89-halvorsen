@@ -1,0 +1,38 @@
+<!-- BEGIN FLASHCARDS -->
+        <section class="learning-view" id="preview-flashcards" data-panel="flashcards" aria-label="Sample flashcards" hidden>
+          <div class="empty-learning" data-empty="flashcards" hidden><h2>Flashcards for this session</h2><p>Open the saved sample when you are ready to practise.</p><button class="primary-action cursor-interaction" type="button" data-generate="flashcards">Open sample Flashcards</button></div>
+          <div class="learning-view" data-ready="flashcards">
+            <p class="item-count" data-card-count aria-live="polite">Card 1 of 3 · sample set</p>
+            <div class="learning-view" data-card-practice>
+              <button class="flashcard cursor-interaction" type="button" data-flip aria-pressed="false" aria-label="Show card answer" aria-describedby="preview-card-prompt"><span class="card-prompt" id="preview-card-prompt" lang="nb"></span><span class="card-answer" id="preview-card-answer" lang="nb" hidden></span><span class="flip-hint">Show answer</span></button>
+              <button class="source-link cursor-interaction" type="button" data-source="card" aria-controls="study-source-panel" aria-expanded="false" hidden>View source</button>
+              <div class="card-actions"><button class="secondary-action cursor-interaction" type="button" data-card-step="-1" disabled>Previous</button><button class="secondary-action cursor-interaction" type="button" data-card-step="1">Next</button><button class="primary-action cursor-interaction" type="button" data-card-finish hidden>Finish cards</button></div>
+            </div>
+            <section class="learning-end" data-card-complete aria-labelledby="card-end-title" hidden><h2 id="card-end-title" tabindex="-1">End of the card set</h2><p>You've reached the end of these 3 sample cards.</p><p>Restart the same cards from the first question. No new content is created.</p><div class="learning-actions"><button class="primary-action cursor-interaction" type="button" data-card-restart>Restart the same cards</button><button class="secondary-action cursor-interaction" type="button" data-card-return>Back to last card</button></div></section>
+          </div>
+        </section>
+<!-- END FLASHCARDS -->
+<!-- BEGIN QUIZ -->
+        <section class="learning-view" id="preview-quiz" data-panel="quiz" aria-label="Sample quiz" hidden>
+          <div class="empty-learning" data-empty="quiz" hidden><h2>Quiz for this session</h2><p>Open the saved sample when you are ready to test your understanding.</p><button class="primary-action cursor-interaction" type="button" data-generate="quiz">Open sample Quiz</button></div>
+          <div class="learning-view" data-ready="quiz">
+            <div class="learning-view" data-quiz-practice>
+              <p class="item-count" data-quiz-count aria-live="polite">Question 1 of 8 · sample set</p>
+              <fieldset class="quiz-options" lang="nb" aria-describedby="quiz-answer-help"><legend data-quiz-question tabindex="-1"></legend><label><input type="radio" name="preview-quiz-answer" value="0"><span data-quiz-option="0"></span><span class="option-state" data-option-state="0" lang="en"></span></label><label><input type="radio" name="preview-quiz-answer" value="1"><span data-quiz-option="1"></span><span class="option-state" data-option-state="1" lang="en"></span></label><label><input type="radio" name="preview-quiz-answer" value="2"><span data-quiz-option="2"></span><span class="option-state" data-option-state="2" lang="en"></span></label><label><input type="radio" name="preview-quiz-answer" value="3"><span data-quiz-option="3"></span><span class="option-state" data-option-state="3" lang="en"></span></label></fieldset>
+              <p class="answer-help" id="quiz-answer-help">Select one answer, then confirm to see feedback.</p>
+              <button class="primary-action cursor-interaction" type="button" data-confirm disabled>Confirm answer</button>
+              <div class="quiz-feedback" data-feedback role="status" tabindex="-1" hidden></div>
+              <button class="source-link cursor-interaction" type="button" data-source="quiz" aria-controls="study-source-panel" aria-expanded="false" hidden>View source</button>
+              <div class="learning-actions quiz-navigation"><button class="secondary-action cursor-interaction" type="button" data-quiz-step="-1" disabled>Previous question</button><button class="primary-action cursor-interaction" type="button" data-quiz-step="1" disabled>Next question</button><button class="primary-action cursor-interaction" type="button" data-quiz-finish hidden>Finish quiz</button><button class="secondary-action cursor-interaction" type="button" data-quiz-results hidden>Back to result</button></div>
+            </div>
+            <section class="learning-end quiz-result" data-quiz-result aria-labelledby="quiz-result-title" hidden>
+              <h2 id="quiz-result-title" tabindex="-1">Quiz complete</h2><p class="quiz-score" data-quiz-score></p><p>Reviewing keeps your confirmed answers and result unchanged.</p>
+              <section class="wrong-review" aria-labelledby="quiz-wrong-title"><h3 id="quiz-wrong-title">Questions to review</h3><p data-quiz-no-wrong hidden>All questions were answered correctly. You can still review the set.</p><ol data-quiz-wrong-list></ol></section>
+              <div class="learning-actions"><button class="secondary-action cursor-interaction" type="button" data-quiz-review="0">Review all questions</button><button class="primary-action cursor-interaction" type="button" data-quiz-restart>Restart the same quiz</button></div><p class="answer-help">Restart clears this attempt and reuses the same questions. No new content is created.</p>
+            </section>
+          </div>
+        </section>
+<!-- END QUIZ -->
+<!-- BEGIN SOURCES -->
+      <aside class="source-panel" id="study-source-panel" role="dialog" aria-modal="true" aria-labelledby="learning-source-title" aria-describedby="learning-source-note" hidden><div class="source-heading"><h2 id="learning-source-title">Source excerpts</h2><button class="secondary-action cursor-interaction" type="button" data-close-source>Close</button></div><p class="source-note" id="learning-source-note">Synthetic original-language passages for this review. A page and excerpt match locates text; it does not establish factual correctness or support. Read the passage in context.</p><div class="source-reference-list" data-source-reference-list></div></aside>
+<!-- END SOURCES -->

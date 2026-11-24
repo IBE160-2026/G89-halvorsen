@@ -1,17 +1,27 @@
 # AI Study Buddy — browser concept preview
 
+**UX planning complete, 24 November 2026.** The user-selected concept and full interaction references are documented in [DESIGN.md](../../DESIGN.md), [EXPERIENCE.md](../../EXPERIENCE.md) and [the final report](../../validation-report.md). Minor refinements remain possible. No production app, architecture work, commit or push is implied.
+
 From the project root, run:
 
 ```sh
 python3 _bmad-output/planning-artifacts/ux-designs/ux-G89-halvorsen-2026-11-14/.working/browser-preview/serve_preview.py
 ```
 
-Open the local URL printed by the server. It normally uses `http://127.0.0.1:8765/`; if that port is occupied, it selects another free local port. Stop it with Ctrl+C.
+Open the printed local URL, normally `http://127.0.0.1:8765/`. If occupied, the server selects another port. Stop with Ctrl+C.
 
-The single menu inside the app exposes Home, Summary, Flashcards and Quiz using saved example content. Together these screens are the selected concept, confirmed on 19 November 2026; minor refinements remain possible and UX is still in progress. Home shows the startup screen for inspection and preserves example practice state; it does not represent Clear or New session. PDF selection is a visual interaction; the preview does not process PDF content or call an AI service. Real study sessions remain governed by the PRD.
+| Entry | Selected scope |
+| --- | --- |
+| [remaining-ux.html](remaining-ux.html) | Combined complete learning, reliability and processing references, with desktop/mobile inspection controls. |
+| [index.html](index.html) | Illustrated empty/active Home and shared menu/basic sample. Its one-question Quiz is intentionally partial; use the complete flow for the full contract. |
+| [learning-flows.html](learning-flows.html) | Full upload/settings/acknowledgement sample → Summary/cards/Quiz → sources/results/review/restart → New session. |
+| [reliability.html](reliability.html) | 17 supplied cases grouped as errors, usable-content notices and demo information; four outcome patterns plus pending. |
+| [statuses-r20.html](statuses-r20.html) | Shared processing, password rejection and AI-failure patterns with Round 21 copy/mobile refinement. |
 
-The editable source is `../study-preview.html`. `index.html` is its standalone browser rendering. Existing PRD requirements remain authoritative.
+The English UI is separate from fixed Norwegian Bokmål/English generated material and Brief/Detailed Summary. Empty Home requires PDF/settings/active acknowledgement; active Home locks those choices and provides Continue studying/New session. Continue returns to the last learning tab with progress. New session Cancel/Escape preserves work; confirmation empties Home, blocks ended-state revival and requires fresh later choices/acknowledgement. The original device file is unaffected.
 
-The current `index.html` continues the original grey Home, with the shared green/yellow/blue logo, upload cloud in the logo's exact golden yellow `#e0ae26` and dark-grey PDF arrow `#343a40`. Summary, Flashcards and Quiz retain their selected green/yellow/blue pastel canvases and existing interactions. The earlier neutral Round 7 concept is archived at `neutral-home-round-7.html`.
+Uploads are metadata-only and all material/passages are saved synthetic examples. No PDF text, AI/API call or automatic successful generation is represented. The basic shell's initial learning-tab shortcut and outside-app scenario/sample controls are prototype inspection aids; real app navigation requires an active session and never generates content itself. Reload starts fixtures again, not recovered student data. Review pending does not finish automatically.
 
-The independent warm cream Home concept remains available at `home-warm-cream.html`; `home-comparison.html` preserves the earlier comparison between Round 7 and the warm concept. These are historical alternatives, not the selected default. The warm alternative changes Home only and retains its original learning screens. Its editable source is `../home-warm-cream.html`, with Home-only colour overrides in `../home-warm-cream.css`; the comparison source is `../home-colour-comparison.html`. Only preview terminology is refreshed; their visual treatments and behaviour are retained. See the [UX artifact guide](../../README.md) for current/historical roles and remaining UX work.
+Editable fragments/builders remain one directory above. [Promoted snapshots](../../mockups/) are unchanged copies of these current exports, with their roles and refresh instructions in [the artifact guide](../../README.md). [Final evidence](../review-final-ux/inspection.json) and [Round 21 evidence](../review-v1-error-simplification/inspection.json) state the exact tested scope. Real extraction, generation, cleanup, source quality and full accessibility/user testing remain implementation/evaluation work.
+
+Earlier active Home, status comparison, visible-button/session-menu, neutral/warm Home and colour comparisons remain historical. Their original sources/exports and [the prior guide](../round-21-before-finalization/browser-README.md) are preserved; they do not override the selected concept. Private PDFs and temporary files must remain outside tracked UX evidence.

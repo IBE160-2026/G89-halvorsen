@@ -1,0 +1,72 @@
+<!-- BEGIN REVIEW_CONTROLS -->
+  <div class="reliability-review-controls" data-reliability-controls>
+    <label for="reliability-scenario">Review scenario</label>
+    <select id="reliability-scenario" data-reliability-scenario aria-describedby="reliability-review-help">
+      <optgroup label="Errors">
+        <option value="unsupported">File is not a PDF</option>
+        <option value="damaged">PDF cannot be opened</option>
+        <option value="no-text">PDF has no usable text</option>
+        <option value="material-loss">Important PDF content is unreadable</option>
+        <option value="uncertain-extraction">PDF text may be missing</option>
+        <option value="zero-flashcards">Flashcards: no items can be kept</option>
+        <option value="zero-quiz">Quiz: no questions can be kept</option>
+        <option value="invalid-flashcards">Flashcards: response cannot be used</option>
+        <option value="invalid-quiz">Quiz: response cannot be used</option>
+        <option value="invalid-summary">Summary: response cannot be used</option>
+        <option value="missing-setup">Live generation is not set up</option>
+        <option value="service-unavailable">AI service is unavailable</option>
+        <option value="timeout">Quiz request took too long</option>
+      </optgroup>
+      <optgroup label="Warnings — content remains usable">
+        <option value="incidental-omission">Summary: one known omission</option>
+        <option value="reduced-flashcards">Flashcards: 3 items remain</option>
+        <option value="reduced-quiz">Quiz: 1 question remains</option>
+      </optgroup>
+      <optgroup label="Demo">
+        <option value="saved-demo">Saved material and live generation boundary</option>
+      </optgroup>
+    </select>
+    <div class="reliability-width-controls" role="group" aria-label="Review width">
+      <button type="button" data-reliability-width="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-reliability-width="mobile" aria-pressed="false">Mobile</button>
+    </div>
+    <p id="reliability-review-help" data-reliability-help>Review controls outside the product · 17 supplied test scenarios using four message patterns. Selecting a scenario loads separate sample data. No PDF is read, no AI call is made, and processing never finishes automatically.</p>
+  </div>
+<!-- END REVIEW_CONTROLS -->
+
+<!-- BEGIN STATUS_CARD -->
+        <section class="learning-view status-view" data-status-view aria-label="Session status" hidden>
+          <div class="empty-learning status-card" data-status-card>
+            <div class="status-heading-row">
+              <span class="status-pending" data-status-pending role="status" aria-live="polite" aria-atomic="true" hidden>
+                <i data-lucide="loader-circle" aria-hidden="true"></i>
+                <span class="accessible-copy" data-status-announcement></span>
+              </span>
+              <span class="status-error-icon" data-status-error><i data-lucide="file-warning" aria-hidden="true"></i></span>
+              <h2 id="reliability-status-title" data-status-heading>This file is not a PDF</h2>
+            </div>
+            <p class="status-body" data-status-body>Choose a text-based PDF to create study material.</p>
+            <div class="status-recovery" data-status-recovery hidden>
+              <button class="primary-action cursor-interaction" type="button" data-reliability-retry>Try again</button>
+              <button class="secondary-action cursor-interaction" type="button" data-reliability-summary hidden>Go to Summary</button>
+            </div>
+            <p class="status-support" data-status-support>Choose New session, then select a PDF.</p>
+          </div>
+        </section>
+<!-- END STATUS_CARD -->
+
+<!-- BEGIN SUMMARY_NOTICE -->
+          <div class="reliability-notice" data-reliability-notice data-reliability-pattern="usable-content-notice" data-reliability-summary-notice role="status" hidden><strong>Some content is not included</strong><p>The supplementary figure on physical page 4 could not be read and is left out. The Summary uses the available text.</p></div>
+<!-- END SUMMARY_NOTICE -->
+
+<!-- BEGIN CARDS_NOTICE -->
+            <div class="reliability-notice" data-reliability-notice data-reliability-pattern="usable-content-notice" data-reliability-cards-notice role="status" hidden><strong>3 flashcards are available</strong><p>Some flashcards could not be used and were left out. You can practise with the remaining 3.</p></div>
+<!-- END CARDS_NOTICE -->
+
+<!-- BEGIN QUIZ_NOTICE -->
+            <div class="reliability-notice" data-reliability-notice data-reliability-pattern="usable-content-notice" data-reliability-quiz-notice role="status" hidden><strong>1 question is available</strong><p>Some questions could not be used and were left out. This quiz contains 1 question.</p></div>
+<!-- END QUIZ_NOTICE -->
+
+<!-- BEGIN DEMO_NOTICE -->
+        <div class="reliability-notice reliability-demo-notice" data-reliability-notice data-reliability-pattern="demo-info" data-reliability-demo-notice role="status" hidden><strong>Demo session · saved study material</strong><p>This session uses prewritten material. Your own PDFs and new study material require live generation.</p></div>
+<!-- END DEMO_NOTICE -->

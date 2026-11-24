@@ -2,6 +2,8 @@
 
 <!-- impeccable:product-schema 1 -->
 
+**Current planning status — 24 November 2026:** UX planning is complete under the final DESIGN.md/EXPERIENCE.md and Round 22 decision. Earlier draft/open round notes below are historical. The latest shell, complete learning/source/reliability and mobile references are selected; no architecture or production implementation has started.
+
 This is a derived support extract for visual exploration inside the existing BMAD UX run. It records confirmed source facts and the user's current brief; it is not a new discovery or product specification. The current four-screen concept is selected as recorded below; UX remains in progress.
 The authoritative [PRD](../../../../prds/prd-G89-halvorsen-2026-11-03/prd.md) and [addendum](../../../../prds/prd-G89-halvorsen-2026-11-03/addendum.md) govern product behaviour. The existing [DESIGN.md](../../DESIGN.md) and [EXPERIENCE.md](../../EXPERIENCE.md) remain the peer UX contracts; both are currently drafts. See [the detailed UX constraint extract](../prd-ux-constraints.md).
 
@@ -71,4 +73,12 @@ The active Home tab is provisionally neutral grey, while learning functions reta
 
 This section supersedes the historical round notes above. The user has selected the latest Home, Summary, Flashcards and Quiz in the existing study-preview.html as the concept for continued UX work. Home stays light grey with the illustrated PDF/learning cards and corner forms; the unchanged shared logo uses green #4f9f6f, yellow #e0ae26 and blue #4b9bc8. The upload cloud directly shares #e0ae26, while the PDF arrow and wordmark use #343a40. Learning canvases stay Summary #eef5ef, Flashcards #fbf7e5 and Quiz #edf4fc. Keep the single in-app menu, typography, layout, separate rounded Quiz answers and current behaviour. Earlier neutral/warm variants are historical alternatives.
 
-Minor refinements remain possible. DESIGN.md/EXPERIENCE.md remain drafts, with loading/error/coverage, New session/Clear, complete learning/source and keyboard/state/usability work still open. Use concept terminology for preliminary sketches; preserve BMAD paths and product requirements. No production implementation, next phase or UX completion is implied.
+Minor refinements remain possible. DESIGN.md/EXPERIENCE.md remain drafts, with loading/error/coverage, New session, complete learning/source and keyboard/state/usability work still open. Use concept terminology for preliminary sketches; preserve BMAD paths and product requirements. No production implementation, next phase or UX completion is implied.
+
+## Session-action simplification — Round 13
+
+The user removes the duplicate Clear action and keeps only New session. Confirmation still explains/removes active session working data and progress, preserves the original device file and gives empty Home. The student may stop there; a new upload/settings/acknowledgement is needed only to study again. Cancel preserves the active session and old content cannot reappear after confirmation. PRD FR-16 is retired without renumbering; FR-15/shared rules retain its protections. Current concepts compare a Session disclosure with one visible New session button; placement is not selected. Earlier Clear references above are historical and superseded. UX stays open.
+
+## Selected placement — Round 14
+
+The user selects Visible button. The main study-preview.html now places one New session button directly beside document context on learning screens, wrapping below the document name on mobile. Keep the illustrated empty Home, shared navigation/logo/theme/type and confirmed reset semantics. The earlier Session-menu comparison is historical and not selected. No separate Clear action, extra Home placement or final UX completion is adopted. See current DESIGN/EXPERIENCE for remaining coverage and preview versus production boundaries.

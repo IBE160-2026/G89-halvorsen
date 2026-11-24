@@ -1,0 +1,77 @@
+{
+  "layouts": [
+    {
+      "area": "reliability",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "reliability",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "reliability",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "learning",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "learning",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "learning",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "selected",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "selected",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "area": "selected",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    }
+  ],
+  "checks": {
+    "threeIndependentReviews": true,
+    "responsiveTools": true,
+    "keyboardRadioNoEarlyFeedback": true,
+    "finalCopyFresh": true,
+    "manualPending": true,
+    "mobileCentering": true,
+    "dialogEscape": true
+  },
+  "exceptions": []
+}

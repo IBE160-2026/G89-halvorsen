@@ -1,0 +1,23 @@
+<div id="learning-flows-review" data-viewport="desktop" lang="en" aria-label="Learning-flow review for AI Study Buddy">
+  <style>
+    #learning-flows-review { min-width: 0; }
+    #learning-flows-review .learning-width-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 20px; font: 400 14px/1.6 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif; color: #46545d; }
+    #learning-flows-review .learning-width-controls button { min-height: 42px; padding: 8px 17px; background: #fff; color: #334e64; border: 1px solid #7d93a5; border-radius: 10px; font: inherit; }
+    #learning-flows-review .learning-width-controls button[aria-pressed="true"] { background: #d3e5f6; border-color: #62809c; }
+    #learning-flows-review .learning-width-controls button:hover { background: #e2eef9; }
+    #learning-flows-review .learning-width-controls button:focus-visible { outline: 3px solid #315e88; outline-offset: 3px; }
+    #learning-flows-review .learning-review-stage { width: 100%; min-width: 0; margin-inline: auto; }
+    #learning-flows-review[data-viewport="mobile"] .learning-review-stage { max-width: 390px; }
+  </style>
+  <div class="learning-width-controls" role="group" aria-label="Learning preview width"><span>Preview</span><button class="cursor-interaction" type="button" data-learning-width="desktop" aria-pressed="true">Desktop</button><button class="cursor-interaction" type="button" data-learning-width="mobile" aria-pressed="false">Mobile</button></div>
+  <div class="learning-review-stage"><!-- LEARNING_FLOW_FRAGMENT --></div>
+  <script>
+    (() => {
+      const review = document.getElementById('learning-flows-review');
+      review.querySelectorAll('[data-learning-width]').forEach(button => button.addEventListener('click', () => {
+        review.dataset.viewport = button.dataset.learningWidth;
+        review.querySelectorAll('[data-learning-width]').forEach(control => control.setAttribute('aria-pressed', String(control === button)));
+      }));
+    })();
+  </script>
+</div>

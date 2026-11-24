@@ -291,6 +291,189 @@
       #study-preview .app-shell[data-mode="startup"] .brand-mark { width: 30px !important; height: 30px !important; }
       #study-preview .app-shell .privacy-icon { width: 24px !important; height: 24px !important; }
     }
+    #study-preview .session-document-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 22px; text-align: left; }
+    #study-preview .session-document-copy { flex: 1 1 230px; min-width: 0; }
+    #study-preview .session-tools { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-left: auto; flex: 0 0 auto; }
+    #study-preview .session-toggle,
+    #study-preview .session-action { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 10px 16px; border: 1px solid var(--mode-border); border-radius: 10px; color: var(--brand-ink); background: var(--surface); font-size: 15px; line-height: 1.4; font-weight: 500; }
+    #study-preview .session-toggle:hover,
+    #study-preview .session-action:hover { background: var(--mode-soft); border-color: var(--mode-border); }
+    #study-preview .session-toggle svg { width: 17px !important; height: 17px !important; }
+    #study-preview .session-popup { position: absolute; top: calc(100% + 9px); right: 0; z-index: 4; display: grid; gap: 4px; width: 252px; padding: 7px; border-radius: 14px; background: #ffffff; box-shadow: 0 12px 28px rgba(43, 52, 48, 0.18); text-align: left; }
+    #study-preview .session-option { display: grid; gap: 3px; width: 100%; padding: 12px; min-height: 64px; border: 0; border-radius: 9px; text-align: left; color: #29372f; background: #ffffff; font-size: 15px; line-height: 1.4; }
+    #study-preview .session-option small { color: #56615b; font-size: 12px; line-height: 1.5; }
+    #study-preview .session-option:hover { background: var(--mode-soft); }
+    #study-preview .session-modal-layer { position: absolute; inset: 0; z-index: 8; border-radius: inherit; background: rgba(31, 42, 36, 0.24); }
+    #study-preview .session-confirmation { position: absolute; top: var(--session-dialog-offset, 130px); left: 50%; transform: translateX(-50%); width: min(480px, calc(100% - 32px)); padding: 28px; border-radius: 16px; background: #ffffff; color: #29372f; box-shadow: 0 22px 44px rgba(29, 39, 34, 0.23); }
+    #study-preview .session-confirmation h2 { margin: 0 0 18px; font-size: 25px; font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; }
+    #study-preview .session-confirmation p { margin: 0 0 14px; font-size: 16px; line-height: 1.7; }
+    #study-preview .session-confirmation .session-confirmation-note { margin: 0; font-size: 14px; color: #56615b; }
+    #study-preview .session-confirmation-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; margin-top: 25px; }
+    #study-preview .app-navigation .app-nav-item:disabled { color: #686e69; background: transparent; border-color: transparent; opacity: 0.75; }
+    #study-preview .upload-area:disabled { opacity: 0.78; }
+    #study-preview .startup-form select:disabled { color: #56615b; opacity: 1; }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .session-document-row { gap: 14px; }
+      #study-preview .session-document-copy { flex-basis: 100%; }
+      #study-preview .session-tools { justify-content: flex-start; margin-left: 0; }
+      #study-preview .session-popup { left: 0; right: auto; width: min(252px, calc(100cqw - 38px)); }
+      #study-preview .session-confirmation { padding: 23px 20px; }
+      #study-preview .session-confirmation h2 { font-size: 23px; }
+      #study-preview .session-confirmation-actions { display: grid; grid-template-columns: 1fr; }
+      #study-preview .session-confirmation-actions button { width: 100%; justify-self: stretch; }
+    }
+    #study-preview .active-session-card { grid-column: 2; grid-row: 2; position: relative; z-index: 1; display: grid; gap: 28px; width: 100%; min-width: 0; padding: 36px; border-radius: 34px; background: var(--surface); box-shadow: 0 22px 42px rgba(43, 52, 68, 0.14); }
+    #study-preview .active-session-document { display: flex; align-items: center; gap: 18px; min-width: 0; }
+    #study-preview .active-document-icon { width: 42px; height: 42px; flex: 0 0 auto; color: var(--brand-ink); stroke-width: 1.5; }
+    #study-preview .active-document-copy { min-width: 0; }
+    #study-preview .active-document-copy h2 { margin: 0; color: var(--brand-ink); font-size: 26px; font-weight: 650; line-height: 1.4; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+    #study-preview .active-session-example { margin: 3px 0 0; color: var(--muted-ink); font-size: 14px; line-height: 1.6; }
+    #study-preview .active-session-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 0; padding-top: 25px; border-top: 1px solid #e1e5e9; }
+    #study-preview .active-session-choices dt { color: var(--muted-ink); font-size: 15px; line-height: 1.6; }
+    #study-preview .active-session-choices dd { margin: 5px 0 0; color: var(--brand-ink); font-size: 19px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+    #study-preview .active-session-lock { display: flex; align-items: flex-start; gap: 11px; margin: 0; color: var(--muted-ink); font-size: 15px; line-height: 1.65; }
+    #study-preview .active-session-lock svg, #study-preview .active-session-lock i { width: 19px; height: 19px; flex: 0 0 auto; margin-top: 3px; }
+    #study-preview .active-session-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 14px; }
+    #study-preview .active-session-actions > button { display: inline-flex; align-items: center; justify-content: center; justify-self: stretch; width: 100%; min-width: 0; height: 56px; min-height: 56px; padding: 14px 18px; border-radius: 15px; font-size: 16px; line-height: 1.4; font-weight: 500; gap: 14px; }
+    #study-preview .active-session-continue svg, #study-preview .active-session-continue i { width: 21px; height: 21px; flex: 0 0 auto; }
+    #study-preview .active-session-actions .session-action { border-color: #a9b2bd; background: #f2f3f5; }
+    #study-preview .active-session-actions .session-action:hover { background: #e7eaee; }
+    #study-preview .active-session-notes { display: grid; gap: 5px; color: var(--muted-ink); font-size: 14px; line-height: 1.6; }
+    #study-preview .active-session-notes p { margin: 0; }
+    @container study-preview-app (max-width: 900px) {
+      #study-preview .active-session-card { width: min(760px, 100%); margin-inline: auto; }
+    }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .active-session-card { padding: 26px 21px; gap: 24px; border-radius: 24px; }
+      #study-preview .active-session-document { gap: 13px; }
+      #study-preview .active-document-icon { width: 34px; height: 34px; }
+      #study-preview .active-document-copy h2 { font-size: 22px; }
+      #study-preview .active-session-choices { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-top: 22px; }
+      #study-preview .active-session-choices dd { margin-top: 2px; font-size: 18px; }
+      #study-preview .active-session-actions { grid-template-columns: minmax(0, 1fr); }
+    }
+    #study-preview .status-preview-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin: 18px 0; color: #343a40; font: 400 14px/1.6 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif; }
+    #study-preview .status-preview-controls label { font-weight: 600; }
+    #study-preview .status-preview-controls select { min-height: 44px; max-width: 100%; padding: 9px 12px; border: 1px solid #789681; border-radius: 9px; background: #ffffff; color: #29372f; font: inherit; font-size: 16px; }
+    #study-preview .status-preview-controls select:focus-visible { outline: 3px solid #315d3f; outline-offset: 3px; }
+    #study-preview .status-preview-controls p { flex-basis: 100%; margin: 0; color: #56615b; }
+    #study-preview .status-card { gap: 20px; min-height: 256px; padding: 34px; }
+    #study-preview .status-heading-row { display: flex; align-items: flex-start; gap: 14px; }
+    #study-preview .status-card h2 { margin: 0; font-size: 26px; line-height: 1.4; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+    #study-preview .status-pending, #study-preview .status-error-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 30px; height: 36px; color: var(--action-ink); }
+    #study-preview .status-pending svg, #study-preview .status-pending i, #study-preview .status-error-icon svg, #study-preview .status-error-icon i { width: 27px; height: 27px; stroke-width: 1.8; }
+    #study-preview .status-pending svg, #study-preview .status-pending i { animation: status-pending-turn 1.2s linear infinite; }
+    #study-preview .status-body { max-width: 62ch; font-size: 17px; line-height: 1.8; }
+    #study-preview .status-support { max-width: 65ch; color: var(--muted-ink); font-size: 14px; line-height: 1.8; }
+    #study-preview .status-recovery { display: flex; flex-wrap: wrap; gap: 14px; }
+    #study-preview .app-shell[data-status="pdf-problem"] .app-main { max-width: 850px; padding: 31px 34px 46px; }
+    #study-preview .app-shell[data-status="pdf-problem"] .status-error-icon { color: #526173; }
+    #study-preview .status-card [hidden] { display: none !important; }
+    @keyframes status-pending-turn { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      #study-preview .status-pending svg, #study-preview .status-pending i { animation: none; }
+    }
+    @container study-preview-app (max-width: 540px) {
+      #study-preview .status-card { min-height: 0; padding: 25px 20px; gap: 19px; }
+      #study-preview .status-card h2 { font-size: 23px; }
+      #study-preview .status-heading-row { gap: 11px; }
+      #study-preview .status-body { font-size: 16px; }
+      #study-preview .app-shell[data-status="pdf-problem"] .app-main { padding: 26px 17px 35px; }
+      #study-preview .status-preview-controls { align-items: stretch; }
+      #study-preview .status-preview-controls label { width: 100%; }
+      #study-preview .status-preview-controls select { width: 100%; }
+    }
+    /* Shared mobile study alignment. Append before each preview's ID rewrite. */
+    @container study-preview-app (max-width: 540px) {
+      #study-preview :is([data-panel="flashcards"], [data-panel="quiz"]),
+      #study-preview .status-card {
+        text-align: center;
+      }
+
+      #study-preview :is(.card-prompt, .card-answer, .flip-hint),
+      #study-preview .quiz-options legend,
+      #study-preview .quiz-feedback,
+      #study-preview .learning-end,
+      #study-preview .app-shell:is([data-mode="flashcards"], [data-mode="quiz"]) .reliability-notice {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .quiz-options legend {
+        width: 100%;
+        min-width: 0;
+      }
+
+      /* Balance the native radio with an equal empty track at the logical end. */
+      #study-preview .quiz-options label {
+        display: grid;
+        grid-template-columns: 19px minmax(0, 1fr) 19px;
+      }
+
+      #study-preview .quiz-options input {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      #study-preview .quiz-options [data-quiz-option] {
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
+        width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .quiz-options .option-state {
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+        padding-inline: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview :is([data-panel="flashcards"], [data-panel="quiz"]) :is(.primary-action, .secondary-action, .source-link),
+      #study-preview .status-recovery > button {
+        justify-self: center;
+        max-width: 100%;
+        min-width: 0;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview :is(.card-actions, .learning-actions, .status-recovery) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Retain full-width question navigation and its existing mobile hit areas. */
+      #study-preview .learning-actions.quiz-navigation button {
+        justify-self: stretch;
+      }
+
+      #study-preview .wrong-review ol {
+        padding-inline: 24px;
+      }
+
+      #study-preview .quiz-review-link {
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      #study-preview .status-heading-row {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #study-preview :is(.status-heading-row, .status-body, .status-support) {
+        min-width: 0;
+        max-width: 100%;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+    }
   </style>
   <div class="app-frame">
     <div class="app-shell" data-mode="startup">
@@ -337,8 +520,56 @@
               <p class="field-help">Reloading or closing ends this temporary session.</p>
             </div>
           </form>
+          <section class="active-session-card" data-active-home aria-labelledby="active-home-document" hidden>
+            <div class="active-session-document">
+              <i class="active-document-icon" data-lucide="file-text" aria-hidden="true"></i>
+              <div class="active-document-copy">
+                <h2 id="active-home-document" data-home-document>Studieteknikk.pdf</h2>
+                <p class="active-session-example">Saved example content</p>
+              </div>
+            </div>
+            <dl class="active-session-choices">
+              <div><dt>Study material language</dt><dd data-home-language>Norwegian Bokmål</dd></div>
+              <div><dt>Summary detail</dt><dd data-home-level>Detailed</dd></div>
+            </dl>
+            <p class="active-session-lock"><i data-lucide="lock-keyhole" aria-hidden="true"></i><span>These choices stay fixed for this session. Start a new session to change them.</span></p>
+            <div class="active-session-actions">
+              <button class="primary-action active-session-continue cursor-interaction" type="button" data-home-continue aria-describedby="home-continue-destination"><span>Continue studying</span><i data-lucide="arrow-right" aria-hidden="true"></i></button>
+              <button class="session-action cursor-interaction" type="button" data-session-action="new" data-home-new-session>New session</button>
+            </div>
+            <div class="active-session-notes">
+              <p id="home-continue-destination" data-home-destination>Return to Summary</p>
+              <p>Reloading or closing ends this temporary session.</p>
+            </div>
+          </section>
         </section>
-        <div class="doc-context" hidden><h1 class="doc-name">Studieteknikk.pdf</h1><p class="session-meta">Norwegian Bokmål · Detailed · sample content</p><p class="sample-note"></p></div>
+        <div class="doc-context" hidden>
+          <div class="session-document-row">
+            <div class="session-document-copy"><h1 class="doc-name">Studieteknikk.pdf</h1><p class="session-meta">Norwegian Bokmål · Detailed · sample content</p></div>
+            <div class="session-tools session-visible-actions" data-session-tools>
+              <button class="session-action cursor-interaction" type="button" data-session-action="new">New session</button>
+            </div>
+          </div>
+          <p class="sample-note"></p>
+        </div>
+
+        <section class="learning-view status-view" data-status-view aria-label="Session status" hidden>
+          <div class="empty-learning status-card" data-status-card>
+            <div class="status-heading-row">
+              <span class="status-pending" data-status-pending role="status" aria-live="polite" aria-atomic="true">
+                <i data-lucide="loader-circle" aria-hidden="true"></i>
+                <span class="accessible-copy" data-status-announcement>Generating summary</span>
+              </span>
+              <span class="status-error-icon" data-status-error hidden><i data-lucide="file-warning" aria-hidden="true"></i></span>
+              <h2 id="status-title" data-status-heading>Generating summary</h2>
+            </div>
+            <p class="status-body" data-status-body>Your summary is being prepared from the PDF text.</p>
+            <div class="status-recovery" data-status-recovery hidden>
+              <button class="primary-action cursor-interaction" type="button" data-retry>Try again</button>
+            </div>
+            <p class="status-support" data-status-support>Keep this session open while the summary is being prepared.</p>
+          </div>
+        </section>
         <section class="learning-view" id="preview-summary" data-panel="summary" aria-label="Example summary" hidden>
           <article class="summary-copy" id="preview-summary-copy"></article>
           <div class="summary-sources"><button class="source-link cursor-interaction" type="button" data-source="summary" aria-controls="study-source-panel" aria-expanded="false">Source · page 2</button><button class="source-link cursor-interaction" type="button" data-source="summary-repetition" aria-controls="study-source-panel" aria-expanded="false">Source · page 3</button></div>
@@ -367,6 +598,19 @@
         </section>
       </main>
       <aside class="source-panel" id="study-source-panel" aria-label="Illustrative original excerpt" hidden><div class="source-heading"><h2>Source excerpt</h2><button class="secondary-action cursor-interaction" type="button" data-close-source>Close</button></div><p class="source-file">Studieteknikk.pdf · physical page <span data-source-page>2</span></p><blockquote><mark data-excerpt lang="nb"></mark></blockquote><p class="source-note">Illustrative original text in Norwegian Bokmål. A location reference does not establish that an AI answer is correct.</p></aside>
+      <div class="session-modal-layer" data-session-overlay hidden>
+        <section class="session-confirmation" role="dialog" aria-modal="true" aria-labelledby="session-dialog-title" aria-describedby="session-dialog-message session-dialog-next session-dialog-note" data-session-dialog>
+          <h2 id="session-dialog-title">Start a new session?</h2>
+          <p id="session-dialog-message">The current PDF, study material and progress will be removed from this session.</p>
+          <p id="session-dialog-next">You will return to an empty Home screen. Choose a PDF and settings when you are ready to study again.</p>
+          <p class="session-confirmation-note" id="session-dialog-note">The original PDF on your device will not be changed.</p>
+          <div class="session-confirmation-actions">
+            <button class="secondary-action cursor-interaction" type="button" data-session-cancel>Cancel</button>
+            <button class="primary-action cursor-interaction" type="button" data-session-confirm>Start new session</button>
+          </div>
+        </section>
+      </div>
+
     </div>
   </div>
   <p class="text-small text-muted preview-note">Concept preview · sample content · no PDF processing or AI calls</p>
@@ -567,6 +811,369 @@
       });
       root.addEventListener('change', event => { if (event.target.matches('input[name="preview-quiz-answer"]') && !state.confirmed) { state.answer = Number(event.target.value); render(); } });
       root.addEventListener('keydown', event => { if (event.key === 'Escape' && state.source) closeSource(true); });
+      let exampleEnded = false;
+      const sessionToggle = root.querySelector('[data-session-toggle]');
+      const sessionPopup = root.querySelector('[data-session-popup]');
+      const sessionOverlay = root.querySelector('[data-session-overlay]');
+      const sessionDialog = root.querySelector('[data-session-dialog]');
+      const sessionCancel = root.querySelector('[data-session-cancel]');
+      const sessionConfirm = root.querySelector('[data-session-confirm]');
+      let sessionDialogOpen = false;
+      let sessionReturn = null;
+      let inertSnapshot = [];
+
+      function closeSessionPopup(returnFocus = false) {
+        if (!sessionPopup) return;
+        sessionPopup.hidden = true;
+        sessionToggle.setAttribute('aria-expanded', 'false');
+        if (returnFocus) sessionToggle.focus({ preventScroll: true });
+      }
+      function guardSessionFocus(event) {
+        if (sessionDialogOpen && !sessionDialog.contains(event.target)) sessionCancel.focus({ preventScroll: true });
+      }
+      function guardSessionPointer(event) {
+        if (sessionDialogOpen && !sessionDialog.contains(event.target)) {
+          event.preventDefault(); event.stopImmediatePropagation();
+        }
+      }
+      function guardSessionKeys(event) {
+        if (!sessionDialogOpen) return;
+        if (event.key === 'Escape') { event.preventDefault(); event.stopImmediatePropagation(); closeSessionDialog(true); return; }
+        if (event.key === 'Tab') {
+          const first = sessionCancel, last = sessionConfirm;
+          if (event.shiftKey && (document.activeElement === first || !sessionDialog.contains(document.activeElement))) { event.preventDefault(); last.focus(); }
+          else if (!event.shiftKey && (document.activeElement === last || !sessionDialog.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+        }
+      }
+      function openSessionDialog(trigger) {
+        if (!state.active || sessionDialogOpen) return;
+        sessionReturn = sessionToggle || trigger;
+        sessionDialogOpen = true;
+        closeSessionPopup();
+        const otherConcepts = [...document.querySelectorAll('[data-concept]')].filter(element => element !== root);
+        inertSnapshot = [...root.querySelectorAll('.app-brandbar, .app-main, .source-panel'), ...otherConcepts].map(element => [element, element.inert]);
+        inertSnapshot.forEach(([element]) => element.inert = true);
+        sessionOverlay.hidden = false;
+        const area = app.getBoundingClientRect(), source = sessionReturn.getBoundingClientRect(), height = sessionDialog.getBoundingClientRect().height;
+        const top = Math.max(16, Math.min(source.bottom - area.top + 18, area.height - height - 20));
+        app.style.setProperty('--session-dialog-offset', `${top}px`);
+        document.addEventListener('keydown', guardSessionKeys, true);
+        document.addEventListener('focusin', guardSessionFocus, true);
+        document.addEventListener('pointerdown', guardSessionPointer, true);
+        sessionCancel.focus({ preventScroll: true });
+      }
+      function closeSessionDialog(restoreFocus) {
+        const trigger = sessionReturn;
+        sessionDialogOpen = false;
+        sessionOverlay.hidden = true;
+        inertSnapshot.forEach(([element, previous]) => element.inert = previous);
+        inertSnapshot = [];
+        document.removeEventListener('keydown', guardSessionKeys, true);
+        document.removeEventListener('focusin', guardSessionFocus, true);
+        document.removeEventListener('pointerdown', guardSessionPointer, true);
+        sessionReturn = null;
+        if (restoreFocus && trigger) trigger.focus({ preventScroll: true });
+      }
+      function confirmSessionEnd() {
+        if (!sessionDialogOpen) return;
+        closeSessionDialog(false);
+        exampleEnded = true;
+        state.active = false;
+        state.file = null;
+        state.selectedName = '';
+        state.language = 'nb';
+        state.level = 'brief';
+        state.card = 0;
+        state.flipped = false;
+        state.answer = null;
+        state.confirmed = false;
+        state.source = null;
+        state.ready = { summary: false, flashcards: false, quiz: false };
+        state.view = 'startup';
+        sourceReturn = null;
+        summaryKey = '';
+        form.reset();
+        fileInput.value = '';
+        languageInput.value = '';
+        levelInput.value = '';
+        acknowledgement.checked = false;
+        render();
+        savePresentation();
+        root.querySelector('[data-choose-pdf]').focus({ preventScroll: true });
+      }
+      const sessionBaseRender = render;
+      const sessionBaseSetView = setView;
+      readyToStart = () => !state.active && Boolean(state.file?.pdf && languageInput.value && levelInput.value && acknowledgement.checked);
+      renderForm = () => {
+        root.querySelector('#generate-summary').disabled = !readyToStart();
+        fileInput.disabled = state.active;
+        languageInput.disabled = state.active;
+        levelInput.disabled = state.active;
+        acknowledgement.disabled = state.active;
+        root.querySelector('[data-choose-pdf]').disabled = state.active;
+        root.querySelector('#selected-file').hidden = !state.file;
+        root.querySelector('#selected-file').textContent = state.file ? (state.file.pdf ? `${state.file.example ? 'Example document' : 'Selected'}: ${state.file.name}` : `Choose a PDF file instead of “${state.file.name}”.`) : 'No file selected.';
+        root.querySelector('#startup-status').textContent = state.active
+          ? 'Session settings are locked. Open a learning tab and choose New session to change them.'
+          : readyToStart() ? 'Ready to preview. Your PDF will not be processed.' : 'Complete the options to preview saved example content.';
+      };
+      render = () => {
+        sessionBaseRender();
+        if (state.source) closeSessionPopup();
+        root.querySelectorAll('[data-preview]').forEach(button => button.disabled = button.dataset.preview !== 'startup' && exampleEnded && !state.active);
+        root.querySelector('[data-session-tools]').hidden = !state.active;
+        root.querySelector('.sample-note').textContent = 'Saved example content · no PDF processing or AI calls.';
+        if (!state.active) {
+          root.querySelector('#preview-summary-copy').replaceChildren();
+          summaryKey = '';
+          root.querySelector('.card-prompt').textContent = '';
+          root.querySelector('.card-answer').textContent = '';
+          root.querySelector('[data-card-count]').textContent = '';
+          root.querySelector('[data-quiz-question]').textContent = '';
+          root.querySelectorAll('[data-quiz-option]').forEach(option => option.textContent = '');
+          root.querySelector('[data-feedback]').replaceChildren();
+          root.querySelector('[data-excerpt]').textContent = '';
+        }
+      };
+      setView = (view, direct = false) => {
+        if (!screens.has(view)) return;
+        if (!state.active && view !== 'startup') {
+          if (exampleEnded || !direct) return;
+          state.active = true;
+          state.file = { name: 'Studieteknikk.pdf', pdf: true, example: true };
+          state.selectedName = 'Studieteknikk.pdf';
+          state.language = 'nb';
+          state.level = 'detailed';
+          state.ready = { summary: true, flashcards: true, quiz: true };
+          languageInput.value = 'nb';
+          levelInput.value = 'detailed';
+          acknowledgement.checked = true;
+        }
+        closeSessionPopup();
+        sessionBaseSetView(view, false);
+      };
+      root.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button || button.disabled || !root.contains(button)) return;
+        if (button.hasAttribute('data-session-toggle')) {
+          const open = sessionPopup.hidden;
+          sessionPopup.hidden = !open;
+          sessionToggle.setAttribute('aria-expanded', String(open));
+        } else if (button.dataset.sessionAction === 'new') openSessionDialog(button);
+        else if (button.hasAttribute('data-session-cancel')) closeSessionDialog(true);
+        else if (button.hasAttribute('data-session-confirm')) confirmSessionEnd();
+      });
+      document.addEventListener('pointerdown', event => {
+        if (sessionPopup && !sessionPopup.hidden && !event.target.closest('.session-tools')) closeSessionPopup();
+      });
+      root.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && sessionPopup && !sessionPopup.hidden && !sessionDialogOpen) {
+          event.preventDefault(); closeSessionPopup(true);
+        }
+      });
+      fileInput.addEventListener('change', event => {
+        if (state.active) { event.stopImmediatePropagation(); return; }
+      }, true);
+
+      // Selected Home state; session choices and practice remain in memory only.
+      const activeHomeCard = root.querySelector('[data-active-home]');
+      const startupHeading = root.querySelector('#startup-title');
+      const startupDescription = root.querySelector('.startup-intro p');
+      const emptyHomeHeading = startupHeading.textContent;
+      const emptyHomeDescription = [...startupDescription.childNodes].map(node => node.cloneNode(true));
+      const activeHomeBaseRender = render;
+      const activeHomeBaseSetView = setView;
+      const learningNames = { summary: 'Summary', flashcards: 'Flashcards', quiz: 'Quiz' };
+      let lastStudyView = 'summary';
+      render = () => {
+        activeHomeBaseRender();
+        const activeHome = state.active && state.view === 'startup';
+        form.hidden = state.active;
+        activeHomeCard.hidden = !activeHome;
+        if (activeHome) {
+          startupHeading.textContent = 'Continue your study session';
+          startupDescription.textContent = 'Your study material is ready when you are.';
+          root.querySelector('[data-home-document]').textContent = state.file?.name || state.selectedName;
+          root.querySelector('[data-home-language]').textContent = state.language === 'en' ? 'English' : 'Norwegian Bokmål';
+          root.querySelector('[data-home-level]').textContent = state.level === 'brief' ? 'Brief' : 'Detailed';
+          root.querySelector('[data-home-destination]').textContent = `Return to ${learningNames[lastStudyView]}`;
+          root.querySelector('.active-session-example').textContent = 'Saved example content · no PDF processing';
+        } else {
+          startupHeading.textContent = emptyHomeHeading;
+          startupDescription.replaceChildren(...emptyHomeDescription.map(node => node.cloneNode(true)));
+        }
+      };
+      setView = (view, direct = false) => {
+        activeHomeBaseSetView(view, direct);
+        if (state.active && state.view !== 'startup') lastStudyView = state.view;
+      };
+      root.addEventListener('click', event => {
+        const button = event.target.closest('button[data-home-continue]');
+        if (!button || button.disabled || !root.contains(button) || !state.active) return;
+        setView(lastStudyView);
+        root.querySelector(`[data-preview="${state.view}"]`).focus({ preventScroll: true });
+      });
+
+      // Isolated presentation fixtures. No PDF read, API call, persistence or timer.
+      let statusConcept = null;
+      const statusRegion = root.querySelector('[data-status-view]');
+      const statusHeading = root.querySelector('[data-status-heading]');
+      const statusBody = root.querySelector('[data-status-body]');
+      const statusPending = root.querySelector('[data-status-pending]');
+      const statusError = root.querySelector('[data-status-error]');
+      const statusSupport = root.querySelector('[data-status-support]');
+      const statusRecovery = root.querySelector('[data-status-recovery]');
+      const statusOperations = {
+        checking: { label: 'Checking PDF', view: 'summary', body: 'Checking whether this PDF can be used for your study session.' },
+        extracting: { label: 'Extracting text', view: 'summary', body: 'Reading the PDF text before preparing your study material.' },
+        summary: { label: 'Generating summary', view: 'summary', body: 'Your summary is being prepared from the PDF text.' },
+        flashcards: { label: 'Generating flashcards', view: 'flashcards', body: 'Your flashcards are being prepared from the PDF text.' },
+        quiz: { label: 'Generating quiz', view: 'quiz', body: 'Your quiz is being prepared from the PDF text.' }
+      };
+      let statusOperation = 'summary';
+      let retryOperation = null;
+      let statusFixtureEnded = false;
+      const statusBaseRender = render;
+      const statusBaseSetView = setView;
+
+      function showStatusMessage(heading, body, support, pending, retry) {
+        statusHeading.textContent = heading;
+        statusBody.textContent = body;
+        statusSupport.textContent = support;
+        statusPending.hidden = !pending;
+        statusError.hidden = pending;
+        statusRecovery.hidden = !retry;
+        root.querySelector('[data-status-announcement]').textContent = pending ? heading : '';
+        statusRegion.setAttribute('aria-busy', String(pending));
+        if (pending) statusRegion.removeAttribute('role');
+        else statusRegion.setAttribute('role', 'alert');
+      }
+
+      render = () => {
+        statusBaseRender();
+        if (exampleEnded && !state.active) {
+          statusFixtureEnded = true;
+          root.dispatchEvent(new Event('study-preview:ended'));
+        }
+        const fixtureActive = statusConcept !== null && state.active && !statusFixtureEnded;
+        statusRegion.hidden = true;
+        delete app.dataset.status;
+        if (!fixtureActive) return;
+        app.dataset.status = statusConcept;
+        root.querySelector('.doc-name').textContent = state.file.name;
+        root.querySelector('.session-meta').textContent = `${state.language === 'en' ? 'English' : 'Norwegian Bokmål'} · ${state.level === 'brief' ? 'Brief' : 'Detailed'} · fixed for this session`;
+        root.querySelector('.sample-note').textContent = 'Synthetic state sketch · no PDF processing or AI calls.';
+        if (!state.ready.summary) {
+          // Never expose a new Summary before its complete response is accepted.
+          root.querySelector('#preview-summary-copy').replaceChildren();
+          summaryKey = '';
+        }
+
+        if (statusConcept === 'loading') {
+          const operation = statusOperations[statusOperation];
+          const visible = state.view === operation.view;
+          statusRegion.hidden = !visible;
+          if (visible) root.querySelectorAll('[data-panel]').forEach(panel => panel.hidden = true);
+          showStatusMessage(operation.label, operation.body, 'Keep this session open while processing continues.', true, false);
+          root.querySelectorAll('[data-preview]').forEach(button => {
+            button.disabled = button.dataset.preview !== 'startup' && button.dataset.preview !== operation.view;
+          });
+          if (state.view === 'startup') {
+            startupHeading.textContent = 'Your study session is in progress';
+            startupDescription.textContent = `${operation.label}. Continue to see the current status.`;
+            root.querySelector('.active-session-example').textContent = 'Synthetic state sketch · processing in progress';
+          }
+        } else if (statusConcept === 'pdf-problem') {
+          statusRegion.hidden = false;
+          root.querySelectorAll('[data-panel]').forEach(panel => panel.hidden = true);
+          activeHomeCard.hidden = true;
+          root.querySelector('.doc-context').hidden = false;
+          root.querySelectorAll('[data-preview]').forEach(button => button.disabled = button.dataset.preview !== 'startup');
+          showStatusMessage(
+            'This PDF needs a password',
+            'We cannot read a password-protected PDF. No study material has been created.',
+            'Choose New session to return to Home, then select a PDF that does not need a password.',
+            false, false
+          );
+        } else if (statusConcept === 'ai-error') {
+          const pendingHere = retryOperation === state.view;
+          const visible = state.view === 'flashcards' || pendingHere;
+          statusRegion.hidden = !visible;
+          if (visible) root.querySelectorAll('[data-panel]').forEach(panel => panel.hidden = true);
+          if (pendingHere) {
+            const operation = statusOperations[retryOperation];
+            showStatusMessage(operation.label, operation.body, 'Your existing study material and progress are kept. You can open other ready tabs while you wait.', true, false);
+          } else {
+            showStatusMessage(
+              'Flashcards could not be created',
+              'We could not create a usable set. Please try again.',
+              'Your existing study material and progress are kept. You can open another ready tab or try again.',
+              false, true
+            );
+          }
+          root.querySelectorAll('[data-generate]').forEach(button => button.disabled = retryOperation !== null);
+          root.querySelector('[data-retry]').disabled = retryOperation !== null;
+          if (state.view === 'startup') {
+            startupDescription.textContent = 'Your existing study material and progress are kept. Flashcards could not be created.';
+            root.querySelector('.active-session-example').textContent = 'Synthetic state sketch · saved example Summary';
+          }
+        }
+      };
+
+      setView = (view, direct = false) => {
+        if (statusConcept === null) { statusBaseSetView(view, direct); return; }
+        if (state.active && !statusFixtureEnded) {
+          if (statusConcept === 'pdf-problem' && view !== 'startup') return;
+          if (statusConcept === 'loading' && view !== 'startup' && view !== statusOperations[statusOperation].view) return;
+          // Never mark an ungenerated function ready just by opening its tab.
+          statusBaseSetView(view, false);
+          return;
+        }
+        statusBaseSetView(view, direct);
+      };
+
+      root.addEventListener('click', event => {
+        if (statusConcept === null || !state.active || statusFixtureEnded) return;
+        const button = event.target.closest('button');
+        if (!button || button.disabled || !root.contains(button)) return;
+        if (button.hasAttribute('data-retry') || button.hasAttribute('data-generate')) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          if (statusConcept !== 'ai-error' || retryOperation !== null) return;
+          retryOperation = button.hasAttribute('data-retry') ? 'flashcards' : button.dataset.generate;
+          // A rejected replacement or manual retry never removes accepted content.
+          state.view = retryOperation;
+          state.source = null;
+          render();
+          statusHeading.setAttribute('tabindex', '-1');
+          statusHeading.focus({ preventScroll: true });
+        }
+      }, true);
+
+      // Review-only event. The normal main preview keeps its saved-example flow.
+      root.addEventListener('study-preview:status', event => {
+        const kind = event.detail?.kind;
+        if (!['loading', 'pdf-problem', 'ai-error'].includes(kind) || exampleEnded) return;
+        const preserveSession = state.active && kind === 'ai-error' && !event.detail?.replaceFixture;
+        if (!state.active) statusBaseSetView('summary', true);
+        statusConcept = kind;
+        statusFixtureEnded = false;
+        statusOperation = statusOperations[event.detail?.operation] ? event.detail.operation : 'summary';
+        retryOperation = null;
+        if (!preserveSession) {
+        state.file = { name: kind === 'pdf-problem' ? 'Forelesningsnotater.pdf' : 'Studieteknikk.pdf', pdf: true, example: true };
+        state.selectedName = state.file.name;
+        state.ready = { summary: kind === 'ai-error', flashcards: false, quiz: false };
+        state.card = 0; state.flipped = false; state.answer = null; state.confirmed = false;
+        }
+        state.view = kind === 'pdf-problem' ? 'startup' : kind === 'ai-error' ? 'flashcards' : statusOperations[statusOperation].view;
+        state.source = null;
+        sourceReturn = null;
+        summaryKey = '';
+        lastStudyView = state.view === 'startup' ? 'summary' : state.view;
+        render();
+      });
+
       render();
       restorePresentation(window.openai?.widgetState?.privateContent);
       window.addEventListener('openai:set_globals', event => restorePresentation(event.detail?.globals?.widgetState?.privateContent));

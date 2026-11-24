@@ -2,7 +2,7 @@
 title: AI Study Buddy — Product Requirements Document
 status: final
 created: 2026-11-03
-updated: 2026-11-14
+updated: 2026-11-19
 ---
 
 # AI Study Buddy — Product Requirements Document
@@ -15,7 +15,7 @@ AI Study Buddy helps students reduce study-material preparation and spend more t
 
 ## Confirmed direction
 
-One temporary study session uses one text-based PDF, one output language (Bokmål or English) and one summary level (Brief or Detailed), chosen before generation. Students request a summary, flashcards or a multiple-choice quiz and inspect original supporting passages. Navigation reuses generated content; changing the PDF, language or level requires a confirmed new session and ordinary startup again.
+One temporary study session uses one text-based PDF, one output language (Bokmål or English) and one summary level (Brief or Detailed), chosen before generation. Students request a summary, flashcards or a multiple-choice quiz and inspect original supporting passages. Navigation reuses generated content. **New session** is the single explicit action for ending the current session, whether the student is finished or wants different PDF/output choices; confirmation returns to ordinary empty startup. Starting again is optional and requires fresh PDF/settings selection.
 
 Source-supported quality takes priority over item count. Unreliable or uncertain main-text coverage stops generation. A labelled saved-content demo runs without private credentials; live generation is evaluated separately. V1 has no public launch or recovery after reload/closing.
 
@@ -48,7 +48,7 @@ Possible later extensions: language/level changes within an active session, coex
 | Learn and practise | Request a summary, recall card answers and confirm quiz answers before feedback. | FR-6–FR-10, FR-19, FR-24–FR-33 |
 | Verify | Inspect original passages when checking generated content. | FR-11–FR-12, FR-34–FR-37 |
 | Continue | Switch functions and resume practice without uploading or generating again. | FR-2–FR-3, FR-13, FR-31 |
-| Finish or start again | Confirm Clear or New session; choose a PDF and settings again for another session. | FR-15–FR-18, FR-21 |
+| Finish or start again | Confirm New session to end the current session; optionally choose a PDF and settings for another session. | FR-15, FR-17–FR-18, FR-21 |
 
 ## Features and functional requirements
 
@@ -68,15 +68,14 @@ Existing IDs are retained. Shared acceptance rules below apply across learning f
 ### Study session and output choices
 
 - **FR-14 — Use one active PDF:** A session contains one PDF and fixed output choices, not multiple documents or variants.
-- **FR-15 — Confirm a new session:** Before changing the document, explain that the active PDF, content and progress will be lost and request confirmation. Apply the shared session rules below.
-- **FR-16 — Confirm Clear:** Explain the same loss before Clear empties the session. Use shared confirmation/cleanup rules; the original device file is unaffected.
+- **FR-15 — Confirm New session:** Provide New session as the single explicit action for ending the current session, including when the student is finished or wants different PDF/output choices. Changing the document, language or level requires this confirmed flow. Explain that the active PDF, content and progress will be lost and request confirmation. The original device file is unaffected. Apply the shared session rules below; starting another session is optional.
 - **FR-17 — Explain temporary sessions:** State that reload/closing ends the session. A fresh load restores no PDF, generated content or practice progress. A guaranteed reload/closing warning is not required.
 - **FR-18 — Ignore ended-session results:** Late results must neither repopulate an ended session nor appear in another session.
 - **FR-4 — Choose output language:** Before generation, select Bokmål or English independently of source language. The choice applies to every learning function for this session; excerpts remain in their original language.
 - **FR-5 — Choose summary detail:** Before generation, select Brief (main points/key concepts) or Detailed (fuller explanations and relevant source-grounded examples). Keep that level for the session; it affects neither cards, quiz questions nor wrong-answer explanations.
 - **FR-21 — Start a new session for different choices:** Changing language or summary level uses the same confirmed New session flow as changing the document. Return to ordinary startup and select the PDF, language and level again, even for the same file.
 
-Retired IDs: FR-20 (coexisting summary levels), FR-22 (quiz-language reset) and FR-23 (failed language replacement) are replaced by FR-4/FR-5/FR-21 and shared rules. Their former behaviour is not required in v1.
+Retired IDs: **FR-16 (separate Clear action)** was retired on 2026-11-19 in favour of the single New session action under FR-15; confirmation, cleanup, cancellation and original-file protections remain required. FR-20 (coexisting summary levels), FR-22 (quiz-language reset) and FR-23 (failed language replacement) are replaced by FR-4/FR-5/FR-21 and shared rules. Their former behaviour is not required in v1. Existing IDs are not renumbered.
 
 ### Summaries
 
@@ -127,8 +126,8 @@ Retired IDs: FR-20 (coexisting summary levels), FR-22 (quiz-language reset) and 
 
 | Trigger | Required outcome |
 | --- | --- |
-| Cancel New session or Clear confirmation | Keep the active PDF, choices, acknowledgement, content and progress unchanged. |
-| Confirm New session or Clear | Remove that session's working state and show ordinary startup. New session requires PDF/settings selection and fresh acknowledgement. Cancelled file selection or a rejected file after confirmation leaves startup empty; never restore the ended session. Original device files are unchanged. |
+| Cancel New session confirmation | Keep the active PDF, choices, acknowledgement, content and progress unchanged. |
+| Confirm New session | Remove that session's working state and show ordinary empty startup. The student may stop there without choosing another PDF. Starting again requires PDF/settings selection and fresh acknowledgement, even for the same file. Cancelled file selection or a rejected file after confirmation leaves startup empty; never restore the ended session. Original device files are unchanged. |
 | Missing live key, unavailable AI service, timeout, failed generation, invalid structure or no usable content | End processing with a reason and next action: setup, manual Try again or another PDF as applicable. Preserve existing valid content/progress in the active session. Show neither fabricated success nor an empty scored quiz. |
 | Valid reduced set | Show usable items, actual total and omission notice. Nine valid items out of ten means nine, without automatic refill. |
 
@@ -142,7 +141,7 @@ Implement these boundaries and their negative checks during Architecture and dev
 - **NFR-2 — Render untrusted content inertly:** Text, excerpts and filenames cannot execute HTML/scripts, load remote images automatically or trigger external requests. Safe headings, emphasis and lists are allowed.
 - **NFR-3 — Validate generated structures:** Check required fields, types, lengths, four-option structure, answer keys and app-owned source locations. Reject malformed replies as a whole using shared failure rules. FR-37 filtering applies only to otherwise valid structure.
 - **NFR-4 — Protect credentials:** Keep private credentials out of PDF/model content, browser-delivered code and exposed errors/payloads. Apply content/rendering boundaries to demo content too.
-- **NFR-5 — Bound working data:** No permanent history of ordinary PDFs, extracted text or generated content. Clear/New session removes app-owned working copies; other ended sessions have an Architecture-defined/tested cleanup deadline. Exclude study material from ordinary app/SDK/error logs. Deliberately saved permitted evaluation/demo evidence has separate owner, access and review/deletion conditions. Provider retention follows FR-46.
+- **NFR-5 — Bound working data:** No permanent history of ordinary PDFs, extracted text or generated content. Confirmed New session removes app-owned working copies; other ended sessions have an Architecture-defined/tested cleanup deadline. Exclude study material from ordinary app/SDK/error logs. Deliberately saved permitted evaluation/demo evidence has separate owner, access and review/deletion conditions. Provider retention follows FR-46.
 
 ## Validation plan and success measures
 
@@ -162,7 +161,7 @@ The following app checks remain planned. Set expected readable/omission/stop out
 - **SM-2 — Card quality:** Across six document/language cases, require at least 9/10 correct reviewed answers per case; inspect all and require all to pass for smaller sets. Validates FR-7/FR-30.
 - **SM-3 — Quiz quality:** Across six document/language cases, require at least 9/10 correct, unambiguous keys per case; all must pass for smaller sets. Validates FR-8/FR-9/FR-29.
 - **SM-4 — Reference support/location:** Per case, at least 9/10 reviewed references support associated content; all pass if fewer. Every displayed location exists. On the same sampled card/question, require joint answer-correctness/source-support passes for at least 9/10, or all if fewer. Report separate and joint results; location checks do not replace human support review.
-- **SM-5 — Function/failure behaviour:** Check wrong-answer feedback in every tested case, navigation/results/restart, cancelled/confirmed New session and Clear, fresh acknowledgement, manual retry, late results, source/structure failures and unusable PDFs. Validate key-free demo and live integration separately. Correct/retest known defects regardless of numerical passes.
+- **SM-5 — Function/failure behaviour:** Check wrong-answer feedback in every tested case, navigation/results/restart, cancelled/confirmed New session, empty startup without a new upload, fresh acknowledgement, manual retry, late results, source/structure failures and unusable PDFs. Validate key-free demo and live integration separately. Correct/retest known defects regardless of numerical passes.
 - **SM-6 — Preparation effort/usefulness:** Compare equivalent manual/app-assisted tasks, including review, correction and failed attempts. Record usefulness/corrections and familiarity/order effects. Fix the task and a provisional timing target before full evaluation; no achieved savings or learning gains are established.
 
 ### Manual evaluation protocol

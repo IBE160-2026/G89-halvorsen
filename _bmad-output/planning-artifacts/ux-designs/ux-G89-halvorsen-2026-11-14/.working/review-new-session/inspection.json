@@ -1,0 +1,329 @@
+{
+  "singleAction": [
+    {
+      "id": "session-menu-preview",
+      "actions": [
+        {
+          "action": "new",
+          "label": "New sessionEnd this session and return Home"
+        }
+      ]
+    },
+    {
+      "id": "session-buttons-preview",
+      "actions": [
+        {
+          "action": "new",
+          "label": "New session"
+        }
+      ]
+    }
+  ],
+  "navigation": [
+    {
+      "id": "session-menu-preview",
+      "label": "Home",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    {
+      "id": "session-menu-preview",
+      "label": "Summary",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Summary"
+      ],
+      "canvas": "rgb(238, 245, 239)"
+    },
+    {
+      "id": "session-menu-preview",
+      "label": "Flashcards",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Flashcards"
+      ],
+      "canvas": "rgb(251, 247, 229)"
+    },
+    {
+      "id": "session-menu-preview",
+      "label": "Quiz",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 244, 252)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Home",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Summary",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Summary"
+      ],
+      "canvas": "rgb(238, 245, 239)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Flashcards",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Flashcards"
+      ],
+      "canvas": "rgb(251, 247, 229)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Quiz",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 244, 252)"
+    }
+  ],
+  "layouts": [
+    {
+      "requestedWidth": 1536,
+      "width": 1504,
+      "scroll": 1504,
+      "bad": []
+    },
+    {
+      "requestedWidth": 1280,
+      "width": 1248,
+      "scroll": 1248,
+      "bad": []
+    },
+    {
+      "requestedWidth": 1024,
+      "width": 992,
+      "scroll": 992,
+      "bad": []
+    },
+    {
+      "requestedWidth": 768,
+      "width": 736,
+      "scroll": 736,
+      "bad": []
+    },
+    {
+      "requestedWidth": 390,
+      "width": 358,
+      "scroll": 358,
+      "bad": []
+    },
+    {
+      "requestedWidth": 320,
+      "width": 288,
+      "scroll": 288,
+      "bad": []
+    }
+  ],
+  "flows": [
+    {
+      "id": "session-menu-preview",
+      "width": 1536,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 512,
+        "right": 992
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "secondCancelPreserves": true,
+      "secondEndResets": true
+    },
+    {
+      "id": "session-buttons-preview",
+      "width": 1536,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 512,
+        "right": 992
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "secondCancelPreserves": true,
+      "secondEndResets": true
+    },
+    {
+      "id": "session-menu-preview",
+      "width": 390,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 17,
+        "right": 341
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "secondCancelPreserves": true,
+      "secondEndResets": true
+    },
+    {
+      "id": "session-buttons-preview",
+      "width": 390,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 17,
+        "right": 341
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "secondCancelPreserves": true,
+      "secondEndResets": true
+    }
+  ],
+  "exceptions": [],
+  "additional": {
+    "disclosure": {
+      "expanded": "true",
+      "visible": true,
+      "actions": [
+        "New sessionEnd this session and return Home"
+      ]
+    },
+    "escapeClosesDisclosure": true,
+    "sourceOpenClosePreservesRevealedCard": true
+  },
+  "scope": "Round13 one New session action; placement remains unselected. Example metadata/content only, not production or actual usability evidence.",
+  "static": {
+    "IDs": 52,
+    "ARIARefs": 51,
+    "actions": [
+      "new",
+      "new"
+    ],
+    "syntax": "pass",
+    "docLinks": "pass",
+    "protectedMainAndHistory": "unchanged",
+    "PRD": "FR16 retired; FR15 revised; other active FR lines unchanged"
+  }
+}

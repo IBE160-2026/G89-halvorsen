@@ -1,0 +1,36 @@
+{
+  "layouts": [
+    {
+      "phase": "AI error",
+      "viewport": 1280,
+      "width": 1248,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "AI error",
+      "viewport": 390,
+      "width": 358,
+      "overflow": false,
+      "bad": []
+    },
+    {
+      "phase": "AI error",
+      "viewport": 320,
+      "width": 288,
+      "overflow": false,
+      "bad": []
+    }
+  ],
+  "checks": {
+    "initialEmpty": true,
+    "allExistingReadyContentPreserved": true,
+    "confirmedQuizAndSummaryRetained": true,
+    "cardPositionRetained": true,
+    "retryDoesNotEraseAcceptedContent": true,
+    "summaryAndSourceLeftAligned": true,
+    "cancelAndEndedGuard": true,
+    "mobileStatusCentered": true
+  },
+  "exceptions": []
+}

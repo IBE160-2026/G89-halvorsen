@@ -1,0 +1,576 @@
+{
+  "chatReview": {
+    "url": "http://127.0.0.1:8765/visible-button-r15.html",
+    "revision": "visible-button-r15",
+    "checks": [
+      {
+        "requestedWidth": 1536,
+        "label": "New session",
+        "view": "summary",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 1018.140625,
+          "top": 114.390625,
+          "right": 1143,
+          "bottom": 161.984375,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 361,
+          "top": 108,
+          "right": 1143,
+          "bottom": 168.390625
+        },
+        "copyBottom": 168.390625,
+        "hit": true,
+        "clientWidth": 1504,
+        "scrollWidth": 1504,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 1536,
+        "label": "New session",
+        "view": "flashcards",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 1018.140625,
+          "top": 114.390625,
+          "right": 1143,
+          "bottom": 161.984375,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 361,
+          "top": 108,
+          "right": 1143,
+          "bottom": 168.390625
+        },
+        "copyBottom": 168.390625,
+        "hit": true,
+        "clientWidth": 1504,
+        "scrollWidth": 1504,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 1536,
+        "label": "New session",
+        "view": "quiz",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 1018.140625,
+          "top": 114.390625,
+          "right": 1143,
+          "bottom": 161.984375,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 361,
+          "top": 108,
+          "right": 1143,
+          "bottom": 168.390625
+        },
+        "copyBottom": 168.390625,
+        "hit": true,
+        "clientWidth": 1504,
+        "scrollWidth": 1504,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 390,
+        "label": "New session",
+        "view": "summary",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 223.1875,
+          "right": 142.859375,
+          "bottom": 270.78125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 340,
+          "bottom": 270.78125
+        },
+        "copyBottom": 209.1875,
+        "hit": true,
+        "clientWidth": 358,
+        "scrollWidth": 358,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 390,
+        "label": "New session",
+        "view": "flashcards",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 223.1875,
+          "right": 142.859375,
+          "bottom": 270.78125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 340,
+          "bottom": 270.78125
+        },
+        "copyBottom": 209.1875,
+        "hit": true,
+        "clientWidth": 358,
+        "scrollWidth": 358,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 390,
+        "label": "New session",
+        "view": "quiz",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 223.1875,
+          "right": 142.859375,
+          "bottom": 270.78125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 340,
+          "bottom": 270.78125
+        },
+        "copyBottom": 209.1875,
+        "hit": true,
+        "clientWidth": 358,
+        "scrollWidth": 358,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 320,
+        "label": "New session",
+        "view": "summary",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 243.984375,
+          "right": 142.859375,
+          "bottom": 291.578125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 270,
+          "bottom": 291.578125
+        },
+        "copyBottom": 229.984375,
+        "hit": true,
+        "clientWidth": 288,
+        "scrollWidth": 288,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 320,
+        "label": "New session",
+        "view": "flashcards",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 243.984375,
+          "right": 142.859375,
+          "bottom": 291.578125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 270,
+          "bottom": 291.578125
+        },
+        "copyBottom": 229.984375,
+        "hit": true,
+        "clientWidth": 288,
+        "scrollWidth": 288,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 320,
+        "label": "New session",
+        "view": "quiz",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 243.984375,
+          "right": 142.859375,
+          "bottom": 291.578125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 270,
+          "bottom": 291.578125
+        },
+        "copyBottom": 229.984375,
+        "hit": true,
+        "clientWidth": 288,
+        "scrollWidth": 288,
+        "actionCount": 1,
+        "opensConfirmation": true
+      }
+    ],
+    "exceptions": [],
+    "ignoresEarlierPreviewState": true
+  },
+  "main": {
+    "url": "http://127.0.0.1:8765/?v=visible-button-r15",
+    "revision": "main",
+    "checks": [
+      {
+        "requestedWidth": 1536,
+        "label": "New session",
+        "view": "summary",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 1018.140625,
+          "top": 114.390625,
+          "right": 1143,
+          "bottom": 161.984375,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 361,
+          "top": 108,
+          "right": 1143,
+          "bottom": 168.390625
+        },
+        "copyBottom": 168.390625,
+        "hit": true,
+        "clientWidth": 1504,
+        "scrollWidth": 1504,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 1536,
+        "label": "New session",
+        "view": "flashcards",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 1018.140625,
+          "top": 114.390625,
+          "right": 1143,
+          "bottom": 161.984375,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 361,
+          "top": 108,
+          "right": 1143,
+          "bottom": 168.390625
+        },
+        "copyBottom": 168.390625,
+        "hit": true,
+        "clientWidth": 1504,
+        "scrollWidth": 1504,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 1536,
+        "label": "New session",
+        "view": "quiz",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 1018.140625,
+          "top": 114.390625,
+          "right": 1143,
+          "bottom": 161.984375,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 361,
+          "top": 108,
+          "right": 1143,
+          "bottom": 168.390625
+        },
+        "copyBottom": 168.390625,
+        "hit": true,
+        "clientWidth": 1504,
+        "scrollWidth": 1504,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 390,
+        "label": "New session",
+        "view": "summary",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 223.1875,
+          "right": 142.859375,
+          "bottom": 270.78125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 340,
+          "bottom": 270.78125
+        },
+        "copyBottom": 209.1875,
+        "hit": true,
+        "clientWidth": 358,
+        "scrollWidth": 358,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 390,
+        "label": "New session",
+        "view": "flashcards",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 223.1875,
+          "right": 142.859375,
+          "bottom": 270.78125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 340,
+          "bottom": 270.78125
+        },
+        "copyBottom": 209.1875,
+        "hit": true,
+        "clientWidth": 358,
+        "scrollWidth": 358,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 390,
+        "label": "New session",
+        "view": "quiz",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 223.1875,
+          "right": 142.859375,
+          "bottom": 270.78125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 340,
+          "bottom": 270.78125
+        },
+        "copyBottom": 209.1875,
+        "hit": true,
+        "clientWidth": 358,
+        "scrollWidth": 358,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 320,
+        "label": "New session",
+        "view": "summary",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 243.984375,
+          "right": 142.859375,
+          "bottom": 291.578125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 270,
+          "bottom": 291.578125
+        },
+        "copyBottom": 229.984375,
+        "hit": true,
+        "clientWidth": 288,
+        "scrollWidth": 288,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 320,
+        "label": "New session",
+        "view": "flashcards",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 243.984375,
+          "right": 142.859375,
+          "bottom": 291.578125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 270,
+          "bottom": 291.578125
+        },
+        "copyBottom": 229.984375,
+        "hit": true,
+        "clientWidth": 288,
+        "scrollWidth": 288,
+        "actionCount": 1,
+        "opensConfirmation": true
+      },
+      {
+        "requestedWidth": 320,
+        "label": "New session",
+        "view": "quiz",
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "hidden": false,
+        "disabled": false,
+        "inert": false,
+        "rect": {
+          "left": 18,
+          "top": 243.984375,
+          "right": 142.859375,
+          "bottom": 291.578125,
+          "width": 124.859375,
+          "height": 47.59375
+        },
+        "documentRect": {
+          "left": 18,
+          "top": 153,
+          "right": 270,
+          "bottom": 291.578125
+        },
+        "copyBottom": 229.984375,
+        "hit": true,
+        "clientWidth": 288,
+        "scrollWidth": 288,
+        "actionCount": 1,
+        "opensConfirmation": true
+      }
+    ],
+    "exceptions": []
+  },
+  "scope": "Button visible/hit-testable beside document information on Summary/Flashcards/Quiz at1536,390,320px. Cropped captures show the top900px. Fresh review entry isolates presentation state and opens Summary; main still opens illustrated Home. Original missing chat preview cause not proven; no new visual direction or production implementation."
+}

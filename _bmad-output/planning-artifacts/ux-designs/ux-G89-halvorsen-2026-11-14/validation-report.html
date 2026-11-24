@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AI Study Buddy — UX planning validation</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --border: #e7e5e4;
+    --text: #1c1917;
+    --muted: #78716c;
+
+    --verdict-strong: #16a34a;
+    --verdict-adequate: #65a30d;
+    --verdict-thin: #d97706;
+    --verdict-broken: #dc2626;
+
+    --sev-low: #64748b;
+    --sev-medium: #ca8a04;
+    --sev-high: #ea580c;
+    --sev-critical: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  header.report-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .title h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .title .subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+  .synthesis {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--muted);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 15.5px;
+  }
+  .synthesis p { margin: 0 0 10px; }
+  .synthesis p:last-child { margin-bottom: 0; }
+
+  .dimension-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .dim-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .dim-card .dim-name { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .dim-card .dim-verdict { font-size: 14px; font-weight: 600; }
+
+  section.dimension, section.reviewer-section { margin-bottom: 14px; }
+  section.dimension details, section.reviewer-section details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  section summary {
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  section summary::-webkit-details-marker { display: none; }
+  section summary::before {
+    content: "▸";
+    display: inline-block;
+    color: var(--muted);
+    transition: transform 0.15s ease;
+  }
+  section details[open] summary::before { transform: rotate(90deg); }
+  section summary h2 {
+    display: inline;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    flex: 1;
+  }
+  .verdict-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: white;
+  }
+  .verdict-strong { background: var(--verdict-strong); }
+  .verdict-adequate { background: var(--verdict-adequate); }
+  .verdict-thin { background: var(--verdict-thin); }
+  .verdict-broken { background: var(--verdict-broken); }
+
+  .dim-body { padding: 4px 20px 18px; }
+  .dim-judgment { color: var(--text); font-size: 14.5px; }
+  .dim-judgment p { margin: 0 0 10px; }
+
+  .findings-list { padding: 0 20px 4px; }
+  article.finding {
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  article.finding:first-child { border-top: none; }
+  article.finding header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .badge {
+    font-size: 10.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  .badge-sev-low { background: rgba(100, 116, 139, 0.12); color: var(--sev-low); }
+  .badge-sev-medium { background: rgba(202, 138, 4, 0.14); color: var(--sev-medium); }
+  .badge-sev-high { background: rgba(234, 88, 12, 0.14); color: var(--sev-high); }
+  .badge-sev-critical { background: rgba(220, 38, 38, 0.14); color: var(--sev-critical); }
+  .finding-title { margin: 0; font-size: 15px; font-weight: 500; flex: 1; min-width: 200px; }
+  .finding-location { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; color: var(--muted); }
+  .finding-note, .finding-fix { margin-top: 6px; font-size: 14px; }
+  .finding-fix strong { color: var(--muted); font-weight: 500; }
+
+  .reviewer-source {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  .mechanical {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 24px;
+    font-size: 14px;
+  }
+  .mechanical h3 { margin: 0 0 10px; font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .mechanical ul { margin: 0; padding-left: 20px; }
+  .mechanical li { margin-bottom: 4px; color: var(--text); }
+
+  footer.report-footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  footer .meta { display: flex; gap: 24px; flex-wrap: wrap; }
+</style>
+</head><body><div class="container"><header class="report-header"><div class="title"><h1>AI Study Buddy — UX planning validation</h1><div class="subtitle">DESIGN.md · EXPERIENCE.md · 2026-11-24 Europe/Oslo</div></div></header>
+<div class="synthesis"><p>No critical or high UX/PRD planning gap remains. The user accepted the latest concept and authorised planning closure after this check; DESIGN.md and EXPERIENCE.md now record the selected baseline as final, with planning_status complete. Minor refinements remain possible during implementation.</p><p>Evidence is automated synthetic prototype and visual inspection, not real PDF extraction, live AI quality, production isolation, an observed user study or a full accessibility audit. No architecture phase, production implementation, commit or push is included.</p></div><div class="dimension-summary">
+<div class="dim-card"><div class="dim-name">Flow coverage</div><div class="dim-verdict">strong</div></div>
+<div class="dim-card"><div class="dim-name">Token completeness</div><div class="dim-verdict">strong</div></div>
+<div class="dim-card"><div class="dim-name">Component coverage</div><div class="dim-verdict">strong</div></div>
+<div class="dim-card"><div class="dim-name">State coverage</div><div class="dim-verdict">strong</div></div>
+<div class="dim-card"><div class="dim-name">Visual reference coverage</div><div class="dim-verdict">strong</div></div>
+<div class="dim-card"><div class="dim-name">Bloat &amp; overspecification</div><div class="dim-verdict">adequate</div></div>
+<div class="dim-card"><div class="dim-name">Inheritance discipline</div><div class="dim-verdict">strong</div></div>
+<div class="dim-card"><div class="dim-name">Shape fit</div><div class="dim-verdict">strong</div></div>
+</div>
+<section class="dimension"><details><summary><h2>Flow coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>The numbered UJ-1 specifies a named student, upload/acknowledgement, Summary, both practice orders, source verification, retained progress and confirmed session ending. A fresh automated complete sequence passed at 1280/390/320px.</p></div></details></section>
+<section class="dimension"><details><summary><h2>Token completeness</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>All peer-contract token references resolve. Existing palette/type/shape values are retained; normal text 4.5:1, large text 3:1 and essential control/focus boundaries 3:1 are explicit implementation targets, not a full accessibility certification.</p></div></details></section>
+<section class="dimension"><details><summary><h2>Component coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>Navigation, empty/active Home, Summary, Flashcards, Quiz/result/review, source reader, session dialog, processing/errors and notices/demo have complementary visual and behavioural rules.</p></div></details></section>
+<section class="dimension"><details><summary><h2>State coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>The selected 17-case mapping distinguishes errors, usable limited output and demo information. Invalid output is withheld; retries preserve valid Summary, Quiz answers and card position. No new feature or advanced PDF detector was added.</p></div></details></section>
+<section class="dimension"><details><summary><h2>Visual reference coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>Five reviewed exports were copied unchanged to mockups. The complete flow and reliability/status references complement the deliberately partial shell sample. Every IA surface is mapped; the supplied Home image remains linked as inspiration.</p></div></details></section>
+<section class="dimension"><details><summary><h2>Bloat &amp; overspecification</h2><span class="verdict-pill verdict-adequate">adequate</span></summary><div class="dim-body"><p>Current contracts replace obsolete round-by-round pending text with one selected baseline. Historical detail remains in decisions and preserved drafts. Editorial structure/prose checks retain purposeful component/state/journey views.</p></div></details></section>
+<section class="dimension"><details><summary><h2>Inheritance discipline</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>PRD/addendum, English UI and separate fixed study-material language/detail remain authoritative. Retired requirements are not restored; private PDFs, installed skills and existing concept sources are unchanged.</p></div></details></section>
+<section class="dimension"><details><summary><h2>Shape fit</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><p>DESIGN follows the canonical visual spine; EXPERIENCE includes required behavioural sections, numbered UJ-1, responsive rules and inspiration/anti-patterns. Status final means complete for UX planning only.</p></div></details></section>
+<section class="reviewer-section"><details open><summary><h2>Critical (0) / High (0)</h2></summary><div class="dim-body">
+<p>No unresolved critical/high UX planning findings.</p>
+</div></details></section>
+<section class="reviewer-section"><details open><summary><h2>Resolved documentation findings (3 medium, 2 low)</h2></summary><div class="dim-body">
+<p><strong>Medium — Current approval/status wording:</strong> Earlier pending/draft wording conflicted with closure. Current contracts/guides now select the complete learning/source/reliability references; historical documents retain their dated status.</p>
+<p><strong>Medium — Named and numbered UJ-1:</strong> Added the named student, normal sequence, verification moment and failure/recovery branches without adding requirements.</p>
+<p><strong>Medium — Contrast targets:</strong> Added explicit rendered-text/control/focus targets, with production checks still required.</p>
+<p><strong>Low — Inspiration and anti-patterns:</strong> Recorded Notatkort, Atlas, the supplied Home reference and Quizlet boundaries.</p>
+<p><strong>Low — Surface/reference inventory:</strong> Mapped every IA surface and copied the five selected reviewed exports to mockups without moving/deleting working sources.</p>
+</div></details></section>
+<section class="reviewer-section"><details open><summary><h2>Nonblocking implementation/evaluation follow-up (3 medium, 1 low)</h2></summary><div class="dim-body">
+<p><strong>Medium — Real pipeline and safety verification:</strong> Implement and test extraction/source/structure gates, valid reduced output, request/session isolation, late results, cleanup and credential-safe configuration under the existing PRD.</p>
+<p><strong>Medium — Permitted demo and content quality:</strong> Select permitted FR-42 demo material, prepare matching language/level saved sets and evaluate actual source support, educational quality and applicable material-use permissions.</p>
+<p><strong>Medium — Accessibility and observed use:</strong> Test real devices, zoom, long content, complete keyboard/assistive-technology behaviour and an observed UJ-1 walkthrough. Do not infer successful usability from acceptance or automation.</p>
+<p><strong>Low — Small visual/copy refinements:</strong> Keep prototype fixture explanations outside normal student flows; tune concise demo help, spacing and wrap behaviour if implementation tests reveal friction. Preserve chosen identity and functionality.</p>
+</div></details></section>
+<section class="mechanical"><h3>Evidence and closure</h3>
+<p>Final automated walkthrough: three complete sequences, nine layout checks and 12 captures. Both material languages and both Summary levels are covered across the runs; acknowledgement gating, fixed settings, multiple original passages, explicit Confirm, locked review, 7/8 = 87.5%, active Home resume, Cancel and confirmed empty reset pass with no script exceptions.</p>
+<p>Round 21 evidence: 17 scenarios at three widths, nine retries, retained valid Summary/confirmed Quiz/cards, reduced actual-count scoring, bilingual complete learning and mobile alignment. Five source hashes still match, so this evidence is reused without pretending that every scenario was rerun during the final walkthrough.</p>
+<p>The final read-only PRD/contract/mobile reviews and static checks distinguish conceptual behaviour from implementation. Existing PRD/skills/reference/concept sources remain unchanged. Five promoted mockups are exact copies of reviewed exports. All IA surfaces have a visual reference; event timing, cleanup and real quality are verification obligations, not new unmocked screens.</p>
+<p><a href=".working/review-final-ux/inspection.json">Final walkthrough</a> · <a href=".working/review-v1-error-simplification/inspection.json">Round 21 evidence</a> · <a href="validation-report.md">Markdown twin</a></p></section>
+<section class="reviewer-section"><details><summary><h2>review-final-prd.md</h2></summary><div class="dim-body"><p>PRD and full-flow audit: no critical planning blocker; stale approval wording and partial-shell scope required documentation reconciliation.</p><p><a href=".working/review-final-prd.md">Read review</a></p></div></details></section>
+<section class="reviewer-section"><details><summary><h2>review-final-contracts.md</h2></summary><div class="dim-body"><p>Contract/rubric audit: no critical/high gap; three medium and two low documentation findings are resolved in the final contracts.</p><p><a href=".working/review-final-contracts.md">Read review</a></p></div></details></section>
+<section class="reviewer-section"><details><summary><h2>review-final-mobile.md</h2></summary><div class="dim-body"><p>Visual audit of 16 desktop/mobile captures: no critical/high issue; fixture-label height is a nonblocking implementation detail.</p><p><a href=".working/review-final-mobile.md">Read review</a></p></div></details></section>
+<section class="reviewer-section"><details><summary><h2>review-final-editorial-structure.md</h2></summary><div class="dim-body"><p>Structure lens: preserve the component/state/journey views and current reference hierarchy.</p><p><a href=".working/review-final-editorial-structure.md">Read review</a></p></div></details></section>
+<section class="reviewer-section"><details><summary><h2>review-final-editorial-prose.md</h2></summary><div class="dim-body"><p>Dependent prose lens: findings reconciled in the peer contracts; token references resolve.</p><p><a href=".working/review-final-editorial-prose.md">Read review</a></p></div></details></section>
+<footer class="report-footer"><p>The latest user acceptance and conditional finalisation request supersede earlier instructions to keep UX open. Only UX planning is closed. Reopen a specific decision if implementation evidence requires a material change; minor refinements remain possible. No architecture work, commit or push has occurred.</p><div class="meta"><span>DESIGN.md · EXPERIENCE.md</span><span>2026-11-24 Europe/Oslo</span></div></footer></div></body></html>

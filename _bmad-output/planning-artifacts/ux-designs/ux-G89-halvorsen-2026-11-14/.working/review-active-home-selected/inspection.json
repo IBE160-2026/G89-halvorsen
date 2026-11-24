@@ -1,0 +1,233 @@
+{
+  "main": {
+    "initial": {
+      "view": "startup",
+      "home": true,
+      "uploadVisible": false,
+      "document": "Studieteknikk.pdf",
+      "language": "Norwegian Bokm\u00e5l",
+      "level": "Detailed",
+      "readOnly": true,
+      "newButton": true,
+      "continueButton": true,
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    "widths": [
+      {
+        "requestedWidth": 1536,
+        "width": 1504,
+        "scroll": 1504,
+        "client": 1504,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 1280,
+        "width": 1248,
+        "scroll": 1248,
+        "client": 1248,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 1024,
+        "width": 992,
+        "scroll": 992,
+        "client": 992,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 768,
+        "width": 736,
+        "scroll": 736,
+        "client": 736,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 390,
+        "width": 358,
+        "scroll": 358,
+        "client": 358,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 320,
+        "width": 288,
+        "scroll": 288,
+        "client": 288,
+        "bad": [],
+        "overlaps": []
+      }
+    ],
+    "resume": {
+      "initialSummary": true,
+      "continueFocus": true,
+      "cardPosition": true,
+      "cardReturnsFront": true,
+      "quizAnswerAndFeedback": true
+    },
+    "reset": {
+      "cancelPreserves": true,
+      "focusRestored": true,
+      "escapePreserves": true,
+      "empty": {
+        "view": "startup",
+        "activeHome": false,
+        "uploadVisible": true,
+        "language": "",
+        "level": "",
+        "ack": false,
+        "files": 0,
+        "generateDisabled": true,
+        "learningDisabled": true,
+        "headline": "Make studying easier"
+      },
+      "rejectStaysEmpty": true,
+      "freshChoicesAndAck": true,
+      "filenameInert": true,
+      "hostCannotRevive": true
+    },
+    "exceptions": [],
+    "emptyEntry": {
+      "mode": "startup",
+      "formVisible": true,
+      "activeHidden": true,
+      "ack": false
+    }
+  },
+  "activeReview": {
+    "initial": {
+      "view": "startup",
+      "home": true,
+      "uploadVisible": false,
+      "document": "Studieteknikk.pdf",
+      "language": "Norwegian Bokm\u00e5l",
+      "level": "Detailed",
+      "readOnly": true,
+      "newButton": true,
+      "continueButton": true,
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    "widths": [
+      {
+        "requestedWidth": 1536,
+        "width": 1504,
+        "scroll": 1504,
+        "client": 1504,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 1280,
+        "width": 1248,
+        "scroll": 1248,
+        "client": 1248,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 1024,
+        "width": 992,
+        "scroll": 992,
+        "client": 992,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 768,
+        "width": 736,
+        "scroll": 736,
+        "client": 736,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 390,
+        "width": 358,
+        "scroll": 358,
+        "client": 358,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 320,
+        "width": 288,
+        "scroll": 288,
+        "client": 288,
+        "bad": [],
+        "overlaps": []
+      }
+    ],
+    "resume": {
+      "initialSummary": true,
+      "continueFocus": true,
+      "cardPosition": true,
+      "cardReturnsFront": true,
+      "quizAnswerAndFeedback": true
+    },
+    "reset": {
+      "cancelPreserves": true,
+      "focusRestored": true,
+      "escapePreserves": true,
+      "empty": {
+        "view": "startup",
+        "activeHome": false,
+        "uploadVisible": true,
+        "language": "",
+        "level": "",
+        "ack": false,
+        "files": 0,
+        "generateDisabled": true,
+        "learningDisabled": true,
+        "headline": "Make studying easier"
+      },
+      "rejectStaysEmpty": true,
+      "freshChoicesAndAck": true,
+      "filenameInert": true,
+      "hostCannotRevive": true
+    },
+    "exceptions": [],
+    "previewWidthSwitch": true
+  },
+  "static": {
+    "study-preview.html": {
+      "uniqueIds": 26,
+      "ariaLabelReferences": 26,
+      "syntax": "pass",
+      "exportExact": true,
+      "noSessionDataStorageOrApiCalls": true
+    },
+    "study-preview-active-home-r18.html": {
+      "uniqueIds": 27,
+      "ariaLabelReferences": 26,
+      "syntax": "pass",
+      "exportExact": true,
+      "noSessionDataStorageOrApiCalls": true
+    }
+  },
+  "protectedFilesUnchanged": 22,
+  "reproducibleFragments": 6
+}

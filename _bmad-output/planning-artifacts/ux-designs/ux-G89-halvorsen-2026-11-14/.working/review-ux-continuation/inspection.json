@@ -1,0 +1,815 @@
+{
+  "main": {
+    "initial": {
+      "view": "startup",
+      "home": true,
+      "uploadVisible": false,
+      "document": "Studieteknikk.pdf",
+      "language": "Norwegian Bokm\u00e5l",
+      "level": "Detailed",
+      "readOnly": true,
+      "newButton": true,
+      "continueButton": true,
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    "widths": [
+      {
+        "requestedWidth": 1536,
+        "width": 1504,
+        "scroll": 1504,
+        "client": 1504,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 1280,
+        "width": 1248,
+        "scroll": 1248,
+        "client": 1248,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 1024,
+        "width": 992,
+        "scroll": 992,
+        "client": 992,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 768,
+        "width": 736,
+        "scroll": 736,
+        "client": 736,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 390,
+        "width": 358,
+        "scroll": 358,
+        "client": 358,
+        "bad": [],
+        "overlaps": []
+      },
+      {
+        "requestedWidth": 320,
+        "width": 288,
+        "scroll": 288,
+        "client": 288,
+        "bad": [],
+        "overlaps": []
+      }
+    ],
+    "resume": {
+      "initialSummary": true,
+      "continueFocus": true,
+      "cardPosition": true,
+      "cardReturnsFront": true,
+      "quizAnswerAndFeedback": true
+    },
+    "reset": {
+      "cancelPreserves": true,
+      "focusRestored": true,
+      "escapePreserves": true,
+      "empty": {
+        "view": "startup",
+        "activeHome": false,
+        "uploadVisible": true,
+        "language": "",
+        "level": "",
+        "ack": false,
+        "files": 0,
+        "generateDisabled": true,
+        "learningDisabled": true,
+        "headline": "Make studying easier"
+      },
+      "rejectStaysEmpty": true,
+      "freshChoicesAndAck": true,
+      "filenameInert": true,
+      "hostCannotRevive": true
+    },
+    "exceptions": [],
+    "emptyEntry": {
+      "mode": "startup",
+      "formVisible": true,
+      "activeHidden": true,
+      "ack": false
+    }
+  },
+  "statuses": {
+    "layouts": [
+      {
+        "phase": "loading",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "loading",
+        "viewport": 1024,
+        "width": 992,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "loading",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "loading",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "pdf-problem",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "pdf-problem",
+        "viewport": 1024,
+        "width": 992,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "pdf-problem",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "pdf-problem",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "ai-error",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "ai-error",
+        "viewport": 1024,
+        "width": 992,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "ai-error",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "ai-error",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      }
+    ],
+    "checks": {
+      "selectedPatterns": true,
+      "manualRetry": true,
+      "summaryPreserved": true,
+      "cancelPreserves": true,
+      "confirmEmpty": true,
+      "endedFixtureGuard": true
+    },
+    "exceptions": []
+  },
+  "reliability": {
+    "layouts": [
+      {
+        "phase": "unsupported",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "unsupported",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "unsupported",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "damaged",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "damaged",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "damaged",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "no-text",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "no-text",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "no-text",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "material-loss",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "material-loss",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "material-loss",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "uncertain-extraction",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "uncertain-extraction",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "uncertain-extraction",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "incidental-omission",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "incidental-omission",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "incidental-omission",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "reduced-flashcards",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "reduced-flashcards",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "reduced-flashcards",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "reduced-quiz",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "reduced-quiz",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "reduced-quiz",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "zero-flashcards",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "zero-flashcards",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "zero-flashcards",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "zero-quiz",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "zero-quiz",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "zero-quiz",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-flashcards",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-flashcards",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-flashcards",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-quiz",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-quiz",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-quiz",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-summary",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-summary",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "invalid-summary",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "saved-demo",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "saved-demo",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "saved-demo",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "missing-setup",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "missing-setup",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "missing-setup",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "service-unavailable",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "service-unavailable",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "service-unavailable",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "timeout",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "timeout",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "timeout",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      }
+    ],
+    "checks": {
+      "scenarios": 17,
+      "retries": 9,
+      "noScanOverclaim": true,
+      "noInvalidSummaryPublished": true,
+      "setupGuard": true,
+      "reducedActualScore": true,
+      "cancelPreserves": true,
+      "confirmedEmpty": true
+    },
+    "exceptions": []
+  },
+  "learning": {
+    "layouts": [
+      {
+        "phase": "quiz-feedback",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-feedback",
+        "viewport": 1024,
+        "width": 992,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-feedback",
+        "viewport": 768,
+        "width": 736,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-feedback",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-feedback",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-result",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-result",
+        "viewport": 1024,
+        "width": 992,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-result",
+        "viewport": 768,
+        "width": 736,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-result",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "quiz-result",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "card-complete",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "card-complete",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "phase": "card-complete",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      }
+    ],
+    "checks": {
+      "languages": 2,
+      "freshAck": true,
+      "explicitConfirmation": true,
+      "lockedAnswers": true,
+      "draftsAndResume": true,
+      "score": "6/8 = 75%",
+      "wrongReview": true,
+      "restartSameQuiz": true,
+      "multipleOriginalSources": true,
+      "sourceFocusAndReturn": true,
+      "cardPositionAndFront": true,
+      "cardCompletionRestart": true,
+      "cancelAndReset": true
+    },
+    "exceptions": [],
+    "harnessCleanup": "Product assertions and report completed; headless cleanup process was stopped afterwards."
+  },
+  "combined": {
+    "layouts": [
+      {
+        "area": "reliability",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "reliability",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "reliability",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "learning",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "learning",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "learning",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "selected",
+        "viewport": 1280,
+        "width": 1248,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "selected",
+        "viewport": 390,
+        "width": 358,
+        "overflow": false,
+        "bad": []
+      },
+      {
+        "area": "selected",
+        "viewport": 320,
+        "width": 288,
+        "overflow": false,
+        "bad": []
+      }
+    ],
+    "checks": {
+      "threeReviewAreas": true,
+      "responsiveWidthTools": true,
+      "finalAnswerColours": true,
+      "score": "6/8=75%",
+      "wrongListWrapping": true,
+      "cancelPreservesResult": true,
+      "independentInstances": true,
+      "studentFacingSetupCopy": true,
+      "keyboardRadioSelection": true
+    },
+    "exceptions": []
+  },
+  "static": {
+    "files": {
+      "study-preview.html": {
+        "IDs": 27,
+        "references": 26,
+        "syntax": "pass",
+        "exactExport": true,
+        "noApiTimersOrStudyStorage": true
+      },
+      "study-preview-status-r20.html": {
+        "IDs": 28,
+        "references": 26,
+        "syntax": "pass",
+        "exactExport": true,
+        "noApiTimersOrStudyStorage": true
+      },
+      "reliability-review.html": {
+        "IDs": 29,
+        "references": 28,
+        "syntax": "pass",
+        "exactExport": true,
+        "noApiTimersOrStudyStorage": true
+      },
+      "learning-flows-review.html": {
+        "IDs": 33,
+        "references": 32,
+        "syntax": "pass",
+        "exactExport": true,
+        "noApiTimersOrStudyStorage": true
+      },
+      "remaining-ux-review.html": {
+        "IDs": 91,
+        "references": 86,
+        "syntax": "pass",
+        "exactExport": true,
+        "noApiTimersOrStudyStorage": true
+      }
+    },
+    "protectedUnchanged": 20,
+    "reproducibleFragments": 10,
+    "links": "pass",
+    "draftStatus": true
+  },
+  "independentReview": "No material findings from PRD/source/contract review and 15 captures; proposed presentations remain pending user review."
+}

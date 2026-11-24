@@ -1,0 +1,60 @@
+<div id="processing-states-comparison" data-viewport="desktop" lang="en" aria-label="Processing and failure concepts for AI Study Buddy">
+  <style>
+    #processing-states-comparison { min-width: 0; container: status-review / inline-size; }
+    #processing-states-comparison .status-review-controls { margin-bottom: 24px; }
+    #processing-states-comparison .status-review-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+    #processing-states-comparison .status-review-scenario { min-width: 0; }
+    #processing-states-comparison .status-review-heading { margin: 0 0 12px; }
+    #processing-states-comparison .status-review-product { width: 100%; min-width: 0; }
+    #processing-states-comparison[data-viewport="mobile"] .status-review-grid { grid-template-columns: minmax(0, 390px); justify-content: center; gap: 32px; }
+    @container status-review (min-width: 1024px) {
+      #processing-states-comparison[data-viewport="mobile"] .status-review-grid { grid-template-columns: repeat(3, minmax(0, 390px)); gap: 24px; }
+    }
+  </style>
+  <div class="viz-controls status-review-controls" role="group" aria-label="Preview width">
+    <span class="text-small">Preview</span>
+    <button class="btn btn-primary" type="button" data-status-width="desktop" aria-pressed="true">Desktop</button>
+    <button class="btn" type="button" data-status-width="mobile" aria-pressed="false">Mobile</button>
+  </div>
+  <div class="status-review-grid">
+    <section class="status-review-scenario" aria-labelledby="status-loading-title">
+      <h2 class="status-review-heading" id="status-loading-title">Processing</h2>
+      <div class="status-review-product"><!-- STATUS_LOADING_FRAGMENT --></div>
+    </section>
+    <section class="status-review-scenario" aria-labelledby="status-pdf-title">
+      <h2 class="status-review-heading" id="status-pdf-title">PDF problem</h2>
+      <div class="status-review-product"><!-- STATUS_PDF_FRAGMENT --></div>
+    </section>
+    <section class="status-review-scenario" aria-labelledby="status-ai-title">
+      <h2 class="status-review-heading" id="status-ai-title">AI error</h2>
+      <div class="status-review-product"><!-- STATUS_AI_FRAGMENT --></div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const comparison = document.getElementById('processing-states-comparison');
+      function setWidth(width) {
+        if (!['desktop', 'mobile'].includes(width)) return;
+        comparison.dataset.viewport = width;
+        comparison.querySelectorAll('button[data-status-width]').forEach(button => {
+          const active = button.dataset.statusWidth === width;
+          button.setAttribute('aria-pressed', String(active));
+          button.classList.toggle('btn-primary', active);
+        });
+      }
+      function restore(value) {
+        if (value?.kind === 'processing-states-review-r19') setWidth(value.width);
+      }
+      comparison.querySelectorAll('button[data-status-width]').forEach(button => {
+        button.addEventListener('click', () => {
+          setWidth(button.dataset.statusWidth);
+          window.openai?.setWidgetState?.({ modelContent: null,
+            privateContent: { kind: 'processing-states-review-r19', width: button.dataset.statusWidth }
+          })?.catch(() => {});
+        });
+      });
+      restore(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+    })();
+  </script>
+</div>

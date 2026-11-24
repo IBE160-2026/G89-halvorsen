@@ -1,0 +1,65 @@
+<div id="selected-status-review" data-width="desktop" lang="en">
+  <style>
+    #selected-status-review { min-width: 0; }
+    #selected-status-review .status-review-tools { margin-bottom: 24px; }
+    #selected-status-review .status-review-stage { min-width: 0; margin: 0 auto; }
+    #selected-status-review[data-width="mobile"] .status-review-stage { max-width: 390px; }
+  </style>
+  <div class="viz-controls status-review-tools">
+    <label class="form-label">Preview state
+      <select class="form-select" data-selected-status>
+        <option value="loading">Processing</option>
+        <option value="pdf-problem">PDF problem</option>
+        <option value="ai-error">AI error</option>
+      </select>
+    </label>
+    <label class="form-label" data-operation-label>Preview operation
+      <select class="form-select" data-selected-operation>
+        <option value="checking">Checking PDF</option>
+        <option value="extracting">Extracting text</option>
+        <option value="summary" selected>Generating summary</option>
+        <option value="flashcards">Generating flashcards</option>
+        <option value="quiz">Generating quiz</option>
+      </select>
+    </label>
+    <button class="btn btn-primary" type="button" data-selected-width="desktop" aria-pressed="true">Desktop</button>
+    <button class="btn" type="button" data-selected-width="mobile" aria-pressed="false">Mobile</button>
+  </div>
+  <div class="status-review-stage"><!-- SELECTED_STATUS_APP --></div>
+  <script>
+    (() => {
+      const review = document.getElementById('selected-status-review');
+      const app = document.getElementById('study-selected-status-r20');
+      const status = review.querySelector('[data-selected-status]');
+      const operation = review.querySelector('[data-selected-operation]');
+      function showState() {
+        review.querySelector('[data-operation-label]').hidden = status.value !== 'loading';
+        app.dispatchEvent(new CustomEvent('study-selected-status-r20:status', { detail: { kind: status.value, operation: operation.value, replaceFixture: true } }));
+      }
+      status.addEventListener('change', showState);
+      operation.addEventListener('change', showState);
+      app.addEventListener('study-selected-status-r20:ended', () => { status.disabled = true; operation.disabled = true; });
+      review.querySelectorAll('[data-selected-width]').forEach(button => button.addEventListener('click', () => {
+        review.dataset.width = button.dataset.selectedWidth;
+        review.querySelectorAll('[data-selected-width]').forEach(item => {
+          const active = item === button;
+          item.setAttribute('aria-pressed', String(active));
+          item.classList.toggle('btn-primary', active);
+        });
+        window.openai?.setWidgetState?.({ modelContent: null, privateContent: { kind: 'selected-status-review-r20', width: review.dataset.width } })?.catch(() => {});
+      }));
+      function restore(value) {
+        if (value?.kind !== 'selected-status-review-r20' || !['desktop', 'mobile'].includes(value.width)) return;
+        review.dataset.width = value.width;
+        review.querySelectorAll('[data-selected-width]').forEach(button => {
+          const active = button.dataset.selectedWidth === value.width;
+          button.setAttribute('aria-pressed', String(active));
+          button.classList.toggle('btn-primary', active);
+        });
+      }
+      restore(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+      showState();
+    })();
+  </script>
+</div>

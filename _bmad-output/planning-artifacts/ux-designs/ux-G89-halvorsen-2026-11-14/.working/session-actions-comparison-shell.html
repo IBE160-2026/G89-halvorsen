@@ -1,0 +1,58 @@
+<div id="session-actions-comparison" data-viewport="desktop" lang="en" aria-label="New session placement concepts for AI Study Buddy">
+  <style>
+    #session-actions-comparison { min-width: 0; }
+    #session-actions-comparison .comparison-controls { margin-bottom: 24px; }
+    #session-actions-comparison .comparison-controls .comparison-label { margin-right: 4px; }
+    #session-actions-comparison .comparison-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+    #session-actions-comparison .comparison-concept { min-width: 0; }
+    #session-actions-comparison .comparison-heading { margin: 0 0 12px; }
+    #session-actions-comparison .comparison-product { min-width: 0; width: 100%; }
+    #session-actions-comparison[data-viewport="mobile"] .comparison-grid { grid-template-columns: repeat(2, minmax(0, 390px)); justify-content: center; gap: 24px; }
+    @media (max-width: 760px) {
+      #session-actions-comparison[data-viewport="mobile"] .comparison-grid { grid-template-columns: minmax(0, 390px); gap: 32px; }
+    }
+  </style>
+  <div class="viz-controls comparison-controls" role="group" aria-label="Preview width">
+    <span class="text-small comparison-label">Preview</span>
+    <button class="btn btn-primary" type="button" data-preview-width="desktop" aria-pressed="true">Desktop</button>
+    <button class="btn" type="button" data-preview-width="mobile" aria-pressed="false">Mobile</button>
+  </div>
+  <div class="comparison-grid">
+    <section class="comparison-concept" aria-labelledby="session-menu-heading">
+      <h2 class="comparison-heading" id="session-menu-heading">Session menu</h2>
+      <div class="comparison-product"><!-- SESSION_MENU_FRAGMENT --></div>
+    </section>
+    <section class="comparison-concept" aria-labelledby="session-buttons-heading">
+      <h2 class="comparison-heading" id="session-buttons-heading">Visible button</h2>
+      <div class="comparison-product"><!-- SESSION_BUTTONS_FRAGMENT --></div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const comparison = document.getElementById('session-actions-comparison');
+      function setViewport(value) {
+        if (value !== 'desktop' && value !== 'mobile') return;
+        comparison.dataset.viewport = value;
+        comparison.querySelectorAll('[data-preview-width]').forEach(button => {
+          const active = button.dataset.previewWidth === value;
+          button.setAttribute('aria-pressed', String(active));
+          button.classList.toggle('btn-primary', active);
+        });
+      }
+      function restore(value) {
+        if (value?.kind === 'session-action-concepts') setViewport(value.viewport);
+      }
+      comparison.querySelectorAll('[data-preview-width]').forEach(button => {
+        button.addEventListener('click', () => {
+          setViewport(button.dataset.previewWidth);
+          window.openai?.setWidgetState?.({
+            modelContent: null,
+            privateContent: { kind: 'session-action-concepts', viewport: button.dataset.previewWidth }
+          })?.catch(() => {});
+        });
+      });
+      restore(window.openai?.widgetState?.privateContent);
+      window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState?.privateContent));
+    })();
+  </script>
+</div>

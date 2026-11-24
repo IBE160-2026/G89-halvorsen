@@ -1,0 +1,305 @@
+{
+  "navigation": [
+    {
+      "id": "session-menu-preview",
+      "label": "Home",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    {
+      "id": "session-menu-preview",
+      "label": "Summary",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Summary"
+      ],
+      "canvas": "rgb(238, 245, 239)"
+    },
+    {
+      "id": "session-menu-preview",
+      "label": "Flashcards",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Flashcards"
+      ],
+      "canvas": "rgb(251, 247, 229)"
+    },
+    {
+      "id": "session-menu-preview",
+      "label": "Quiz",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 244, 252)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Home",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Home"
+      ],
+      "canvas": "rgb(237, 238, 242)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Summary",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Summary"
+      ],
+      "canvas": "rgb(238, 245, 239)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Flashcards",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Flashcards"
+      ],
+      "canvas": "rgb(251, 247, 229)"
+    },
+    {
+      "id": "session-buttons-preview",
+      "label": "Quiz",
+      "menus": 1,
+      "labels": [
+        "Home",
+        "Summary",
+        "Flashcards",
+        "Quiz"
+      ],
+      "active": [
+        "Quiz"
+      ],
+      "canvas": "rgb(237, 244, 252)"
+    }
+  ],
+  "layouts": [
+    {
+      "requestedWidth": 1536,
+      "width": 1504,
+      "scroll": 1504,
+      "bad": []
+    },
+    {
+      "requestedWidth": 1280,
+      "width": 1248,
+      "scroll": 1248,
+      "bad": []
+    },
+    {
+      "requestedWidth": 1024,
+      "width": 992,
+      "scroll": 992,
+      "bad": []
+    },
+    {
+      "requestedWidth": 768,
+      "width": 736,
+      "scroll": 736,
+      "bad": []
+    },
+    {
+      "requestedWidth": 390,
+      "width": 358,
+      "scroll": 358,
+      "bad": []
+    },
+    {
+      "requestedWidth": 320,
+      "width": 288,
+      "scroll": 288,
+      "bad": []
+    }
+  ],
+  "flows": [
+    {
+      "id": "session-menu-preview",
+      "width": 1536,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 512,
+        "right": 992
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "clearCancelPreserves": true,
+      "clearResets": true
+    },
+    {
+      "id": "session-buttons-preview",
+      "width": 1536,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 512,
+        "right": 992
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "clearCancelPreserves": true,
+      "clearResets": true
+    },
+    {
+      "id": "session-menu-preview",
+      "width": 390,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 17,
+        "right": 341
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "clearCancelPreserves": true,
+      "clearResets": true
+    },
+    {
+      "id": "session-buttons-preview",
+      "width": 390,
+      "newCancelPreserves": true,
+      "escapePreserves": true,
+      "modal": {
+        "role": "dialog",
+        "modal": "true",
+        "initialCancel": true,
+        "visible": true,
+        "left": 17,
+        "right": 341
+      },
+      "focusReturned": true,
+      "emptyAfterNew": {
+        "view": "startup",
+        "language": "",
+        "level": "",
+        "ack": false,
+        "fileCount": 0,
+        "generate": true,
+        "learningDisabled": true
+      },
+      "oldSessionNotRestored": true,
+      "rejectedFileStaysEmpty": true,
+      "freshAcknowledgement": true,
+      "newStartup": true,
+      "clearCancelPreserves": true,
+      "clearResets": true
+    }
+  ],
+  "exceptions": [],
+  "additional": {
+    "disclosure": {
+      "expanded": "true",
+      "visible": true,
+      "actions": [
+        "New sessionChoose another PDF or settings",
+        "ClearRemove the current session"
+      ]
+    },
+    "escapeClosesDisclosure": true,
+    "sourceOpenClosePreservesRevealedCard": true
+  },
+  "scope": "Two alternative UX concepts only. Six responsive widths and four lifecycle cases; prewritten content/metadata-only startup. Not production or actual usability-test evidence; placement and copy remain unselected.",
+  "finalStatic": {
+    "ids": 52,
+    "ariaLabelReferences": 51,
+    "scriptSyntax": "pass",
+    "localDocumentLinks": "pass",
+    "dialogNextStepIncluded": true
+  }
+}

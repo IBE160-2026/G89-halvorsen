@@ -1,0 +1,208 @@
+{
+  "widths": [
+    {
+      "viewport": 1536,
+      "stacked": false,
+      "controls": [
+        {
+          "x": 408,
+          "y": 709.03125,
+          "width": 337,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(12, 58, 47)",
+          "background": "rgb(189, 219, 195)"
+        },
+        {
+          "x": 759,
+          "y": 709.03125,
+          "width": 337,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(52, 58, 64)",
+          "background": "rgb(242, 243, 245)"
+        }
+      ],
+      "groupGap": "14px",
+      "arrowGap": 14,
+      "overflow": false,
+      "appWidth": 1504
+    },
+    {
+      "viewport": 1024,
+      "stacked": false,
+      "controls": [
+        {
+          "x": 231,
+          "y": 718.9375,
+          "width": 248,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(12, 58, 47)",
+          "background": "rgb(189, 219, 195)"
+        },
+        {
+          "x": 493,
+          "y": 718.9375,
+          "width": 248,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(52, 58, 64)",
+          "background": "rgb(242, 243, 245)"
+        }
+      ],
+      "groupGap": "14px",
+      "arrowGap": 14,
+      "overflow": false,
+      "appWidth": 992
+    },
+    {
+      "viewport": 768,
+      "stacked": false,
+      "controls": [
+        {
+          "x": 61,
+          "y": 632.828125,
+          "width": 300,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(12, 58, 47)",
+          "background": "rgb(189, 219, 195)"
+        },
+        {
+          "x": 375,
+          "y": 632.828125,
+          "width": 300,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(52, 58, 64)",
+          "background": "rgb(242, 243, 245)"
+        }
+      ],
+      "groupGap": "14px",
+      "arrowGap": 14,
+      "overflow": false,
+      "appWidth": 736
+    },
+    {
+      "viewport": 540,
+      "stacked": true,
+      "controls": [
+        {
+          "x": 38,
+          "y": 693.625,
+          "width": 432,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(12, 58, 47)",
+          "background": "rgb(189, 219, 195)"
+        },
+        {
+          "x": 38,
+          "y": 763.625,
+          "width": 432,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(52, 58, 64)",
+          "background": "rgb(242, 243, 245)"
+        }
+      ],
+      "groupGap": "14px",
+      "arrowGap": 14,
+      "overflow": false,
+      "appWidth": 508
+    },
+    {
+      "viewport": 390,
+      "stacked": true,
+      "controls": [
+        {
+          "x": 38,
+          "y": 810.703125,
+          "width": 282,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(12, 58, 47)",
+          "background": "rgb(189, 219, 195)"
+        },
+        {
+          "x": 38,
+          "y": 880.703125,
+          "width": 282,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(52, 58, 64)",
+          "background": "rgb(242, 243, 245)"
+        }
+      ],
+      "groupGap": "14px",
+      "arrowGap": 14,
+      "overflow": false,
+      "appWidth": 358
+    },
+    {
+      "viewport": 320,
+      "stacked": true,
+      "controls": [
+        {
+          "x": 38,
+          "y": 841.5,
+          "width": 212,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(12, 58, 47)",
+          "background": "rgb(189, 219, 195)"
+        },
+        {
+          "x": 38,
+          "y": 911.5,
+          "width": 212,
+          "height": 56,
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "radius": "15px",
+          "color": "rgb(52, 58, 64)",
+          "background": "rgb(242, 243, 245)"
+        }
+      ],
+      "groupGap": "14px",
+      "arrowGap": 14,
+      "overflow": false,
+      "appWidth": 288
+    }
+  ],
+  "interactions": {
+    "continueAndFocus": true,
+    "newSessionDialog": true,
+    "cancelPreservesAndReturnsFocus": true
+  },
+  "exceptions": [],
+  "scope": {
+    "markupAndJavaScriptUnchanged": true,
+    "nonActionCssUnchanged": true,
+    "selectedMainAndPrdUnchanged": true,
+    "visualReview": "user criteria met; adoption pending"
+  }
+}
