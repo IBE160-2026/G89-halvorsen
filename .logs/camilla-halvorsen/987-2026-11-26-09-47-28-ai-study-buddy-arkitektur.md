@@ -1,6 +1,6 @@
 # AI Study Buddy – arkitektur
 
-## 2026-11-26 kl. 10:39 — Camilla Halvorsen
+## 2026-11-26 kl. 10:49 — Camilla Halvorsen
 
 ### Oppgave
 
@@ -37,6 +37,10 @@ Starte og videreføre `/bmad-architecture` for AI Study Buddy med technology.md 
 - Neste veiledede spørsmål om OpenRouter fra referansen eller en eksisterende foretrukket KI-leverandør er sendt. Offisielle strukturerte-output-/rutingdokumenter er kontrollert; endepunktstøtte og standard fallback/parametervalg må håndteres uttrykkelig hvis tjenesten velges. Ingen leverandør/modell/SDK, pris eller lagringsløfte er vedtatt. Brukerens generelle «Fortsett» viderefører arbeidet og tolkes ikke som leverandørvalg.
 - Kontroll av unike AD-1–AD-3, kilde-/evidenslenker, JSON-måleposter, skriptsyntaks og `git diff --check` består. Full BMAD-sluttgjennomgang er ikke kjørt; arkitekturen er fortsatt draft. PRD, UX, technology.md og appkode er uendret. Ingen implementert app-/prototype-/KI-kvalitets-/oppryddingstest er påstått. Bare sesjonslogg og issues.md committes lokalt etter prosjektregelen; ingen push.
 
+- **Senere brukerføring overstyrer den brede stoppolicyen over:** Studenten skal kunne generere fra pålitelig lesbar tekst selv om bilder/figurer/tabeller mangler. AD-4 er revidert som utkast med tydelig status «PRD alignment pending»: grafikk, tekstløse enkeltsider, generiske parservarsler og plain/layout-avvik stopper ikke alene. Identifiserbart utrygt innhold utelates med konkret beskjed; stopp gjelder utilstrekkelig gjenværende tekst eller konkret upålitelig beholdt hovedtekst. Kilde-/strukturvern, ingen OCR/gjetting/automatisk reparasjon og pypdf foreløpig beholdes.
+- Funnet reell konflikt med gjeldende PRD FR-40s incidental-only-vilkår og FR-41s sentralt/usikkert dekningstap. En uavhengig gjennomgang har kartlagt nødvendige avstemmingssteder, inkludert PRD-retning/hand-off, addendum, brief og EXPERIENCE. Den nøyaktige engelske erstatningsteksten og evalueringsavgrensningen er lagret i arkitekturens forslag; PRD/brief/UX er kontrollert uendret.
+- Brukeren valgte alternativ 2 for FR-40/FR-41: se eksakt ordlyd før PRD endres. Dette er ikke endringsgodkjenning. Hun godkjente separat tekstbasert evaluering mot original-PDF, separat rapportering av bilde-/figur-/tabellutelatelser og uendrede korrekthets-/kilde-/9/10-krav. Evalueringspunkter skal ikke velges bare fra parserens resultat eller snevres inn etter feil; synkron PRD-skriving avventer hovedordlyden. Ingen nye PDF-/KI-/app-tester i dette avklaringssteget.
+
 ### Åpne punkter
 
-- Avklare KI-leverandør/modell og svarkontrakter; deretter endelige versjoner, numeriske grenser/oppryddingsparametere og demo/oppstart. AD-4s operative dekning-/stopp-/varselregler er definert med pypdf som foreløpig standard; den implementerte porten og dens støttede PDF-profil må fortsatt verifiseres. T1–T3s vesentlige utelatelser teller ikke som innholdskvalitetspass. Eksisterende arkitektur-/PDF-punkter i issues.md er oppdatert; øvrig oppfølging består.
+- Før PRD-endring: få brukerens avgjørelse om den nøyaktige foreslåtte FR-40/FR-41-ordlyden. Evalueringsretningen er godkjent: lesbar originaltekst, separat rapportering av visuelle utelatelser og uendrede korrekthets-/kilde-/9/10-krav. Etter ordlydsavklaring avstemmes gjeldende PRD/addendum, brief og UX; deretter KI-integrasjon og øvrige arkitekturvalg. Den reviderte tekstbaserte policyen må verifiseres under implementering. Historiske full-dekningstap er fortsatt dokumenterte funn, ikke automatisk stoppgrunn etter den nye ønskede avgrensningen.
