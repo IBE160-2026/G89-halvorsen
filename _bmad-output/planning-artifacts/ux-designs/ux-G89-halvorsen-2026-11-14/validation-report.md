@@ -5,6 +5,14 @@
 - **Run date:** 2026-11-24, Europe/Oslo
 - **Scope:** UX planning completion; no next phase or Git publication.
 
+## Post-finalisation requirements note — 26 November 2026
+
+The user approved revised PRD FR-40/FR-41 after the recorded UX closure. Generate from readable, source-verifiable text even when images, figures or tables cannot be interpreted. Evidence-based notices name only known limitations and affected physical pages where known; they are nonblocking. Stop for insufficient usable text or concrete extraction failures that make retained main text unusable or its meaning unreliable. Missing graphical/table content, unknown full-PDF coverage, generic parser warnings and plain/layout differences alone do not reject the whole PDF. Never guess excluded information or imply complete-PDF coverage.
+
+EXPERIENCE.md and the current requirements/scenario mappings are aligned. Existing error/notice surfaces and selected visual identity are reused without redesign. The prototype condition/copy, original 17-case/13-error classification and category verdicts/evidence below remain scoped to 24 November; no prototype/browser tests have been rerun and no new detector or production-quality result is claimed. Implementation must apply the revised outcome rules rather than copy the old blocking examples.
+
+Accuracy, source validation and the agreed 9/10/all-smaller-set thresholds remain unchanged. Evaluate against original-PDF readable text within the declared text scope and record visual/table omissions separately. Structure/source rejection, real app isolation/cleanup, permitted demo content, accessibility and observed-use follow-up remain required.
+
 ## Overall verdict
 
 No critical or high UX/PRD planning gap remains. The user accepted the latest concept and authorised planning closure after this check; DESIGN.md and EXPERIENCE.md now record the selected baseline as final, with planning_status complete. Minor refinements remain possible during implementation.

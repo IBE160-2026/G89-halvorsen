@@ -2,7 +2,7 @@
 title: Product Brief — AI Study Buddy
 status: draft
 created: 2026-09-26
-updated: 2026-11-19
+updated: 2026-11-26
 ---
 
 # Product Brief: AI Study Buddy
@@ -59,7 +59,7 @@ These are planned checks, not completed results. The selected local evaluation f
 | T2 — `test-data/pdfs/T2.pdf` | 24 pages | The developer’s Norwegian strategy notes. |
 | T3 — `test-data/pdfs/T3.pdf` | 40 pages | The developer’s English IT notes. |
 
-These files are ignored by Git and are not approved demo assets. Page counts are not upload limits. The planned matrix is **12 summary, six flashcard, and six quiz cases** across these PDFs and both languages. Summary levels use separate sessions. Known figure omissions require coverage checks: generation proceeds only with reliable main-text coverage. Material or uncertain loss must stop. A correct stop may pass a failure test but does not pass content-quality evaluation; record blocked quality cases explicitly.
+These files are ignored by Git and are not approved demo assets. Page counts are not upload limits. The planned matrix is **12 summary, six flashcard, and six quiz cases** across these PDFs and both languages. Summary levels use separate sessions. Use reliable readable text even when images, figures or tables cannot be interpreted; disclose detected possible omissions without claiming full-PDF coverage. Stop for insufficient usable text or concrete failures making retained main text unreliable, not graphical omissions or unknown full coverage alone. Summary coverage points come from readable native text in the original PDF, with visual/table omissions reported separately and no post-hoc removal of missing expected text points. A correct stop may pass a failure test but does not pass content-quality evaluation; record blocked quality cases explicitly.
 
 All aids must follow the selected language. Review ten items per card/quiz case; inspect all and require all to pass for smaller sets.
 
@@ -69,7 +69,7 @@ All aids must follow the selected language. Review ten items per card/quiz case;
 - **Quizzes:** at least 9 of 10 checked questions have a correct, unambiguous answer key in each document-and-output-language test case.
 - **References:** at least 9/10 reviewed references per case support the associated content; all must pass if fewer than ten. Every displayed location and excerpt is verifiable. On the same sampled card/quiz items, at least 9/10 jointly pass answer correctness and source support, or all if fewer. Semantic support is reviewed manually against the original PDF.
 - **Study feedback:** every tested incorrect quiz answer displays the correct answer, an understandable explanation, and a source reference.
-- **Error handling:** test non-PDF, damaged, password-protected, no-usable-text, source, service, and coverage failures; explain the problem and next step. Test cancelled/confirmed New session, empty startup without a new upload, active-session preservation on generation failure, and rejection after confirmed restart.
+- **Error handling:** test non-PDF, damaged, password-protected, no-usable-text, source, service, and insufficient/unreliable-text failures, plus evidence-based omission notices; explain the problem and next step. Test cancelled/confirmed New session, empty startup without a new upload, active-session preservation on generation failure, and rejection after confirmed restart.
 - **Demo access:** following the README, the examiner can complete the demo workflow described above, including quiz feedback and source inspection, without a private API key or paid account. Live API generation will be tested separately.
 - **Practical value:** compare like-for-like preparation time, including review, corrections, and failed attempts; record usefulness. Freeze tasks before evaluation. Time savings remain a goal.
 - **Project learning and quality:** documentation explains how AI was used, how the code and application were checked, and what challenges and solutions arose during development.

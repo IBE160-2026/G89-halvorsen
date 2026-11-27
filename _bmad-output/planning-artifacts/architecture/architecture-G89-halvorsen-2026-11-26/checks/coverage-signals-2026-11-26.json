@@ -1,0 +1,974 @@
+{
+  "date": "2026-11-26",
+  "scope": "Local syntax/callback structural-signal feasibility; no detector, significance classification, OCR or semantic validation",
+  "python": "3.14.7",
+  "pypdf": "7.1.1",
+  "documents": [
+    {
+      "document": "T1",
+      "physical_page_count": 10,
+      "source_sha256": "6052cbb24d022f3e32845c6459303b1e1841890161ec87b76f23f1d4b8169474",
+      "original_unchanged": true,
+      "diagnostic_count": 0,
+      "pages": [
+        {
+          "physical_page": 1,
+          "plain_chars": 183,
+          "same_nfc_nonwhitespace_order": true,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 2,
+          "plain_chars": 615,
+          "same_nfc_nonwhitespace_order": true,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 9
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 1,
+          "error_count": 0
+        },
+        {
+          "physical_page": 3,
+          "plain_chars": 744,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 7
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 4,
+          "plain_chars": 220,
+          "same_nfc_nonwhitespace_order": true,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 5,
+          "plain_chars": 1045,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 21,
+            "Do_invocations": 5,
+            "image_Do": 5
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 6,
+          "plain_chars": 523,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 9
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 7,
+          "plain_chars": 654,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 17
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 8,
+          "plain_chars": 419,
+          "same_nfc_nonwhitespace_order": true,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 9,
+          "plain_chars": 590,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 10,
+          "plain_chars": 999,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 1,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        }
+      ]
+    },
+    {
+      "document": "T2",
+      "physical_page_count": 24,
+      "source_sha256": "c7f568a234b9adcb2241c1c13fbf92bc0c803311ba08635d192efecc546edd29",
+      "original_unchanged": true,
+      "diagnostic_count": 10,
+      "pages": [
+        {
+          "physical_page": 1,
+          "plain_chars": 1600,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 3
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 2,
+          "plain_chars": 2044,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 3,
+          "plain_chars": 2068,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 4,
+          "plain_chars": 1510,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 80
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 5,
+          "plain_chars": 2089,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 54
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 6,
+          "plain_chars": 1728,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 7,
+          "plain_chars": 1920,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 8,
+          "plain_chars": 1850,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 9,
+          "plain_chars": 1815,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 10,
+          "plain_chars": 1230,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 4,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 11,
+          "plain_chars": 874,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "Do_invocations": 2,
+            "image_Do": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 12,
+          "plain_chars": 439,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2,
+            "Do_invocations": 3,
+            "image_Do": 3
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 13,
+          "plain_chars": 1837,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 6,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 14,
+          "plain_chars": 2053,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 15,
+          "plain_chars": 1940,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 16,
+          "plain_chars": 1971,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 17,
+          "plain_chars": 2286,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 3
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 18,
+          "plain_chars": 2084,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 3
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 19,
+          "plain_chars": 1591,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 20,
+          "plain_chars": 1894,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 21,
+          "plain_chars": 1024,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 1,
+            "Do_invocations": 2,
+            "image_Do": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 22,
+          "plain_chars": 1661,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 4
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 23,
+          "plain_chars": 1740,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 2
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 24,
+          "plain_chars": 74,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        }
+      ]
+    },
+    {
+      "document": "T3",
+      "physical_page_count": 40,
+      "source_sha256": "8c52a5e53bf633858718f20e0c535a358918ab200941ba72d3b3ac5880071cc8",
+      "original_unchanged": true,
+      "diagnostic_count": 13,
+      "pages": [
+        {
+          "physical_page": 1,
+          "plain_chars": 2212,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 75
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 2,
+          "plain_chars": 2100,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 27
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 3,
+          "plain_chars": 1655,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 42,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 4,
+          "plain_chars": 1461,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 68,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 5,
+          "plain_chars": 1970,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 123
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 6,
+          "plain_chars": 1854,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 58
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 7,
+          "plain_chars": 920,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 124,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 8,
+          "plain_chars": 1537,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 79,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 9,
+          "plain_chars": 1754,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 101
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 10,
+          "plain_chars": 1859,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 50
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 11,
+          "plain_chars": 2048,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 119
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 12,
+          "plain_chars": 2064,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 24
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 13,
+          "plain_chars": 2089,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 14,
+          "plain_chars": 1952,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 50
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 15,
+          "plain_chars": 1984,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 35
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 16,
+          "plain_chars": 1463,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 76,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 17,
+          "plain_chars": 1632,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 42,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 18,
+          "plain_chars": 2108,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 42
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 19,
+          "plain_chars": 1581,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 58,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 20,
+          "plain_chars": 1653,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 130
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 21,
+          "plain_chars": 1906,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 69
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 22,
+          "plain_chars": 990,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 90,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 23,
+          "plain_chars": 1373,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 66,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 24,
+          "plain_chars": 2152,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 25,
+          "plain_chars": 2017,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 26,
+          "plain_chars": 2057,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 59
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 27,
+          "plain_chars": 1780,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 50,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 28,
+          "plain_chars": 2284,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 18
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 29,
+          "plain_chars": 1717,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 69,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 30,
+          "plain_chars": 1206,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 31,
+          "plain_chars": 2229,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 50
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 32,
+          "plain_chars": 2029,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 101
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 33,
+          "plain_chars": 2232,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 42
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 34,
+          "plain_chars": 2263,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 74
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 35,
+          "plain_chars": 2402,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 36,
+          "plain_chars": 1675,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 51,
+            "Do_invocations": 1,
+            "image_Do": 1
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 37,
+          "plain_chars": 2202,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 92
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 38,
+          "plain_chars": 2363,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {
+            "path_paint": 50
+          },
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 39,
+          "plain_chars": 2199,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        },
+        {
+          "physical_page": 40,
+          "plain_chars": 2018,
+          "same_nfc_nonwhitespace_order": false,
+          "replacement_chars": 0,
+          "invoked_signals": {},
+          "unknown_operator_count": 0,
+          "annotation_count": 0,
+          "error_count": 0
+        }
+      ]
+    }
+  ],
+  "synthetic_checks": {
+    "checks": {
+      "physical_slots_preserved": true,
+      "plain_text_has_no_nontext_paint_signal": true,
+      "truly_blank_no_text_or_graphic_signal": true,
+      "image_only_empty_text_but_invoked_image": true,
+      "text_raster_both_detected": true,
+      "text_vector_path_paints_detected": true,
+      "nested_forms_followed_to_inner_path_paint": true,
+      "unused_declared_image_not_invoked": true,
+      "unknown_operator_signalled": true,
+      "visitor_sees_nested_form_path_paint": true
+    },
+    "passed": 10,
+    "total": 10,
+    "failed": []
+  },
+  "limitations": [
+    "Painting operators can be clipped, off-page, invisible, decorative or in optional content; this probe does not decide visibility or importance.",
+    "The pypdf visitor has no explicit nested-resource-scope argument. A separate syntax walk resolves invoked XObjects with Form resources; neither path is a PDF renderer.",
+    "The walk follows invoked Forms only, with cycle detection/depth20; unresolved names, recursion, parse errors and unknown operators are uncertainty signals.",
+    "Annotation count does not inspect or execute annotation appearance streams; annotations remain uncertain.",
+    "Type3 font selection is flagged; glyph CharProcs, patterns and transparency/soft-mask resources are not comprehensively interpreted.",
+    "Plain/layout fingerprints compare NFC nonwhitespace character sequence only. Equality does not prove correct order; difference alone does not prove one mode wrong.",
+    "Absence of these signals is not proof of complete extraction or PDF semantic equivalence. All proposed acceptance criteria remain subject to implementation validation."
+  ],
+  "privacy": "Only counts/hashes and owned-fixture assertions persisted. No original text, screenshots or literal excerpts. No external document transfer.",
+  "private_intermediates_removed": true
+}

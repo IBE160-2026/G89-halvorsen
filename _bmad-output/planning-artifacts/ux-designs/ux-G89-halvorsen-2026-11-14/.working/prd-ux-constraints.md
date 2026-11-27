@@ -1,6 +1,6 @@
 # AI Study Buddy — PRD constraints for UX concept exploration
 
-Sources: [final PRD, updated 2026-11-19](../../../prds/prd-G89-halvorsen-2026-11-03/prd.md) and [final addendum](../../../prds/prd-G89-halvorsen-2026-11-03/addendum.md).
+Sources: [final PRD, revised 2026-11-26](../../../prds/prd-G89-halvorsen-2026-11-03/prd.md) and [final addendum](../../../prds/prd-G89-halvorsen-2026-11-03/addendum.md).
 This is an extraction for this existing UX run, not a new specification or adopted visual direction. The PRD governs product behaviour; earlier research and retired requirements do not override it.
 
 ## Session and startup — required behaviour
@@ -42,12 +42,13 @@ This is an extraction for this existing UX run, not a new specification or adopt
 
 - **FR-39:** Show a loading indicator and the actual operation: Checking PDF, Extracting text, Generating summary, Generating flashcards or Generating quiz. End processing on success/failure. No fabricated percentage or implication that all functions generate automatically.
 - **FR-1, FR-43:** Reject unsupported formats, damaged files, no-usable-text PDFs and password-required PDFs with the detected reason and a next action. No password-entry/unlocking flow; no claim that every no-text PDF is scanned.
-- **FR-38, FR-40:** Use only reliably extracted/interpretable text and simple table/figure content. Incidental excluded elements require a coverage notice identifying omissions; never reconstruct unreadable image information.
-- **FR-41:** Stop when central/substantial content is unreadable or reliable main-text coverage is uncertain. Explain the loss/uncertainty; offer manual retry or another PDF through New session. No promise to detect every omission.
+- **FR-38, FR-40:** Generate from readable, source-verifiable PDF text even when images, figures or tables cannot be interpreted. Where observable evidence indicates content may not have been included, show a short nonblocking notice naming only the known limitation and affected physical pages where known. Never infer excluded information or imply complete-PDF coverage.
+- **FR-41:** Stop when insufficient usable text remains for meaningful source-grounded material, or concrete extraction failures make retained main text unusable or its meaning unreliable. Explain the detected problem and offer applicable manual retry or another PDF through New session. Missing graphical/table content, unknown full-PDF coverage, generic parser warnings and plain/layout differences alone do not require rejecting the whole PDF. Verify operational criteria in Architecture; no promise to detect every omission.
 - **FR-36:** Any invalid summary reference withholds the whole new summary; show an error and manual Try again.
 - **FR-37, NFR-3:** In an otherwise structurally valid card/quiz set, omit a whole item if any reference is unverifiable. A nonempty valid subset is usable: show actual count and omission notice. Zero usable items is an error. Reject malformed model structures as a whole.
 - **Shared acceptance rules, addendum:** Missing key, unavailable service, timeout or generation/validation failure ends processing with reason and setup/manual Try again/another-PDF action as appropriate. Preserve existing valid content/progress in the active session; never restore an ended one.
 - **Shared acceptance rules:** No automatic regeneration, repair or item refill. Retry requires the student's action. Never show fabricated success or an empty scored quiz. Eight questions/six correct means 6/8, 75%, two wrong questions.
+- **Evaluation boundary:** Accuracy, source-validation rules and the agreed 9/10/all-smaller-set thresholds are unchanged. Review generated material against original-PDF readable text within the declared text scope and record omitted visual/table material separately; locating an excerpt is not factual-support verification.
 
 ## Demo and security — required behaviour
 
@@ -65,3 +66,4 @@ This is an extraction for this existing UX run, not a new specification or adopt
 - **Addendum UX follow-up:** Cover startup, navigation, source panel, warnings and wrong-answer flow; check keyboard use, readability and source-location/support wording. This extraction does not claim those checks passed.
 - **Appearance is a UX decision:** The PRD does not select palette, fonts, radii, density, visual hierarchy, navigation topology, component library, imagery, animation or theme support. The user has now selected the latest Home/Summary/Flashcards/Quiz concept in [decisions.md](../decisions.md); UX planning is complete under the final peer contracts and Round 22, with minor implementation refinements possible without changing the required behaviours or exclusions.
 - **Concept fidelity:** Concept content and simulated transitions are illustrations, not implementation, live-generation, source-quality or usability-test evidence. Existing UX decisions remain in this run's memlog; no concept is adopted merely by rendering it.
+- **26 November requirements alignment:** The existing error/notice presentations are reused without visual redesign. Preserved prototype copy/conditions and the original 17-case/13-error classification reflect the prior FR-40/FR-41 policy; they are not implementation rules for the revised scope. No prototype regression was rerun for this documentation amendment.

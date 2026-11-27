@@ -41,6 +41,9 @@ playwright-report/
 # Local study material
 /test-data/pdfs/
 
+# Local cost-control metadata, including atomic-write and lock sidecars
+/.local/ai-study-buddy-costs/
+
 # Secrets and local environment; keep example files
 .env
 .env.*

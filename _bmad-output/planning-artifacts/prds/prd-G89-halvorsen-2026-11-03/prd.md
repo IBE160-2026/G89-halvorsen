@@ -2,7 +2,7 @@
 title: AI Study Buddy — Product Requirements Document
 status: final
 created: 2026-11-03
-updated: 2026-11-19
+updated: 2026-11-26
 ---
 
 # AI Study Buddy — Product Requirements Document
@@ -17,7 +17,7 @@ AI Study Buddy helps students reduce study-material preparation and spend more t
 
 One temporary study session uses one text-based PDF, one output language (Bokmål or English) and one summary level (Brief or Detailed), chosen before generation. Students request a summary, flashcards or a multiple-choice quiz and inspect original supporting passages. Navigation reuses generated content. **New session** is the single explicit action for ending the current session, whether the student is finished or wants different PDF/output choices; confirmation returns to ordinary empty startup. Starting again is optional and requires fresh PDF/settings selection.
 
-Source-supported quality takes priority over item count. Unreliable or uncertain main-text coverage stops generation. A labelled saved-content demo runs without private credentials; live generation is evaluated separately. V1 has no public launch or recovery after reload/closing.
+Source-supported quality takes priority over item count. Generate from readable, source-verifiable text and disclose detected possible visual/table omissions. Stop when usable text is insufficient or concrete extraction failures make retained main text unreliable; missing graphical content or unknown full-PDF coverage alone does not stop generation. A labelled saved-content demo runs without private credentials; live generation is evaluated separately. V1 has no public launch or recovery after reload/closing.
 
 ## V1 boundaries
 
@@ -61,8 +61,8 @@ Existing IDs are retained. Shared acceptance rules below apply across learning f
 - **FR-3 — Retain content and progress:** Function switches preserve generated content and practice progress. Quiz resumption follows FR-13; card answer visibility follows FR-31.
 - **FR-38 — Use reliable extracted material:** Use ordinary text and simple table/figure content only when reliably extracted and interpretable with source support. Never reconstruct information available only in an unreadable image.
 - **FR-39 — Show processing and failure status:** Display a loading indicator and the operation actually running: Checking PDF, Extracting text, Generating summary, Generating flashcards or Generating quiz. End the indicator on completion/failure. Use no artificial percentage or implication that all functions generate automatically.
-- **FR-40 — Disclose incidental omissions:** When unreadable elements are incidental to reliable main text, identify excluded parts in a coverage notice and generate only from readable, verifiable content.
-- **FR-41 — Stop on material or uncertain loss:** Stop generation if central/substantial content is unreadable or reliable main-text coverage cannot be established. Explain the detected loss/uncertainty and offer manual retry or another PDF through New session. Observable stop criteria require Architecture verification; detection of every omission is not promised.
+- **FR-40 — Disclose text-scope omissions:** Generate study material from readable, source-verifiable PDF text even when images, figures or tables cannot be interpreted. Where observable evidence indicates content may not have been included, show a short nonblocking notice naming only the known limitation and affected physical pages where known. Never infer excluded information or imply complete-PDF coverage.
+- **FR-41 — Stop on insufficient or unreliable text:** Stop generation when insufficient usable text remains for meaningful source-grounded study material, or concrete extraction failures make the retained main text unusable or its meaning unreliable. Explain the detected problem and offer applicable manual retry or another PDF through New session. Missing graphical/table content, unknown full-PDF coverage, generic parser warnings or a plain/layout difference alone do not require rejecting the whole PDF. Verify operational stop criteria in Architecture; detection of every omission is not promised.
 - **FR-43 — Reject password-required PDFs:** Reject before generation with a message naming the password problem and suggesting another file. Provide no password-entry or unlocking workflow.
 
 ### Study session and output choices
@@ -167,7 +167,7 @@ The following app checks remain planned. Set expected readable/omission/stop out
 ### Manual evaluation protocol
 
 1. Review every summary factual claim against the original PDF, not just extracted text. No unresolved factual error, unsupported addition or unclear judgment passes. Check language, organization, relevance, repetition and level.
-2. Before viewing outputs, map five Brief core points and ten Detailed eligible points to sources. Brief covers all five; Detailed covers those five plus at least three additional points. Fix smaller lists/thresholds for short sources before scoring. Pilot before full evaluation.
+2. Before viewing outputs, map five Brief core points and ten Detailed eligible points to readable, source-verifiable native-text passages in the original PDF. Brief covers all five; Detailed covers those five plus at least three additional points. Fix smaller lists/thresholds for short sources before scoring. Report omitted image, figure and uninterpretable-table content separately; do not claim full-PDF coverage. Do not select points only from what the parser returned or remove missing expected text points after seeing outputs. Pilot before full evaluation.
 3. Review the same card/question for correctness and SM-4 support. With multiple references, check each location/excerpt and combined support for required claims. Freeze item/reference sampling and counting before scoring.
 4. Preserve first outputs, failed attempts, omitted items, original defects, corrections and retests for permitted files. Select samples before quality review; report per-case results without pooling away failures.
 5. The developer freezes source points, sampling/counting and SM-6 tasks/target after the T1 evaluation pilot, before full scoring. The earlier extraction inspection does not replace that pilot.
@@ -177,7 +177,7 @@ The following app checks remain planned. Set expected readable/omission/stop out
 | Owner | Open work | Resolve before |
 | --- | --- | --- |
 | Architecture | Stack, model/PDF library, provider terms/configuration, input/context/resource/time/cost bounds and working-copy cleanup deadline. Flag limits excluding selected test files; preserve no automatic regeneration. | Implementation depends on each choice; provider verification before real transfer. |
-| Architecture | Observable extraction stop criteria, page-local excerpt matching/normalization and negative fixtures, including missing figures, blank pages and unusable PDFs. No universal coverage detector is assumed. | Accepting the extraction/source pipeline. |
+| Architecture | Observable insufficient/unreliable retained-text stop criteria, evidence-based visual/table omission notices, page-local excerpt matching/normalization and negative fixtures, including blank/textless pages and unusable PDFs. Graphical omissions alone do not reject the whole PDF; no universal coverage detector is assumed. | Accepting the extraction/source pipeline. |
 | Developer/evaluation | Separate shareable demo PDF; local/API/demo/repository permissions; source points, sampling/counting and timing task/target. | Relevant material use and full scoring. |
 | Developer/delivery | Original assignment/full rubric and exact deadline; UX, README, reflection and test evidence. | Delivery planning and acceptance. |
 

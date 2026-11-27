@@ -2,7 +2,7 @@
 title: AI Study Buddy — PRD Addendum
 status: final
 created: 2026-11-03
-updated: 2026-11-19
+updated: 2026-11-26
 ---
 
 # AI Study Buddy — PRD Addendum
@@ -11,7 +11,7 @@ Technical/evidence follow-ups for Architecture and implementation. [The PRD](prd
 
 ## PDF extraction and coverage
 
-Architecture must verify observable unreadable/unreliable-extraction signals against local T1–T3. FR-41 stops generation on material loss or uncertain main-text coverage. Neither a nonempty page nor a coverage notice establishes complete extraction; an empty page does not establish lost content. Define representative fixtures and explicit stop rules without promising automatic assessment of every omission's importance.
+Architecture must verify usable-text and concrete text-unreliability signals against local T1–T3. Under revised FR-40/FR-41, use readable, source-verifiable text even when graphical/table content is unavailable; show an evidence-based nonblocking omission notice. Stop only for insufficient remaining text or concrete failures that make retained main text unreliable, alongside ordinary invalid/protected/resource-limit input failures. Graphical presence, a textless page, generic parser warnings or plain/layout differences alone do not reject the whole PDF. Neither nonempty pages nor a notice establishes complete extraction; empty text alone does not prove a blank page or a scan.
 
 The limited PDFKit inspection found figure loss, including T2 page 12 and T3 page 30. Use these cases when verifying the chosen parser and coverage policy. The [research input](../../research/technical-pdf-source-reliability-2026-10-29/research.md) explains structural/image limitations; neither it nor the pilot selects the app's library. OCR, advanced figural interpretation and PDF repair remain excluded.
 
@@ -24,7 +24,7 @@ The limited PDFKit inspection found figure loss, including T2 page 12 and T3 pag
 
 ## Evaluation and regression evidence
 
-The developer freezes original-PDF points, item/reference sampling/counting and comparable timing tasks/target after the T1 evaluation pilot, before full scoring. Check each multi-reference location and combined support. A controlled extraction stop is a failure-handling result, not a quality pass; disclose blocked cases.
+The developer freezes points from readable, source-verifiable native text in the original PDF, item/reference sampling/counting and comparable timing tasks/target after the T1 evaluation pilot, before full scoring. Do not restrict expected points to the parser's returned text or drop missing expected text points after seeing outputs. Report omitted image/figure/uninterpretable-table content separately without claiming full-PDF coverage. Check every generated factual claim against the original PDF and each multi-reference location/combined support; correctness, source and joint 9/10 thresholds remain unchanged. A controlled text-insufficiency/unreliability stop is a failure-handling result, not a quality pass; disclose blocked cases.
 
 Record model/prompt/parser/configuration versions; preserve first outputs, failures, omissions, fixes and retests. Recheck affected cases after changes. Apply the same rubric to saved demo content, separately from live integration. Record evidence owner, permitted uses, access and review/deletion conditions outside ordinary app logs/history. Local test files do not establish public-demo or external-transfer permission; select a shareable demo separately.
 

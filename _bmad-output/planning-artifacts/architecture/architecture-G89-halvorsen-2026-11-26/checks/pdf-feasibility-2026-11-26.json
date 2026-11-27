@@ -1,0 +1,550 @@
+{
+  "date": "2026-11-26",
+  "timezone": "Europe/Oslo",
+  "scope": "Local parser and source-location feasibility; not complete coverage, semantic support, AI quality or implemented-app validation.",
+  "privacy": "No course text, screenshots, raw table cells or literal original-document anchors retained in this repository evidence. Originals remain ignored/local. No document content was sent to external PDF/AI APIs.",
+  "rendering": {
+    "engine": "pypdfium2",
+    "version": "5.15.2",
+    "pages_rendered": 74,
+    "contact_survey_pages": 74,
+    "full_resolution_review": {
+      "T1": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "T2": [
+        1,
+        4,
+        5,
+        10,
+        11,
+        12,
+        13,
+        15,
+        19,
+        21,
+        24
+      ],
+      "T3": [
+        3,
+        7,
+        17,
+        20,
+        22,
+        23,
+        30,
+        38
+      ]
+    }
+  },
+  "measurements": [
+    {
+      "document": "T1",
+      "library": "pypdf",
+      "library_version": "7.1.1",
+      "python": "3.14.7",
+      "file_bytes": 617919,
+      "source_sha256": "6052cbb24d022f3e32845c6459303b1e1841890161ec87b76f23f1d4b8169474",
+      "physical_page_count": 10,
+      "nonempty_plain_pages": 10,
+      "nonempty_layout_pages": 10,
+      "plain_chars": 5992,
+      "layout_chars": 8984,
+      "plain_words": 863,
+      "replacement_chars": 0,
+      "unexpected_controls": 0,
+      "parse_seconds": 0.0690642090048641,
+      "extract_seconds": {
+        "plain": 0.05310862703481689,
+        "layout": 0.09212575100536924
+      },
+      "total_seconds": 0.2972803750017192,
+      "peak_process_rss_bytes": 54886400,
+      "pages_with_images": [
+        5,
+        8,
+        10
+      ],
+      "total_image_objects": 6,
+      "location_probes": {
+        "sampled_pages": 10,
+        "pages_without_unique_excerpt": 0,
+        "exact_roundtrip_pass": 10,
+        "normalized_roundtrip_pass": 10,
+        "wrong_page_tests": 90,
+        "wrong_page_rejections": 90,
+        "altered_excerpt_rejections": 10,
+        "empty_excerpt_rejections": 3,
+        "invalid_page_rejections": 6,
+        "unexpected_acceptances": 0
+      },
+      "diagnostic_log_count": 0,
+      "page_exception_count": 0,
+      "original_unchanged": true
+    },
+    {
+      "document": "T2",
+      "library": "pypdf",
+      "library_version": "7.1.1",
+      "python": "3.14.7",
+      "file_bytes": 1215340,
+      "source_sha256": "c7f568a234b9adcb2241c1c13fbf92bc0c803311ba08635d192efecc546edd29",
+      "physical_page_count": 24,
+      "nonempty_plain_pages": 24,
+      "nonempty_layout_pages": 24,
+      "plain_chars": 39322,
+      "layout_chars": 45994,
+      "plain_words": 5567,
+      "replacement_chars": 0,
+      "unexpected_controls": 0,
+      "parse_seconds": 0.04773737500363495,
+      "extract_seconds": {
+        "plain": 0.17512554096174426,
+        "layout": 0.28228037305234466
+      },
+      "total_seconds": 0.656244665995473,
+      "peak_process_rss_bytes": 56786944,
+      "pages_with_images": [
+        10,
+        11,
+        12,
+        13,
+        15,
+        19,
+        21
+      ],
+      "total_image_objects": 11,
+      "location_probes": {
+        "sampled_pages": 24,
+        "pages_without_unique_excerpt": 0,
+        "exact_roundtrip_pass": 24,
+        "normalized_roundtrip_pass": 24,
+        "wrong_page_tests": 552,
+        "wrong_page_rejections": 552,
+        "altered_excerpt_rejections": 24,
+        "empty_excerpt_rejections": 3,
+        "invalid_page_rejections": 6,
+        "unexpected_acceptances": 0
+      },
+      "diagnostic_log_count": 10,
+      "page_exception_count": 0,
+      "original_unchanged": true
+    },
+    {
+      "document": "T3",
+      "library": "pypdf",
+      "library_version": "7.1.1",
+      "python": "3.14.7",
+      "file_bytes": 7483125,
+      "source_sha256": "8c52a5e53bf633858718f20e0c535a358918ab200941ba72d3b3ac5880071cc8",
+      "physical_page_count": 40,
+      "nonempty_plain_pages": 40,
+      "nonempty_layout_pages": 40,
+      "plain_chars": 74990,
+      "layout_chars": 86779,
+      "plain_words": 10859,
+      "replacement_chars": 0,
+      "unexpected_controls": 0,
+      "parse_seconds": 0.049176500004250556,
+      "extract_seconds": {
+        "plain": 0.37337717102491297,
+        "layout": 0.5882369630271569
+      },
+      "total_seconds": 1.321191249997355,
+      "peak_process_rss_bytes": 70746112,
+      "pages_with_images": [
+        3,
+        4,
+        7,
+        8,
+        16,
+        17,
+        19,
+        22,
+        23,
+        25,
+        27,
+        29,
+        30,
+        36
+      ],
+      "total_image_objects": 14,
+      "location_probes": {
+        "sampled_pages": 40,
+        "pages_without_unique_excerpt": 0,
+        "exact_roundtrip_pass": 40,
+        "normalized_roundtrip_pass": 40,
+        "wrong_page_tests": 1560,
+        "wrong_page_rejections": 1560,
+        "altered_excerpt_rejections": 40,
+        "empty_excerpt_rejections": 3,
+        "invalid_page_rejections": 6,
+        "unexpected_acceptances": 0
+      },
+      "diagnostic_log_count": 13,
+      "page_exception_count": 0,
+      "original_unchanged": true
+    },
+    {
+      "document": "T1",
+      "library": "pdfplumber",
+      "library_version": "0.11.11",
+      "python": "3.14.7",
+      "file_bytes": 617919,
+      "source_sha256": "6052cbb24d022f3e32845c6459303b1e1841890161ec87b76f23f1d4b8169474",
+      "physical_page_count": 10,
+      "nonempty_plain_pages": 10,
+      "nonempty_layout_pages": 10,
+      "plain_chars": 5924,
+      "layout_chars": 54525,
+      "plain_words": 859,
+      "replacement_chars": 0,
+      "unexpected_controls": 0,
+      "parse_seconds": 0.4032255409983918,
+      "extract_seconds": {
+        "plain": 0.09383141798025463,
+        "layout": 0.005476875987369567,
+        "tables": 0.0020341240015113726
+      },
+      "total_seconds": 0.5483686670049792,
+      "peak_process_rss_bytes": 61603840,
+      "pages_with_images": [
+        5,
+        8,
+        10
+      ],
+      "total_image_objects": 7,
+      "location_probes": {
+        "sampled_pages": 10,
+        "pages_without_unique_excerpt": 0,
+        "exact_roundtrip_pass": 10,
+        "normalized_roundtrip_pass": 10,
+        "wrong_page_tests": 90,
+        "wrong_page_rejections": 90,
+        "altered_excerpt_rejections": 10,
+        "empty_excerpt_rejections": 3,
+        "invalid_page_rejections": 6,
+        "unexpected_acceptances": 0
+      },
+      "diagnostic_log_count": 0,
+      "page_exception_count": 0,
+      "original_unchanged": true
+    },
+    {
+      "document": "T2",
+      "library": "pdfplumber",
+      "library_version": "0.11.11",
+      "python": "3.14.7",
+      "file_bytes": 1215340,
+      "source_sha256": "c7f568a234b9adcb2241c1c13fbf92bc0c803311ba08635d192efecc546edd29",
+      "physical_page_count": 24,
+      "nonempty_plain_pages": 24,
+      "nonempty_layout_pages": 24,
+      "plain_chars": 38384,
+      "layout_chars": 130688,
+      "plain_words": 5567,
+      "replacement_chars": 0,
+      "unexpected_controls": 0,
+      "parse_seconds": 0.029646499999216758,
+      "extract_seconds": {
+        "plain": 0.4416113319894066,
+        "layout": 0.03281425095337909,
+        "tables": 0.004593210018356331
+      },
+      "total_seconds": 0.575646291996236,
+      "peak_process_rss_bytes": 58146816,
+      "pages_with_images": [
+        10,
+        11,
+        12,
+        13,
+        15,
+        19,
+        21
+      ],
+      "total_image_objects": 11,
+      "location_probes": {
+        "sampled_pages": 24,
+        "pages_without_unique_excerpt": 0,
+        "exact_roundtrip_pass": 24,
+        "normalized_roundtrip_pass": 24,
+        "wrong_page_tests": 552,
+        "wrong_page_rejections": 552,
+        "altered_excerpt_rejections": 24,
+        "empty_excerpt_rejections": 3,
+        "invalid_page_rejections": 6,
+        "unexpected_acceptances": 0
+      },
+      "diagnostic_log_count": 0,
+      "page_exception_count": 0,
+      "original_unchanged": true
+    },
+    {
+      "document": "T3",
+      "library": "pdfplumber",
+      "library_version": "0.11.11",
+      "python": "3.14.7",
+      "file_bytes": 7483125,
+      "source_sha256": "8c52a5e53bf633858718f20e0c535a358918ab200941ba72d3b3ac5880071cc8",
+      "physical_page_count": 40,
+      "nonempty_plain_pages": 40,
+      "nonempty_layout_pages": 40,
+      "plain_chars": 72159,
+      "layout_chars": 217929,
+      "plain_words": 10864,
+      "replacement_chars": 0,
+      "unexpected_controls": 0,
+      "parse_seconds": 0.03187474999867845,
+      "extract_seconds": {
+        "plain": 0.9970592509926064,
+        "layout": 0.06733171093219426,
+        "tables": 0.06996862399682868
+      },
+      "total_seconds": 1.2832908339914866,
+      "peak_process_rss_bytes": 76251136,
+      "pages_with_images": [
+        3,
+        4,
+        7,
+        8,
+        16,
+        17,
+        19,
+        22,
+        23,
+        25,
+        27,
+        29,
+        30,
+        36
+      ],
+      "total_image_objects": 14,
+      "location_probes": {
+        "sampled_pages": 40,
+        "pages_without_unique_excerpt": 0,
+        "exact_roundtrip_pass": 40,
+        "normalized_roundtrip_pass": 40,
+        "wrong_page_tests": 1560,
+        "wrong_page_rejections": 1560,
+        "altered_excerpt_rejections": 40,
+        "empty_excerpt_rejections": 3,
+        "invalid_page_rejections": 6,
+        "unexpected_acceptances": 0
+      },
+      "diagnostic_log_count": 0,
+      "page_exception_count": 0,
+      "original_unchanged": true
+    }
+  ],
+  "timing_caveat": "One run per candidate/document with different cache/import conditions; layout follows plain in the same process and can reuse work. Probe total also includes image/table enumeration, file writes and citation probes. Not a controlled benchmark or upload limit.",
+  "manual_original_anchor_checks": {
+    "normalization": "NFC and whitespace only; no compatibility folding, case/number/hyphen repair or fuzzy matching",
+    "T1": {
+      "native_anchors": 10,
+      "pypdf_plain_matches": 10,
+      "pypdf_layout_matches": 6,
+      "pdfplumber_plain_matches": 8,
+      "pdfplumber_layout_matches": 8,
+      "wrong_page_matches": 0,
+      "additional_visible_graphic_probes_missing_in_all_modes": 5,
+      "initial_exploratory_nfkc_rerun_with_nfc_same_results": true
+    },
+    "T2": {
+      "native_anchors": 8,
+      "both_libraries_normalized_matches": 8,
+      "targeted_wrong_page_rejections_per_library": 8,
+      "targeted_modified_excerpt_rejections_per_library": 8,
+      "additional_visible_diagram_probes_missing_in_both": 9
+    },
+    "T3": {
+      "native_anchors": 4,
+      "both_libraries_both_modes_matches": 4,
+      "wrong_page_matches": 0,
+      "additional_visible_code_or_diagram_probes_missing_in_both": 3
+    }
+  },
+  "coverage_findings": {
+    "T1": {
+      "material_omission_pages": [
+        8
+      ],
+      "additional_graphical_heading_or_relation_losses": [
+        2,
+        5,
+        10
+      ],
+      "native_reading_order_tradeoff": "pypdf plain best sampled card grouping on3/6/7; page9 definition order improved by layout/pdfplumber. No full-coverage pass."
+    },
+    "T2": {
+      "material_raster_omission_pages": [
+        10,
+        11,
+        12,
+        13,
+        15,
+        19,
+        21
+      ],
+      "raster_image_count": 11,
+      "table_pages": [
+        4,
+        5
+      ],
+      "pdfplumber_default_shapes": [
+        [
+          8,
+          6
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      "visible_table_shapes": [
+        [
+          8,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "verdict": "No full-coverage pass; parser swap does not recover missing diagrams."
+    },
+    "T3": {
+      "all_image_bearing_pages": [
+        3,
+        4,
+        7,
+        8,
+        16,
+        17,
+        19,
+        22,
+        23,
+        25,
+        27,
+        29,
+        30,
+        36
+      ],
+      "specific_verified_code_or_diagram_omissions": [
+        22,
+        23,
+        30
+      ],
+      "pdfplumber_table_advantage_example": {
+        "page": 38,
+        "shape": [
+          5,
+          2
+        ],
+        "manual_cell_association": "Matches inspected native table; not general table fidelity proof"
+      },
+      "verdict": "No full-coverage pass; surrounding body text remains despite missing visual content."
+    }
+  },
+  "synthetic": {
+    "scope": "owned synthetic fixtures and local parser/location checks; not app/security/semantic validation",
+    "python": "3.14.7",
+    "versions": {
+      "pypdf": "7.1.1",
+      "pdfplumber": "0.11.11",
+      "reportlab": "5.1.2",
+      "pillow": "13.0.0"
+    },
+    "font": "Arial.ttf",
+    "fixture_hashes": {
+      "damaged.pdf": "91dac9b45771e7b459f2b630eff0e342c42fbf4ad316b0cb75712b3e6f1379b2",
+      "numbering-blank-image.pdf": "19f9d2eadf0ca34478e98eee8f68e20b48508afdb4243ef88478a39ce6978b25",
+      "password-required.pdf": "f22952a007c94922b2b50c0fd763d3316442150a634b0bc9deea0156ebb72c19",
+      "unicode-table.pdf": "deb83f2d43dd459a8c11e2003ac6a6c1e8724fe93fdd76e0470f1731076d14c0"
+    },
+    "libraries": [
+      {
+        "library": "pypdf",
+        "version": "7.1.1",
+        "checks": {
+          "physical_page_count_five": true,
+          "physical_page_two_match": true,
+          "printed_label_one_not_physical_one": true,
+          "blank_page_preserved_at_three": true,
+          "image_only_preserved_at_four_without_ocr_text": true,
+          "physical_page_five_after_gaps": true,
+          "visible_nordic_text_preserved": true,
+          "canonical_unicode_equivalence": true,
+          "canonical_line_preserved_under_nfc": true,
+          "whitespace_collapsing_match": true,
+          "literal_case_number_hyphen_match": true,
+          "case_alteration_rejected": true,
+          "number_alteration_rejected": true,
+          "removed_hyphen_alteration_rejected": true,
+          "changed_hyphen_alteration_rejected": true,
+          "native_table_cells_present": true,
+          "native_table_row_order_preserved_in_this_fixture": true,
+          "password_required_rejected_without_decryption": true,
+          "damaged_pdf_rejected": true
+        },
+        "private_outputs": true,
+        "password_rejection_mechanism": "is_encrypted policy gate; no decrypt call",
+        "damaged_exception": "PdfStreamError",
+        "passed": 19,
+        "total": 19,
+        "failed_checks": []
+      },
+      {
+        "library": "pdfplumber",
+        "version": "0.11.11",
+        "checks": {
+          "physical_page_count_five": true,
+          "physical_page_two_match": true,
+          "printed_label_one_not_physical_one": true,
+          "blank_page_preserved_at_three": true,
+          "image_only_preserved_at_four_without_ocr_text": true,
+          "physical_page_five_after_gaps": true,
+          "visible_nordic_text_preserved": true,
+          "canonical_unicode_equivalence": true,
+          "canonical_line_preserved_under_nfc": true,
+          "whitespace_collapsing_match": true,
+          "literal_case_number_hyphen_match": true,
+          "case_alteration_rejected": true,
+          "number_alteration_rejected": true,
+          "removed_hyphen_alteration_rejected": true,
+          "changed_hyphen_alteration_rejected": true,
+          "native_table_cells_present": true,
+          "native_table_row_order_preserved_in_this_fixture": true,
+          "native_table_structured_cells_match": true,
+          "password_required_rejected_without_decryption": true,
+          "damaged_pdf_rejected": true
+        },
+        "private_outputs": true,
+        "password_exception": "PdfminerException",
+        "password_exception_chain": [
+          "PdfminerException",
+          "PDFPasswordIncorrect"
+        ],
+        "damaged_exception": "PdfminerException",
+        "passed": 20,
+        "total": 20,
+        "failed_checks": []
+      }
+    ]
+  },
+  "test_harness_corrections": [
+    "Corrected one manually transcribed T3 table anchor against full-resolution original before final counts.",
+    "Reran exploratory T1 NFKC checks using NFC only; counts unchanged.",
+    "Corrected pdfplumber encrypted-fixture checker to inspect wrapped PDFPasswordIncorrect cause; fixture unchanged."
+  ],
+  "candidate_conclusion": "Keep pypdf plain as provisional native-text candidate. No evidence for wholesale replacement by default pdfplumber to fix material omissions. Final parser adoption and FR-41 observable conservative stop criteria remain open; do not mark T1-T3 full coverage or introduce OCR/automatic parser fallback.",
+  "private_intermediates_removed": true
+}
